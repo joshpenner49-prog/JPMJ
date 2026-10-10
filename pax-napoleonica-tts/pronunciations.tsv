@@ -1,0 +1,4 @@
+# word<TAB>espeak IPA phonemes. Applied by prepare_script.py (whole words only).
+# Check how a word is spoken:  .venv/bin/python check_pronunciation.py Word
+Württemberg	vˈɜːtəmbɜːɡ
+Baden	bˈɑːdən
