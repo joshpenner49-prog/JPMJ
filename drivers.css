@@ -70,11 +70,11 @@
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
-  padding: 40px 0 0;
+  padding-block: 40px 0;
   gap: 12px;
 }
 @media (min-width: 780px) {
-  .driver-hero-inner { grid-template-columns: 1.15fr 0.85fr; padding: 56px 0 0; }
+  .driver-hero-inner { grid-template-columns: 1.15fr 0.85fr; padding-block: 56px 0; }
 }
 .driver-hero-speedlines {
   position: absolute; inset: 0;
@@ -164,7 +164,7 @@
   min-height: 22%;
 }
 .driver-chart-legend {
-  display: flex; gap: 18px; margin-top: 10px;
+  display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 10px;
   font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-dim);
 }
 .driver-chart-legend span { display: inline-flex; align-items: center; gap: 6px; }
@@ -172,8 +172,8 @@
 .driver-chart-legend .swatch.scored { background: var(--team-accent); }
 .driver-chart-legend .swatch.unknown { background: repeating-linear-gradient(135deg, var(--paper-3) 0 3px, var(--paper-2) 3px 6px); border: 1px dashed var(--chrome); }
 .driver-chart-legend .swatch.future { background: var(--paper-3); }
-.driver-chart-labels { display: flex; gap: 5px; margin-top: 6px; font-family: var(--font-mono); font-size: 9.5px; color: var(--ink-dim); }
-.driver-chart-labels span { flex: 1; text-align: center; }
+.driver-chart-labels { display: flex; gap: 5px; overflow: hidden; margin-top: 6px; font-family: var(--font-mono); font-size: 9.5px; color: var(--ink-dim); }
+.driver-chart-labels span { flex: 1; min-width: 0; text-align: center; }
 
 /* ---------- bio ---------- */
 .driver-bio { padding-bottom: 48px; max-width: 700px; }

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Flat (no-JS) fallback of the JP insignia; js/precision-mark.js replaces it with the 3D version. -->
+  <defs>
+    <linearGradient id="m" x1="0" y1="0" x2="1" y2="1" gradientTransform="rotate(118 .5 .5)"><stop offset="0" stop-color="#F3F3F1"/><stop offset=".26" stop-color="#CDCFD1"/><stop offset=".46" stop-color="#8F9296"/><stop offset=".6" stop-color="#DCDDDE"/><stop offset=".82" stop-color="#A3A6AA"/><stop offset="1" stop-color="#E9EAEA"/></linearGradient>
+    <linearGradient id="b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".5" stop-color="#B9BBBE"/><stop offset="1" stop-color="#55575B"/></linearGradient>
+    <linearGradient id="r" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#121315"/><stop offset=".35" stop-color="#1F2023"/><stop offset="1" stop-color="#2B2C30"/></linearGradient>
+    <linearGradient id="l" x1="0" y1="0" x2="1" y2="1" gradientTransform="rotate(132 .5 .5)"><stop offset="0" stop-color="#FAFAF8"/><stop offset=".3" stop-color="#C4C6C9"/><stop offset=".5" stop-color="#85888C"/><stop offset=".66" stop-color="#E4E5E6"/><stop offset="1" stop-color="#9EA1A5"/></linearGradient>
+    <linearGradient id="e" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#DA3C52"/><stop offset="1" stop-color="#A51E30"/></linearGradient>
+  </defs>
+  <path d="M16 4 H84 L96 16 V84 L84 96 H16 L4 84 V16 Z" fill="url(#m)" stroke="url(#b)" stroke-width="0.8" stroke-linejoin="round"/>
+  <path d="M17.5 8.5 H82.5 L91.5 17.5 V82.5 L82.5 91.5 H17.5 L8.5 82.5 V17.5 Z" fill="url(#r)" stroke="#0C0D0E" stroke-width="0.6" stroke-linejoin="round"/>
+  <path d="M18 91.5 H82" stroke="#FFFFFF" stroke-width="0.45" stroke-opacity="0.4"/>
+  <path d="M11.5 49 Q20 33 42 27.2 Q22.5 34.2 11.5 49 Z" fill="url(#l)"/>
+  <path d="M10.5 52.6 L27 50.6 L10.5 53.8 Z" fill="url(#l)"/>
+  <path d="M24.8 36.4 H30.3 L28 41.2 H22.5 Z" fill="url(#e)"/>
+  <path d="M35.8 36.4 H40.4 L38.1 41.2 H33.5 Z" fill="url(#e)"/>
+  <path d="M19.6 41.2 H25.7 L23.4 46 H17.3 Z" fill="url(#e)"/>
+  <path d="M30.6 41.2 H36.1 L33.8 46 H28.3 Z" fill="url(#e)"/>
+  <path d="M70 30.4 L89.5 28.2 L70.4 32.4 Z" fill="url(#l)"/>
+  <path d="M74 35.3 L87.2 34.1 L74.4 37 Z" fill="url(#l)"/>
+  <path d="M75.6 40.1 L84.6 39.5 L75.8 41.6 Z" fill="url(#l)"/>
+  <path d="M41 30 H50 V61 Q50 73 39.5 73 Q29 73 29 62 V59 H37.5 V61 Q37.5 64.5 39.5 64.5 Q41 64.5 41 61 Z" fill="url(#l)" stroke="#FFFFFF" stroke-width="0.35" stroke-opacity="0.55" stroke-linejoin="round"/>
+  <path d="M53 30 H66 Q76.5 30 76.5 41.5 Q76.5 53 66 53 H62 V73 H53 Z" fill="url(#l)" stroke="#FFFFFF" stroke-width="0.35" stroke-opacity="0.55" stroke-linejoin="round"/>
+  <path d="M62 37.5 H65 Q68.5 37.5 68.5 41.5 Q68.5 45.5 65 45.5 H62 Z" fill="#1E1F22" stroke="#0C0D0E" stroke-width="0.4"/>
+</svg>

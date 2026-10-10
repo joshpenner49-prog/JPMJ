@@ -16,33 +16,30 @@
 <meta name="twitter:image" content="og-image.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Titillium+Web:wght@400;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="race-week.css">
 </head>
 <body>
 
-<div class="top-strip">
-  <div class="wrap">
-    <span><span class="dot"></span>SEASON 2026 — 16 OF 23 ROUNDS COMPLETE</span>
-    <span>NEXT: SINGAPORE GP · OCT 9–11</span>
-  </div>
-</div>
-
-<header class="site-header">
-  <div class="wrap nav-row">
-    <a href="index.html" class="logo"><span class="mark">JP</span> MOTORSPORT JOURNAL</a>
-    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-    <nav class="main-nav">
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <div class="masthead-meta">
+      <span>EST. 2026</span>
+      <span>SEASON 2026 · 16 OF 23 ROUNDS COMPLETE · NEXT: SINGAPORE GP · OCT 9–11</span>
+    </div>
+    <a href="index.html" class="masthead-brand">
+      <span class="masthead-insignia"><span data-insignia data-size="64" data-theme="light" data-decorative><img src="img/insignia.svg" alt="" width="64" height="64"></span></span>
+      <span class="masthead-wordmark">JP Motorsport Journal</span>
+    </a>
+    <nav class="masthead-nav" aria-label="Primary">
       <ul>
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="archive.html">Race Archive</a></li>
+        <li><a href="archive.html">Archive</a></li>
         <li><a href="standings.html">Standings</a></li>
         <li><a href="drivers.html">Drivers</a></li>
         <li><a href="verdict.html">The Verdict</a></li>
         <li><a href="lightsout.html">Lights Out</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </div>
@@ -192,7 +189,7 @@
       <p>Antonelli's second place at Sepang, combined with Russell's late engine failure, stretched his lead to 84 points with seven rounds to go. Hamilton is now just 22 points behind Russell after recovering from near the back to the podium, so the fight for second is suddenly wide open.</p>
       <p>Singapore completes the triple-header just a week after Sepang, and this year it hosts a sprint weekend for the first time: sprint qualifying on Friday night, the sprint and Grand Prix qualifying on Saturday, then the 62-lap race on Sunday at 8pm local time. Back in 2008, this was the first night race in F1 history.</p>
 
-      <button class="expand-toggle" data-target="preview-more" data-more="+ Full preview" data-less="− Hide preview">+ Full preview</button>
+      <button type="button" class="btn expand-toggle" data-target="preview-more" data-more="+ Full preview" data-less="− Hide preview">+ Full preview</button>
       <div class="expand-body" id="preview-more">
         <p>The Marina Bay Street Circuit runs 4.927 km, with walls close at almost every corner, so Safety Cars are common and track position is everything. With the sprint format, teams get just one practice session to set up their cars for one of the hottest, most humid weekends of the year.</p>
         <div class="analysis-grid">
@@ -228,7 +225,7 @@
       <p>George Russell was running third under a late Safety Car when his Mercedes power unit failed on the home straight with five laps remaining. A near-certain podium became zero points, and with Kimi Antonelli finishing second, the gap between the Mercedes team-mates jumped from 66 to 84 points in a single afternoon.</p>
       <p>Russell admitted afterwards that his title chances are now very unlikely, and team boss Toto Wolff made no secret of his frustration with the failure.</p>
 
-      <button class="expand-toggle" data-target="breaking-more" data-more="+ Full analysis" data-less="− Hide analysis">+ Full analysis</button>
+      <button type="button" class="btn expand-toggle" data-target="breaking-more" data-more="+ Full analysis" data-less="− Hide analysis">+ Full analysis</button>
       <div class="expand-body" id="breaking-more">
         <div class="analysis-grid">
           <div class="analysis-card">
@@ -262,7 +259,7 @@
       <h3>Verstappen wins a rain-delayed Sepang thriller for his first victory of 2026</h3>
       <p>Torrential rain pushed the start back by an hour and 40 minutes, and the first attempt to get going was abandoned when cars hit engine-software problems and had to reboot on track. When the race finally began, the field was split between slicks and intermediates, and the intermediate runners were far quicker early on. Pole-sitter Max Verstappen lost the lead to both Mercedes off the start, got back past them either side of an early Safety Car, then simply drove away.</p>
 
-      <button class="expand-toggle" data-target="recap-more" data-more="+ Full recap" data-less="− Hide recap">+ Full recap</button>
+      <button type="button" class="btn expand-toggle" data-target="recap-more" data-more="+ Full recap" data-less="− Hide recap">+ Full recap</button>
       <div class="expand-body" id="recap-more">
         <p>Kimi Antonelli finished second, 2.3 seconds behind, with Lewis Hamilton third. Both Ferraris had tumbled down the order on slicks in the opening laps. Hamilton was the only driver not to pit under the lap-9 Safety Car for Valtteri Bottas's spin, and he climbed back through the field. A late Safety Car for Alex Albon's stopped Williams bunched everyone up, and Hamilton passed Isack Hadjar for third with three laps left, with Charles Leclerc following him through for fourth. Hadjar, Oscar Piastri and Liam Lawson completed the top seven. Fernando Alonso took eighth, Aston Martin's best result of the season, holding off Lando Norris, who had slid into the gravel under the Safety Car. Arvid Lindblad took the last point. George Russell, Albon and Bottas retired, and the race ran 55 laps instead of the planned 56.</p>
         <div class="analysis-grid">
@@ -285,14 +282,25 @@
 </main>
 
 <footer class="site-footer">
-  <div class="wrap">
-    <span><svg width="14" height="14" viewBox="0 0 16 16" style="vertical-align: -2px; margin-right: 5px;"><rect width="16" height="16" fill="none"/><g fill="var(--ink-dim)"><rect x="0" y="0" width="4" height="4"/><rect x="8" y="0" width="4" height="4"/><rect x="4" y="4" width="4" height="4"/><rect x="12" y="4" width="4" height="4"/><rect x="0" y="8" width="4" height="4"/><rect x="8" y="8" width="4" height="4"/><rect x="4" y="12" width="4" height="4"/><rect x="12" y="12" width="4" height="4"/></g></svg>© 2026 JP Motorsport Journal</span>
+  <div class="wrap footer-main">
+    <a href="index.html" class="footer-wordmark">JP Motorsport Journal</a>
+    <nav class="footer-nav" aria-label="Footer">
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="#" data-cookie-settings>Cookie choices</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="wrap footer-meta">
+    <span>EST. 2026 · © 2026 JP MOTORSPORT JOURNAL</span>
     <a href="mailto:joshpenner49@gmail.com">joshpenner49@gmail.com</a>
-    <span>Last updated Oct 4, 2026</span>
+    <span>LAST UPDATED OCT 4, 2026</span>
   </div>
   <div class="wrap footer-legal">
-    <span>Some links on this site may be affiliate links. If you buy through them, we may earn a commission at no extra cost to you.</span>
-    <span><a href="privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="#" data-cookie-settings>Cookie choices</a></span>
+    <p>Some links on this site may be affiliate links. If you buy through them, we may earn a commission at no extra cost to you.</p>
+    <p>Circuit outlines from <a href="https://github.com/bacinger/f1-circuits">f1-circuits</a> by Tomislav Bacinger (<a href="licenses/f1-circuits-LICENSE">MIT</a>).</p>
   </div>
 </footer>
 
@@ -312,6 +320,7 @@
 <script src="script.js"></script>
 <script src="race-week.js"></script>
 <script>initRaceWeekEntrance();</script>
+<script src="js/precision-mark.js" defer></script>
 <script src="analytics.js" defer></script>
 </body>
 </html>
