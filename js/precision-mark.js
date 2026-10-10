@@ -1,5 +1,8 @@
 /* ============================================================
-   Precision Mark — the JP insignia, in CSS 3D + SVG.
+   Precision Mark — the JP insignia and the circuit sculpture,
+   in CSS 3D + SVG. (Circuit component further down.)
+
+   Insignia:
    No library, no canvas, no animation loop: a stack of <svg>
    layers inside a preserve-3d box, each pushed back with
    translateZ to read as an extruded, polished plate.
@@ -230,9 +233,257 @@
     });
   }
 
+  /* ============================================================
+     Circuit sculpture.
+       <div data-circuit="sg-2008" data-width="340" data-theme="light"
+            data-circuit-group="weekend"></div>
+     Geometry and facts come only from data/circuits.json (real
+     f1-circuits outlines). An unknown id renders nothing rather
+     than a guess. Optional companions sharing a data-circuit-group:
+       <div data-circuit-select="weekend"></div>   GP code buttons
+       <span data-circuit-field="gp|name|km|code" data-circuit-group="weekend"></span>
+     ============================================================ */
+  var DATA_URL = (function () {
+    var s = document.currentScript && document.currentScript.src;
+    return s ? s.replace(/js\/precision-mark\.js(\?.*)?$/, "data/circuits.json") : "data/circuits.json";
+  })();
+  var dataPromise = null;
+  function loadCircuits() {
+    if (!dataPromise) {
+      dataPromise = fetch(DATA_URL)
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then(function (j) { return j.circuits || {}; });
+    }
+    return dataPromise;
+  }
+
+  var groups = {}; // group name -> { mounts: [], selects: [], fields: [], id }
+
+  function circuitLabel(c) {
+    return c.name + " circuit. Length " + c.km + " km, " + c.turns + " turns, " + c.laps +
+      " laps, first Formula 1 Grand Prix " + c.firstGp + ". " + c.note;
+  }
+
+  function circuitStack(c, unit, dark, uid) {
+    var n = 7;
+    var html = "";
+    var vb = 'viewBox="0 0 400 260" aria-hidden="true" focusable="false"';
+    // grounding: a blurred copy of the outline, no base plate
+    html += "<svg " + vb + ' style="transform:translateZ(' + (-(n + 3) * 1.25 * unit).toFixed(2) + "px);filter:blur(" + (5 * unit).toFixed(1) + 'px)">' +
+      '<path d="' + c.d + '" fill="none" stroke="' + (dark ? "#000000" : "#191A1C") + '" stroke-width="' + (dark ? 10 : 9) +
+      '" stroke-opacity="' + (dark ? 0.55 : 0.3) + '" stroke-linejoin="round"/></svg>';
+    // extrusion: grey ramp, back to front
+    for (var i = n; i >= 1; i--) {
+      var t = i / n, g = Math.round(150 - t * 88);
+      html += "<svg " + vb + ' style="transform:translateZ(' + (-1.25 * i * unit).toFixed(2) + 'px)">' +
+        '<path d="' + c.d + '" fill="none" stroke="rgb(' + g + "," + (g + 2) + "," + (g + 5) + ')" stroke-width="4.4" stroke-linejoin="round" stroke-linecap="round"/></svg>';
+    }
+    // top face
+    var seg = c.sfStraight.fwd + c.sfStraight.bwd;
+    var mx = (c.sf[0] + c.sf[2]) / 2, my = (c.sf[1] + c.sf[3]) / 2, k = 1.3;
+    var x1 = (mx + (c.sf[0] - mx) * k).toFixed(1), y1 = (my + (c.sf[1] - my) * k).toFixed(1);
+    var x2 = (mx + (c.sf[2] - mx) * k).toFixed(1), y2 = (my + (c.sf[3] - my) * k).toFixed(1);
+    html += "<svg " + vb + ' style="transform:translateZ(0px)">' +
+      '<defs><linearGradient id="' + uid + '-s" x1="0" y1="0" x2="1" y2="1" gradientTransform="rotate(120 .5 .5)">' +
+        stops([[0, "#F4F4F2"], [0.22, "#BFC1C4"], [0.4, "#8A8D91"], [0.55, "#E2E3E4"], [0.75, "#A0A3A7"], [1, "#ECEDED"]]) +
+      "</linearGradient></defs>" +
+      '<path d="' + c.d + '" fill="none" stroke="url(#' + uid + '-s)" stroke-width="4.4" stroke-linejoin="round" stroke-linecap="round"/>' +
+      '<path d="' + c.d + '" fill="none" stroke="#FFFFFF" transform="translate(-0.5 -0.8)" stroke-width="0.9" stroke-opacity="0.7" stroke-linejoin="round"/>' +
+      '<path d="' + c.d + '" fill="none" stroke="#55585C" transform="translate(0.4 0.9)" stroke-width="0.6" stroke-opacity="0.6" stroke-linejoin="round"/>' +
+      // the real start/finish straight, lit in the accent
+      '<path class="pm-sf-straight" d="' + c.d + '" fill="none" stroke-width="3.4" stroke-linecap="butt" stroke-dasharray="' +
+        seg.toFixed(1) + " " + (c.length - seg).toFixed(1) + '" stroke-dashoffset="' + c.sfStraight.bwd.toFixed(1) + '"/>' +
+      '<line x1="' + x1 + '" y1="' + y1 + '" x2="' + x2 + '" y2="' + y2 + '" stroke="#191A1C" stroke-width="2.4"/>' +
+      '<line x1="' + x1 + '" y1="' + y1 + '" x2="' + x2 + '" y2="' + y2 + '" stroke="#F4F4F2" stroke-width="2.4" stroke-dasharray="1.8 1.8"/>' +
+      "</svg>";
+    return html;
+  }
+
+  function buildCircuit(el, circuits) {
+    if (el.getAttribute("data-pm-ready") === "1") return;
+    var c = circuits[el.getAttribute("data-circuit")];
+    if (!c) { el.hidden = true; return; } // never fake a circuit
+    el.setAttribute("data-pm-ready", "1");
+
+    var width = parseFloat(el.getAttribute("data-width")) || 340;
+    var dark = el.getAttribute("data-theme") === "dark";
+    var uid = "pm-cir-" + (++uidCount);
+    var unit = width / 400;
+
+    el.classList.add("pm-circuit");
+    if (dark) el.classList.add("pm-circuit--dark");
+    el.style.width = width + "px";
+    el.tabIndex = 0;
+    el.setAttribute("role", "img");
+    el.innerHTML =
+      '<span class="pm-circuit-stage" style="perspective:' + Math.round(width * 2.6) + 'px"><span class="pm-stack"></span></span>' +
+      '<span class="pm-facts" aria-hidden="true">' +
+        '<span class="pm-facts-hint">HOVER OR TAP FOR CIRCUIT FACTS</span>' +
+        '<span class="pm-facts-card"><span class="pm-facts-nums"></span><span class="pm-facts-note"></span></span>' +
+      "</span>";
+
+    var stack = el.querySelector(".pm-stack");
+    var nums = el.querySelector(".pm-facts-nums");
+    var note = el.querySelector(".pm-facts-note");
+    var state = { rx: 0, ry: 0, revealed: reduce, settled: reduce, card: false };
+    var grad = null;
+
+    function render(circuit) {
+      c = circuit;
+      el.setAttribute("data-circuit", findId(circuits, c));
+      el.setAttribute("aria-label", circuitLabel(c));
+      stack.innerHTML = circuitStack(c, unit, dark, uid);
+      grad = stack.querySelector("linearGradient");
+      nums.innerHTML =
+        "<span><span>TURNS </span>" + c.turns + "</span>" +
+        "<span><span>LAPS </span>" + c.laps + "</span>" +
+        "<span><span>FIRST F1 GP </span>" + c.firstGp + "</span>";
+      note.textContent = c.note;
+      apply();
+    }
+    function apply() {
+      stack.style.transform = state.revealed
+        ? "rotateX(" + (32 + state.rx).toFixed(2) + "deg) rotateY(" + state.ry.toFixed(2) + "deg) rotateZ(-3deg)"
+        : "rotateX(56deg) rotateY(0deg) rotateZ(-12deg) translateY(" + (8 * unit).toFixed(1) + "px) scale(0.95)";
+      if (grad) grad.setAttribute("gradientTransform", "rotate(" + (120 + state.ry * 3 - state.rx * 2).toFixed(1) + " .5 .5)");
+    }
+    function setCard(on) {
+      state.card = on;
+      el.classList.toggle("is-facts", on);
+    }
+
+    el.pmSetCircuit = function (id) { if (circuits[id]) render(circuits[id]); };
+
+    if (!reduce) stack.style.transition = "transform 1.6s " + EASE;
+    render(c);
+
+    if (!reduce) {
+      var io = null;
+      var reveal = function () {
+        if (state.revealed) return;
+        state.revealed = true;
+        if (io) io.disconnect();
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            apply();
+            setTimeout(function () {
+              state.settled = true;
+              stack.style.transition = "transform .55s " + EASE;
+            }, 1700);
+          });
+        });
+      };
+      try {
+        if ("IntersectionObserver" in window) {
+          io = new IntersectionObserver(function (entries) {
+            if (entries[0] && entries[0].isIntersecting) reveal();
+          }, { threshold: 0.1 });
+          io.observe(el);
+        } else reveal();
+      } catch (e) { reveal(); }
+      setTimeout(reveal, 1200);
+    }
+
+    var pending = null, raf = 0;
+    el.addEventListener("pointerenter", function (e) { if (e.pointerType !== "touch") setCard(true); });
+    el.addEventListener("pointermove", function (e) {
+      if (reduce || !state.settled || e.pointerType === "touch") return;
+      var r = el.querySelector(".pm-circuit-stage").getBoundingClientRect();
+      var nx = Math.max(-0.5, Math.min(0.5, (e.clientX - r.left) / r.width - 0.5));
+      var ny = Math.max(-0.5, Math.min(0.5, (e.clientY - r.top) / r.height - 0.5));
+      pending = { ry: nx * 12, rx: -ny * 8 };
+      if (!raf) raf = requestAnimationFrame(function () {
+        raf = 0;
+        if (!pending) return;
+        state.rx = pending.rx; state.ry = pending.ry;
+        apply();
+      });
+    });
+    el.addEventListener("pointerleave", function (e) {
+      if (e.pointerType === "touch") return;
+      pending = null;
+      setCard(false);
+      if (!reduce) { state.rx = 0; state.ry = 0; apply(); }
+    });
+    el.addEventListener("click", function () { setCard(!state.card); });
+    el.addEventListener("focus", function () { setCard(true); });
+    el.addEventListener("blur", function () { setCard(false); });
+  }
+
+  function findId(circuits, c) {
+    for (var k in circuits) if (circuits[k] === c) return k;
+    return "";
+  }
+
+  function setGroup(name, id, circuits) {
+    var g = groups[name];
+    if (!g || !circuits[id]) return;
+    g.id = id;
+    var c = circuits[id];
+    g.mounts.forEach(function (m) { if (m.pmSetCircuit) m.pmSetCircuit(id); });
+    g.fields.forEach(function (f) {
+      var key = f.getAttribute("data-circuit-field");
+      if (key === "gp") f.textContent = c.gp;
+      else if (key === "name") f.textContent = c.name;
+      else if (key === "km") f.textContent = c.km;
+      else if (key === "code") f.textContent = c.code;
+    });
+    g.selects.forEach(function (s) {
+      var btns = s.querySelectorAll("button[data-id]");
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].setAttribute("aria-pressed", btns[i].getAttribute("data-id") === id ? "true" : "false");
+      }
+    });
+  }
+
+  function initCircuits() {
+    var mounts = document.querySelectorAll("[data-circuit]");
+    var selects = document.querySelectorAll("[data-circuit-select]");
+    if (!mounts.length && !selects.length) return;
+    loadCircuits().then(function (circuits) {
+      for (var i = 0; i < mounts.length; i++) {
+        buildCircuit(mounts[i], circuits);
+        var gn = mounts[i].getAttribute("data-circuit-group");
+        if (!gn) continue;
+        var g = groups[gn] || (groups[gn] = { mounts: [], selects: [], fields: [], id: null });
+        g.mounts.push(mounts[i]);
+        if (!g.id) g.id = mounts[i].getAttribute("data-circuit");
+      }
+      var fields = document.querySelectorAll("[data-circuit-field][data-circuit-group]");
+      for (var f = 0; f < fields.length; f++) {
+        var fg = groups[fields[f].getAttribute("data-circuit-group")];
+        if (fg) fg.fields.push(fields[f]);
+      }
+      for (var s = 0; s < selects.length; s++) {
+        (function (sel) {
+          var name = sel.getAttribute("data-circuit-select");
+          var g = groups[name];
+          if (!g || !circuits[g.id]) return;
+          g.selects.push(sel);
+          // current circuit first, then the rest in data order
+          var ids = [g.id].concat(Object.keys(circuits).filter(function (k) { return k !== g.id; }));
+          sel.innerHTML = ids.map(function (k) {
+            return '<button type="button" class="pm-chip" data-id="' + k + '" aria-pressed="false" aria-label="' +
+              circuits[k].gp + '">' + circuits[k].code + "</button>";
+          }).join("");
+          sel.addEventListener("click", function (e) {
+            var b = e.target.closest("button[data-id]");
+            if (b) setGroup(name, b.getAttribute("data-id"), circuits);
+          });
+        })(selects[s]);
+      }
+      for (var gname in groups) setGroup(gname, groups[gname].id, circuits);
+    }).catch(function () {
+      // no data, no sculpture: hide rather than show an empty frame
+      for (var i = 0; i < mounts.length; i++) mounts[i].hidden = true;
+      for (var s = 0; s < selects.length; s++) selects[s].hidden = true;
+    });
+  }
+
   function init() {
     var mounts = document.querySelectorAll("[data-insignia]");
     for (var i = 0; i < mounts.length; i++) buildInsignia(mounts[i]);
+    initCircuits();
   }
 
   window.PrecisionMark = { insignia: buildInsignia, init: init };

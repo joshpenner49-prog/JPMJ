@@ -93,6 +93,42 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  /* ---------- deep links: open the archive/verdict row named in the URL hash ---------- */
+  function openRowFromHash() {
+    const id = decodeURIComponent(location.hash.slice(1));
+    if (!id) return;
+    const row = document.getElementById(id);
+    if (row && row.classList.contains("race-row") && !row.classList.contains("upcoming")) row.classList.add("open");
+  }
+  openRowFromHash();
+  window.addEventListener("hashchange", openRowFromHash);
+
+  /* ---------- homepage: session schedule status ----------
+     Each <li> carries its official start (with timezone) and scheduled
+     length; the status follows the visitor's clock. */
+  const sessionList = document.querySelector("[data-sessions]");
+  if (sessionList) {
+    const items = sessionList.querySelectorAll("li[data-start]");
+    function updateSessions() {
+      const now = Date.now();
+      let nextFlagged = false;
+      items.forEach((li) => {
+        const start = Date.parse(li.dataset.start);
+        const end = start + (parseInt(li.dataset.mins, 10) || 60) * 60000;
+        const statusEl = li.querySelector(".s-status");
+        let label = "UPCOMING";
+        let state = "upcoming";
+        if (now >= end) { label = "COMPLETE"; state = "done"; }
+        else if (now >= start) { label = "UNDERWAY"; state = "live"; nextFlagged = true; }
+        else if (!nextFlagged) { label = "NEXT"; state = "next"; nextFlagged = true; }
+        li.dataset.state = state;
+        if (statusEl) statusEl.textContent = label;
+      });
+    }
+    updateSessions();
+    setInterval(updateSessions, 60000);
+  }
+
   /* ---------- archive: filter tabs ---------- */
   const filterTabs = document.querySelectorAll(".filter-tab");
   const rows = document.querySelectorAll(".race-row");
