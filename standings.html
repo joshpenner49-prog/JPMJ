@@ -45,7 +45,7 @@
   </div>
 </header>
 
-<main>
+<main class="theme-dark">
   <section class="hero wrap" style="grid-template-columns: 1fr; padding-bottom: 12px;">
     <div>
       <div class="hero-eyebrow">2026 championship</div>
@@ -61,7 +61,7 @@
         <svg width="56" height="56" viewBox="0 0 68 68" aria-hidden="true">
           <circle cx="34" cy="34" r="30" fill="var(--ink)"/>
           <circle cx="34" cy="34" r="26" fill="none" stroke="#000" stroke-width="4" stroke-dasharray="3 2.2" opacity="0.5"/>
-          <circle cx="34" cy="34" r="18" fill="var(--red)"/>
+          <circle cx="34" cy="34" r="18" fill="#C8102E"/>
           <circle cx="34" cy="34" r="9" fill="var(--chrome)"/>
         </svg>
         <span class="tire-label">Soft</span>
@@ -79,7 +79,7 @@
         <svg width="56" height="56" viewBox="0 0 68 68" aria-hidden="true">
           <circle cx="34" cy="34" r="30" fill="var(--ink)"/>
           <circle cx="34" cy="34" r="26" fill="none" stroke="#000" stroke-width="4" stroke-dasharray="3 2.2" opacity="0.5"/>
-          <circle cx="34" cy="34" r="18" fill="var(--paper-2)" stroke="var(--line)" stroke-width="1"/>
+          <circle cx="34" cy="34" r="18" fill="#F4F4F2" stroke="#D9D3C8" stroke-width="1"/>
           <circle cx="34" cy="34" r="9" fill="var(--chrome)"/>
         </svg>
         <span class="tire-label">Hard</span>
@@ -181,7 +181,7 @@
       </table>
     </div>
 
-    <p style="font-family: var(--font-mono); font-size: 11.5px; color: var(--ink-dim); margin-top: 8px;">
+    <p class="standings-note">
       Standings current through Round 16 (Bahrain GP at Sepang, Oct 4 2026), checked against the official championship standings. Norris and Verstappen are tied on 188, with Norris ahead on wins; Hülkenberg, Ocon, Alonso and Sainz are tied on 7, listed in official countback order. Will update after the Singapore GP on Oct 11.
     </p>
   </section>
@@ -221,12 +221,14 @@
   const rounds = ["AUS","CHN","JPN","MIA","CAN","MON","ESP","AUT","GBR","BEL","HUN","NED","ITA","MAD","AZE","SEP"];
   const data = {
     labels: rounds,
+    // Series colours: categorical palette validated against the charcoal surface
+    // (lightness band, chroma, colour-blind separation, contrast). Antonelli = red.
     datasets: [
-      { label: "Antonelli", data: [18,43,72,97,122,147,147,162,175,194,219,242,267,292,302,320], borderColor: "#c8102e", backgroundColor: "#c8102e", tension: 0.35 },
-      { label: "Hamilton",  data: [12,27,39,55,68,81,106,122,143,149,169,183,191,191,199,214], borderColor: "#10493a", backgroundColor: "#10493a", tension: 0.35 },
-      { label: "Russell",   data: [25,43,55,67,79,87,105,130,148,148,160,183,201,211,236,236], borderColor: "#ab7d1f", backgroundColor: "#ab7d1f", tension: 0.35 },
-      { label: "Leclerc",   data: [15,30,45,60,73,73,73,78,103,121,138,155,155,167,179,191], borderColor: "#7d848c", backgroundColor: "#7d848c", tension: 0.35 },
-      { label: "Norris",    data: [12,12,24,42,56,56,71,83,97,103,128,159,171,186,186,188], borderColor: "#3b5166", backgroundColor: "#3b5166", tension: 0.35 }
+      { label: "Antonelli", data: [18,43,72,97,122,147,147,162,175,194,219,242,267,292,302,320], borderColor: "#DB4E62", backgroundColor: "#DB4E62", tension: 0.35, borderWidth: 2, pointRadius: 2, pointHoverRadius: 5 },
+      { label: "Hamilton",  data: [12,27,39,55,68,81,106,122,143,149,169,183,191,191,199,214], borderColor: "#3987E5", backgroundColor: "#3987E5", tension: 0.35, borderWidth: 2, pointRadius: 2, pointHoverRadius: 5 },
+      { label: "Russell",   data: [25,43,55,67,79,87,105,130,148,148,160,183,201,211,236,236], borderColor: "#C98500", backgroundColor: "#C98500", tension: 0.35, borderWidth: 2, pointRadius: 2, pointHoverRadius: 5 },
+      { label: "Leclerc",   data: [15,30,45,60,73,73,73,78,103,121,138,155,155,167,179,191], borderColor: "#199E70", backgroundColor: "#199E70", tension: 0.35, borderWidth: 2, pointRadius: 2, pointHoverRadius: 5 },
+      { label: "Norris",    data: [12,12,24,42,56,56,71,83,97,103,128,159,171,186,186,188], borderColor: "#9085E9", backgroundColor: "#9085E9", tension: 0.35, borderWidth: 2, pointRadius: 2, pointHoverRadius: 5 }
     ]
   };
   new Chart(ctxEl.getContext("2d"), {
@@ -238,21 +240,21 @@
       plugins: {
         legend: {
           position: "top",
-          labels: { color: "#15161a", font: { family: "IBM Plex Mono", size: 11 }, usePointStyle: true, boxWidth: 8 }
+          labels: { color: "#ECE8E1", font: { family: "IBM Plex Mono", size: 11 }, usePointStyle: true, boxWidth: 8 }
         },
         tooltip: {
-          backgroundColor: "#ffffff",
-          titleColor: "#15161a",
-          bodyColor: "#15161a",
-          borderColor: "rgba(21,22,26,0.15)",
+          backgroundColor: "#222326",
+          titleColor: "#ECE8E1",
+          bodyColor: "#ECE8E1",
+          borderColor: "#34363B",
           borderWidth: 1,
           bodyFont: { family: "IBM Plex Mono", size: 12 },
           titleFont: { family: "IBM Plex Mono", size: 12 }
         }
       },
       scales: {
-        x: { ticks: { color: "#6c7178", font: { family: "IBM Plex Mono", size: 11 } }, grid: { color: "rgba(21,22,26,0.06)" } },
-        y: { ticks: { color: "#6c7178", font: { family: "IBM Plex Mono", size: 11 } }, grid: { color: "rgba(21,22,26,0.06)" }, title: { display: true, text: "Points", color: "#6c7178", font: { family: "IBM Plex Mono", size: 11 } } }
+        x: { ticks: { color: "#A29E97", font: { family: "IBM Plex Mono", size: 11 } }, grid: { color: "rgba(236,232,225,0.06)" } },
+        y: { ticks: { color: "#A29E97", font: { family: "IBM Plex Mono", size: 11 } }, grid: { color: "rgba(236,232,225,0.06)" }, title: { display: true, text: "Points", color: "#A29E97", font: { family: "IBM Plex Mono", size: 11 } } }
       }
     }
   });

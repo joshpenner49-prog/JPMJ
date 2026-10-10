@@ -87,10 +87,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ---------- archive: expand rows ---------- */
   document.querySelectorAll(".race-row").forEach((row) => {
+    const head = row.querySelector(".race-row-head");
+    const expandable = !row.classList.contains("upcoming") && row.querySelector(".race-detail");
+    function sync() { if (head && expandable) head.setAttribute("aria-expanded", row.classList.contains("open") ? "true" : "false"); }
     row.addEventListener("click", (e) => {
       if (row.classList.contains("upcoming")) return;
+      if (e.target.closest("a, button, input")) return; // links inside the recap keep working
       row.classList.toggle("open");
+      sync();
     });
+    // keyboard: the row head acts as a disclosure button
+    if (head && expandable) {
+      head.setAttribute("role", "button");
+      head.tabIndex = 0;
+      sync();
+      head.addEventListener("keydown", (e) => {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        e.preventDefault();
+        row.classList.toggle("open");
+        sync();
+      });
+      new MutationObserver(sync).observe(row, { attributes: true, attributeFilter: ["class"] });
+    }
   });
 
   /* ---------- deep links: open the archive/verdict row named in the URL hash ---------- */
