@@ -1,0 +1,191 @@
+/* ============================================================
+   RACE WEEK THEME LAYER — temporary, swappable.
+   Everything in this file is scoped under [data-race-week="..."]
+   on <html>. To retire Monza week: remove the attribute (or the
+   <link> to this file) from each page — nothing else changes.
+   To adapt for a future race: add a new
+   [data-race-week="<slug>"] block below with that race's two
+   accent colors, and set data-race-week="<slug>" on <html>.
+   ============================================================ */
+
+[data-race-week="monza"] {
+  --rw-a: #008C45; /* Italian green — first accent */
+  --rw-b: #CD212A; /* Italian red — second accent */
+  --rw-a-dim: rgba(0, 140, 69, 0.14);
+  --rw-b-dim: rgba(205, 33, 42, 0.14);
+}
+
+[data-race-week="madrid"] {
+  --rw-a: #F1BF00; /* Spanish gold — first accent, keeps it distinct from the site's own red */
+  --rw-b: #AA151B; /* Spanish red — second accent */
+  --rw-a-dim: rgba(241, 191, 0, 0.14);
+  --rw-b-dim: rgba(170, 21, 27, 0.14);
+}
+
+[data-race-week="baku"] {
+  --rw-a: #0092BC; /* Azerbaijan flag blue — first accent */
+  --rw-b: #00A651; /* Azerbaijan flag green — second accent, avoids the flag's own red clashing with the site's permanent red */
+  --rw-a-dim: rgba(0, 146, 188, 0.14);
+  --rw-b-dim: rgba(0, 166, 81, 0.14);
+}
+
+[data-race-week="sepang"] {
+  --rw-a: #010066; /* Malaysia flag navy — first accent (host venue; race is officially Bahrain-branded but red would clash with the site's own red) */
+  --rw-b: #FFCC00; /* Malaysia flag gold — second accent */
+  --rw-a-dim: rgba(1, 0, 102, 0.14);
+  --rw-b-dim: rgba(255, 204, 0, 0.16);
+}
+
+[data-race-week="singapore"] {
+  --rw-a: #EF3340; /* Singapore flag red — first accent */
+  --rw-b: #FFFFFF; /* Singapore flag white — second accent */
+  --rw-a-dim: rgba(239, 51, 64, 0.14);
+  --rw-b-dim: rgba(255, 255, 255, 0.5);
+}
+/* white disappears on the light site background, so give white accents a hairline edge */
+[data-race-week="singapore"] .rw-tag .rw-dots span:last-child { box-shadow: inset 0 0 0 1px rgba(21, 22, 26, 0.35); }
+[data-race-week="singapore"] .rw-rule { box-shadow: inset 0 0 0 1px rgba(21, 22, 26, 0.18); }
+[data-race-week="singapore"] .main-nav a::after {
+  background: linear-gradient(90deg, var(--rw-a) 0 50%, var(--rw-b) 50% 100%);
+  box-shadow: inset 0 0 0 1px rgba(21, 22, 26, 0.18);
+}
+
+/* ---------- small "race week" tag, reused at moderate/subtle intensity ---------- */
+[data-race-week] .rw-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  margin-bottom: 10px;
+}
+[data-race-week] .rw-tag .rw-dots {
+  display: inline-flex;
+  gap: 3px;
+}
+[data-race-week] .rw-tag .rw-dots span {
+  width: 5px; height: 5px; border-radius: 50%;
+}
+[data-race-week] .rw-tag .rw-dots span:first-child { background: var(--rw-a); }
+[data-race-week] .rw-tag .rw-dots span:last-child { background: var(--rw-b); }
+
+/* dark-panel contexts (driver hero, homepage hero) need the light text variant */
+[data-race-week] .driver-hero .rw-tag,
+[data-race-week] .hero-3d-overlay .rw-tag {
+  color: var(--on-black-dim);
+}
+
+/* thin two-color accent rule, used sparingly under page titles */
+[data-race-week] .rw-rule {
+  display: block;
+  width: 44px;
+  height: 3px;
+  margin: 10px 0 18px;
+  background: linear-gradient(90deg, var(--rw-a) 0 50%, var(--rw-b) 50% 100%);
+  border-radius: 2px;
+}
+
+/* ---------- header wordmark: same left-green/right-red logic as the 3D badge ---------- */
+[data-race-week] .logo .mark {
+  border-left: 3px solid var(--rw-a);
+  border-right: 3px solid var(--rw-b);
+}
+.rw-circuit-line {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.05;
+}
+[data-race-week] .hero-3d { position: relative; overflow: hidden; }
+[data-race-week] .hero-3d-inner { position: relative; z-index: 1; }
+
+/* ---------- homepage: nav underline picks up the two accents on hover ---------- */
+[data-race-week] .main-nav a {
+  position: relative;
+}
+[data-race-week] .main-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -4px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--rw-a), var(--rw-b));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.18s ease;
+}
+[data-race-week] .main-nav a:hover::after,
+[data-race-week] .main-nav a.active::after {
+  transform: scaleX(1);
+}
+
+/* ---------- entrance animation overlay (homepage, first visit this session only) ---------- */
+.rw-entrance {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background: var(--black-panel);
+}
+.rw-entrance .rw-streak {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 34%;
+  opacity: 0.9;
+}
+.rw-entrance .rw-streak.a { left: -40%; background: linear-gradient(90deg, transparent, var(--rw-a), transparent); animation: rwStreak 0.62s ease-out forwards; }
+.rw-entrance .rw-streak.b { left: -40%; background: linear-gradient(90deg, transparent, var(--rw-b), transparent); animation: rwStreak 0.62s ease-out 0.09s forwards; }
+.rw-entrance .rw-streak.c {
+  left: -40%; width: 30%; opacity: 0.55;
+  background: repeating-linear-gradient(90deg, rgba(255,255,255,0.95) 0 11px, rgba(15,15,15,0.95) 11px 22px);
+  transform: skewX(-8deg);
+  animation: rwStreak 0.55s cubic-bezier(0.35, 0, 0.2, 1) 0.24s forwards;
+}
+.rw-entrance.rw-fade { animation: rwFadeOut 0.34s ease forwards 0.62s; }
+
+@keyframes rwStreak {
+  from { transform: translateX(0); }
+  to { transform: translateX(320%); }
+}
+@keyframes rwFadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; visibility: hidden; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rw-entrance, .rw-entrance .rw-streak { animation: none !important; display: none !important; }
+}
+
+/* ---------- logo settle, choreographed with the entrance overlay above ----------
+   The actual 3D arrival tween (rotation/scale) now lives in logo3d.js,
+   driven by real Three.js transforms rather than a CSS fake — this file
+   only owns the pulse below, timed to fire when that tween completes. */
+.rw-pulse {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 40px; height: 40px;
+  margin: -20px 0 0 -20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, var(--rw-a-dim) 40%, transparent 72%);
+  opacity: 0;
+  transform: scale(0.4);
+  pointer-events: none;
+}
+.rw-pulse.rw-pulse-go {
+  animation: rwPulse 0.62s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
+}
+@keyframes rwPulse {
+  0% { opacity: 0.9; transform: scale(0.4); }
+  55% { opacity: 0.55; transform: scale(5.5); }
+  100% { opacity: 0; transform: scale(8); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rw-pulse { display: none !important; }
+}
+
+@media (max-width: 640px) {
+  .rw-circuit-line { opacity: 0.035; }
+}

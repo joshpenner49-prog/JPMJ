@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" data-race-week="singapore">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Charles Leclerc — JP Motorsport Journal</title>
+<meta name="description" content="Charles Leclerc — Ferrari career and 2026 season stats, JP Motorsport Journal.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Charles Leclerc — JP Motorsport Journal">
+<meta property="og:description" content="Charles Leclerc — Ferrari career and 2026 season stats, JP Motorsport Journal.">
+<meta property="og:image" content="../../og-image.png">
+<meta property="og:site_name" content="JP Motorsport Journal">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Charles Leclerc — JP Motorsport Journal">
+<meta name="twitter:description" content="Charles Leclerc — Ferrari career and 2026 season stats, JP Motorsport Journal.">
+<meta name="twitter:image" content="../../og-image.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Titillium+Web:wght@400;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../race-week.css">
+<link rel="stylesheet" href="../../drivers.css">
+<style>:root{ --team-accent: #DC0000; --team-accent-dim: rgba(220, 0, 0, 0.14); }</style>
+</head>
+<body>
+
+<div class="top-strip">
+  <div class="wrap">
+    <span><span class="dot"></span>SEASON 2026 — 16 OF 23 ROUNDS COMPLETE</span>
+    <span>NEXT: SINGAPORE GP · OCT 9–11</span>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="wrap nav-row">
+    <a href="../../index.html" class="logo"><span class="mark">JP</span> MOTORSPORT JOURNAL</a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../archive.html">Race Archive</a></li>
+        <li><a href="../../standings.html">Standings</a></li>
+        <li><a href="../../drivers.html" class="active">Drivers</a></li>
+        <li><a href="verdict.html">The Verdict</a></li>
+        <li><a href="../../lightsout.html">Lights Out</a></li>
+        <li><a href="../../about.html">About</a></li>
+        <li><a href="../../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="page-enter">
+  <section class="driver-hero" id="driverHero3d">
+    <div class="driver-hero-speedlines" aria-hidden="true"></div>
+    <div class="wrap driver-hero-inner">
+      <div class="driver-hero-text">
+        <div class="rw-tag"><span class="rw-dots"><span></span><span></span></span>Singapore Race Week</div>
+        <div class="driver-hero-eyebrow">Driver profile</div>
+        <h1>Charles Leclerc</h1>
+        <div class="driver-team-badge"><span class="chip"></span>Ferrari</div>
+        <div class="driver-number-tag">#16 · LEC</div>
+        <div class="stat-toggle" role="group" aria-label="Stat range">
+          <button class="active" data-range="season">2026 Season</button>
+          <button data-range="career">Career</button>
+        </div>
+      </div>
+      <div class="driver-hero-art">
+        <div class="driver3d-stage" id="driver3d-stage">
+          <canvas id="driver-logo-canvas"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="driver3d-controls">
+        <span>◎ Drag to rotate</span>
+        <input type="range" id="driver3d-slider" min="0" max="360" value="0" step="1" aria-label="Rotate helmet">
+      </div>
+    </div>
+  </section>
+  <noscript><style>#driver-logo-canvas{display:none!important;} .driver3d-stage{display:flex;align-items:center;justify-content:center;color:#888;font-family:monospace;font-size:12px;}</style></noscript>
+
+  <section class="driver-stats">
+    <div class="driver-stat-tile"><div class="tile-icon">🏆</div><div class="tile-value" data-season="1" data-career="—">1</div><div class="tile-label">Wins</div></div>
+    <div class="driver-stat-tile"><div class="tile-icon">📊</div><div class="tile-value" data-season="4" data-career="—">4</div><div class="tile-label">Podiums</div></div>
+    <div class="driver-stat-tile"><div class="tile-icon">◎</div><div class="tile-value tbd" data-season="—" data-career="—">—</div><div class="tile-label">Poles</div></div>
+    <div class="driver-stat-tile"><div class="tile-icon">↑</div><div class="tile-value tbd" data-season="—" data-career="—">—</div><div class="tile-label">Top 10s</div></div>
+    <div class="driver-stat-tile"><div class="tile-icon">⬤</div><div class="tile-value" data-season="191" data-career="—">191</div><div class="tile-label">Points</div></div>
+    <div class="driver-stat-tile"><div class="tile-icon">▦</div><div class="tile-value" data-season="16" data-career="—">16</div><div class="tile-label">GPs</div></div>
+  </section>
+
+  <section class="wrap driver-chart-wrap">
+    <div class="section-head"><h2>Points by round</h2><span class="meta">2026 season, Rounds 1–23</span></div>
+    <div class="driver-chart" id="driverChart"></div>
+    <div class="driver-chart-labels" id="driverChartLabels"></div>
+    <div class="driver-chart-legend">
+      <span><span class="swatch scored"></span>Points scored</span>
+      <span><span class="swatch unknown"></span>Finished outside top 3 — exact points not yet in this page's data</span>
+      <span><span class="swatch future"></span>Not yet raced</span>
+    </div>
+  </section>
+
+  <section class="wrap driver-bio">
+    <div class="section-head"><h2>About Charles</h2></div>
+    <p>[Hand-write Charles's bio here — junior career, home circuit, what makes them a fan favourite. Not pulled from an API on purpose.]</p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span><svg width="14" height="14" viewBox="0 0 16 16" style="vertical-align: -2px; margin-right: 5px;"><rect width="16" height="16" fill="none"/><g fill="var(--ink-dim)"><rect x="0" y="0" width="4" height="4"/><rect x="8" y="0" width="4" height="4"/><rect x="4" y="4" width="4" height="4"/><rect x="12" y="4" width="4" height="4"/><rect x="0" y="8" width="4" height="4"/><rect x="8" y="8" width="4" height="4"/><rect x="4" y="12" width="4" height="4"/><rect x="12" y="12" width="4" height="4"/></g></svg>© 2026 JP Motorsport Journal</span>
+    <a href="mailto:joshpenner49@gmail.com">joshpenner49@gmail.com</a>
+    <span>Last updated Oct 4, 2026</span>
+  </div>
+  <div class="wrap footer-legal">
+    <span>Some links on this site may be affiliate links. If you buy through them, we may earn a commission at no extra cost to you.</span>
+    <span><a href="../../privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="#" data-cookie-settings>Cookie choices</a></span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>window.DRIVER_TEAM_COLOR = "#DC0000";</script>
+<script src="../../driver-hero-3d.js"></script>
+<script src="../../script.js"></script>
+<script>
+(function () {
+  // round-by-round bar chart from per-round points (0 = did not score)
+  var roundPoints = [15, null, 15, null, null, null, null, null, 25, 18, null, 17, null, 12, 12, 12, null, null, null, null, null, null, null];
+  var ROUNDS_COMPLETE = 12; // update this alongside the top-strip banner each race weekend
+  var chart = document.getElementById('driverChart');
+  var labels = document.getElementById('driverChartLabels');
+  var known = roundPoints.filter(function (v) { return v !== null; });
+  var max = Math.max(1, known.length ? Math.max.apply(null, known) : 1);
+  for (var i = 0; i < 23; i++) {
+    var bar = document.createElement('div');
+    var v = roundPoints[i];
+    if (i >= ROUNDS_COMPLETE) {
+      bar.className = 'bar future';
+    } else if (v === null || v === undefined) {
+      bar.className = 'bar unknown';
+      bar.title = 'Finished outside the top 3 — exact points not tracked in this page\'s data yet';
+    } else {
+      bar.className = 'bar';
+      bar.style.height = Math.max(4, Math.round((v / max) * 100)) + '%';
+      bar.title = v + ' points';
+    }
+    chart.appendChild(bar);
+    var lbl = document.createElement('span');
+    lbl.textContent = String(i + 1).padStart(2, '0');
+    labels.appendChild(lbl);
+  }
+
+  // career/season toggle
+  var toggleBtns = document.querySelectorAll('.stat-toggle button');
+  var tiles = document.querySelectorAll('.driver-stat-tile .tile-value');
+  toggleBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      toggleBtns.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var range = btn.dataset.range;
+      tiles.forEach(function (t) {
+        var val = t.dataset[range];
+        t.textContent = (val === '—' || val === '' ) ? '—' : val;
+      });
+    });
+  });
+})();
+</script>
+<script src="../../analytics.js" defer></script>
+</body>
+</html>

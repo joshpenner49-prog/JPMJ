@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" data-race-week="singapore">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JP Motorsport Journal — The Stories Behind the Speed</title>
+<meta name="description" content="Formula 1 news coverage and insight, breaking news, motorsport racing and sim racing data.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="JP Motorsport Journal — The Stories Behind the Speed">
+<meta property="og:description" content="Formula 1 news coverage and insight, breaking news, motorsport racing and sim racing data.">
+<meta property="og:image" content="og-image.png">
+<meta property="og:site_name" content="JP Motorsport Journal">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="JP Motorsport Journal — The Stories Behind the Speed">
+<meta name="twitter:description" content="Formula 1 news coverage and insight, breaking news, motorsport racing and sim racing data.">
+<meta name="twitter:image" content="og-image.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Titillium+Web:wght@400;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="race-week.css">
+</head>
+<body>
+
+<div class="top-strip">
+  <div class="wrap">
+    <span><span class="dot"></span>SEASON 2026 — 16 OF 23 ROUNDS COMPLETE</span>
+    <span>NEXT: SINGAPORE GP · OCT 9–11</span>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="wrap nav-row">
+    <a href="index.html" class="logo"><span class="mark">JP</span> MOTORSPORT JOURNAL</a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="archive.html">Race Archive</a></li>
+        <li><a href="standings.html">Standings</a></li>
+        <li><a href="drivers.html">Drivers</a></li>
+        <li><a href="verdict.html">The Verdict</a></li>
+        <li><a href="lightsout.html">Lights Out</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item"><span class="tag tag-breaking">Breaking</span> Russell's engine fails under a late Safety Car, and his title hopes go up in smoke</span>
+    <span class="ticker-item"><span class="tag tag-recap">Recap</span> Verstappen wins a rain-delayed Sepang thriller for his first victory of 2026</span>
+    <span class="ticker-item"><span class="tag tag-standings">Standings</span> Antonelli's lead grows to 84 points as Russell fails to score</span>
+    <span class="ticker-item"><span class="tag tag-preview">Preview</span> Singapore's first-ever sprint weekend under the Marina Bay lights — full breakdown inside</span>
+  </div>
+</div>
+
+<main>
+  <section class="hero-3d" id="hero3d">
+    <svg class="rw-circuit-line" viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M -20 340 C 140 340, 180 120, 340 100 C 460 85, 480 180, 560 190 C 610 196, 630 150, 610 110 C 595 80, 640 60, 680 90 C 730 128, 760 260, 900 270 C 1020 278, 1080 200, 1220 210"
+            fill="none" stroke="var(--rw-a)" stroke-width="2"/>
+      <path d="M -20 380 C 160 380, 200 160, 360 140 C 470 126, 500 210, 570 220 C 615 226, 640 185, 615 145 C 600 118, 650 96, 695 128 C 745 165, 775 290, 905 300 C 1025 308, 1090 235, 1220 245"
+            fill="none" stroke="var(--rw-b)" stroke-width="2" stroke-dasharray="3 9"/>
+    </svg>
+    <div class="wrap hero-3d-inner">
+      <div class="hero-3d-overlay">
+        <div class="rw-tag"><span class="rw-dots"><span></span><span></span></span>Singapore Race Week · Round 17</div>
+        <div class="hero-eyebrow">Live coverage · Season 2026</div>
+        <h1>The Stories<br>Behind the <span class="accent">Speed</span></h1>
+        <p class="lede">Breaking news, deep-dive race recaps, and the strategy calls that decide championships — from the paddock to your feed. Written by one person who watches every session.</p>
+        <div class="scroll-hint">Drag the badge to spin it →</div>
+      </div>
+      <div class="logo3d-stage" id="logo3d-stage">
+        <canvas id="logo-canvas"></canvas>
+      </div>
+    </div>
+    <div class="wrap hero-3d-inner" style="margin-top: -8px;">
+      <div></div>
+      <div class="logo3d-controls">
+        <span>◎ Drag to rotate</span>
+        <input type="range" id="logo3d-slider" min="0" max="360" value="0" step="1" aria-label="Rotate logo">
+      </div>
+    </div>
+  </section>
+  <noscript>
+    <style>#logo-canvas{display:none!important;} .logo3d-stage{display:flex;align-items:center;justify-content:center;color:#888;font-family:monospace;font-size:12px;}</style>
+  </noscript>
+
+  <section class="newsletter-band">
+    <div class="wrap newsletter-inner">
+      <div class="newsletter-copy">
+        <div class="newsletter-eyebrow">Free · Every race weekend</div>
+        <h2>Get race previews in your inbox</h2>
+        <p>Circuit breakdowns and title-fight analysis like the Zandvoort preview above, before every session goes green. No login, unsubscribe anytime.</p>
+      </div>
+      <div class="newsletter-embed">
+        <iframe src="https://joshpenner2.substack.com/embed" width="100%" height="150" style="border: 1px solid #333; background: white;" frameborder="0" scrolling="no" title="Subscribe to JP Motorsport Journal on Substack"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <div class="countdown-strip">
+    <div class="wrap">
+      <div class="countdown-label">Next session: <strong>Singapore Grand Prix</strong> · Marina Bay</div>
+      <div class="countdown-clock" data-countdown="2026-10-09T00:00:00">
+        <div class="countdown-unit"><span class="num" data-d>00</span><span class="unit-label">Days</span></div>
+        <div class="countdown-unit"><span class="num" data-h>00</span><span class="unit-label">Hrs</span></div>
+        <div class="countdown-unit"><span class="num" data-m>00</span><span class="unit-label">Min</span></div>
+        <div class="countdown-unit"><span class="num" data-s>00</span><span class="unit-label">Sec</span></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="block wrap">
+    <div class="section-head">
+      <h2>Season at a Glance</h2>
+      <span class="meta">Through Round 16 · Bahrain GP (Sepang)</span>
+    </div>
+    <div class="stat-bar">
+      <div class="cell"><div class="num" data-count-to="8">8</div><div class="label">Antonelli wins</div></div>
+      <div class="cell"><div class="num" data-count-to="16">16</div><div class="label">Rounds run</div></div>
+      <div class="cell"><div class="num" data-count-to="6" data-suffix="th">6th</div><div class="label">Different winners</div></div>
+      <div class="cell"><div class="num" data-count-to="7">7</div><div class="label">Rounds remaining</div></div>
+    </div>
+  </section>
+
+  <section class="block wrap">
+    <div class="section-head">
+      <h2>Singapore Grand Prix — Race Preview</h2>
+      <span class="meta">Round 17 · Marina Bay · Oct 9–11</span>
+    </div>
+    <span class="rw-rule" aria-hidden="true"></span>
+
+    <div class="tire-compounds">
+      <button class="tire-btn" type="button" data-compound="soft" aria-expanded="false" aria-label="Soft compound — tap for details">
+        <svg width="56" height="56" viewBox="0 0 68 68" aria-hidden="true">
+          <circle cx="34" cy="34" r="30" fill="var(--ink)"/>
+          <circle cx="34" cy="34" r="26" fill="none" stroke="#000" stroke-width="4" stroke-dasharray="3 2.2" opacity="0.5"/>
+          <circle cx="34" cy="34" r="18" fill="var(--red)"/>
+          <circle cx="34" cy="34" r="9" fill="var(--chrome)"/>
+        </svg>
+        <span class="tire-label">Soft</span>
+      </button>
+      <button class="tire-btn" type="button" data-compound="medium" aria-expanded="false" aria-label="Medium compound — tap for details">
+        <svg width="56" height="56" viewBox="0 0 68 68" aria-hidden="true">
+          <circle cx="34" cy="34" r="30" fill="var(--ink)"/>
+          <circle cx="34" cy="34" r="26" fill="none" stroke="#000" stroke-width="4" stroke-dasharray="3 2.2" opacity="0.5"/>
+          <circle cx="34" cy="34" r="18" fill="var(--gold)"/>
+          <circle cx="34" cy="34" r="9" fill="var(--chrome)"/>
+        </svg>
+        <span class="tire-label">Medium</span>
+      </button>
+      <button class="tire-btn" type="button" data-compound="hard" aria-expanded="false" aria-label="Hard compound — tap for details">
+        <svg width="56" height="56" viewBox="0 0 68 68" aria-hidden="true">
+          <circle cx="34" cy="34" r="30" fill="var(--ink)"/>
+          <circle cx="34" cy="34" r="26" fill="none" stroke="#000" stroke-width="4" stroke-dasharray="3 2.2" opacity="0.5"/>
+          <circle cx="34" cy="34" r="18" fill="var(--paper-2)" stroke="var(--line)" stroke-width="1"/>
+          <circle cx="34" cy="34" r="9" fill="var(--chrome)"/>
+        </svg>
+        <span class="tire-label">Hard</span>
+      </button>
+      <button class="tire-btn" type="button" data-compound="inter" aria-expanded="false" aria-label="Intermediate compound — tap for details">
+        <svg width="56" height="56" viewBox="0 0 68 68" aria-hidden="true">
+          <circle cx="34" cy="34" r="30" fill="var(--ink)"/>
+          <circle cx="34" cy="34" r="26" fill="none" stroke="#000" stroke-width="4" stroke-dasharray="3 2.2" opacity="0.5"/>
+          <circle cx="34" cy="34" r="18" fill="var(--green)"/>
+          <circle cx="34" cy="34" r="9" fill="var(--chrome)"/>
+        </svg>
+        <span class="tire-label">Inter</span>
+      </button>
+      <button class="tire-btn" type="button" data-compound="wet" aria-expanded="false" aria-label="Wet compound — tap for details">
+        <svg width="56" height="56" viewBox="0 0 68 68" aria-hidden="true">
+          <circle cx="34" cy="34" r="30" fill="var(--ink)"/>
+          <circle cx="34" cy="34" r="26" fill="none" stroke="#000" stroke-width="4" stroke-dasharray="3 2.2" opacity="0.5"/>
+          <circle cx="34" cy="34" r="18" fill="var(--blue)"/>
+          <circle cx="34" cy="34" r="9" fill="var(--chrome)"/>
+        </svg>
+        <span class="tire-label">Wet</span>
+      </button>
+    </div>
+    <div class="tire-info" id="tire-info" hidden></div>
+
+    <article class="story">
+      <div class="story-meta">
+        <span class="tag tag-preview">Preview</span>
+        <span>MARINA BAY · FIRST-EVER SPRINT WEEKEND · UNDER THE LIGHTS</span>
+      </div>
+      <h3>F1's original night race adds a sprint as Antonelli closes in on the title</h3>
+      <p>Antonelli's second place at Sepang, combined with Russell's late engine failure, stretched his lead to 84 points with seven rounds to go. Hamilton is now just 22 points behind Russell after recovering from near the back to the podium, so the fight for second is suddenly wide open.</p>
+      <p>Singapore completes the triple-header just a week after Sepang, and this year it hosts a sprint weekend for the first time: sprint qualifying on Friday night, the sprint and Grand Prix qualifying on Saturday, then the 62-lap race on Sunday at 8pm local time. Back in 2008, this was the first night race in F1 history.</p>
+
+      <button class="expand-toggle" data-target="preview-more" data-more="+ Full preview" data-less="− Hide preview">+ Full preview</button>
+      <div class="expand-body" id="preview-more">
+        <p>The Marina Bay Street Circuit runs 4.927 km, with walls close at almost every corner, so Safety Cars are common and track position is everything. With the sprint format, teams get just one practice session to set up their cars for one of the hottest, most humid weekends of the year.</p>
+        <div class="analysis-grid">
+          <div class="analysis-card">
+            <h4>Extra points on Saturday</h4>
+            <p>The sprint puts more points on the table than a normal weekend, which helps anyone chasing, but also gives Antonelli another chance to extend his lead.</p>
+          </div>
+          <div class="analysis-card">
+            <h4>Russell's last stand</h4>
+            <p>Still mathematically alive, but 84 points back. He needs a big weekend and a bad one for Antonelli, and he needs both soon.</p>
+          </div>
+          <div class="analysis-card">
+            <h4>Can Verstappen go back-to-back?</h4>
+            <p>After a double podium in Baku and a win at Sepang, Red Bull arrive with real momentum. Pole matters even more around Marina Bay than most tracks.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="block wrap">
+    <div class="section-head">
+      <h2>Breaking Motorsport News</h2>
+      <span class="meta">Filed Oct 4, 2026</span>
+    </div>
+
+    <article class="story">
+      <div class="story-meta">
+        <span class="tag tag-breaking">Breaking</span>
+        <span>SEPANG · TITLE FIGHT</span>
+      </div>
+      <h3>Russell's engine gives out with five laps to go, and his title hopes go with it</h3>
+      <p>George Russell was running third under a late Safety Car when his Mercedes power unit failed on the home straight with five laps remaining. A near-certain podium became zero points, and with Kimi Antonelli finishing second, the gap between the Mercedes team-mates jumped from 66 to 84 points in a single afternoon.</p>
+      <p>Russell admitted afterwards that his title chances are now very unlikely, and team boss Toto Wolff made no secret of his frustration with the failure.</p>
+
+      <button class="expand-toggle" data-target="breaking-more" data-more="+ Full analysis" data-less="− Hide analysis">+ Full analysis</button>
+      <div class="expand-body" id="breaking-more">
+        <div class="analysis-grid">
+          <div class="analysis-card">
+            <h4>A Sepang echo</h4>
+            <p>Ten years ago at this same circuit, Lewis Hamilton's Mercedes engine failed while he was leading the 2016 Malaysian Grand Prix, a blow widely seen as costing him that year's title to team-mate Nico Rosberg.</p>
+          </div>
+          <div class="analysis-card">
+            <h4>A new fight for second</h4>
+            <p>Hamilton's podium leaves him just 22 points behind Russell, turning second place in the championship into a genuine battle with seven rounds to go.</p>
+          </div>
+          <div class="analysis-card">
+            <h4>What it means for Antonelli</h4>
+            <p>An 84-point lead with seven rounds left is more than three race wins' worth of cushion. Russell needs Antonelli to stumble, and soon.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="block wrap">
+    <div class="section-head">
+      <h2>Bahrain Grand Prix — Race Recap</h2>
+      <span class="meta">Round 16 · Sepang, Malaysia · Complete</span>
+    </div>
+
+    <article class="story">
+      <div class="story-meta">
+        <span class="tag tag-recap">Recap</span>
+        <span>SEPANG · VERSTAPPEN WINS</span>
+      </div>
+      <h3>Verstappen wins a rain-delayed Sepang thriller for his first victory of 2026</h3>
+      <p>Torrential rain pushed the start back by an hour and 40 minutes, and the first attempt to get going was abandoned when cars hit engine-software problems and had to reboot on track. When the race finally began, the field was split between slicks and intermediates, and the intermediate runners were far quicker early on. Pole-sitter Max Verstappen lost the lead to both Mercedes off the start, got back past them either side of an early Safety Car, then simply drove away.</p>
+
+      <button class="expand-toggle" data-target="recap-more" data-more="+ Full recap" data-less="− Hide recap">+ Full recap</button>
+      <div class="expand-body" id="recap-more">
+        <p>Kimi Antonelli finished second, 2.3 seconds behind, with Lewis Hamilton third. Both Ferraris had tumbled down the order on slicks in the opening laps. Hamilton was the only driver not to pit under the lap-9 Safety Car for Valtteri Bottas's spin, and he climbed back through the field. A late Safety Car for Alex Albon's stopped Williams bunched everyone up, and Hamilton passed Isack Hadjar for third with three laps left, with Charles Leclerc following him through for fourth. Hadjar, Oscar Piastri and Liam Lawson completed the top seven. Fernando Alonso took eighth, Aston Martin's best result of the season, holding off Lando Norris, who had slid into the gravel under the Safety Car. Arvid Lindblad took the last point. George Russell, Albon and Bottas retired, and the race ran 55 laps instead of the planned 56.</p>
+        <div class="analysis-grid">
+          <div class="analysis-card">
+            <h4>Strategy note</h4>
+            <p>The starting tyre decided most of the race. Slick starters lost huge chunks of time, and the lap-9 Safety Car arrived right at the crossover point for everyone else to switch.</p>
+          </div>
+          <div class="analysis-card">
+            <h4>Championship shift</h4>
+            <p>Antonelli's second place and Russell's retirement push the gap at the top to 84 points, with Hamilton now just 22 behind Russell in the fight for second.</p>
+          </div>
+          <div class="analysis-card">
+            <h4>Looking ahead</h4>
+            <p>Singapore completes the triple-header next weekend, and for the first time it's a sprint weekend under the Marina Bay lights.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span><svg width="14" height="14" viewBox="0 0 16 16" style="vertical-align: -2px; margin-right: 5px;"><rect width="16" height="16" fill="none"/><g fill="var(--ink-dim)"><rect x="0" y="0" width="4" height="4"/><rect x="8" y="0" width="4" height="4"/><rect x="4" y="4" width="4" height="4"/><rect x="12" y="4" width="4" height="4"/><rect x="0" y="8" width="4" height="4"/><rect x="8" y="8" width="4" height="4"/><rect x="4" y="12" width="4" height="4"/><rect x="12" y="12" width="4" height="4"/></g></svg>© 2026 JP Motorsport Journal</span>
+    <a href="mailto:joshpenner49@gmail.com">joshpenner49@gmail.com</a>
+    <span>Last updated Oct 4, 2026</span>
+  </div>
+  <div class="wrap footer-legal">
+    <span>Some links on this site may be affiliate links. If you buy through them, we may earn a commission at no extra cost to you.</span>
+    <span><a href="privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="#" data-cookie-settings>Cookie choices</a></span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+  // Computed before logo3d.js runs, so it can decide whether to play its
+  // arrival tween without waiting on race-week.js (which loads after it).
+  // Reads the same sessionStorage key initRaceWeekEntrance() checks below,
+  // just early enough for logo3d.js to see it first.
+  (function () {
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var alreadyShown = sessionStorage.getItem("rwEntranceShown") === "1";
+    window.RW_PLAY_LOGO_ARRIVAL = !(reduce || alreadyShown);
+  })();
+</script>
+<script src="logo3d.js"></script>
+<script src="script.js"></script>
+<script src="race-week.js"></script>
+<script>initRaceWeekEntrance();</script>
+<script src="analytics.js" defer></script>
+</body>
+</html>
