@@ -1,0 +1,6 @@
+# Local-only: virtual environment, downloaded voice models, generated audio
+.venv/
+voices/*
+!voices/.gitkeep
+output/*
+!output/.gitkeep
