@@ -15,14 +15,18 @@
 <meta name="twitter:description" content="Formula 1 news coverage and insight, breaking news, motorsport racing and sim racing data.">
 <meta name="twitter:image" content="og-image.png">
 
+<link rel="icon" href="img/insignia.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- fonts load without blocking first paint; text shows in a size-matched fallback until they arrive -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"></noscript>
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="race-week.css">
 <noscript><style>[data-circuit],[data-circuit-select]{display:none}</style></noscript>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <header class="masthead">
   <div class="wrap masthead-inner">
@@ -55,7 +59,7 @@
   </div>
 </div>
 
-<main>
+<main id="main" tabindex="-1">
   <div class="countdown-strip">
     <div class="wrap">
       <div class="countdown-label">Next session: <strong>Singapore Grand Prix</strong> · Marina Bay</div>
@@ -78,7 +82,7 @@
     <div class="lead-media">
       <span class="lead-rule" aria-hidden="true"></span>
       <div class="circuit-block">
-        <div data-circuit="sg-2008" data-width="600" data-theme="light" data-circuit-group="weekend"></div>
+        <div data-circuit="sg-2008" style="width:600px" data-width="600" data-theme="light" data-circuit-group="weekend"></div>
         <div class="circuit-caption">
           <span data-circuit-field="gp" data-circuit-group="weekend">Singapore Grand Prix</span>
           <span class="circuit-caption-km"><span data-circuit-field="km" data-circuit-group="weekend">4.927</span> KM</span>
@@ -323,7 +327,7 @@
         </div>
         <div class="intel-side">
           <div class="circuit-block circuit-block--dark">
-            <div data-circuit="sg-2008" data-width="300" data-theme="dark" data-circuit-group="weekend"></div>
+            <div data-circuit="sg-2008" style="width:300px" data-width="300" data-theme="dark" data-circuit-group="weekend"></div>
             <span class="circuit-track"><span data-circuit-field="name" data-circuit-group="weekend">Marina Bay Street Circuit</span> · <span data-circuit-field="km" data-circuit-group="weekend">4.927</span> KM</span>
           </div>
           <h3 class="intel-sub">Session schedule · Singapore</h3>

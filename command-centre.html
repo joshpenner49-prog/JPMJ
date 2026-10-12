@@ -15,13 +15,17 @@
 <meta name="twitter:description" content="Live F1 timing dashboard — temporarily offline for maintenance.">
 <meta name="twitter:image" content="og-image.png">
 
+<link rel="icon" href="img/insignia.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- fonts load without blocking first paint; text shows in a size-matched fallback until they arrive -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"></noscript>
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="race-week.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <header class="masthead">
   <div class="wrap masthead-inner">
@@ -45,7 +49,7 @@
   </div>
 </header>
 
-<main>
+<main id="main" tabindex="-1">
   <section class="hero wrap" style="grid-template-columns: 1fr; padding-bottom: 24px;">
     <div>
       <div class="hero-eyebrow">Live timing dashboard</div>
@@ -61,7 +65,7 @@
         <circle cx="12" cy="12" r="9" stroke="var(--red)" stroke-width="1.4"/>
         <path d="M12 7v6l4 2" stroke="var(--red)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      <h4 style="font-size: 15px; text-transform: none; letter-spacing: normal; color: var(--ink); margin-bottom: 12px;">Under maintenance</h4>
+      <h3 style="font-size: 15px; text-transform: none; letter-spacing: normal; color: var(--ink); margin-bottom: 12px;">Under maintenance</h3>
       <p>The Command Centre — the live timing view for practice, qualifying, and race sessions — is offline while it gets some work done behind the scenes. No estimated return time yet, but the rest of the site (race archive, standings, driver pages) is unaffected and updates as normal after every race weekend.</p>
       <p style="margin-top: 12px;">In the meantime, <a href="standings.html">check the standings</a> or catch up on <a href="archive.html">the race archive</a>.</p>
     </div>

@@ -15,13 +15,17 @@
 <meta name="twitter:description" content="My scored, opinionated take on every 2026 Grand Prix. Right or wrong, these are my rules.">
 <meta name="twitter:image" content="og-image.png">
 
+<link rel="icon" href="img/insignia.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- fonts load without blocking first paint; text shows in a size-matched fallback until they arrive -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"></noscript>
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="race-week.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <header class="masthead">
   <div class="wrap masthead-inner">
@@ -45,7 +49,7 @@
   </div>
 </header>
 
-<main>
+<main id="main" tabindex="-1">
   <section class="hero wrap" style="grid-template-columns: 1fr; padding-bottom: 24px;">
     <div>
       <div class="hero-eyebrow">2026 season</div>
@@ -126,7 +130,7 @@
     </p>
 
     <div class="analysis-card rules-card">
-      <h4>My Rules</h4>
+      <h3>My Rules</h3>
       <p>1. Monaco starts at a 5.0 cap. It has to fight for every point above that like everywhere else.</p>
       <p>2. A race decided by a Safety Car or VSC rather than genuine on-track overtaking loses half a point, no matter how tense the finish felt.</p>
       <p>3. Nothing scores above a 9.0 without me being able to say why in one sentence.</p>

@@ -15,13 +15,17 @@
 <meta name="twitter:description" content="Test your reaction time against a real F1 race start.">
 <meta name="twitter:image" content="og-image.png">
 
+<link rel="icon" href="img/insignia.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- fonts load without blocking first paint; text shows in a size-matched fallback until they arrive -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"></noscript>
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="race-week.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <header class="masthead">
   <div class="wrap masthead-inner">
@@ -45,7 +49,7 @@
   </div>
 </header>
 
-<main>
+<main id="main" tabindex="-1">
   <section class="hero wrap">
     <div class="hero-eyebrow">Reaction challenge</div>
     <h1>Lights Out</h1>
@@ -73,15 +77,15 @@
 
     <div class="pit-facts">
       <div class="analysis-card">
-        <h4>Driver reaction time</h4>
+        <h2>Driver reaction time</h2>
         <p>F1 drivers average around 200 milliseconds to react to lights out at the start of a race — close to the physiological limit for human reaction.</p>
       </div>
       <div class="analysis-card">
-        <h4>Jump start rule</h4>
+        <h2>Jump start rule</h2>
         <p>Sensors detect any wheel movement before the lights officially go out. React early in a real race and it's an automatic penalty — no such penalty here, just bragging rights.</p>
       </div>
       <div class="analysis-card">
-        <h4>Bonus fact: pit stops</h4>
+        <h2>Bonus fact: pit stops</h2>
         <p>The fastest recorded F1 pit stop is 1.82 seconds — Red Bull, 2019 Brazilian Grand Prix. That's wheel nuts off, tyres changed, nuts back on, car released.</p>
       </div>
     </div>

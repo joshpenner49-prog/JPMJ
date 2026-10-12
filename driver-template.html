@@ -15,15 +15,19 @@
 <meta name="twitter:description" content="{{NAME}} — {{TEAM}} career and 2026 season stats, JP Motorsport Journal.">
 <meta name="twitter:image" content="../../og-image.png">
 
+<link rel="icon" href="../../img/insignia.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- fonts load without blocking first paint; text shows in a size-matched fallback until they arrive -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"></noscript>
 <link rel="stylesheet" href="../../styles.css">
 <link rel="stylesheet" href="../../race-week.css">
 <link rel="stylesheet" href="../../drivers.css">
 <style>:root{ --team-accent: {{TEAM_COLOR}}; --team-accent-dim: {{TEAM_COLOR_DIM}}; }</style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <header class="masthead">
   <div class="wrap masthead-inner">
@@ -47,7 +51,7 @@
   </div>
 </header>
 
-<main class="page-enter">
+<main id="main" class="page-enter" tabindex="-1">
   <section class="driver-hero" id="driverHero3d">
     <div class="driver-hero-speedlines" aria-hidden="true"></div>
     <div class="wrap driver-hero-inner">

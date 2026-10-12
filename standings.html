@@ -15,13 +15,17 @@
 <meta name="twitter:description" content="2026 F1 Drivers' and Constructors' Championship standings after the Bahrain Grand Prix in Malaysia.">
 <meta name="twitter:image" content="og-image.png">
 
+<link rel="icon" href="img/insignia.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- fonts load without blocking first paint; text shows in a size-matched fallback until they arrive -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"></noscript>
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="race-week.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <header class="masthead">
   <div class="wrap masthead-inner">
@@ -45,7 +49,7 @@
   </div>
 </header>
 
-<main class="theme-dark">
+<main id="main" class="theme-dark" tabindex="-1">
   <section class="hero wrap" style="grid-template-columns: 1fr; padding-bottom: 12px;">
     <div>
       <div class="hero-eyebrow">2026 championship</div>
