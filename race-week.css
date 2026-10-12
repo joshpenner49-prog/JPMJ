@@ -43,6 +43,18 @@
   /* Singapore red is 3.6:1 on ivory, too light for text, so the site
      accent (--red) is deliberately left unchanged this week. */
 }
+[data-race-week="austin"] {
+  --rw-a: #B22234; /* US flag red ("Old Glory red") */
+  --rw-b: #3C3B6E; /* US flag blue ("Old Glory blue") */
+  /* Accent swap for the week: Old Glory red is 5.9:1 on ivory and 5.4:1
+     on ivory-2, so it passes as text. --red-dark stays the site's own
+     (Old Glory red is only 2.6:1 on charcoal). */
+  --red: #B22234;
+}
+/* navy disappears on charcoal: give it a hairline edge on dark panels */
+[data-race-week="austin"] .driver-hero .rw-tag .rw-dots span:last-child,
+[data-race-week="austin"] .theme-dark .rw-tag .rw-dots span:last-child { box-shadow: 0 0 0 1px rgba(236, 232, 225, 0.55); }
+
 /* white disappears on the ivory ground: give white accents a hairline edge */
 [data-race-week="singapore"] .rw-tag .rw-dots span:last-child,
 [data-race-week="singapore"] .rw-rule { box-shadow: inset 0 0 0 1px rgba(25, 26, 28, 0.3); }

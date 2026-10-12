@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
      C6 = softest — three consecutive numbers get nominated as that
      weekend's hard/medium/soft). Intermediate and wet are fixed compounds
      and are never renominated, so their blurbs don't need updating. */
-  const CURRENT_GP_COMPOUNDS = { soft: "TBC", medium: "TBC", hard: "TBC" }; // Singapore: Pirelli nomination not yet confirmed
+  const CURRENT_GP_COMPOUNDS = { soft: "C4", medium: "C3", hard: "C2" }; // United States GP (Austin): Pirelli nomination C2/C3/C4
 
   const TIRE_INFO = {
     soft: `Soft (${CURRENT_GP_COMPOUNDS.soft}): highest grip, fastest lap times, wears fastest. Used in qualifying and short, aggressive stints.`,

@@ -40,36 +40,37 @@ TEAM_COLORS = {
 # results). Rounds 13-23 stay null until raced.
 NULL = None
 DRIVERS = [
-    (12, "Kimi Antonelli",     "ANT", "Mercedes",      320, 8, 13, [18,25,25,25,25,25,NULL,15,NULL,25,15,23,25,25,10,18]),
-    (63, "George Russell",     "RUS", "Mercedes",      236, 3, 8,  [25,18,NULL,NULL,NULL,NULL,18,25,18,NULL,NULL,23,18,10,25,NULL]),
-    (44, "Lewis Hamilton",     "HAM", "Ferrari",       214, 1, 6,  [NULL,15,NULL,NULL,18,18,25,NULL,15,NULL,NULL,14,8,NULL,8,15]),
-    (16, "Charles Leclerc",    "LEC", "Ferrari",       191, 1, 4,  [15,NULL,15,NULL,NULL,NULL,NULL,NULL,25,18,NULL,17,NULL,12,12,12]),
-    (1,  "Lando Norris",       "NOR", "McLaren",       188, 2, 6,  [NULL,NULL,NULL,18,NULL,NULL,15,NULL,NULL,NULL,25,31,12,15,NULL,2]),
-    (3,  "Max Verstappen",     "VER", "Red Bull",      188, 1, 8,  [NULL,NULL,NULL,NULL,15,NULL,NULL,18,NULL,15,18,3,15,18,18,25]),
-    (81, "Oscar Piastri",      "PIA", "McLaren",       128, 0, 2,  [NULL,NULL,18,15,NULL,NULL,NULL,NULL,NULL,NULL,NULL,12,10,4,0,8]),
-    (6,  "Isack Hadjar",       "HAD", "Red Bull",       96, 0, 1,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,15,10]),
-    (30, "Liam Lawson",        "LAW", "Racing Bulls",   65, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,6,0,8,0,6]),
-    (10, "Pierre Gasly",       "GAS", "Alpine",         41, 0, 1,  [NULL,NULL,NULL,NULL,NULL,15,NULL,NULL,NULL,NULL,NULL,2,6,0,NULL,0]),
-    (41, "Arvid Lindblad",     "LIN", "Racing Bulls",   38, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,4,2,6,1]),
-    (43, "Franco Colapinto",   "COL", "Alpine",         27, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,2,6,NULL,0]),
-    (87, "Oliver Bearman",     "BEA", "Haas",           20, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,2,0]),
-    (5,  "Gabriel Bortoleto",  "BOR", "Audi",           10, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,0]),
-    (27, "Nico Hülkenberg",    "HUL", "Audi",            7, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,4,0,1,0,0]),
-    (31, "Esteban Ocon",       "OCO", "Haas",            7, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,4,0]),
-    (14, "Fernando Alonso",    "ALO", "Aston Martin",    7, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,2,NULL,0,NULL,4]),
-    (55, "Carlos Sainz",       "SAI", "Williams",        7, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,NULL,1,0]),
-    (23, "Alexander Albon",    "ALB", "Williams",        5, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,NULL,NULL]),
-    (18, "Lance Stroll",       "STR", "Aston Martin",    0, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,0]),
-    (77, "Valtteri Bottas",    "BOT", "Cadillac",        0, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,NULL]),
-    (11, "Sergio Pérez",       "PER", "Cadillac",        0, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,NULL,0,0]),
+    (12, "Kimi Antonelli",    "ANT", "Mercedes",     340, 8, 14, [18,25,25,25,25,25,NULL,15,NULL,25,15,23,25,25,10,18,20]),
+    (63, "George Russell",    "RUS", "Mercedes",     238, 3, 8,  [25,18,NULL,NULL,NULL,NULL,18,25,18,NULL,NULL,23,18,10,25,NULL,2]),
+    (44, "Lewis Hamilton",    "HAM", "Ferrari",      229, 1, 6,  [NULL,15,NULL,NULL,18,18,25,NULL,15,NULL,NULL,14,8,NULL,8,15,15]),
+    (3, "Max Verstappen",    "VER", "Red Bull",     221, 2, 9,  [NULL,NULL,NULL,NULL,15,NULL,NULL,18,NULL,15,18,3,15,18,18,25,33]),
+    (16, "Charles Leclerc",   "LEC", "Ferrari",      215, 1, 5,  [15,NULL,15,NULL,NULL,NULL,NULL,NULL,25,18,NULL,17,NULL,12,12,12,24]),
+    (1, "Lando Norris",      "NOR", "McLaren",      201, 2, 6,  [NULL,NULL,NULL,18,NULL,NULL,15,NULL,NULL,NULL,25,31,12,15,NULL,2,13]),
+    (81, "Oscar Piastri",     "PIA", "McLaren",      138, 0, 2,  [NULL,NULL,18,15,NULL,NULL,NULL,NULL,NULL,NULL,NULL,12,10,4,0,8,10]),
+    (6, "Isack Hadjar",      "HAD", "Red Bull",      97, 0, 1,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,15,10,1]),
+    (30, "Liam Lawson",       "LAW", "Racing Bulls",  75, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,6,0,8,0,6,10]),
+    (10, "Pierre Gasly",      "GAS", "Alpine",        41, 0, 1,  [NULL,NULL,NULL,NULL,NULL,15,NULL,NULL,NULL,NULL,NULL,2,6,0,NULL,0,0]),
+    (41, "Arvid Lindblad",    "LIN", "Racing Bulls",  38, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,4,2,6,1,0]),
+    (43, "Franco Colapinto",  "COL", "Alpine",        27, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,2,6,NULL,0,0]),
+    (87, "Oliver Bearman",    "BEA", "Haas",          23, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,2,0,3]),
+    (27, "Nico Hülkenberg",   "HUL", "Audi",          13, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,4,0,1,0,0,6]),
+    (5, "Gabriel Bortoleto", "BOR", "Audi",          10, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,0,0]),
+    (31, "Esteban Ocon",      "OCO", "Haas",           7, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,4,0,0]),
+    (14, "Fernando Alonso",   "ALO", "Aston Martin",   7, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,2,NULL,0,NULL,4,0]),
+    (55, "Carlos Sainz",      "SAI", "Williams",       7, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,NULL,1,0,0]),
+    (23, "Alexander Albon",   "ALB", "Williams",       5, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,NULL,NULL,0]),
+    (18, "Lance Stroll",      "STR", "Aston Martin",   0, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,0,0]),
+    (77, "Valtteri Bottas",   "BOT", "Cadillac",       0, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,NULL,0]),
+    (11, "Sergio Pérez",      "PER", "Cadillac",       0, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,NULL,0,0,0]),
 ]
-# Season totals were reconciled to the official standings after Round 16
-# (Bahrain GP in Malaysia). Earlier totals had drifted (likely uncounted
+# Season totals were reconciled to the official standings after Round 17
+# (Singapore GP, sprint weekend; round 17 = sprint + race points combined).
+# They were first reconciled after Round 16 (Bahrain GP in Malaysia). Earlier totals had drifted (likely uncounted
 # sprint points), so the points column is the source of truth; the
 # round-by-round arrays only cover rounds the site has tracked in detail.
 # Tsunoda (1 pt, Racing Bulls seat-cover stint, Rounds 12-14) is still not a
 # tracked driver here; he appears only as a manual line in standings.html.
-SEASON_GPS = 16  # rounds completed so far
+SEASON_GPS = 17  # rounds completed so far
 
 
 def hex_to_rgba(hex_color, alpha):

@@ -905,3 +905,60 @@ footer.site-footer {
 .footer-meta a,
 .contact-side .side-block a { display: inline-flex; align-items: center; min-height: 44px; }
 .newsletter-embed:focus-within { outline: 2px solid var(--red-dark); outline-offset: 3px; }
+
+/* ============ STANDINGS PAGE (rebuilt: summary, team-colour tables) ============ */
+.champ-summary {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px;
+  background: var(--rule); border: 1px solid var(--rule); margin: 8px 0 36px;
+}
+.champ-cell {
+  background: var(--ivory); padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 6px;
+  box-shadow: inset 0 3px 0 var(--team, transparent);
+}
+.champ-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grey); }
+.champ-big { font-family: var(--serif); font-size: clamp(24px, 2.4vw, 30px); line-height: 1.1; color: var(--charcoal); }
+.champ-small { font-family: var(--mono); font-size: 13px; color: var(--grey); font-variant-numeric: tabular-nums; }
+
+.st-table { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: 14px; border-top: 1px solid var(--charcoal); }
+.st-table th {
+  text-align: left; font-weight: 400; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--grey); padding: 12px 8px; border-bottom: 1px solid var(--rule);
+}
+.st-table td { padding: 0 8px; height: 52px; border-bottom: 1px solid var(--rule); vertical-align: middle; }
+.st-table tbody tr { transition: background 0.15s ease; }
+.st-table tbody tr:hover { background: var(--ivory-2); }
+.st-pos { width: 44px; color: var(--grey); font-variant-numeric: tabular-nums; }
+.is-leader .st-pos { color: var(--charcoal); font-weight: 600; }
+.st-mv { width: 44px; font-size: 12px; }
+.mv--up { color: var(--charcoal); }
+.mv--down, .mv--same { color: var(--grey); }
+.st-name { min-width: 0; }
+.st-name, .intel-driver { white-space: nowrap; }
+.st-stripe {
+  display: inline-block; width: 4px; height: 28px; margin-right: 12px; vertical-align: middle;
+  background: var(--team, var(--grey));
+}
+.st-who { display: inline-flex; flex-direction: column; vertical-align: middle; font-family: var(--sans); font-weight: 600; font-size: 15px; line-height: 1.2; color: var(--charcoal); }
+.st-team { font-family: var(--mono); font-weight: 400; font-size: 12px; color: var(--grey); margin-top: 2px; }
+.st-table .st-bar { width: 28%; }
+.st-track { display: block; height: 6px; background: var(--rule); }
+.st-track > span { display: block; height: 6px; background: var(--team, var(--charcoal)); }
+.st-table .st-pts { text-align: right; font-weight: 500; color: var(--charcoal); font-variant-numeric: tabular-nums; }
+.st-table .st-gap, .st-table .st-last { text-align: right; color: var(--grey); font-variant-numeric: tabular-nums; width: 72px; }
+.st-table td.st-last { color: var(--charcoal); }
+.st-key { display: flex; flex-wrap: wrap; gap: 4px 24px; margin: 12px 0 0; font-family: var(--mono); font-size: 11px; color: var(--grey); letter-spacing: 0.04em; }
+.st-section { margin-top: 56px; }
+.standings-page .standings-tabs { margin-bottom: 8px; }
+@media (max-width: 700px) {
+  .st-table .st-bar, .st-table .st-gap { display: none; }
+  .st-table td { padding: 0 6px; }
+  .st-mv { width: 36px; }
+  .st-who { font-size: 14px; }
+}
+
+/* homepage standings: the same team stripe */
+.intel-driver .st-stripe { height: 18px; margin-right: 10px; }
+.intel-bar-track > span { background: var(--team, var(--c-text)) !important; }
+
+/* the title-fight chart needs real height, not the canvas default ratio */
+.chart-box { position: relative; height: clamp(280px, 38vw, 440px); }
