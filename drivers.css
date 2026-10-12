@@ -189,3 +189,11 @@
 @media (prefers-reduced-motion: reduce) {
   .page-enter { animation: none; }
 }
+
+/* ---------- factual profile (from f1db) ---------- */
+.driver-profile { margin: 8px 0 0; max-width: 680px; border-top: 1px solid var(--charcoal); }
+.driver-profile > div { display: grid; grid-template-columns: 140px 1fr; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--rule); }
+.driver-profile dt { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey); padding-top: 3px; }
+.driver-profile dd { margin: 0; font-size: 17px; color: var(--charcoal); }
+@media (max-width: 520px) { .driver-profile > div { grid-template-columns: 1fr; gap: 2px; } }
+.driver-chart .bar.zero { background: var(--grey); opacity: 0.5; }

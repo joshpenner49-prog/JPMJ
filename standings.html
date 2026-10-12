@@ -146,7 +146,7 @@
       <span class="meta">Cumulative points, Rounds 1–17</span>
     </div>
     <div class="chart-card">
-      <div class="chart-box"><canvas id="points-chart" role="img" aria-label="Line chart of cumulative points for Antonelli, Russell, Hamilton, Leclerc and Norris across Rounds 1 to 17. The tables above give every value."></canvas></div>
+      <div class="chart-box"><canvas id="points-chart" role="img" aria-label="Line chart of cumulative points for the top six drivers (Antonelli, Russell, Hamilton, Verstappen, Leclerc and Norris) across Rounds 1 to 17. The tables above give every final value."></canvas></div>
       <p class="chart-hint">Lines use team colours; a dashed line is the second driver of the same team. Click a name in the legend to hide or show that line.</p>
     </div>
 
@@ -233,13 +233,13 @@
   </div>
   <div class="wrap footer-legal">
     <p>Some links on this site may be affiliate links. If you buy through them, we may earn a commission at no extra cost to you.</p>
-    <p>Circuit outlines from <a href="https://github.com/bacinger/f1-circuits">f1-circuits</a> by Tomislav Bacinger (<a href="licenses/f1-circuits-LICENSE">MIT</a>).</p>
+    <p>Circuit outlines from <a href="https://github.com/bacinger/f1-circuits">f1-circuits</a> by Tomislav Bacinger (<a href="licenses/f1-circuits-LICENSE">MIT</a>). Results and driver statistics from <a href="https://github.com/f1db/f1db">f1db</a> (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</p>
   </div>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 <!-- BUILD:chart-data -->
-<script>window.STANDINGS_PROGRESSION = {"rounds": ["AUS", "CHN", "JPN", "MIA", "CAN", "MON", "ESP", "AUT", "GBR", "BEL", "HUN", "NED", "ITA", "MAD", "AZE", "SEP", "SIN"], "series": [{"label": "Antonelli", "team": "Mercedes", "color": "#00A19C", "dashed": false, "data": [18, 43, 72, 97, 122, 147, 147, 162, 175, 194, 219, 242, 267, 292, 302, 320, 340]}, {"label": "Russell", "team": "Mercedes", "color": "#00A19C", "dashed": true, "data": [25, 43, 55, 67, 79, 87, 105, 130, 148, 148, 160, 183, 201, 211, 236, 236, 238]}, {"label": "Hamilton", "team": "Ferrari", "color": "#DC0000", "dashed": false, "data": [12, 27, 39, 55, 68, 81, 106, 122, 143, 149, 169, 183, 191, 191, 199, 214, 229]}, {"label": "Leclerc", "team": "Ferrari", "color": "#DC0000", "dashed": true, "data": [15, 30, 45, 60, 73, 73, 73, 78, 103, 121, 138, 155, 155, 167, 179, 191, 215]}, {"label": "Norris", "team": "McLaren", "color": "#FF8000", "dashed": false, "data": [12, 12, 24, 42, 56, 56, 71, 83, 97, 103, 128, 159, 171, 186, 186, 188, 201]}]};</script>
+<script>window.STANDINGS_PROGRESSION = {"rounds": ["AUS", "CHN", "JPN", "MIA", "CAN", "MON", "ESP", "AUT", "GBR", "BEL", "HUN", "NED", "ITA", "MAD", "AZE", "SEP", "SIN"], "series": [{"label": "Antonelli", "team": "Mercedes", "color": "#00A19C", "dashed": false, "data": [18, 47, 72, 100, 131, 156, 156, 171, 179, 204, 219, 242, 267, 292, 302, 320, 340]}, {"label": "Russell", "team": "Mercedes", "color": "#00A19C", "dashed": true, "data": [25, 51, 63, 80, 88, 88, 106, 131, 154, 154, 160, 183, 201, 211, 236, 236, 238]}, {"label": "Hamilton", "team": "Ferrari", "color": "#DC0000", "dashed": false, "data": [12, 33, 41, 51, 72, 90, 115, 125, 147, 159, 169, 183, 191, 191, 199, 214, 229]}, {"label": "Verstappen", "team": "Red Bull", "color": "#3671C6", "dashed": false, "data": [8, 8, 12, 26, 43, 43, 55, 73, 76, 91, 109, 112, 127, 145, 163, 188, 221]}, {"label": "Leclerc", "team": "Ferrari", "color": "#DC0000", "dashed": true, "data": [15, 34, 49, 59, 75, 75, 75, 79, 108, 126, 138, 155, 155, 167, 179, 191, 215]}, {"label": "Norris", "team": "McLaren", "color": "#FF8000", "dashed": false, "data": [10, 15, 25, 51, 58, 58, 73, 79, 97, 103, 128, 159, 171, 186, 186, 188, 201]}]};</script>
 <!-- /BUILD:chart-data -->
 <script>
 (function () {

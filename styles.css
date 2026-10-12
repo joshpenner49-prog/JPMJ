@@ -398,8 +398,8 @@ footer.site-footer {
 }
 .footer-nav a:hover { color: var(--red); }
 .footer-meta {
-  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 24px;
-  margin-top: 12px; padding-top: 16px;
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0 24px;
+  margin-top: 12px; padding-top: 4px;
   /* rule spans the content width, not the gutters */
   background: linear-gradient(var(--rule), var(--rule)) no-repeat var(--gutter) 0 / calc(100% - 2 * var(--gutter)) 1px;
   font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; color: var(--grey);

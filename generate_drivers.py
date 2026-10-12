@@ -3,12 +3,16 @@
 Generates /drivers/<number>/index.html for all 22 current-grid drivers
 from driver-template.html, plus the /drivers.html list page.
 
-Wins, podiums and 2026 season points below are REAL — pulled directly
-from this site's own archive.html (podium-mini blocks, rounds 1-11) and
-standings.html (points table). Poles, Top 10s and all career stats are
-intentionally left as "—" (TBD): this site has no source for them yet.
-Wire lib/historical (Jolpica) or equivalent here later to fill them in —
-don't hand-type numbers into this file.
+Every number comes from data/driver-stats.json, which tools/f1db_stats.py
+computes from the open f1db results dataset (season and career: wins,
+podiums, poles, top-10s, points, starts, and points per round). Nothing
+here is hand-typed except the car numbers, team names and any bios JP
+writes in BIOS below.
+
+After each race:
+  python3 tools/f1db_stats.py path/to/f1db 2026
+  python3 generate_drivers.py
+  python3 tools/build_standings.py
 
 Usage: python3 generate_drivers.py
 """
@@ -32,45 +36,43 @@ TEAM_COLORS = {
     "Cadillac": "#C9A227",
 }
 
-# number = REAL confirmed 2026 F1 car number (not standings position — verified
-# via web search, see chat), name, code, team, season points (real,
-# standings.html), season wins (real), season podiums (real), round-by-round
-# points for rounds 1-12 (real — rounds 1-11 from archive.html podium data,
-# round 12 is the Dutch GP + Sprint combined, pulled from official F1.com
-# results). Rounds 13-23 stay null until raced.
-NULL = None
+# Car number (2026 race entries), name, three-letter code and team. Stats
+# are looked up by code in data/driver-stats.json. Order = championship order.
 DRIVERS = [
-    (12, "Kimi Antonelli",    "ANT", "Mercedes",     340, 8, 14, [18,25,25,25,25,25,NULL,15,NULL,25,15,23,25,25,10,18,20]),
-    (63, "George Russell",    "RUS", "Mercedes",     238, 3, 8,  [25,18,NULL,NULL,NULL,NULL,18,25,18,NULL,NULL,23,18,10,25,NULL,2]),
-    (44, "Lewis Hamilton",    "HAM", "Ferrari",      229, 1, 6,  [NULL,15,NULL,NULL,18,18,25,NULL,15,NULL,NULL,14,8,NULL,8,15,15]),
-    (3, "Max Verstappen",    "VER", "Red Bull",     221, 2, 9,  [NULL,NULL,NULL,NULL,15,NULL,NULL,18,NULL,15,18,3,15,18,18,25,33]),
-    (16, "Charles Leclerc",   "LEC", "Ferrari",      215, 1, 5,  [15,NULL,15,NULL,NULL,NULL,NULL,NULL,25,18,NULL,17,NULL,12,12,12,24]),
-    (1, "Lando Norris",      "NOR", "McLaren",      201, 2, 6,  [NULL,NULL,NULL,18,NULL,NULL,15,NULL,NULL,NULL,25,31,12,15,NULL,2,13]),
-    (81, "Oscar Piastri",     "PIA", "McLaren",      138, 0, 2,  [NULL,NULL,18,15,NULL,NULL,NULL,NULL,NULL,NULL,NULL,12,10,4,0,8,10]),
-    (6, "Isack Hadjar",      "HAD", "Red Bull",      97, 0, 1,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,15,10,1]),
-    (30, "Liam Lawson",       "LAW", "Racing Bulls",  75, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,6,0,8,0,6,10]),
-    (10, "Pierre Gasly",      "GAS", "Alpine",        41, 0, 1,  [NULL,NULL,NULL,NULL,NULL,15,NULL,NULL,NULL,NULL,NULL,2,6,0,NULL,0,0]),
-    (41, "Arvid Lindblad",    "LIN", "Racing Bulls",  38, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,4,2,6,1,0]),
-    (43, "Franco Colapinto",  "COL", "Alpine",        27, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,2,6,NULL,0,0]),
-    (87, "Oliver Bearman",    "BEA", "Haas",          23, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,2,0,3]),
-    (27, "Nico Hülkenberg",   "HUL", "Audi",          13, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,4,0,1,0,0,6]),
-    (5, "Gabriel Bortoleto", "BOR", "Audi",          10, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,0,0]),
-    (31, "Esteban Ocon",      "OCO", "Haas",           7, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,4,0,0]),
-    (14, "Fernando Alonso",   "ALO", "Aston Martin",   7, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,2,NULL,0,NULL,4,0]),
-    (55, "Carlos Sainz",      "SAI", "Williams",       7, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,NULL,1,0,0]),
-    (23, "Alexander Albon",   "ALB", "Williams",       5, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,NULL,NULL,0]),
-    (18, "Lance Stroll",      "STR", "Aston Martin",   0, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,0,0]),
-    (77, "Valtteri Bottas",   "BOT", "Cadillac",       0, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,NULL,0]),
-    (11, "Sergio Pérez",      "PER", "Cadillac",       0, 0, 0,  [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,NULL,0,0,0]),
+    (12, "Kimi Antonelli", "ANT", "Mercedes"),
+    (63, "George Russell", "RUS", "Mercedes"),
+    (44, "Lewis Hamilton", "HAM", "Ferrari"),
+    (3, "Max Verstappen", "VER", "Red Bull"),
+    (16, "Charles Leclerc", "LEC", "Ferrari"),
+    (1, "Lando Norris", "NOR", "McLaren"),
+    (81, "Oscar Piastri", "PIA", "McLaren"),
+    (6, "Isack Hadjar", "HAD", "Red Bull"),
+    (30, "Liam Lawson", "LAW", "Racing Bulls"),
+    (10, "Pierre Gasly", "GAS", "Alpine"),
+    (41, "Arvid Lindblad", "LIN", "Racing Bulls"),
+    (43, "Franco Colapinto", "COL", "Alpine"),
+    (87, "Oliver Bearman", "BEA", "Haas"),
+    (27, "Nico Hülkenberg", "HUL", "Audi"),
+    (5, "Gabriel Bortoleto", "BOR", "Audi"),
+    (31, "Esteban Ocon", "OCO", "Haas"),
+    (14, "Fernando Alonso", "ALO", "Aston Martin"),
+    (55, "Carlos Sainz", "SAI", "Williams"),
+    (23, "Alexander Albon", "ALB", "Williams"),
+    (18, "Lance Stroll", "STR", "Aston Martin"),
+    (77, "Valtteri Bottas", "BOT", "Cadillac"),
+    (11, "Sergio Pérez", "PER", "Cadillac"),
 ]
-# Season totals were reconciled to the official standings after Round 17
-# (Singapore GP, sprint weekend; round 17 = sprint + race points combined).
-# They were first reconciled after Round 16 (Bahrain GP in Malaysia). Earlier totals had drifted (likely uncounted
-# sprint points), so the points column is the source of truth; the
-# round-by-round arrays only cover rounds the site has tracked in detail.
-# Tsunoda (1 pt, Racing Bulls seat-cover stint, Rounds 12-14) is still not a
-# tracked driver here; he appears only as a manual line in standings.html.
-SEASON_GPS = 17  # rounds completed so far
+
+# JP's own words about each driver, keyed by code. Leave a driver out (or
+# empty) and the page shows only the factual profile.
+BIOS = {
+}
+
+with open(os.path.join(ROOT, "data", "driver-stats.json"), encoding="utf-8") as _f:
+    STATS = json.load(_f)
+BY_CODE = {d["code"]: d for d in STATS["drivers"].values()}
+MONTHS = ["January", "February", "March", "April", "May", "June", "July",
+          "August", "September", "October", "November", "December"]
 
 
 def hex_to_rgba(hex_color, alpha):
@@ -79,15 +81,39 @@ def hex_to_rgba(hex_color, alpha):
     return f"rgba({r}, {g}, {b}, {alpha})"
 
 
-def tbd_class(value):
-    return "" if value not in (None, "—") else " tbd"
+def fmt_points(v):
+    return str(int(v)) if float(v).is_integer() else f"{v:g}"
+
+
+def fmt_date(iso):
+    if not iso:
+        return ""
+    y, m, d = iso.split("-")
+    return f"{int(d)} {MONTHS[int(m) - 1]} {y}"
+
+
+def profile_rows(p):
+    rows = [("Born", f"{fmt_date(p['born'])}, {p['birthplace']}"), ("Nationality", p["nationality"])]
+    if p.get("debut"):
+        rows.append(("F1 debut", f"{p['debut']['gp']}, {p['debut']['year']}"))
+    rows.append(("First win", f"{p['first_win']['gp']}, {p['first_win']['year']}" if p.get("first_win") else "Yet to win a Grand Prix"))
+    if p.get("teams"):
+        rows.append(("Teams", " · ".join(p["teams"])))
+    return "\n".join(f"      <div><dt>{k}</dt><dd>{html_escape(v)}</dd></div>" for k, v in rows)
+
+
+def html_escape(s):
+    return str(s).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
 def render_driver(template, d):
-    number, name, code, team, points, wins, podiums, round_points = d
+    number, name, code, team = d
+    st = BY_CODE[code]
+    S, C = st["season"], st["career"]
     color = TEAM_COLORS[team]
     color_dim = hex_to_rgba(color, 0.14)
     first_name = name.split(" ")[0]
+    bio = BIOS.get(code, "").strip()
 
     replacements = {
         "{{NAME}}": name,
@@ -97,34 +123,28 @@ def render_driver(template, d):
         "{{CODE}}": code,
         "{{TEAM_COLOR}}": color,
         "{{TEAM_COLOR_DIM}}": color_dim,
-        "{{S_WINS}}": str(wins),
-        "{{C_WINS}}": "—",
-        "{{S_PODIUMS}}": str(podiums),
-        "{{C_PODIUMS}}": "—",
-        "{{S_POLES}}": "—",
-        "{{C_POLES}}": "—",
-        "{{S_POLES_TBD}}": " tbd",
-        "{{S_TOP10}}": "—",
-        "{{C_TOP10}}": "—",
-        "{{S_TOP10_TBD}}": " tbd",
-        "{{S_POINTS}}": str(points),
-        "{{C_POINTS}}": "—",
-        "{{S_GPS}}": str(SEASON_GPS),
-        "{{C_GPS}}": "—",
-        "{{BIO}}": (
-            f"[Hand-write {first_name}'s bio here — junior career, home circuit, "
-            f"what makes them a fan favourite. Not pulled from an API on purpose.]"
-        ),
-        "{{ROUND_POINTS_JSON}}": json.dumps(round_points + [None] * (23 - len(round_points))),
+        "{{S_WINS}}": str(S["wins"]), "{{C_WINS}}": str(C["wins"]),
+        "{{S_PODIUMS}}": str(S["podiums"]), "{{C_PODIUMS}}": str(C["podiums"]),
+        "{{S_POLES}}": str(S["poles"]), "{{C_POLES}}": str(C["poles"]),
+        "{{S_TOP10}}": str(S["top10"]), "{{C_TOP10}}": str(C["top10"]),
+        "{{S_POINTS}}": fmt_points(S["points"]), "{{C_POINTS}}": fmt_points(C["points"]),
+        "{{S_GPS}}": str(S["starts"]), "{{C_GPS}}": str(C["starts"]),
+        "{{BIO}}": f"    <p>{html_escape(bio)}</p>" if bio else "",
+        "{{PROFILE}}": profile_rows(st["profile"]),
+        "{{ROUNDS_COMPLETE}}": str(STATS["rounds_completed"]),
+        "{{ROUND_POINTS_JSON}}": json.dumps([None if v is None else (int(v) if float(v).is_integer() else v) for v in st["rounds"]]),
     }
     out = template
     for k, v in replacements.items():
         out = out.replace(k, v)
+    assert "{{" not in out, f"unfilled placeholder in {name}"
     return out
 
 
 def render_list_card(d):
-    number, name, code, team, points, wins, podiums, _ = d
+    number, name, code, team = d
+    S = BY_CODE[code]["season"]
+    wins, podiums, points = S["wins"], S["podiums"], fmt_points(S["points"])
     color = TEAM_COLORS[team]
     quick = f"{wins} win{'s' if wins != 1 else ''} · {podiums} podium{'s' if podiums != 1 else ''}" if (wins or podiums) else f"{points} pts this season"
     return f'''      <a class="driver-grid-card" href="drivers/{number}/index.html" data-name="{name.lower()}" data-team="{team.lower()}">

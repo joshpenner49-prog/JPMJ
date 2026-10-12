@@ -84,26 +84,29 @@
   <section class="driver-stats">
     <div class="driver-stat-tile"><div class="tile-icon">🏆</div><div class="tile-value" data-season="{{S_WINS}}" data-career="{{C_WINS}}">{{S_WINS}}</div><div class="tile-label">Wins</div></div>
     <div class="driver-stat-tile"><div class="tile-icon">📊</div><div class="tile-value" data-season="{{S_PODIUMS}}" data-career="{{C_PODIUMS}}">{{S_PODIUMS}}</div><div class="tile-label">Podiums</div></div>
-    <div class="driver-stat-tile"><div class="tile-icon">◎</div><div class="tile-value{{S_POLES_TBD}}" data-season="{{S_POLES}}" data-career="{{C_POLES}}">{{S_POLES}}</div><div class="tile-label">Poles</div></div>
-    <div class="driver-stat-tile"><div class="tile-icon">↑</div><div class="tile-value{{S_TOP10_TBD}}" data-season="{{S_TOP10}}" data-career="{{C_TOP10}}">{{S_TOP10}}</div><div class="tile-label">Top 10s</div></div>
+    <div class="driver-stat-tile"><div class="tile-icon">◎</div><div class="tile-value" data-season="{{S_POLES}}" data-career="{{C_POLES}}">{{S_POLES}}</div><div class="tile-label">Poles</div></div>
+    <div class="driver-stat-tile"><div class="tile-icon">↑</div><div class="tile-value" data-season="{{S_TOP10}}" data-career="{{C_TOP10}}">{{S_TOP10}}</div><div class="tile-label">Top 10s</div></div>
     <div class="driver-stat-tile"><div class="tile-icon">⬤</div><div class="tile-value" data-season="{{S_POINTS}}" data-career="{{C_POINTS}}">{{S_POINTS}}</div><div class="tile-label">Points</div></div>
-    <div class="driver-stat-tile"><div class="tile-icon">▦</div><div class="tile-value" data-season="{{S_GPS}}" data-career="{{C_GPS}}">{{S_GPS}}</div><div class="tile-label">GPs</div></div>
+    <div class="driver-stat-tile"><div class="tile-icon">▦</div><div class="tile-value" data-season="{{S_GPS}}" data-career="{{C_GPS}}">{{S_GPS}}</div><div class="tile-label">Starts</div></div>
   </section>
 
   <section class="wrap driver-chart-wrap">
-    <div class="section-head"><h2>Points by round</h2><span class="meta">2026 season, Rounds 1–23</span></div>
+    <div class="section-head"><h2>Points by round</h2><span class="meta">2026 season · sprint + race points per round</span></div>
     <div class="driver-chart" id="driverChart"></div>
     <div class="driver-chart-labels" id="driverChartLabels"></div>
     <div class="driver-chart-legend">
       <span><span class="swatch scored"></span>Points scored</span>
-      <span><span class="swatch unknown"></span>Finished outside top 3 — exact points not yet in this page's data</span>
+      <span><span class="swatch unknown"></span>Did not take part</span>
       <span><span class="swatch future"></span>Not yet raced</span>
     </div>
   </section>
 
   <section class="wrap driver-bio">
-    <div class="section-head"><h2>About {{FIRST_NAME}}</h2></div>
-    <p>{{BIO}}</p>
+    <div class="section-head"><h2>About {{FIRST_NAME}}</h2><span class="meta">Career figures: all Grands Prix to date</span></div>
+{{BIO}}
+    <dl class="driver-profile">
+{{PROFILE}}
+    </dl>
   </section>
 </main>
 
@@ -129,7 +132,7 @@
   </div>
   <div class="wrap footer-legal">
     <p>Some links on this site may be affiliate links. If you buy through them, we may earn a commission at no extra cost to you.</p>
-    <p>Circuit outlines from <a href="https://github.com/bacinger/f1-circuits">f1-circuits</a> by Tomislav Bacinger (<a href="../../licenses/f1-circuits-LICENSE">MIT</a>).</p>
+    <p>Circuit outlines from <a href="https://github.com/bacinger/f1-circuits">f1-circuits</a> by Tomislav Bacinger (<a href="../../licenses/f1-circuits-LICENSE">MIT</a>). Results and driver statistics from <a href="https://github.com/f1db/f1db">f1db</a> (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</p>
   </div>
 </footer>
 
@@ -141,7 +144,7 @@
 (function () {
   // round-by-round bar chart from per-round points (0 = did not score)
   var roundPoints = {{ROUND_POINTS_JSON}};
-  var ROUNDS_COMPLETE = 17; // update this alongside the top-strip banner each race weekend
+  var ROUNDS_COMPLETE = {{ROUNDS_COMPLETE}}; // set by generate_drivers.py from data/driver-stats.json
   var chart = document.getElementById('driverChart');
   var labels = document.getElementById('driverChartLabels');
   var known = roundPoints.filter(function (v) { return v !== null; });
@@ -153,11 +156,11 @@
       bar.className = 'bar future';
     } else if (v === null || v === undefined) {
       bar.className = 'bar unknown';
-      bar.title = 'Finished outside the top 3 — exact points not tracked in this page\'s data yet';
+      bar.title = 'Round ' + (i + 1) + ': did not take part';
     } else {
-      bar.className = 'bar';
-      bar.style.height = Math.max(4, Math.round((v / max) * 100)) + '%';
-      bar.title = v + ' points';
+      bar.className = 'bar' + (v === 0 ? ' zero' : '');
+      bar.style.height = v === 0 ? '2px' : Math.max(4, Math.round((v / max) * 100)) + '%';
+      bar.title = 'Round ' + (i + 1) + ': ' + v + (v === 1 ? ' point' : ' points');
     }
     chart.appendChild(bar);
     var lbl = document.createElement('span');

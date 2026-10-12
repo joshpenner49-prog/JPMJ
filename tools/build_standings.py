@@ -9,6 +9,9 @@ driver's points against generate_drivers.py and the constructor totals
 against the sum of their drivers' points where that is possible, and
 stops on any mismatch.
 
+The chart lines and every points total are cross-checked against
+data/driver-stats.json (computed from f1db by tools/f1db_stats.py).
+
 Usage: python3 tools/build_standings.py
 """
 import html
@@ -22,6 +25,7 @@ sys.path.insert(0, ROOT)
 import generate_drivers  # noqa: E402  (team colours + per-driver season data)
 
 DATA = json.load(open(os.path.join(ROOT, "data", "standings.json"), encoding="utf-8"))
+STATS = json.load(open(os.path.join(ROOT, "data", "driver-stats.json"), encoding="utf-8"))
 CHARCOAL = "#191A1C"
 
 
@@ -58,17 +62,25 @@ TEAM = {team: on_dark(c) for team, c in generate_drivers.TEAM_COLORS.items()}
 # ---------- checks ----------
 def check():
     errors = []
-    gd = {d[1]: d for d in generate_drivers.DRIVERS}
+    stats = {v["name"]: v for v in STATS["drivers"].values()}
+    stats.update({v["name"].replace(" Jr.", ""): v for v in STATS["drivers"].values()})
+    codes = {g[1]: g[2] for g in generate_drivers.DRIVERS}
     for d in DATA["drivers"]:
-        g = gd.get(d["name"])
-        if g is None:
-            if d["points"]:
-                print(f"note: {d['name']} has no driver page (manual row)")
+        st = stats.get(d["name"])
+        if st is None:
+            errors.append(f"{d['name']}: not in data/driver-stats.json")
             continue
-        if g[4] != d["points"]:
-            errors.append(f"{d['name']}: standings.json {d['points']} vs generate_drivers.py {g[4]}")
-        if g[3] != d["team"]:
-            errors.append(f"{d['name']}: team {d['team']} vs {g[3]}")
+        if st["season"]["points"] != d["points"]:
+            errors.append(f"{d['name']}: standings.json {d['points']} vs f1db {st['season']['points']}")
+        last = st["rounds"][DATA["after_round"] - 1] or 0
+        if last != d["last"]:
+            errors.append(f"{d['name']}: last round +{d['last']} vs f1db +{last}")
+        if d["name"] in codes and codes[d["name"]] != st["code"]:
+            errors.append(f"{d['name']}: code {codes[d['name']]} vs {st['code']}")
+    if STATS["rounds_completed"] != DATA["after_round"]:
+        errors.append(f"standings.json is after Round {DATA['after_round']}, driver-stats.json after Round {STATS['rounds_completed']}")
+    if len(DATA["progression"]["rounds"]) != DATA["after_round"]:
+        errors.append("progression round labels do not match after_round")
     pts = [d["points"] for d in DATA["drivers"]]
     if pts != sorted(pts, reverse=True):
         errors.append("drivers are not in points order")
@@ -82,15 +94,6 @@ def check():
     for c in DATA["constructors"]:
         if by_team.get(c["name"], 0) != c["last"]:
             errors.append(f"{c['name']}: last-round points {c['last']} vs drivers' {by_team.get(c['name'], 0)}")
-    series = DATA["progression"]["series"]
-    for name, vals in series.items():
-        if len(vals) != DATA["after_round"]:
-            errors.append(f"progression {name}: {len(vals)} rounds, expected {DATA['after_round']}")
-        d = next((x for x in DATA["drivers"] if x["name"] == name), None)
-        if d and vals[-1] != d["points"]:
-            errors.append(f"progression {name}: ends at {vals[-1]}, standings say {d['points']}")
-        if d and len(vals) > 1 and vals[-1] - vals[-2] != d["last"]:
-            errors.append(f"progression {name}: last round +{vals[-1] - vals[-2]}, standings say +{d['last']}")
     if errors:
         print("Standings check FAILED:\n  " + "\n  ".join(errors))
         sys.exit(1)
@@ -155,14 +158,21 @@ def summary():
 
 
 def chart_data():
+    """Cumulative points per round for the top drivers, from f1db per-round
+    points; team colours, a team-mate's line dashed."""
     prog = DATA["progression"]
+    by_name = {v["name"].replace(" Jr.", ""): v for v in STATS["drivers"].values()}
     seen_team = set()
     series = []
-    for name, vals in prog["series"].items():
-        team = next(d["team"] for d in DATA["drivers"] if d["name"] == name)
-        dashed = team in seen_team  # team-mate: same colour, dashed line
-        seen_team.add(team)
-        series.append({"label": name.split()[-1], "team": team, "color": TEAM[team], "dashed": dashed, "data": vals})
+    for d in DATA["drivers"][:prog["drivers_in_chart"]]:
+        rounds = by_name[d["name"]]["rounds"][:DATA["after_round"]]
+        total, cum = 0, []
+        for v in rounds:
+            total += v or 0
+            cum.append(int(total) if float(total).is_integer() else total)
+        dashed = d["team"] in seen_team
+        seen_team.add(d["team"])
+        series.append({"label": d["name"].split()[-1], "team": d["team"], "color": TEAM[d["team"]], "dashed": dashed, "data": cum})
     payload = {"rounds": prog["rounds"], "series": series}
     return "<script>window.STANDINGS_PROGRESSION = " + json.dumps(payload, ensure_ascii=False) + ";</script>"
 

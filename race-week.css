@@ -90,3 +90,94 @@
   margin: 10px 0 18px;
   background: linear-gradient(90deg, var(--rw-a) 0 50%, var(--rw-b) 50% 100%);
 }
+
+/* ============================================================
+   CIRCUIT DECORATIONS — per race week, static, decorative only.
+   Each race can add its own block here, scoped to its slug. Rules:
+   no animation, no glow, never over text, and every page must still
+   read correctly without them (they vanish with the attribute).
+   ============================================================ */
+
+/* ---------- Austin: stars and stripes ---------- */
+[data-race-week="austin"] {
+  --us-red: #B22234;
+  --us-blue: #3C3B6E;
+  --us-white: #FFFFFF;
+  /* five-point star, used as a clip shape */
+  --us-star: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+/* flag band across the very top: seven red/white stripes ... */
+[data-race-week="austin"] body::before {
+  content: "";
+  display: block;
+  height: 14px;
+  background: repeating-linear-gradient(180deg, var(--us-red) 0 2px, var(--us-white) 2px 4px);
+}
+/* ... with a navy canton of small white stars at the left */
+[data-race-week="austin"] body::after {
+  content: "";
+  position: absolute; top: 0; left: 0;
+  width: 96px; height: 14px;
+  pointer-events: none;
+  background:
+    radial-gradient(circle, #FFFFFF 0 0.9px, transparent 1.5px) 2px 1px / 8px 6px,
+    radial-gradient(circle, #FFFFFF 0 0.9px, transparent 1.5px) 6px 4px / 8px 6px,
+    var(--us-blue);
+}
+
+/* the same flag band closes the page above the footer */
+[data-race-week="austin"] footer.site-footer { position: relative; border-top: 0; padding-top: 46px; }
+[data-race-week="austin"] footer.site-footer::before,
+[data-race-week="austin"] footer.site-footer::after {
+  content: ""; position: absolute; top: 0; left: 0; height: 14px; pointer-events: none;
+}
+[data-race-week="austin"] footer.site-footer::before {
+  right: 0;
+  background: repeating-linear-gradient(180deg, var(--us-red) 0 2px, var(--us-white) 2px 4px);
+}
+[data-race-week="austin"] footer.site-footer::after {
+  width: 96px;
+  background:
+    radial-gradient(circle, #FFFFFF 0 0.9px, transparent 1.5px) 2px 1px / 8px 6px,
+    radial-gradient(circle, #FFFFFF 0 0.9px, transparent 1.5px) 6px 4px / 8px 6px,
+    var(--us-blue);
+}
+
+/* race-week tag: stars instead of dots */
+[data-race-week="austin"] .rw-tag .rw-dots { gap: 2px; }
+[data-race-week="austin"] .rw-tag .rw-dots span {
+  width: 10px; height: 10px; border-radius: 0;
+  clip-path: var(--us-star);
+}
+[data-race-week="austin"] .driver-hero .rw-tag .rw-dots span:last-child,
+[data-race-week="austin"] .theme-dark .rw-tag .rw-dots span:last-child { background: #8E8CC9; box-shadow: none; }
+
+/* accent rule under titles: a small flag */
+[data-race-week="austin"] .rw-rule {
+  width: 56px; height: 9px;
+  background:
+    linear-gradient(var(--us-blue), var(--us-blue)) 0 0 / 22px 5px no-repeat,
+    repeating-linear-gradient(180deg, var(--us-red) 0 1px, var(--us-white) 1px 2px);
+  box-shadow: inset 0 0 0 1px rgba(25, 26, 28, 0.12);
+}
+
+/* dark panels: a faint star field fading out from the top-right corner */
+[data-race-week="austin"] .intel,
+[data-race-week="austin"] main.theme-dark,
+[data-race-week="austin"] .driver-hero { position: relative; }
+[data-race-week="austin"] .intel::before,
+[data-race-week="austin"] main.theme-dark::before,
+[data-race-week="austin"] .driver-hero::before {
+  content: "";
+  position: absolute; top: 0; right: 0; width: min(46%, 560px); height: min(100%, 420px);
+  pointer-events: none;
+  background:
+    radial-gradient(circle, rgba(236, 232, 225, 0.22) 0 1px, transparent 1.6px) 0 0 / 26px 22px,
+    radial-gradient(circle, rgba(236, 232, 225, 0.22) 0 1px, transparent 1.6px) 13px 11px / 26px 22px;
+  -webkit-mask-image: radial-gradient(ellipse at 100% 0%, #000 0%, transparent 70%);
+          mask-image: radial-gradient(ellipse at 100% 0%, #000 0%, transparent 70%);
+}
+[data-race-week="austin"] .intel > .wrap,
+[data-race-week="austin"] main.theme-dark > *,
+[data-race-week="austin"] .driver-hero > * { position: relative; z-index: 1; }

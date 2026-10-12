@@ -82,28 +82,35 @@
   <noscript><style>#driver-logo-canvas{display:none!important;} .driver3d-stage{display:flex;align-items:center;justify-content:center;color:#888;font-family:monospace;font-size:12px;}</style></noscript>
 
   <section class="driver-stats">
-    <div class="driver-stat-tile"><div class="tile-icon">🏆</div><div class="tile-value" data-season="1" data-career="—">1</div><div class="tile-label">Wins</div></div>
-    <div class="driver-stat-tile"><div class="tile-icon">📊</div><div class="tile-value" data-season="5" data-career="—">5</div><div class="tile-label">Podiums</div></div>
-    <div class="driver-stat-tile"><div class="tile-icon">◎</div><div class="tile-value tbd" data-season="—" data-career="—">—</div><div class="tile-label">Poles</div></div>
-    <div class="driver-stat-tile"><div class="tile-icon">↑</div><div class="tile-value tbd" data-season="—" data-career="—">—</div><div class="tile-label">Top 10s</div></div>
-    <div class="driver-stat-tile"><div class="tile-icon">⬤</div><div class="tile-value" data-season="215" data-career="—">215</div><div class="tile-label">Points</div></div>
-    <div class="driver-stat-tile"><div class="tile-icon">▦</div><div class="tile-value" data-season="17" data-career="—">17</div><div class="tile-label">GPs</div></div>
+    <div class="driver-stat-tile"><div class="tile-icon">🏆</div><div class="tile-value" data-season="1" data-career="9">1</div><div class="tile-label">Wins</div></div>
+    <div class="driver-stat-tile"><div class="tile-icon">📊</div><div class="tile-value" data-season="5" data-career="55">5</div><div class="tile-label">Podiums</div></div>
+    <div class="driver-stat-tile"><div class="tile-icon">◎</div><div class="tile-value" data-season="0" data-career="26">0</div><div class="tile-label">Poles</div></div>
+    <div class="driver-stat-tile"><div class="tile-icon">↑</div><div class="tile-value" data-season="14" data-career="146">14</div><div class="tile-label">Top 10s</div></div>
+    <div class="driver-stat-tile"><div class="tile-icon">⬤</div><div class="tile-value" data-season="215" data-career="1887">215</div><div class="tile-label">Points</div></div>
+    <div class="driver-stat-tile"><div class="tile-icon">▦</div><div class="tile-value" data-season="17" data-career="188">17</div><div class="tile-label">Starts</div></div>
   </section>
 
   <section class="wrap driver-chart-wrap">
-    <div class="section-head"><h2>Points by round</h2><span class="meta">2026 season, Rounds 1–23</span></div>
+    <div class="section-head"><h2>Points by round</h2><span class="meta">2026 season · sprint + race points per round</span></div>
     <div class="driver-chart" id="driverChart"></div>
     <div class="driver-chart-labels" id="driverChartLabels"></div>
     <div class="driver-chart-legend">
       <span><span class="swatch scored"></span>Points scored</span>
-      <span><span class="swatch unknown"></span>Finished outside top 3 — exact points not yet in this page's data</span>
+      <span><span class="swatch unknown"></span>Did not take part</span>
       <span><span class="swatch future"></span>Not yet raced</span>
     </div>
   </section>
 
   <section class="wrap driver-bio">
-    <div class="section-head"><h2>About Charles</h2></div>
-    <p>[Hand-write Charles's bio here — junior career, home circuit, what makes them a fan favourite. Not pulled from an API on purpose.]</p>
+    <div class="section-head"><h2>About Charles</h2><span class="meta">Career figures: all Grands Prix to date</span></div>
+
+    <dl class="driver-profile">
+      <div><dt>Born</dt><dd>16 October 1997, Monte Carlo, Monaco</dd></div>
+      <div><dt>Nationality</dt><dd>Monégasque</dd></div>
+      <div><dt>F1 debut</dt><dd>Australian Grand Prix, 2018</dd></div>
+      <div><dt>First win</dt><dd>Belgian Grand Prix, 2019</dd></div>
+      <div><dt>Teams</dt><dd>Sauber · Ferrari</dd></div>
+    </dl>
   </section>
 </main>
 
@@ -129,7 +136,7 @@
   </div>
   <div class="wrap footer-legal">
     <p>Some links on this site may be affiliate links. If you buy through them, we may earn a commission at no extra cost to you.</p>
-    <p>Circuit outlines from <a href="https://github.com/bacinger/f1-circuits">f1-circuits</a> by Tomislav Bacinger (<a href="../../licenses/f1-circuits-LICENSE">MIT</a>).</p>
+    <p>Circuit outlines from <a href="https://github.com/bacinger/f1-circuits">f1-circuits</a> by Tomislav Bacinger (<a href="../../licenses/f1-circuits-LICENSE">MIT</a>). Results and driver statistics from <a href="https://github.com/f1db/f1db">f1db</a> (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</p>
   </div>
 </footer>
 
@@ -140,8 +147,8 @@
 <script>
 (function () {
   // round-by-round bar chart from per-round points (0 = did not score)
-  var roundPoints = [15, null, 15, null, null, null, null, null, 25, 18, null, 17, null, 12, 12, 12, 24, null, null, null, null, null, null];
-  var ROUNDS_COMPLETE = 17; // update this alongside the top-strip banner each race weekend
+  var roundPoints = [15, 19, 15, 10, 16, 0, 0, 4, 29, 18, 12, 17, 0, 12, 12, 12, 24, null, null, null, null, null, null];
+  var ROUNDS_COMPLETE = 17; // set by generate_drivers.py from data/driver-stats.json
   var chart = document.getElementById('driverChart');
   var labels = document.getElementById('driverChartLabels');
   var known = roundPoints.filter(function (v) { return v !== null; });
@@ -153,11 +160,11 @@
       bar.className = 'bar future';
     } else if (v === null || v === undefined) {
       bar.className = 'bar unknown';
-      bar.title = 'Finished outside the top 3 — exact points not tracked in this page\'s data yet';
+      bar.title = 'Round ' + (i + 1) + ': did not take part';
     } else {
-      bar.className = 'bar';
-      bar.style.height = Math.max(4, Math.round((v / max) * 100)) + '%';
-      bar.title = v + ' points';
+      bar.className = 'bar' + (v === 0 ? ' zero' : '');
+      bar.style.height = v === 0 ? '2px' : Math.max(4, Math.round((v / max) * 100)) + '%';
+      bar.title = 'Round ' + (i + 1) + ': ' + v + (v === 1 ? ' point' : ' points');
     }
     chart.appendChild(bar);
     var lbl = document.createElement('span');
