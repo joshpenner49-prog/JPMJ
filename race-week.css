@@ -181,3 +181,59 @@
 [data-race-week="austin"] .intel > .wrap,
 [data-race-week="austin"] main.theme-dark > *,
 [data-race-week="austin"] .driver-hero > * { position: relative; z-index: 1; }
+
+/* ---------- Austin, part 2: Americana across the page ---------- */
+/* dark technical surfaces go navy for the week (text contrast checked:
+   body 13:1, muted 6.9:1, light red 5.1:1 on #1C1F3F) */
+[data-race-week="austin"] {
+  --c-surface: #1C1F3F;
+  --c-raise: #262A52;
+  --c-rule: #383D6C;
+  --c-muted: #A9A8C9;
+}
+
+/* a small red star before every section title */
+[data-race-week="austin"] .section-title::before,
+[data-race-week="austin"] .section-head h2::before,
+[data-race-week="austin"] .verdict-section-h::before {
+  content: "";
+  display: inline-block;
+  width: 0.42em; height: 0.42em;
+  margin-right: 0.38em;
+  vertical-align: 0.14em;
+  background: var(--us-red);
+  clip-path: var(--us-star);
+}
+[data-race-week="austin"] .intel .section-title::before,
+[data-race-week="austin"] .theme-dark .section-head h2::before,
+[data-race-week="austin"] .newsletter-copy h2::before { background: #E8687A; }
+[data-race-week="austin"] .newsletter-copy h2::before {
+  content: ""; display: inline-block; width: 0.42em; height: 0.42em; margin-right: 0.38em;
+  vertical-align: 0.14em; clip-path: var(--us-star);
+}
+
+/* the lead feature's red rule becomes a small flag */
+[data-race-week="austin"] .lead-rule {
+  width: 72px; height: 12px;
+  background:
+    linear-gradient(var(--us-blue), var(--us-blue)) 0 0 / 28px 7px no-repeat,
+    repeating-linear-gradient(180deg, var(--us-red) 0 2px, var(--us-white) 2px 3.43px);
+  box-shadow: inset 0 0 0 1px rgba(25, 26, 28, 0.12);
+}
+
+/* active nav underline: red and blue */
+[data-race-week="austin"] .masthead-nav a.active::after,
+[data-race-week="austin"] .masthead-nav a[aria-current="page"]::after {
+  background: linear-gradient(90deg, var(--us-red) 0 50%, var(--us-blue) 50% 100%);
+}
+
+/* countdown: navy figures, a thin red/blue line under the band */
+[data-race-week="austin"] .countdown-unit .num { color: var(--us-blue); }
+[data-race-week="austin"] .countdown-strip {
+  border-bottom: 0;
+  box-shadow: inset 0 -2px 0 var(--us-red), inset 0 -4px 0 var(--us-white), inset 0 -6px 0 var(--us-blue);
+}
+
+/* ticker tags pick up the flag colours on navy */
+[data-race-week="austin"] .ticker .tag { color: #C9C7EA; }
+[data-race-week="austin"] .ticker .tag-breaking { color: #FF8A8A; }

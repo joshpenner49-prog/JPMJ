@@ -44,13 +44,15 @@ def _contrast(a, b):
 
 def on_dark(hex_color):
     """Team colour as used on the charcoal page: unchanged unless it is
-    under 3:1 against charcoal, in which case it is mixed toward white
-    just until it passes (bars and stripes are non-text graphics)."""
+    under 3.2:1 against charcoal, in which case it is mixed toward white
+    just until it passes (bars and stripes are non-text graphics; the
+    headroom keeps them above 3:1 on navy race-week surfaces too)."""
     color = hex_color
     h = hex_color.lstrip("#")
     r, g, b = (int(h[i:i + 2], 16) for i in (0, 2, 4))
     t = 0.0
-    while _contrast(color, CHARCOAL) < 3.0 and t < 1:
+    # 3.2 leaves headroom for race-week dark surfaces (e.g. navy in Austin)
+    while _contrast(color, CHARCOAL) < 3.2 and t < 1:
         t += 0.02
         color = "#%02X%02X%02X" % tuple(round(v + (255 - v) * t) for v in (r, g, b))
     return color

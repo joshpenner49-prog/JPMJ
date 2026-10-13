@@ -962,3 +962,13 @@ footer.site-footer {
 
 /* the title-fight chart needs real height, not the canvas default ratio */
 .chart-box { position: relative; height: clamp(280px, 38vw, 440px); }
+
+/* ---------- homepage breaking story ---------- */
+.breaking { padding-block: 48px 8px; }
+.story--breaking { padding: 0; border: 0; max-width: 820px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+.story--breaking h3 { font-size: clamp(30px, 3.6vw, 46px); line-height: 1.06; margin: 0; }
+.story--breaking p { margin: 0; font-size: 18px; line-height: 1.7; }
+.story--breaking .breaking-dek { font-size: 20px; line-height: 1.6; color: var(--charcoal); }
+.story--breaking .expand-body { width: 100%; }
+.story--breaking .expand-body > p + p, .story--breaking .expand-body > p + .analysis-grid { margin-top: 16px; }
+.breaking-note { font-family: var(--mono); font-size: 12px !important; color: var(--grey); }
