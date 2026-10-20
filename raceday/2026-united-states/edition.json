@@ -1,0 +1,389 @@
+{
+  "_about": "Content for one JP Race Day Programme edition. Layout lives in raceday/template.html; build with: python3 tools/build_raceday.py raceday/2026-united-states. Fields set to null are race-weekend information that must be filled in (and verified) before the build will produce a final, publishable PDF. Every figure carries a 'kind': verified (official/primary source), measured (computed from published timing data), estimate (sourced estimate with stated assumptions) or analysis (JP Motorsport Journal's editorial view).",
+  "status": "proof",
+  "edition": 1,
+  "season": 2026,
+  "round": 18,
+  "rounds_total": 23,
+  "grand_prix": "United States Grand Prix",
+  "short_name": "United States GP",
+  "slug": "united-states",
+  "circuit_id": "us-2012",
+  "circuit_name": "Circuit of The Americas",
+  "location": "Austin, Texas",
+  "race_date": "Sunday 25 October 2026",
+  "race_date_iso": "2026-10-25",
+  "timezone_label": "CDT (UTC−5), local time in Austin",
+  "filename": "JP-Race-Day-United-States-GP-2026.pdf",
+  "publication_date": null,
+  "last_verified": "19 October 2026",
+  "cover": {
+    "headline": "The title can be won in Texas",
+    "standfirst": "Kimi Antonelli arrives at the Circuit of The Americas 102 points clear with six Grands Prix left. For the first time this season, a single Sunday could settle the championship.",
+    "photo": null,
+    "photo_credit": null,
+    "photo_note": "Free-licensed photo pending (Wikimedia Commons is blocked in the build environment). Until then the cover uses the circuit outline."
+  },
+  "intro": "Singapore was the last sprint of 2026, so from here every point comes on a Sunday: 25 for a win, six races, 150 points in total. Antonelli's lead is 102. Behind him, three drivers are covered by 17 points in the fight for second, and Red Bull have closed to within seven points of McLaren for third in the Constructors' Championship. Austin is a standard weekend, with three practice sessions, qualifying on Saturday and the 56-lap race on Sunday.",
+  "storylines": [
+    {
+      "title": "Antonelli's first match point",
+      "text": "With 150 points left, Antonelli is champion on Sunday if he leaves Austin more than 125 points ahead of everyone. Winning while Russell scores no more than a point and Hamilton finishes fifth or lower would do it.",
+      "kind": "analysis",
+      "basis": "Calculated from the official standings after Round 17: 25 points per Grand Prix, no sprints and no fastest-lap point remain, so 125 points are left after Austin. Antonelli clinches by outscoring Russell by 24+, Hamilton by 15+, Verstappen by 7+ and Leclerc by 1+."
+    },
+    {
+      "title": "Three drivers, 17 points, one runner-up spot",
+      "text": "Russell (238), Hamilton (229) and Verstappen (221) are separated by 17 points in the fight for second. Russell scored two points across the Singapore weekend; Hamilton 15; Verstappen 33.",
+      "kind": "verified"
+    },
+    {
+      "title": "Red Bull's charge",
+      "text": "Verstappen has won the last two Grands Prix, at Sepang and Singapore, and took the Singapore Sprint. Red Bull are seven points behind McLaren for third in the Constructors' Championship.",
+      "kind": "verified"
+    }
+  ],
+  "circuit": {
+    "facts": [
+      {
+        "label": "Circuit length",
+        "value": "5.513 km",
+        "kind": "verified",
+        "source": "f1"
+      },
+      {
+        "label": "Race laps",
+        "value": "56",
+        "kind": "verified",
+        "source": "f1"
+      },
+      {
+        "label": "Race distance",
+        "value": "308.405 km",
+        "kind": "verified",
+        "source": "f1"
+      },
+      {
+        "label": "Corners",
+        "value": "20 (run anticlockwise)",
+        "kind": "verified",
+        "source": "f1"
+      },
+      {
+        "label": "First Grand Prix",
+        "value": "2012",
+        "kind": "verified",
+        "source": "f1"
+      },
+      {
+        "label": "Race lap record",
+        "value": "1:36.169, Charles Leclerc (2019)",
+        "kind": "verified",
+        "source": "f1"
+      },
+      {
+        "label": "Longest straight",
+        "value": "about 1.2 km, Turn 11 to Turn 12",
+        "kind": "measured",
+        "source": "outline"
+      }
+    ],
+    "overtaking_aids": null,
+    "overtaking_aids_note": "Active aero Straight Mode works in FIA-designated activation zones, and Overtake Mode gives a car within one second of the car ahead at the detection point extra electrical energy. COTA's zones come in the FIA event notes on race weekend and go into the final edition.",
+    "map_markers": [
+      {
+        "n": "1",
+        "at": 6.1,
+        "dx": -16,
+        "dy": 10
+      },
+      {
+        "n": "11",
+        "at": 41.3,
+        "dx": 14,
+        "dy": 8
+      },
+      {
+        "n": "12",
+        "at": 62.9,
+        "dx": -6,
+        "dy": -14
+      },
+      {
+        "n": "20",
+        "at": 91.4,
+        "dx": -10,
+        "dy": -12
+      }
+    ],
+    "map_sections": [
+      {
+        "label": "Esses",
+        "at": 18.5,
+        "dx": 0,
+        "dy": 16
+      },
+      {
+        "label": "Back straight",
+        "at": 52.0,
+        "dx": 14,
+        "dy": 12
+      },
+      {
+        "label": "Stadium section",
+        "at": 72.0,
+        "dx": 0,
+        "dy": -15
+      },
+      {
+        "label": "Multi-apex right",
+        "at": 84.0,
+        "dx": 14,
+        "dy": 0
+      }
+    ],
+    "map_note": "Numbered: the four corners identified with certainty from the official outline. Full corner numbering follows once checked against the official FIA circuit map.",
+    "key_sections": [
+      {
+        "name": "Turn 1",
+        "text": "The start straight climbs steeply, at around an 11% gradient, into a left-hand hairpin: one of the steepest uphill braking zones in F1. The wide entry allows several lines on the opening lap.",
+        "kind": "verified",
+        "source": "circuit"
+      },
+      {
+        "name": "The esses",
+        "text": "A fast sequence of direction changes after Turn 2. Rhythm matters more than any single apex: one late turn-in costs time through every corner that follows.",
+        "kind": "analysis"
+      },
+      {
+        "name": "Turns 11 and 12",
+        "text": "Turn 11 is the slowest corner on the lap and feeds the longest straight, so traction on exit decides the run to Turn 12, the clearest overtaking spot on the track.",
+        "kind": "verified",
+        "source": "circuit"
+      },
+      {
+        "name": "Stadium and multi-apex",
+        "text": "Tight corners in the stadium section, then a long multi-apex right-hander that keeps the car loaded for several seconds. A car that slides here wears its tyres faster over a stint.",
+        "kind": "analysis"
+      }
+    ],
+    "time_gain_loss": "Most lap time is won or lost on corner exits that lead onto straights: Turn 11 onto the back straight and the final corner onto the start/finish straight. A poor exit costs time all the way to the next braking zone, and gives the car behind its best chance to attack.",
+    "time_gain_loss_kind": "analysis"
+  },
+  "strategy": {
+    "pit_loss_rows": [
+      {
+        "condition": "Green flag",
+        "pit_lane": "about 24 s",
+        "net_loss": "about 20.5 s",
+        "saving": "—",
+        "net_kind": "estimate",
+        "net_source": "pirelli2024"
+      },
+      {
+        "condition": "Virtual Safety Car",
+        "pit_lane": "about 24 s",
+        "net_loss": "about 12–17 s",
+        "saving": "about 4–8 s",
+        "net_kind": "estimate",
+        "net_source": "vsc"
+      },
+      {
+        "condition": "Safety Car",
+        "pit_lane": "about 24 s",
+        "net_loss": "about 8–13 s",
+        "saving": "about 7–12 s",
+        "net_kind": "estimate",
+        "net_source": "sc"
+      }
+    ],
+    "pit_loss_notes": [
+      "Time in the pit lane is measured: the median from pit entry to pit exit at COTA was 24.0–24.6 s in every race from 2019 to 2025 (f1db timing data). It includes the stationary tyre change of a few seconds, and it does not change under a VSC or Safety Car because the pit-lane speed limit still applies.",
+      "Net race-time loss is what a stop costs compared with staying out. Pirelli put the total time cost of a stop at COTA at about 20.5 s under green flag (2024 preview).",
+      "The VSC and Safety Car figures apply published estimates of the saving (roughly 17–40% under a VSC and 35–60% behind the Safety Car) to that 20.5 s. They are illustrative ranges, not COTA measurements: the real gain depends on where each car is when the period starts and how long it lasts.",
+      "A cheap stop is only an advantage if the car rejoins in clear air. Rejoining behind slower cars on worn tyres can cost more than the stop saved."
+    ],
+    "history": [
+      {
+        "year": 2023,
+        "pattern": "Two stops",
+        "detail": "Top 10 stopped around laps 10–21, then laps 29–40",
+        "kind": "measured"
+      },
+      {
+        "year": 2024,
+        "pattern": "One stop",
+        "detail": "Entire top 10; stops between laps 21 and 40",
+        "kind": "measured"
+      },
+      {
+        "year": 2025,
+        "pattern": "One stop",
+        "detail": "Entire top 10; stops between laps 22 and 33",
+        "kind": "measured"
+      }
+    ],
+    "history_note": "In 2024 Pirelli's preview expected a two-stop race; the whole top 10 one-stopped. Forecasts are a starting point, not a script.",
+    "tyres": "Pirelli has nominated C2 (hard), C3 (medium) and C4 (soft), a consecutive set. The hard is one step softer than last year's C1.",
+    "tyres_kind": "verified",
+    "pirelli_2026": null,
+    "pirelli_2026_note": "Pirelli's own 2026 strategy prediction for Austin is filled in for the final edition once published on race weekend.",
+    "one_vs_two": "The last two races here were one-stops, but they used a harder tyre at the hard end of the range (C1 in 2025). A softer hard (C2) shortens the safe stint length, which can bring a two-stop back into play if degradation in practice is high. Watch the long runs on Friday: if the medium lasts beyond half distance, expect a one-stop.",
+    "one_vs_two_kind": "analysis",
+    "undercut": "Undercut: pit first and use the new tyres' extra grip to gain the time you lose in the pit lane before your rival stops. It works best when new tyres are much faster than worn ones.",
+    "overcut": "Overcut: stay out longer and gain time on a clear track while your rival is held up on cold new tyres or in traffic. It works best when tyres warm up slowly or the pitting car rejoins in traffic.",
+    "pit_window": "Based on 2024–25, a one-stop window runs from roughly lap 21 to lap 40 of 56, with most stops around laps 29–31. In 2023's two-stop race the first stops came between laps 10 and 21.",
+    "pit_window_kind": "measured",
+    "neutralisation": "A VSC or Safety Car inside the pit window makes a stop cheaper for everyone, so the leaders often pit together and little changes. The real swing comes when it falls just before a team's planned stop, or when a rival has already stopped under green. A Safety Car early in the race can make a one-stop too long and force a second stop.",
+    "neutralisation_kind": "analysis",
+    "what_to_watch": [
+      "Who stops first. On a one-stop race, an early stop is either an undercut attempt or a sign that tyre wear is higher than expected.",
+      "Lap 20 onwards. That is when the one-stop window opened in each of the last two races.",
+      "Any VSC between laps 20 and 40: watch who reacts and who stays out."
+    ]
+  },
+  "briefing": {
+    "grid": null,
+    "grid_note": "The official starting grid, including penalties and any driver substitutions, is added in the final edition after qualifying.",
+    "penalties": null,
+    "schedule": [
+      {
+        "day": "Fri 23 Oct",
+        "session": "Practice 1",
+        "time": "12:30"
+      },
+      {
+        "day": "Fri 23 Oct",
+        "session": "Practice 2",
+        "time": "16:00"
+      },
+      {
+        "day": "Sat 24 Oct",
+        "session": "Practice 3",
+        "time": "12:30"
+      },
+      {
+        "day": "Sat 24 Oct",
+        "session": "Qualifying",
+        "time": "16:00"
+      },
+      {
+        "day": "Sun 25 Oct",
+        "session": "Grand Prix (56 laps)",
+        "time": "15:00"
+      }
+    ],
+    "schedule_kind": "verified",
+    "battles": [
+      {
+        "title": "The title",
+        "text": "Antonelli 340 vs Russell 238: a 102-point gap with 150 points left."
+      },
+      {
+        "title": "Runner-up",
+        "text": "Russell 238, Hamilton 229, Verstappen 221."
+      },
+      {
+        "title": "Constructors, third place",
+        "text": "McLaren 339 vs Red Bull 332."
+      },
+      {
+        "title": "Constructors, fifth place",
+        "text": "Racing Bulls 100 vs Alpine 68."
+      }
+    ],
+    "five_things": [
+      "The run to Turn 1. The climb and the wide hairpin make the first corner a lottery: watch who goes around the outside and who is squeezed on the exit.",
+      "The title maths. To be champion on Sunday, Antonelli must outscore Russell by at least 24 points, Hamilton by 15, Verstappen by 7 and Leclerc by 1. Watch where Russell and Hamilton are running at half distance.",
+      "The Turn 11 exit. Traction onto the longest straight decides who can attack into Turn 12, where most passes happen.",
+      "Laps 20 to 40. The one-stop window in the last two races. The first front-runner to pit tells you what the tyres are doing.",
+      "Verstappen chasing a third straight Grand Prix win, and Red Bull trying to overtake McLaren for third in the Constructors'."
+    ],
+    "glossary": [
+      [
+        "Undercut",
+        "Pitting before a rival to use new tyres' extra pace to get ahead when they stop."
+      ],
+      [
+        "Overcut",
+        "Staying out longer than a rival to gain time while they warm up new tyres or sit in traffic."
+      ],
+      [
+        "Pit window",
+        "The range of laps when a stop makes strategic sense."
+      ],
+      [
+        "Degradation",
+        "How quickly a tyre loses grip and lap time as it wears."
+      ],
+      [
+        "VSC",
+        "Virtual Safety Car: everyone must slow to a set pace; positions are frozen and no one may overtake."
+      ],
+      [
+        "Safety Car",
+        "A physical car leads the field at reduced speed, bunching everyone up behind it."
+      ],
+      [
+        "Straight Mode",
+        "2026 active aero: wings flatten to cut drag in designated zones. Replaces DRS."
+      ],
+      [
+        "Overtake Mode",
+        "Extra electrical energy for a car within one second of the car ahead at the detection point."
+      ],
+      [
+        "Parc fermé",
+        "From qualifying until the race, cars cannot be changed without a penalty."
+      ]
+    ],
+    "sign_off": null,
+    "sign_off_note": "JP writes the sign-off for each edition."
+  },
+  "sources": {
+    "f1": {
+      "label": "Formula1.com, United States Grand Prix 2026 circuit page",
+      "url": "https://www.formula1.com/en/racing/2026/united-states"
+    },
+    "pirelli_compounds": {
+      "label": "Pirelli, compound selection for Austin, Mexico City and São Paulo (2026)",
+      "url": "https://press.pirelli.com/the-compound-selection-for-austin-mexico-city-and-so-paulo/"
+    },
+    "pirelli2024": {
+      "label": "Pirelli, 2024 United States GP preview (total pit stop time about 20.5 s)",
+      "url": "https://press.pirelli.com/a-texas-rodeo-with-a-jump-in-compounds/"
+    },
+    "f1db": {
+      "label": "f1db, pit-stop and race results 2019–2025 (CC BY 4.0)",
+      "url": "https://github.com/f1db/f1db"
+    },
+    "outline": {
+      "label": "f1-circuits by Tomislav Bacinger, track outline (MIT)",
+      "url": "https://github.com/bacinger/f1-circuits"
+    },
+    "circuit": {
+      "label": "Circuit guides: COTA turn-by-turn (NASCAR.com, Jalopnik) and F1 Fansite circuit page",
+      "url": "https://www.f1-fansite.com/f1%20circuits/circuit-of-the-americas/"
+    },
+    "vsc": {
+      "label": "Published pit-stop saving analyses (FormulaDream; Race Sundays)",
+      "url": "https://www.formuladream.app/blog/f1-pit-stop-cost-measured"
+    },
+    "sc": {
+      "label": "Published pit-stop saving analyses (FormulaDream; Race Sundays)",
+      "url": "https://racesundays.com/f1-explained/analysis/why-pitting-under-a-safety-car-beats-normal-stops-in-f1"
+    },
+    "schedule": {
+      "label": "Session times: RacingNews365, Austin schedule",
+      "url": "https://racingnews365.com/f1/races/united-states-gp"
+    },
+    "standings": {
+      "label": "Championship standings after Round 17 (data/standings.json, checked against f1db)",
+      "url": "https://github.com/f1db/f1db"
+    },
+    "regs": {
+      "label": "2026 active aero and Overtake Mode explained (ESPN; Motor Sport)",
+      "url": "https://www.motorsportmagazine.com/articles/single-seaters/f1/explained-the-new-mode-names-for-active-aero-and-energy-boost-for-f1-2026/"
+    }
+  }
+}

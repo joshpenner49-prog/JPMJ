@@ -972,3 +972,78 @@ footer.site-footer {
 .story--breaking .expand-body { width: 100%; }
 .story--breaking .expand-body > p + p, .story--breaking .expand-body > p + .analysis-grid { margin-top: 16px; }
 .breaking-note { font-family: var(--mono); font-size: 12px !important; color: var(--grey); }
+
+/* ============================================================
+   JP RACE DAY — landing page (raceday.html, built by
+   tools/build_raceday_page.py from data/raceday.json)
+   ============================================================ */
+.rd-latest { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 48px; align-items: start; }
+.rd-cover { border: 1px solid var(--rule); background: var(--ivory-2); padding: 14px; }
+.rd-cover img { width: 100%; height: auto; box-shadow: 0 1px 0 var(--rule); }
+/* typographic stand-in cover until an edition is published */
+.rd-cover-type {
+  aspect-ratio: 210 / 297; background: var(--c-surface); color: var(--c-text);
+  display: flex; flex-direction: column; padding: 22px 20px 18px;
+}
+.rd-cover-mast { font-family: var(--serif); font-size: 18px; line-height: 1.1; }
+.rd-cover-ed { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--c-muted); margin-top: 10px; }
+.rd-cover-ed b { display: block; font-family: var(--serif); font-weight: 400; font-size: 44px; letter-spacing: 0; line-height: 1; color: var(--c-text); margin-top: 4px; }
+.rd-cover-type svg { width: 100%; height: auto; margin: auto 0; }
+.rd-cover-gp { font-family: var(--sans); font-weight: 700; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red-dark); border-top: 1px solid var(--c-rule); padding-top: 10px; }
+.rd-latest-body h2 {
+  font-family: var(--serif); font-weight: 400; font-size: clamp(34px, 4.4vw, 52px); line-height: 1.04;
+  letter-spacing: -0.01em; margin: 10px 0 12px; color: var(--charcoal);
+}
+.rd-latest-body .meta-mono { margin: 0 0 22px; }
+.rd-status {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--mono); font-size: 13px; letter-spacing: 0.04em; color: var(--charcoal);
+  border: 1px solid var(--rule); background: var(--ivory-2); padding: 8px 12px;
+}
+.rd-status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--grey); flex: none; }
+.rd-status--live::before { background: #2F7D4A; }
+.rd-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+.rd-actions .btn--red { flex-direction: column; align-items: flex-start; gap: 2px; min-height: 56px; padding: 8px 22px; }
+.rd-file { font: 400 12px var(--mono); letter-spacing: 0.04em; opacity: 0.9; }
+.rd-wait { margin: 0; max-width: 52ch; color: var(--grey); font-size: 16px; line-height: 1.6; }
+.rd-filename { margin: 24px 0 0; font-size: 13px; color: var(--grey); overflow-wrap: anywhere; }
+
+.rd-inside { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--rule); }
+.rd-inside li { padding: 20px 24px 8px 0; }
+.rd-inside li + li { padding-left: 24px; border-left: 1px solid var(--rule); }
+.rd-inside-num { font-family: var(--mono); font-size: 13px; color: var(--red); letter-spacing: 0.06em; }
+.rd-inside h3 { font-family: var(--serif); font-weight: 400; font-size: 24px; line-height: 1.15; margin: 8px 0 10px; color: var(--charcoal); }
+.rd-inside p { margin: 0; color: var(--grey); font-size: 15px; line-height: 1.6; }
+
+.rd-facts { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 48px; }
+.rd-facts > p { margin: 0; font-size: 17px; line-height: 1.65; max-width: 44ch; }
+.rd-kinds { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 18px 32px; }
+.rd-kinds div { border-top: 1px solid var(--rule); padding-top: 12px; }
+.rd-kinds dt { margin-bottom: 8px; }
+.rd-kinds dd { margin: 0; color: var(--grey); font-size: 15px; line-height: 1.55; }
+.rd-k { display: inline-block; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid currentColor; padding: 2px 7px; }
+.rd-k--verified { color: #2F5D3A; } .rd-k--measured { color: #33507A; } .rd-k--estimate { color: #7A4F0C; } .rd-k--analysis { color: var(--red); }
+
+.rd-empty { margin: 0; max-width: 60ch; color: var(--grey); font-size: 16px; line-height: 1.6; }
+.rd-archive { list-style: none; margin: 0; padding: 0; }
+.rd-archive li { display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; gap: 16px; align-items: baseline; padding: 16px 0; border-bottom: 1px solid var(--rule); }
+.rd-arch-num { font-family: var(--mono); font-size: 14px; color: var(--red); }
+.rd-arch-gp { font-family: var(--serif); font-size: 22px; line-height: 1.2; }
+.rd-arch-gp .meta-mono { display: block; margin-top: 4px; }
+
+@media (max-width: 960px) {
+  .rd-inside { grid-template-columns: 1fr 1fr; }
+  .rd-inside li:nth-child(3) { padding-left: 0; border-left: 0; }
+  .rd-inside li:nth-child(n+3) { border-top: 1px solid var(--rule); }
+  .rd-facts { grid-template-columns: 1fr; gap: 24px; }
+}
+@media (max-width: 720px) {
+  .rd-latest { grid-template-columns: 1fr; gap: 28px; }
+  .rd-cover { max-width: 300px; }
+  .rd-inside { grid-template-columns: 1fr; }
+  .rd-inside li, .rd-inside li + li { padding: 18px 0 10px; border-left: 0; }
+  .rd-inside li + li { border-top: 1px solid var(--rule); }
+  .rd-kinds { grid-template-columns: 1fr; }
+  .rd-archive li { grid-template-columns: 40px minmax(0, 1fr); }
+  .rd-archive li .link { grid-column: 2; }
+}
