@@ -3,8 +3,8 @@
 Each Grand Prix gets a four-page A4 PDF programme:
 
 1. **The Grand Prix**: the cover, the storylines and the top five.
-2. **The Circuit File**: the map, the facts, the key sections and the glossary.
-3. **The Strategy Desk**: pit loss under green, VSC and Safety Car, plus strategy.
+2. **The Circuit File**: the map (with the Straight Mode zones and the Overtake detection point in the final edition), the facts, the key sections and the glossary.
+3. **The Strategy Desk**: pit loss under green, VSC and Safety Car; the tyre strategy chart (the predicted strategies, pit windows and pace gaps); undercut and overcut.
 4. **The Viewer's Briefing**: the schedule, grid, standings, battles, five things to watch, the sign-off and sources.
 
 Everything comes from one file per race: `raceday/<season>-<slug>/edition.json`.
@@ -34,8 +34,18 @@ Everything comes from one file per race: `raceday/<season>-<slug>/edition.json`.
    - The build fails if any content runs off a page or into the bottom margin. Tighten the copy until it passes.
 3. **After qualifying:** fill in:
    - `briefing.grid` (`pos`, `driver`, `team`, optional `note`) and `briefing.penalties`;
-   - `circuit.overtaking_aids` (the FIA Straight Mode zones and Overtake detection);
-   - `strategy.pirelli_2026`;
+   - `circuit.overtaking_aids`: a one-line summary of the aids.
+   - `circuit.straight_mode_zones` and `circuit.overtake_detection`, from the FIA event notes, drawn on the map:
+     - give positions in metres from the start line along the lap (`from_m`/`to_m`, `at_m`);
+     - a zone that crosses the line is fine (`from_m` > `to_m`);
+     - convert the FIA's "X m after Turn N" into metres along the lap;
+     - check the drawn result against the FIA map.
+   - `strategy.tyre_plan`, from the teams' long runs and Pirelli's post-qualifying prediction:
+     - `summary`;
+     - `strategies`: each has a `label`, a `tag`, `stints` as `[compound S/M/H, first lap, last lap]`, and `windows` as `[[from, to]]`;
+     - `deltas`: the pace gap per lap between compounds;
+     - `source_line` and `kind`.
+     - Once filled in, the plan replaces the pre-weekend "one stop or two?" reading and the historical pit window on page 3.
    - `briefing.sign_off`;
    - `publication_date`.
 4. **Final:** run `python3 tools/build_raceday.py raceday/<folder> --final`.

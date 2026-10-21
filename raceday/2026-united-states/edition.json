@@ -90,6 +90,9 @@
     ],
     "overtaking_aids": null,
     "overtaking_aids_note": "Active aero Straight Mode works in FIA-designated activation zones, and Overtake Mode gives a car within one second of the car ahead at the detection point extra electrical energy. COTA's zones come in the FIA event notes on race weekend and go into the final edition.",
+    "lap_m": 5513,
+    "straight_mode_zones": null,
+    "overtake_detection": null,
     "map_markers": [
       {
         "n": "1",
@@ -142,7 +145,7 @@
         "dy": 0
       }
     ],
-    "map_note": "Numbered: the four corners identified with certainty from the official outline. Full corner numbering follows once checked against the official FIA circuit map.",
+    "map_note": "Numbered: corners confirmed from the official outline; full numbering follows a check against the FIA circuit map.",
     "key_sections": [
       {
         "name": "Turn 1",
@@ -200,8 +203,7 @@
     "pit_loss_notes": [
       "Time in the pit lane is measured: the median from pit entry to pit exit at COTA was 24.0–24.6 s in every race from 2019 to 2025 (f1db timing data). It includes the stationary tyre change of a few seconds, and it does not change under a VSC or Safety Car because the pit-lane speed limit still applies.",
       "Net race-time loss is what a stop costs compared with staying out. Pirelli put the total time cost of a stop at COTA at about 20.5 s under green flag (2024 preview).",
-      "The VSC and Safety Car figures apply published estimates of the saving (roughly 17–40% under a VSC and 35–60% behind the Safety Car) to that 20.5 s. They are illustrative ranges, not COTA measurements: the real gain depends on where each car is when the period starts and how long it lasts.",
-      "A cheap stop is only an advantage if the car rejoins in clear air. Rejoining behind slower cars on worn tyres can cost more than the stop saved."
+      "The VSC and Safety Car figures apply published estimates of the saving (roughly 17–40% under a VSC and 35–60% behind the Safety Car) to that 20.5 s. They are illustrative ranges, not COTA measurements: the real gain depends on where each car is when the period starts and how long it lasts."
     ],
     "history": [
       {
@@ -226,8 +228,13 @@
     "history_note": "In 2024 Pirelli's preview expected a two-stop race; the whole top 10 one-stopped. Forecasts are a starting point, not a script.",
     "tyres": "Pirelli has nominated C2 (hard), C3 (medium) and C4 (soft), a consecutive set. The hard is one step softer than last year's C1.",
     "tyres_kind": "verified",
-    "pirelli_2026": null,
-    "pirelli_2026_note": "Pirelli's own 2026 strategy prediction for Austin is filled in for the final edition once published on race weekend.",
+    "compounds": {
+      "S": "C4",
+      "M": "C3",
+      "H": "C2"
+    },
+    "tyre_plan": null,
+    "tyre_plan_note": "the predicted race strategies (one stop or two, and in which compound order), each with its pit window on a lap chart, and the pace gap per lap between soft, medium and hard. These come from the teams' long-run data and Pirelli's published prediction after qualifying.",
     "one_vs_two": "The last two races here were one-stops, but they used a harder tyre at the hard end of the range (C1 in 2025). A softer hard (C2) shortens the safe stint length, which can bring a two-stop back into play if degradation in practice is high. Watch the long runs on Friday: if the medium lasts beyond half distance, expect a one-stop.",
     "one_vs_two_kind": "analysis",
     "undercut": "Undercut: pit first and use the new tyres' extra grip to gain the time you lose in the pit lane before your rival stops. It works best when new tyres are much faster than worn ones.",
@@ -385,5 +392,6 @@
       "label": "2026 active aero and Overtake Mode explained (ESPN; Motor Sport)",
       "url": "https://www.motorsportmagazine.com/articles/single-seaters/f1/explained-the-new-mode-names-for-active-aero-and-energy-boost-for-f1-2026/"
     }
-  }
+  },
+  "race_laps": 56
 }

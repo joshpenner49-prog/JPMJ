@@ -34,7 +34,8 @@ FONTS = ("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1"
 SITE_NAME = "JP Motorsport Journal"
 REQUIRED_FOR_FINAL = [
     ("publication_date",), ("briefing", "grid"), ("briefing", "sign_off"),
-    ("circuit", "overtaking_aids"), ("strategy", "pirelli_2026"),
+    ("circuit", "overtaking_aids"), ("circuit", "straight_mode_zones"), ("circuit", "overtake_detection"),
+    ("strategy", "tyre_plan"),
 ]
 KIND_LABEL = {"verified": "Verified", "measured": "Measured", "estimate": "Estimate", "analysis": "Analysis"}
 
@@ -121,6 +122,25 @@ def track_svg(c, ed, dark=False, labels=True):
                     best, best_score = (dx, dy), score
             return best
 
+        # FIA Straight Mode zones (blue core inside the track) and the
+        # Overtake detection point(s); positions are metres from the start
+        # line along the lap, from the FIA event notes, scaled onto the outline
+        ci = ed["circuit"]
+        lap_m = ci["lap_m"]
+        L = c["length"]
+        for z in ci.get("straight_mode_zones") or []:
+            a, b = z["from_m"] / lap_m * L, z["to_m"] / lap_m * L
+            for x0, x1 in ([(a, b)] if b > a else [(a, L), (0, b)]):
+                out.append(f'<path d="{c["d"]}" fill="none" stroke="#1F5FD6" stroke-width="2.6" stroke-linecap="butt" stroke-dasharray="0 {x0:.1f} {x1 - x0:.1f} {L:.1f}"/>')
+        for i, dp in enumerate(ci.get("overtake_detection") or []):
+            (px, py), h = point_at(pts, dp["at_m"] / lap_m * 100)
+            nx, ny = -math.sin(h) * 7, math.cos(h) * 7
+            out.append(f'<line x1="{px - nx:.1f}" y1="{py - ny:.1f}" x2="{px + nx:.1f}" y2="{py + ny:.1f}" stroke="#1F5FD6" stroke-width="2"/>')
+            dx, dy = clear_spot(px, py, 14, 14, (nx * 2.2, ny * 2.2))
+            placed.append((px + dx, py + dy, 14, 14))
+            out.append(f'<line x1="{px:.1f}" y1="{py:.1f}" x2="{px + dx:.1f}" y2="{py + dy:.1f}" stroke="#1F5FD6" stroke-width=".7"/>')
+            out.append(f'<rect x="{px + dx - 6.5:.1f}" y="{py + dy - 6.5:.1f}" width="13" height="13" fill="#1F5FD6"/>')
+            out.append(f'<text x="{px + dx:.1f}" y="{py + dy + 2.8:.1f}" font-family="IBM Plex Mono, monospace" font-size="7.6" font-weight="600" fill="#FFFFFF" text-anchor="middle">D</text>')
         for m in ed["circuit"]["map_markers"]:
             (px, py), _ = point_at(pts, m["at"])
             dx, dy = clear_spot(px, py, 15, 15, (m["dx"], m["dy"]))
@@ -195,6 +215,12 @@ def page_circuit(ed, c):
     aids = (f'<div class="aids"><b>Overtaking aids</b>{kind("verified")}<br>{e(ci["overtaking_aids"])}</div>' if ci.get("overtaking_aids")
             else f'<div class="aids"><b>No DRS in 2026.</b> {e(ci["overtaking_aids_note"])}</div>')
     gloss = "".join(f"<div><b>{e(t)}</b>{e(d)}</div>" for t, d in ed["briefing"]["glossary"])
+    aero = ""
+    if ci.get("straight_mode_zones"):
+        aero = ('<span><i class="key-zone"></i>Straight Mode zone</span>'
+                '<span><b class="key-det">D</b> Overtake detection</span>')
+    else:
+        aero = '<span class="key-pending">Straight Mode zones and Overtake detection: added in the final edition</span>'
     sec_key = " ".join(f'<span><b>{"ABCDEFGH"[i]}</b> {e(x["label"])}</span>' for i, x in enumerate(ci["map_sections"]))
     keys = "".join(f'<div><b>{e(k["name"])}{kind(k["kind"])}</b>{e(k["text"])}</div>' for k in ci["key_sections"])
     return f'''<section class="page">
@@ -203,7 +229,7 @@ def page_circuit(ed, c):
   <h2 class="page-title">{e(ed["circuit_name"])}</h2>
   <p class="page-dek" style="margin-bottom:3.5mm">Twenty corners, anticlockwise, on a lap that climbs to Turn 1 and finishes with a stadium section and a long multi-apex right-hander. Here is where the race is won and lost.</p>
   <div class="circ-grid">
-    <div class="map">{track_svg(c, ed)}<div class="map-note"><span class="map-key">{sec_key}</span>Red: start/finish straight · Arrow: direction of travel · {e(ci["map_note"])} Outline: f1-circuits (MIT).</div></div>
+    <div class="map">{track_svg(c, ed)}<div class="map-note"><span class="map-key">{sec_key}{aero}</span>Red: start/finish straight · Arrow: direction of travel · {e(ci["map_note"])} Outline: f1-circuits (MIT).</div></div>
     <div><table class="facts"><tbody>{facts}</tbody></table>{aids}</div>
   </div>
   <div class="key">{keys}</div>
@@ -215,6 +241,37 @@ def page_circuit(ed, c):
 </section>'''
 
 
+COMPOUND_NAME = {"S": "Soft", "M": "Medium", "H": "Hard"}
+
+
+def tyre_plan(s, laps):
+    """The race-weekend tyre strategy block: predicted strategies on a lap
+    timeline with their pit windows, and the pace gap between compounds.
+    Filled after qualifying from the teams'/Pirelli's published prediction;
+    until then the proof shows what is coming."""
+    tp = s.get("tyre_plan")
+    if not tp:
+        return f'<div class="tyre-plan"><h4>Tyre strategy</h4>{pending(s["tyre_plan_note"])}</div>'
+    comp = s["compounds"]  # e.g. {"S": "C4", "M": "C3", "H": "C2"}
+    pct = lambda lap: (lap - 1) / laps * 100
+    rows = []
+    for st in tp["strategies"]:
+        win = "".join(f'<span class="tp-win" style="left:{pct(a):.2f}%;width:{(b - a + 1) / laps * 100:.2f}%"></span>' for a, b in st.get("windows", []))
+        stints = "".join(
+            f'<span class="tp-stint tp-{c}" style="left:{pct(a):.2f}%;width:{(b - a + 1) / laps * 100:.2f}%">{c}</span>'
+            for c, a, b in st["stints"])
+        wtxt = ", ".join(f"{a}–{b}" for a, b in st.get("windows", []))
+        rows.append(f'<div class="tp-row"><span class="tp-lab"><b>{e(st["label"])}</b>{e(st.get("tag", ""))}</span>'
+                    f'<span class="tp-track">{win}{stints}</span><span class="tp-pit">Stop{"s" if len(st.get("windows", [])) > 1 else ""}: laps {wtxt}</span></div>')
+    ticks = "".join(f'<span style="left:{pct(t):.2f}%">{t}</span>' for t in [1, 10, 20, 30, 40, 50, laps])
+    deltas = "".join(f'<div><span class="tp-d-lab">{e(d["label"])}</span><span class="tp-d-val">{e(d["value"])}</span></div>' for d in tp.get("deltas", []))
+    legend = "".join(f'<span><i class="tp-{c}"></i>{COMPOUND_NAME[c]} ({e(comp[c])})</span>' for c in ("S", "M", "H"))
+    return f'''<div class="tyre-plan"><h4>Tyre strategy{kind(tp.get("kind", "verified"))}</h4>
+    <p class="tp-sum">{e(tp["summary"])}</p>
+    <div class="tp-chart">{"".join(rows)}<div class="tp-row tp-axis"><span class="tp-lab">Lap</span><span class="tp-track tp-ticks">{ticks}</span><span class="tp-pit"></span></div></div>
+    <div class="tp-foot"><div class="tp-deltas"><span class="tp-d-head">Pace gap per lap</span>{deltas}</div><div class="tp-legend">{legend}<span><i class="tp-winkey"></i>Pit window</span><span class="tp-src">{e(tp["source_line"])}</span></div></div></div>'''
+
+
 def page_strategy(ed):
     s = ed["strategy"]
     rows = "".join(
@@ -224,18 +281,23 @@ def page_strategy(ed):
 
     notes = "".join(f"<li>{e(n)}</li>" for n in s["pit_loss_notes"])
     hist = "".join(f'<tr><td class="num">{h["year"]}</td><td><b>{e(h["pattern"])}</b></td><td>{e(h["detail"])}{kind(h["kind"])}</td></tr>' for h in s["history"])
-    pirelli = (f'<p>{e(s["pirelli_2026"])}{kind("verified")}</p>' if s.get("pirelli_2026") else pending(s["pirelli_2026_note"]))
+    plan = tyre_plan(s, ed["race_laps"])
+    # the pre-weekend one-or-two-stop reading gives way to the real plan
+    # likewise the historical pit window: the plan's windows replace it
+    history_window = "" if s.get("tyre_plan") else f'<h4 style="margin-top:2.5mm">Pit window</h4><p>{e(s["pit_window"])}{kind(s["pit_window_kind"])}</p>'
+    preview = "" if s.get("tyre_plan") else f'<p>{e(s["one_vs_two"])}{kind(s["one_vs_two_kind"])}</p>'
     watch = "".join(f"<li>{e(w)}</li>" for w in s["what_to_watch"])
     return f'''<section class="page">
   {run_head(ed, "The Strategy Desk")}
   <div class="kicker">03 · The Strategy Desk</div>
   <h2 class="page-title">What a pit stop really costs</h2>
-  <p class="page-dek">Time in the pit lane is not the same as time lost. What matters is the race time a stop costs compared with staying out, and that changes when the race is neutralised.</p>
+  <p class="page-dek" style="margin-bottom:3.5mm">Time in the pit lane is not the same as time lost. What matters is the race time a stop costs compared with staying out, and that changes when the race is neutralised.</p>
   <table class="loss-table"><thead><tr><th>Conditions</th><th>Time in pit lane</th><th>Net race-time loss</th><th>Saving vs green</th></tr></thead><tbody>{rows}</tbody></table>
   <ul class="notes">{notes}</ul>
+  {plan}
   <div class="cols2">
-    <div class="panel"><h4>One stop or two?</h4><table class="hist"><tbody>{hist}</tbody></table><p class="muted" style="margin-top:1.5mm;font-size:7.4pt">{e(s["history_note"])}</p><p>{e(s["tyres"])}{kind(s["tyres_kind"])}</p>{pirelli}<p>{e(s["one_vs_two"])}{kind(s["one_vs_two_kind"])}</p></div>
-    <div class="panel"><h4>Undercut and overcut</h4><p>{e(s["undercut"])}</p><p>{e(s["overcut"])}</p><h4 style="margin-top:2.5mm">Pit window</h4><p>{e(s["pit_window"])}{kind(s["pit_window_kind"])}</p><h4 style="margin-top:2.5mm">If the VSC or Safety Car comes out</h4><p>{e(s["neutralisation"])}{kind(s["neutralisation_kind"])}</p></div>
+    <div class="panel"><h4>One stop or two?</h4><table class="hist"><tbody>{hist}</tbody></table><p class="muted" style="margin-top:1.5mm;font-size:7.4pt">{e(s["history_note"])}</p><p>{e(s["tyres"])}{kind(s["tyres_kind"])}</p>{preview}</div>
+    <div class="panel"><h4>Undercut and overcut</h4><p>{e(s["undercut"])}</p><p>{e(s["overcut"])}</p>{history_window}<h4 style="margin-top:2.5mm">If the VSC or Safety Car comes out</h4><p>{e(s["neutralisation"])}{kind(s["neutralisation_kind"])}</p></div>
   </div>
   <div class="watch"><h4>What to Watch</h4><ol>{watch}</ol></div>
   {run_foot(ed, 3, "Pit times: f1db · Net loss: Pirelli · Verified " + e(ed["last_verified"]))}
