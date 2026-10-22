@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-race-week="singapore">
+<html lang="en" data-race-week="austin">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,44 +15,46 @@
 <meta name="twitter:description" content="Every 2026 Formula 1 Grand Prix, results and recaps in one place.">
 <meta name="twitter:image" content="og-image.png">
 
+<link rel="icon" href="img/insignia.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Titillium+Web:wght@400;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- fonts load without blocking first paint; text shows in a size-matched fallback until they arrive -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"></noscript>
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="race-week.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<div class="top-strip">
-  <div class="wrap">
-    <span><span class="dot"></span>SEASON 2026 — 16 OF 23 ROUNDS COMPLETE</span>
-    <span>NEXT: SINGAPORE GP · OCT 9–11</span>
-  </div>
-</div>
-
-<header class="site-header">
-  <div class="wrap nav-row">
-    <a href="index.html" class="logo"><span class="mark">JP</span> MOTORSPORT JOURNAL</a>
-    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-    <nav class="main-nav">
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <div class="masthead-meta">
+      <span>EST. 2026</span>
+      <span>SEASON 2026 · 17 OF 23 ROUNDS COMPLETE · NEXT: UNITED STATES GP · OCT 23–25</span>
+    </div>
+    <a href="index.html" class="masthead-brand">
+      <span class="masthead-insignia"><span data-insignia data-size="64" data-theme="light" data-decorative><img src="img/insignia.svg" alt="" width="64" height="64"></span></span>
+      <span class="masthead-wordmark">JP Motorsport Journal</span>
+    </a>
+    <nav class="masthead-nav" aria-label="Primary">
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="archive.html" class="active">Race Archive</a></li>
+        <li><a href="archive.html" class="active" aria-current="page">Archive</a></li>
         <li><a href="standings.html">Standings</a></li>
         <li><a href="drivers.html">Drivers</a></li>
         <li><a href="verdict.html">The Verdict</a></li>
         <li><a href="lightsout.html">Lights Out</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="raceday.html">JP Race Day</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
-<main>
+<main id="main" tabindex="-1">
   <section class="hero wrap" style="grid-template-columns: 1fr; padding-bottom: 24px;">
     <div>
       <div class="hero-eyebrow">2026 season</div>
-      <div class="rw-tag"><span class="rw-dots"><span></span><span></span></span>Singapore Race Week</div>
+      <div class="rw-tag"><span class="rw-dots"><span></span><span></span></span>United States GP Race Week</div>
       <h1>Race Archive</h1>
       <p class="lede">All 23 rounds of the 2026 season. Click any completed race to open the podium and recap.</p>
     </div>
@@ -70,7 +72,7 @@
 
     <div class="race-list">
 
-      <div class="race-row" data-status="complete">
+      <div class="race-row" id="round-01" data-status="complete">
         <div class="race-row-head">
           <span class="round">01</span>
           <span class="gp">Australian GP<span class="circuit">Melbourne · Mar 6–8</span></span>
@@ -89,7 +91,7 @@
         </div>
       </div>
 
-      <div class="race-row" data-status="complete">
+      <div class="race-row" id="round-02" data-status="complete">
         <div class="race-row-head">
           <span class="round">02</span>
           <span class="gp">Chinese GP<span class="circuit">Shanghai · Mar 13–15</span></span>
@@ -108,7 +110,7 @@
         </div>
       </div>
 
-      <div class="race-row" data-status="complete">
+      <div class="race-row" id="round-03" data-status="complete">
         <div class="race-row-head">
           <span class="round">03</span>
           <span class="gp">Japanese GP<span class="circuit">Suzuka · Mar 27–29</span></span>
@@ -122,12 +124,12 @@
           <div class="podium-mini">
             <div class="p1">🥇 Antonelli — 1:28:03.403</div>
             <div class="p2">🥈 Piastri +13.722</div>
-            <div class="p3">🥉 Leclerc +15.27</div>
+            <div class="p3">🥉 Leclerc +15.270</div>
           </div>
         </div>
       </div>
 
-      <div class="race-row" data-status="complete">
+      <div class="race-row" id="round-04" data-status="complete">
         <div class="race-row-head">
           <span class="round">04</span>
           <span class="gp">Miami GP<span class="circuit">Miami · May 1–3</span></span>
@@ -146,7 +148,7 @@
         </div>
       </div>
 
-      <div class="race-row" data-status="complete">
+      <div class="race-row" id="round-05" data-status="complete">
         <div class="race-row-head">
           <span class="round">05</span>
           <span class="gp">Canadian GP<span class="circuit">Montreal · May 22–24</span></span>
@@ -165,7 +167,7 @@
         </div>
       </div>
 
-      <div class="race-row" data-status="complete">
+      <div class="race-row" id="round-06" data-status="complete">
         <div class="race-row-head">
           <span class="round">06</span>
           <span class="gp">Monaco GP<span class="circuit">Monte Carlo · Jun 5–7</span></span>
@@ -179,12 +181,12 @@
           <div class="podium-mini">
             <div class="p1">🥇 Antonelli — 2:23:31.243</div>
             <div class="p2">🥈 Hamilton +6.271</div>
-            <div class="p3">🥉 Gasly +20.369</div>
+            <div class="p3">🥉 Hadjar +23.394</div>
           </div>
         </div>
       </div>
 
-      <div class="race-row" data-status="complete">
+      <div class="race-row" id="round-07" data-status="complete">
         <div class="race-row-head">
           <span class="round">07</span>
           <span class="gp">Spanish GP<span class="circuit">Barcelona-Catalunya · Jun 12–14</span></span>
@@ -203,7 +205,7 @@
         </div>
       </div>
 
-      <div class="race-row" data-status="complete">
+      <div class="race-row" id="round-08" data-status="complete">
         <div class="race-row-head">
           <span class="round">08</span>
           <span class="gp">Austrian GP<span class="circuit">Spielberg · Jun 26–28</span></span>
@@ -222,7 +224,7 @@
         </div>
       </div>
 
-      <div class="race-row" data-status="complete">
+      <div class="race-row" id="round-09" data-status="complete">
         <div class="race-row-head">
           <span class="round">09</span>
           <span class="gp">British GP<span class="circuit">Silverstone · Jul 3–5</span></span>
@@ -241,7 +243,7 @@
         </div>
       </div>
 
-      <div class="race-row" data-status="complete">
+      <div class="race-row" id="round-10" data-status="complete">
         <div class="race-row-head">
           <span class="round">10</span>
           <span class="gp">Belgian GP<span class="circuit">Spa-Francorchamps · Jul 17–19</span></span>
@@ -260,7 +262,7 @@
         </div>
       </div>
 
-      <div class="race-row" data-status="complete">
+      <div class="race-row" id="round-11" data-status="complete">
         <div class="race-row-head">
           <span class="round">11</span>
           <span class="gp">Hungarian GP<span class="circuit">Hungaroring · Jul 24–26</span></span>
@@ -270,16 +272,16 @@
         </div>
         <div class="race-detail">
           <p>Norris took pole outright before grid penalties for Hamilton and Antonelli reshuffled the front rows, and converted it into a lights-to-flag-adjacent win — his first of 2026 and his second straight at the Hungaroring. Piastri looked set for a McLaren one-two before contact with a backmarker and a gearbox failure ended his day.</p>
-          <p>Antonelli, starting seventh after his own penalty, fought back to third to protect his championship lead, while Hamilton's miserable run of penalties continued — a pit lane speeding infraction by just 0.1 km/h dropped him behind teammate Leclerc. Full write-up on the <a href="index.html" style="color: var(--blue);">home page</a>.</p>
+          <p>Antonelli, starting seventh after his own penalty, fought back to third to protect his championship lead, while Hamilton's miserable run of penalties continued — a pit lane speeding infraction by just 0.1 km/h dropped him behind teammate Leclerc. Full write-up on the <a href="index.html">home page</a>.</p>
           <div class="podium-mini">
             <div class="p1">🥇 Norris — 1:39:56.180</div>
-            <div class="p2">🥈 Verstappen +15.08</div>
-            <div class="p3">🥉 Antonelli +18.72</div>
+            <div class="p2">🥈 Verstappen +15.080</div>
+            <div class="p3">🥉 Antonelli +18.728</div>
           </div>
         </div>
       </div>
 
-      <div class="race-row" data-status="complete">
+      <div class="race-row" id="round-12" data-status="complete">
         <div class="race-row-head">
           <span class="round">12</span>
           <span class="gp">Dutch GP<span class="circuit">Zandvoort · Aug 21–23</span></span>
@@ -298,7 +300,7 @@
         </div>
       </div>
 
-      <div class="race-row" data-status="complete">
+      <div class="race-row" id="round-13" data-status="complete">
         <div class="race-row-head">
           <span class="round">13</span>
           <span class="gp">Italian GP<span class="circuit">Monza · Sep 4–6</span></span>
@@ -308,16 +310,16 @@
         </div>
         <div class="race-detail">
           <p>Kimi Antonelli produced one of the most remarkable drives in modern F1, recovering from 19th on the grid to win his home Italian Grand Prix — the first Italian to do so since Ludovico Scarfiotti in 1966. The race was red-flagged early after Charles Leclerc crashed hard at the Parabolica; at the standing restart, Russell led from shock pole-sitter Pierre Gasly. Antonelli sliced through the field and passed teammate Russell for the lead on lap 50 of 53, holding on to win by 3.8 seconds.</p>
-          <p>Max Verstappen completed the podium in third, running the same alternative strategy as Antonelli through a Virtual Safety Car for Lance Stroll's retirement. McLaren's Norris and Piastri were fourth and fifth, while Ferrari's home weekend fell apart — Hamilton recovered only to sixth, and Leclerc was out before lap 2. Liam Lawson, again deputising for the injured Isack Hadjar at Red Bull, finished 14th; Yuki Tsunoda scored a point in tenth covering Lawson's usual Racing Bulls seat. Full write-up on the <a href="index.html" style="color: var(--blue);">home page</a>.</p>
+          <p>Max Verstappen completed the podium in third, running the same alternative strategy as Antonelli through a Virtual Safety Car for Lance Stroll's retirement. McLaren's Norris and Piastri were fourth and fifth, while Ferrari's home weekend fell apart — Hamilton recovered only to sixth, and Leclerc was out before lap 2. Liam Lawson, again deputising for the injured Isack Hadjar at Red Bull, finished 14th; Yuki Tsunoda scored a point in tenth covering Lawson's usual Racing Bulls seat. Full write-up on the <a href="index.html">home page</a>.</p>
           <div class="podium-mini">
             <div class="p1">🥇 Antonelli — Winner (red flag, standing restart)</div>
-            <div class="p2">🥈 Russell +3.8</div>
-            <div class="p3">🥉 Verstappen +14.7</div>
+            <div class="p2">🥈 Russell +3.857</div>
+            <div class="p3">🥉 Verstappen +14.718</div>
           </div>
         </div>
       </div>
 
-      <div class="race-row" data-status="complete">
+      <div class="race-row" id="round-14" data-status="complete">
         <div class="race-row-head">
           <span class="round">14</span>
           <span class="gp">Spanish GP<span class="circuit">Madrid · Sep 11–13</span></span>
@@ -327,16 +329,16 @@
         </div>
         <div class="race-detail">
           <p>Formula 1's first-ever race at MADRING went to Kimi Antonelli, but not through pace — Lando Norris led comfortably from pole until a Virtual Safety Car for Lance Stroll's stopped Aston Martin caught him just after he'd passed the pit entry. While the field pitted for free, Norris had to complete a lap at reduced speed before pitting once the track went green, handing Antonelli the net lead and, ultimately, the win.</p>
-          <p>Max Verstappen took second after a chaotic first lap — cutting Turn 1 to avoid Lewis Hamilton, being ordered by Red Bull to give the place back, then getting it straight back anyway when Hamilton retired with brake failure. Norris recovered to third. Charles Leclerc ran long on hards for fourth, ahead of George Russell in fifth and Liam Lawson — again deputising for the injured Isack Hadjar — in sixth. Full write-up on the <a href="index.html" style="color: var(--blue);">home page</a>.</p>
+          <p>Max Verstappen took second after a chaotic first lap — cutting Turn 1 to avoid Lewis Hamilton, being ordered by Red Bull to give the place back, then getting it straight back anyway when Hamilton retired with brake failure. Norris recovered to third. Charles Leclerc ran long on hards for fourth, ahead of George Russell in fifth and Liam Lawson — again deputising for the injured Isack Hadjar — in sixth. Full write-up on the <a href="index.html">home page</a>.</p>
           <div class="podium-mini">
             <div class="p1">🥇 Antonelli — Winner (VSC-decided)</div>
-            <div class="p2">🥈 Verstappen +4.3</div>
-            <div class="p3">🥉 Norris +5.0</div>
+            <div class="p2">🥈 Verstappen +4.351</div>
+            <div class="p3">🥉 Norris +5.089</div>
           </div>
         </div>
       </div>
 
-      <div class="race-row" data-status="complete">
+      <div class="race-row" id="round-15" data-status="complete">
         <div class="race-row-head">
           <span class="round">15</span>
           <span class="gp">Azerbaijan GP<span class="circuit">Baku · Sep 24–26</span></span>
@@ -346,16 +348,17 @@
         </div>
         <div class="race-detail">
           <p>George Russell converted pole into his third win of the season, holding off a late Max Verstappen charge by just 0.196 seconds through two Safety Car restarts. The bigger story was Isack Hadjar, back from a fractured wrist after missing three rounds — he qualified ahead of teammate Verstappen and drove a disciplined race to third, closing the Lawson/Tsunoda seat-cover saga that's run since Zandvoort.</p>
-          <p>Charles Leclerc took fourth ahead of a recovering Kimi Antonelli, who fought back from 16th after hitting the wall early. The race was littered with incident — Alex Albon triggered the first Safety Car, and a Franco Colapinto lock-up collected his own teammate Pierre Gasly and title contender Lando Norris. Full write-up on the <a href="index.html" style="color: var(--blue);">home page</a>.</p>
+          <p>Charles Leclerc took fourth ahead of a recovering Kimi Antonelli, who fought back from 16th after hitting the wall early. The race was littered with incident — Alex Albon triggered the first Safety Car, and a Franco Colapinto lock-up collected his own teammate Pierre Gasly and title contender Lando Norris. Full write-up on the <a href="index.html">home page</a>.</p>
           <div class="podium-mini">
             <div class="p1">🥇 Russell — Winner</div>
             <div class="p2">🥈 Verstappen +0.196</div>
-            <div class="p3">🥉 Hadjar +10.7</div>
+            <div class="p3">🥉 Hadjar +10.704</div>
           </div>
+          <p class="row-links"><a class="link" href="verdict.html#verdict-15">Read JP's verdict (7.8)</a></p>
         </div>
       </div>
 
-      <div class="race-row" data-status="complete">
+      <div class="race-row" id="round-16" data-status="complete">
         <div class="race-row-head">
           <span class="round">16</span>
           <span class="gp">Bahrain GP<span class="circuit">Sepang, Malaysia · Oct 2–4</span></span>
@@ -365,26 +368,37 @@
         </div>
         <div class="race-detail">
           <p>Max Verstappen converted pole into his first win of 2026 in a race that started an hour and 40 minutes late after torrential rain, then had to be restarted when cars hit engine-software problems. The field split between slicks and intermediates, and the slick starters, including both Ferraris and Lando Norris, lost huge amounts of time early on.</p>
-          <p>Kimi Antonelli finished second and Lewis Hamilton recovered from near the back to third, passing Isack Hadjar with three laps left after a late Safety Car bunched the field. George Russell's engine failed under that Safety Car while he was running third, pushing Antonelli's championship lead to 84 points. Fernando Alonso's eighth was Aston Martin's best result of the season. Full write-up on the <a href="index.html" style="color: var(--blue);">home page</a>.</p>
+          <p>Kimi Antonelli finished second and Lewis Hamilton recovered from near the back to third, passing Isack Hadjar with three laps left after a late Safety Car bunched the field. George Russell's engine failed under that Safety Car while he was running third, pushing Antonelli's championship lead to 84 points. Fernando Alonso's eighth was Aston Martin's best result of the season. Full write-up on the <a href="index.html">home page</a>.</p>
           <div class="podium-mini">
             <div class="p1">🥇 Verstappen — Winner</div>
             <div class="p2">🥈 Antonelli +2.307</div>
             <div class="p3">🥉 Hamilton +4.919</div>
           </div>
+          <p class="row-links"><a class="link" href="verdict.html#verdict-16">Read JP's verdict (8.8)</a></p>
         </div>
       </div>
 
-      <div class="race-row upcoming" data-status="upcoming">
+      <div class="race-row" id="round-17" data-status="complete">
         <div class="race-row-head">
           <span class="round">17</span>
           <span class="gp">Singapore GP<span class="circuit">Marina Bay · Oct 9–11</span></span>
-          <span class="winner">—</span>
+          <span class="winner"><span class="crown">●</span>M. Verstappen</span>
           <span class="date">Oct 11, 2026</span>
-          <span class="chevron"></span>
+          <span class="chevron">+</span>
+        </div>
+        <div class="race-detail">
+          <p>Max Verstappen took a sprint-and-race double at Marina Bay. In Saturday's rain-delayed Sprint, George Russell crashed out of the lead at the end of the first lap and Verstappen won from Lewis Hamilton and Charles Leclerc, while Lando Norris and Oscar Piastri collided on the final lap. On Sunday he led every lap from pole for his first Singapore Grand Prix win, despite radio problems that left Red Bull relying on a pit board.</p>
+          <p>Leclerc finished second and Kimi Antonelli third, with Norris and Piastri fourth and fifth. Hamilton's early switch to softs on lap 18 dropped him from a podium place to sixth, and Russell recovered from 19th on the grid, after an engine penalty, to ninth, leaving Antonelli 102 points clear with six Grands Prix left. Full write-up on the <a href="index.html#recap">home page</a>.</p>
+          <div class="podium-mini">
+            <div class="p1">🥇 Verstappen — Winner</div>
+            <div class="p2">🥈 Leclerc +7.335</div>
+            <div class="p3">🥉 Antonelli +24.573</div>
+          </div>
+          <p class="row-links"><a class="link" href="verdict.html#verdict-17">Read JP's verdict (8.1)</a></p>
         </div>
       </div>
 
-      <div class="race-row upcoming" data-status="upcoming">
+      <div class="race-row upcoming" id="round-18" data-status="upcoming">
         <div class="race-row-head">
           <span class="round">18</span>
           <span class="gp">United States GP<span class="circuit">Austin · Oct 23–25</span></span>
@@ -394,7 +408,7 @@
         </div>
       </div>
 
-      <div class="race-row upcoming" data-status="upcoming">
+      <div class="race-row upcoming" id="round-19" data-status="upcoming">
         <div class="race-row-head">
           <span class="round">19</span>
           <span class="gp">Mexico City GP<span class="circuit">Mexico City · Oct 30–Nov 1</span></span>
@@ -404,7 +418,7 @@
         </div>
       </div>
 
-      <div class="race-row upcoming" data-status="upcoming">
+      <div class="race-row upcoming" id="round-20" data-status="upcoming">
         <div class="race-row-head">
           <span class="round">20</span>
           <span class="gp">São Paulo GP<span class="circuit">Interlagos · Nov 6–8</span></span>
@@ -414,7 +428,7 @@
         </div>
       </div>
 
-      <div class="race-row upcoming" data-status="upcoming">
+      <div class="race-row upcoming" id="round-21" data-status="upcoming">
         <div class="race-row-head">
           <span class="round">21</span>
           <span class="gp">Las Vegas GP<span class="circuit">Las Vegas · Nov 19–21</span></span>
@@ -424,7 +438,7 @@
         </div>
       </div>
 
-      <div class="race-row upcoming" data-status="upcoming">
+      <div class="race-row upcoming" id="round-22" data-status="upcoming">
         <div class="race-row-head">
           <span class="round">22</span>
           <span class="gp">Qatar GP<span class="circuit">Lusail · Nov 27–29</span></span>
@@ -434,7 +448,7 @@
         </div>
       </div>
 
-      <div class="race-row upcoming" data-status="upcoming">
+      <div class="race-row upcoming" id="round-23" data-status="upcoming">
         <div class="race-row-head">
           <span class="round">23</span>
           <span class="gp">Abu Dhabi GP<span class="circuit">Yas Marina · Dec 4–6</span></span>
@@ -449,18 +463,33 @@
 </main>
 
 <footer class="site-footer">
-  <div class="wrap">
-    <span><svg width="14" height="14" viewBox="0 0 16 16" style="vertical-align: -2px; margin-right: 5px;"><rect width="16" height="16" fill="none"/><g fill="var(--ink-dim)"><rect x="0" y="0" width="4" height="4"/><rect x="8" y="0" width="4" height="4"/><rect x="4" y="4" width="4" height="4"/><rect x="12" y="4" width="4" height="4"/><rect x="0" y="8" width="4" height="4"/><rect x="8" y="8" width="4" height="4"/><rect x="4" y="12" width="4" height="4"/><rect x="12" y="12" width="4" height="4"/></g></svg>© 2026 JP Motorsport Journal</span>
+  <div class="wrap footer-main">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-wordmark">JP Motorsport Journal</a>
+      <p class="footer-tagline">Breaking news, deep-dive race recaps, and the strategy calls that decide championships — from the paddock to your feed. Written by one person who watches every session.</p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="#" data-cookie-settings>Cookie choices</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="wrap footer-meta">
+    <span>EST. 2026 · © 2026 JP MOTORSPORT JOURNAL</span>
     <a href="mailto:joshpenner49@gmail.com">joshpenner49@gmail.com</a>
-    <span>Last updated Oct 4, 2026</span>
+    <span>LAST UPDATED OCT 13, 2026</span>
   </div>
   <div class="wrap footer-legal">
-    <span>Some links on this site may be affiliate links. If you buy through them, we may earn a commission at no extra cost to you.</span>
-    <span><a href="privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="#" data-cookie-settings>Cookie choices</a></span>
+    <p>Some links on this site may be affiliate links. If you buy through them, we may earn a commission at no extra cost to you.</p>
+    <p>Circuit outlines from <a href="https://github.com/bacinger/f1-circuits">f1-circuits</a> by Tomislav Bacinger (<a href="licenses/f1-circuits-LICENSE">MIT</a>). Results and driver statistics from <a href="https://github.com/f1db/f1db">f1db</a> (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</p>
   </div>
 </footer>
 
 <script src="script.js"></script>
+<script src="js/precision-mark.js" defer></script>
 <script src="analytics.js" defer></script>
 </body>
 </html>

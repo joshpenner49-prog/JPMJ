@@ -1,0 +1,20 @@
+{
+  "_about": "JP Race Day Programme editions, newest first. raceday.html is built from this by tools/build_raceday_page.py. status: 'upcoming' (shown, no download yet) or 'published' (PDF is live). site_url: the website's address, printed on page 4 of each programme when set.",
+  "site_url": null,
+  "editions": [
+    {
+      "edition": 1,
+      "season": 2026,
+      "round": 18,
+      "grand_prix": "United States Grand Prix",
+      "short_name": "United States GP",
+      "circuit": "Circuit of The Americas, Austin",
+      "race_date": "Sunday 25 October 2026",
+      "folder": "raceday/2026-united-states",
+      "filename": "JP-Race-Day-United-States-GP-2026.pdf",
+      "status": "upcoming",
+      "publication_date": null,
+      "publishes": "after qualifying on Saturday 24 October"
+    }
+  ]
+}
