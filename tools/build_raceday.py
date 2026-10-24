@@ -218,7 +218,8 @@ def page_circuit(ed, c):
     aero = ""
     if ci.get("straight_mode_zones"):
         aero = ('<span><i class="key-zone"></i>Straight Mode zone</span>'
-                '<span><b class="key-det">D</b> Overtake detection</span>')
+                '<span><b class="key-det">D</b> Overtake detection</span>'
+                + (f'<span class="key-pending">{e(ci["aero_note"])}</span>' if ci.get("aero_note") else ""))
     else:
         aero = '<span class="key-pending">Straight Mode zones and Overtake detection: added in the final edition</span>'
     sec_key = " ".join(f'<span><b>{"ABCDEFGH"[i]}</b> {e(x["label"])}</span>' for i, x in enumerate(ci["map_sections"]))
@@ -253,23 +254,37 @@ def tyre_plan(s, laps):
     if not tp:
         return f'<div class="tyre-plan"><h4>Tyre strategy</h4>{pending(s["tyre_plan_note"])}</div>'
     comp = s["compounds"]  # e.g. {"S": "C4", "M": "C3", "H": "C2"}
-    pct = lambda lap: (lap - 1) / laps * 100
-    rows = []
-    for st in tp["strategies"]:
-        win = "".join(f'<span class="tp-win" style="left:{pct(a):.2f}%;width:{(b - a + 1) / laps * 100:.2f}%"></span>' for a, b in st.get("windows", []))
-        stints = "".join(
-            f'<span class="tp-stint tp-{c}" style="left:{pct(a):.2f}%;width:{(b - a + 1) / laps * 100:.2f}%">{c}</span>'
-            for c, a, b in st["stints"])
-        wtxt = ", ".join(f"{a}–{b}" for a, b in st.get("windows", []))
-        rows.append(f'<div class="tp-row"><span class="tp-lab"><b>{e(st["label"])}</b>{e(st.get("tag", ""))}</span>'
-                    f'<span class="tp-track">{win}{stints}</span><span class="tp-pit">Stop{"s" if len(st.get("windows", [])) > 1 else ""}: laps {wtxt}</span></div>')
-    ticks = "".join(f'<span style="left:{pct(t):.2f}%">{t}</span>' for t in [1, 10, 20, 30, 40, 50, laps])
-    deltas = "".join(f'<div><span class="tp-d-lab">{e(d["label"])}</span><span class="tp-d-val">{e(d["value"])}</span></div>' for d in tp.get("deltas", []))
     legend = "".join(f'<span><i class="tp-{c}"></i>{COMPOUND_NAME[c]} ({e(comp[c])})</span>' for c in ("S", "M", "H"))
+    deltas = "".join(f'<div><span class="tp-d-lab">{e(d["label"])}</span><span class="tp-d-val">{e(d["value"])}</span></div>' for d in tp.get("deltas") or [])
+    deltas = (f'<div class="tp-deltas"><span class="tp-d-head">Pace gap per lap</span>{deltas}</div>' if deltas
+              else f'<div class="tp-deltas"><span class="tp-d-head">Pace gap per lap</span><span class="tp-d-lab">{e(tp.get("deltas_note", "Not published for this race."))}</span></div>')
+    timed = [st for st in tp["strategies"] if st.get("stints")]
+    if timed:
+        # lap chart: only when stint lengths have actually been published
+        pct = lambda lap: (lap - 1) / laps * 100
+        rows = []
+        for st in timed:
+            win = "".join(f'<span class="tp-win" style="left:{pct(a):.2f}%;width:{(b - a + 1) / laps * 100:.2f}%"></span>' for a, b in st.get("windows", []))
+            stints = "".join(
+                f'<span class="tp-stint tp-{c}" style="left:{pct(a):.2f}%;width:{(b - a + 1) / laps * 100:.2f}%">{c}</span>'
+                for c, a, b in st["stints"])
+            wtxt = ", ".join(f"{a}–{b}" for a, b in st.get("windows", []))
+            rows.append(f'<div class="tp-row"><span class="tp-lab"><b>{e(st["label"])}</b>{e(st.get("tag", ""))}</span>'
+                        f'<span class="tp-track">{win}{stints}</span><span class="tp-pit">Stop{"s" if len(st.get("windows", [])) > 1 else ""}: laps {wtxt}</span></div>')
+        ticks = "".join(f'<span style="left:{pct(t):.2f}%">{t}</span>' for t in [1, 10, 20, 30, 40, 50, laps])
+        chart = f'<div class="tp-chart">{"".join(rows)}<div class="tp-row tp-axis"><span class="tp-lab">Lap</span><span class="tp-track tp-ticks">{ticks}</span><span class="tp-pit"></span></div></div>'
+        legend += '<span><i class="tp-winkey"></i>Pit window</span>'
+    else:
+        # no published stint lengths: show each strategy as its compound order
+        arrow = '<span class="tp-arrow">→</span>'
+        chart = '<div class="tp-seqs">' + "".join(
+            f'<div class="tp-seq"><span class="tp-lab"><b>{e(st["label"])}</b>{e(st.get("tag", ""))}</span>'
+            f'<span class="tp-chips">{arrow.join(f"<span class=\"tp-chip tp-{c}\">{COMPOUND_NAME[c]}</span>" for c in st["sequence"])}</span>'
+            f'<span class="tp-note">{e(st.get("note", ""))}</span></div>' for st in tp["strategies"]) + '</div>'
     return f'''<div class="tyre-plan"><h4>Tyre strategy{kind(tp.get("kind", "verified"))}</h4>
     <p class="tp-sum">{e(tp["summary"])}</p>
-    <div class="tp-chart">{"".join(rows)}<div class="tp-row tp-axis"><span class="tp-lab">Lap</span><span class="tp-track tp-ticks">{ticks}</span><span class="tp-pit"></span></div></div>
-    <div class="tp-foot"><div class="tp-deltas"><span class="tp-d-head">Pace gap per lap</span>{deltas}</div><div class="tp-legend">{legend}<span><i class="tp-winkey"></i>Pit window</span><span class="tp-src">{e(tp["source_line"])}</span></div></div></div>'''
+    {chart}
+    <div class="tp-foot">{deltas}<div class="tp-legend">{legend}<span class="tp-src">{e(tp["source_line"])}</span></div></div></div>'''
 
 
 def page_strategy(ed):

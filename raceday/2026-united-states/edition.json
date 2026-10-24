@@ -15,8 +15,8 @@
   "race_date_iso": "2026-10-25",
   "timezone_label": "CDT (UTC−5), local time in Austin",
   "filename": "JP-Race-Day-United-States-GP-2026.pdf",
-  "publication_date": null,
-  "last_verified": "19 October 2026",
+  "publication_date": "24 October 2026",
+  "last_verified": "24 October 2026",
   "cover": {
     "headline": "The title can be won in Texas",
     "standfirst": "Kimi Antonelli arrives at the Circuit of The Americas 102 points clear with six Grands Prix left. For the first time this season, a single Sunday could settle the championship.",
@@ -88,11 +88,26 @@
         "source": "outline"
       }
     ],
-    "overtaking_aids": null,
+    "overtaking_aids": "Two Straight Mode zones: the back straight between Turns 11 and 12, and the start/finish straight from Turn 20 towards Turn 1. Overtake Mode detection is just after Turn 20: a car within one second of the car ahead there gets extra electrical energy to attack.",
     "overtaking_aids_note": "Active aero Straight Mode works in FIA-designated activation zones, and Overtake Mode gives a car within one second of the car ahead at the detection point extra electrical energy. COTA's zones come in the FIA event notes on race weekend and go into the final edition.",
     "lap_m": 5513,
-    "straight_mode_zones": null,
-    "overtake_detection": null,
+    "straight_mode_zones": [
+      {
+        "name": "Back straight",
+        "from_m": 2400,
+        "to_m": 3330
+      },
+      {
+        "name": "Start/finish straight",
+        "from_m": 5180,
+        "to_m": 190
+      }
+    ],
+    "overtake_detection": [
+      {
+        "at_m": 5120
+      }
+    ],
     "map_markers": [
       {
         "n": "1",
@@ -145,7 +160,7 @@
         "dy": 0
       }
     ],
-    "map_note": "Numbered: corners confirmed from the official outline; full numbering follows a check against the FIA circuit map.",
+    "map_note": "Numbered: corners confirmed from the official outline; full numbering pending a check against the FIA map.",
     "key_sections": [
       {
         "name": "Turn 1",
@@ -171,7 +186,8 @@
       }
     ],
     "time_gain_loss": "Most lap time is won or lost on corner exits that lead onto straights: Turn 11 onto the back straight and the final corner onto the start/finish straight. A poor exit costs time all the way to the next braking zone, and gives the car behind its best chance to attack.",
-    "time_gain_loss_kind": "analysis"
+    "time_gain_loss_kind": "analysis",
+    "aero_note": "Zones at approximate positions, from the FIA's description."
   },
   "strategy": {
     "pit_loss_rows": [
@@ -197,7 +213,7 @@
         "net_loss": "about 8–13 s",
         "saving": "about 7–12 s",
         "net_kind": "estimate",
-        "net_source": "sc"
+        "net_source": "vsc"
       }
     ],
     "pit_loss_notes": [
@@ -233,7 +249,33 @@
       "M": "C3",
       "H": "C2"
     },
-    "tyre_plan": null,
+    "tyre_plan": {
+      "kind": "verified",
+      "summary": "Pirelli expects one stop, soft to medium: two stops were considered early in the weekend, but the latest running points to a single stop. Tyre wear is the main factor, and Texas heat could open the door to other plans.",
+      "strategies": [
+        {
+          "label": "One stop",
+          "tag": "Pirelli's expected strategy",
+          "sequence": [
+            "S",
+            "M"
+          ],
+          "note": "Low degradation on the softer compounds makes one stop the preferred plan."
+        },
+        {
+          "label": "Alternatives",
+          "tag": "If heat raises wear",
+          "sequence": [
+            "M",
+            "H"
+          ],
+          "note": "The hard (C2) suits longer stints if heat raises wear; Pirelli expects only a limited role for it."
+        }
+      ],
+      "deltas": [],
+      "deltas_note": "Not published by Pirelli for this race.",
+      "source_line": "Source: Pirelli (Dario Marrafuschi), US GP previews and Friday practice debrief, 23–24 October 2026."
+    },
     "tyre_plan_note": "the predicted race strategies (one stop or two, and in which compound order), each with its pit window on a lap chart, and the pace gap per lap between soft, medium and hard. These come from the teams' long-run data and Pirelli's published prediction after qualifying.",
     "one_vs_two": "The last two races here were one-stops, but they used a harder tyre at the hard end of the range (C1 in 2025). A softer hard (C2) shortens the safe stint length, which can bring a two-stop back into play if degradation in practice is high. Watch the long runs on Friday: if the medium lasts beyond half distance, expect a one-stop.",
     "one_vs_two_kind": "analysis",
@@ -250,9 +292,123 @@
     ]
   },
   "briefing": {
-    "grid": null,
+    "grid": [
+      {
+        "pos": 1,
+        "driver": "Kimi Antonelli",
+        "team": "Mercedes"
+      },
+      {
+        "pos": 2,
+        "driver": "Max Verstappen",
+        "team": "Red Bull"
+      },
+      {
+        "pos": 3,
+        "driver": "Isack Hadjar",
+        "team": "Red Bull"
+      },
+      {
+        "pos": 4,
+        "driver": "Charles Leclerc",
+        "team": "Ferrari"
+      },
+      {
+        "pos": 5,
+        "driver": "Lewis Hamilton",
+        "team": "Ferrari"
+      },
+      {
+        "pos": 6,
+        "driver": "George Russell",
+        "team": "Mercedes"
+      },
+      {
+        "pos": 7,
+        "driver": "Oscar Piastri",
+        "team": "McLaren"
+      },
+      {
+        "pos": 8,
+        "driver": "Lando Norris",
+        "team": "McLaren"
+      },
+      {
+        "pos": 9,
+        "driver": "Liam Lawson",
+        "team": "Racing Bulls"
+      },
+      {
+        "pos": 10,
+        "driver": "Pierre Gasly",
+        "team": "Alpine"
+      },
+      {
+        "pos": 11,
+        "driver": "Nico Hülkenberg",
+        "team": "Audi"
+      },
+      {
+        "pos": 12,
+        "driver": "Fernando Alonso",
+        "team": "Aston Martin"
+      },
+      {
+        "pos": 13,
+        "driver": "Oliver Bearman",
+        "team": "Haas"
+      },
+      {
+        "pos": 14,
+        "driver": "Arvid Lindblad",
+        "team": "Racing Bulls",
+        "note": "Qualified 9th, +5 places"
+      },
+      {
+        "pos": 15,
+        "driver": "Esteban Ocon",
+        "team": "Haas"
+      },
+      {
+        "pos": 16,
+        "driver": "Lance Stroll",
+        "team": "Aston Martin"
+      },
+      {
+        "pos": 17,
+        "driver": "Carlos Sainz",
+        "team": "Williams"
+      },
+      {
+        "pos": 18,
+        "driver": "Alexander Albon",
+        "team": "Williams"
+      },
+      {
+        "pos": 19,
+        "driver": "Sergio Pérez",
+        "team": "Cadillac"
+      },
+      {
+        "pos": 20,
+        "driver": "Valtteri Bottas",
+        "team": "Cadillac"
+      },
+      {
+        "pos": 21,
+        "driver": "Franco Colapinto",
+        "team": "Alpine",
+        "note": "Qualified 14th, +10 places"
+      },
+      {
+        "pos": 22,
+        "driver": "Gabriel Bortoleto",
+        "team": "Audi",
+        "note": "Qualified 13th, to the back"
+      }
+    ],
     "grid_note": "The official starting grid, including penalties and any driver substitutions, is added in the final edition after qualifying.",
-    "penalties": null,
+    "penalties": "Grid after announced penalties (in red); the FIA confirms it before the race. Pole: Antonelli, 1:34.035.",
     "schedule": [
       {
         "day": "Fri 23 Oct",
@@ -284,18 +440,18 @@
     "battles": [
       {
         "title": "The title",
-        "text": "Antonelli 340 vs Russell 238: a 102-point gap with 150 points left."
+        "text": "Antonelli 340, Russell 238: 102 clear, 150 left."
       },
       {
         "title": "Runner-up",
         "text": "Russell 238, Hamilton 229, Verstappen 221."
       },
       {
-        "title": "Constructors, third place",
+        "title": "Constructors P3",
         "text": "McLaren 339 vs Red Bull 332."
       },
       {
-        "title": "Constructors, fifth place",
+        "title": "Constructors P5",
         "text": "Racing Bulls 100 vs Alpine 68."
       }
     ],
@@ -350,48 +506,60 @@
   },
   "sources": {
     "f1": {
-      "label": "Formula1.com, United States Grand Prix 2026 circuit page",
+      "label": "Circuit facts: Formula1.com",
       "url": "https://www.formula1.com/en/racing/2026/united-states"
     },
     "pirelli_compounds": {
-      "label": "Pirelli, compound selection for Austin, Mexico City and São Paulo (2026)",
+      "label": "Pirelli, 2026 compound selection for Austin",
       "url": "https://press.pirelli.com/the-compound-selection-for-austin-mexico-city-and-so-paulo/"
     },
     "pirelli2024": {
-      "label": "Pirelli, 2024 United States GP preview (total pit stop time about 20.5 s)",
+      "label": "Pirelli, 2024 US GP preview (stop costs about 20.5 s)",
       "url": "https://press.pirelli.com/a-texas-rodeo-with-a-jump-in-compounds/"
     },
     "f1db": {
-      "label": "f1db, pit-stop and race results 2019–2025 (CC BY 4.0)",
+      "label": "f1db, results and pit stops 2019–2025 (CC BY 4.0)",
       "url": "https://github.com/f1db/f1db"
     },
     "outline": {
-      "label": "f1-circuits by Tomislav Bacinger, track outline (MIT)",
+      "label": "f1-circuits, track outline (MIT)",
       "url": "https://github.com/bacinger/f1-circuits"
     },
     "circuit": {
-      "label": "Circuit guides: COTA turn-by-turn (NASCAR.com, Jalopnik) and F1 Fansite circuit page",
+      "label": "Circuit guides: NASCAR.com, Jalopnik, F1 Fansite",
       "url": "https://www.f1-fansite.com/f1%20circuits/circuit-of-the-americas/"
     },
     "vsc": {
-      "label": "Published pit-stop saving analyses (FormulaDream; Race Sundays)",
+      "label": "VSC and SC savings: FormulaDream; Race Sundays",
       "url": "https://www.formuladream.app/blog/f1-pit-stop-cost-measured"
     },
-    "sc": {
-      "label": "Published pit-stop saving analyses (FormulaDream; Race Sundays)",
-      "url": "https://racesundays.com/f1-explained/analysis/why-pitting-under-a-safety-car-beats-normal-stops-in-f1"
-    },
     "schedule": {
-      "label": "Session times: RacingNews365, Austin schedule",
+      "label": "Session times: RacingNews365",
       "url": "https://racingnews365.com/f1/races/united-states-gp"
     },
     "standings": {
-      "label": "Championship standings after Round 17 (data/standings.json, checked against f1db)",
+      "label": "Standings after Round 17 (checked against f1db)",
       "url": "https://github.com/f1db/f1db"
     },
     "regs": {
-      "label": "2026 active aero and Overtake Mode explained (ESPN; Motor Sport)",
+      "label": "2026 aero rules: ESPN; Motor Sport",
       "url": "https://www.motorsportmagazine.com/articles/single-seaters/f1/explained-the-new-mode-names-for-active-aero-and-energy-boost-for-f1-2026/"
+    },
+    "qualifying": {
+      "label": "Qualifying: RaceFans; Pit Debrief; Autosport live",
+      "url": "https://www.racefans.net/2026/10/24/2026-united-states-grand-prix-grid/"
+    },
+    "penalties": {
+      "label": "Grid penalties: Formula1.com",
+      "url": "https://www.formula1.com/en/latest/article/lindblad-colapinto-and-bortoleto-to-take-grid-penalties-for-united-states-grand-prix.4qjn84W4zOmwNXeELFWn0k"
+    },
+    "aero_zones": {
+      "label": "Aero zones: FIA map via PlanetF1",
+      "url": "https://www.planetf1.com/news/fia-united-states-grand-prix-2026-active-aero"
+    },
+    "pirelli2026": {
+      "label": "Pirelli outlook: Autosport",
+      "url": "https://www.autosport.com/f1/news/what-we-learned-from-friday-practice-at-the-2026-united-states-gp/10867637/"
     }
   },
   "race_laps": 56

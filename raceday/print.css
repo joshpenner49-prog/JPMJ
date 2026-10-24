@@ -198,3 +198,11 @@ table.grid td { white-space: nowrap; }
 .signoff { font-size: 10pt; line-height: 1.32; margin-top: 2.5mm; }
 .signoff .by { margin-top: .8mm; }
 .sources { margin-top: 2.5mm; }
+.tp-seqs { display: grid; gap: 1.2mm; margin: 1.5mm 0; }
+.tp-seq { display: grid; grid-template-columns: 34mm auto 1fr; gap: 4mm; align-items: center; }
+.tp-chips { display: flex; align-items: center; gap: 1.5mm; white-space: nowrap; }
+.tp-chip { display: inline-block; padding: .6mm 2.4mm; font-family: var(--mono); font-size: 7pt; font-weight: 600; }
+.tp-arrow { color: var(--grey); font-size: 8pt; }
+.tp-note { font-size: 7.6pt; line-height: 1.35; color: #3A3733; }
+.tp-foot { flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 1mm 6mm; }
+.gnote { font-size: 6pt; }
