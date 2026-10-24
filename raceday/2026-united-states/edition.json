@@ -344,8 +344,9 @@
         "From qualifying until the race, cars cannot be changed without a penalty."
       ]
     ],
-    "sign_off": null,
-    "sign_off_note": "JP writes the sign-off for each edition."
+    "sign_off": "COTA is a track that delivers overtaking thrillers and strategy masterpieces. I predict the 2026 US Grand Prix will be one of the most entertaining and balanced races of the season, and it should provide action up and down the field. I predict Max Verstappen will continue his win streak with another win under the Star-Spangled Banner.",
+    "sign_off_note": "JP writes the sign-off for each edition.",
+    "sign_off_title": "JP's prediction"
   },
   "sources": {
     "f1": {

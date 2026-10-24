@@ -326,7 +326,7 @@ def page_briefing(ed, st, site_url):
         grid = pending(b["grid_note"])
     battles = "".join(f'<tr><td><b>{e(x["title"])}</b></td><td>{e(x["text"])}</td></tr>' for x in b["battles"])
     five = "".join(f"<li>{e(x)}</li>" for x in b["five_things"])
-    sign = (f'<div class="signoff">{e(b["sign_off"])}<span class="by">— JP</span></div>' if b.get("sign_off") else pending(b["sign_off_note"]))
+    sign = (f'<div class="signoff">{"<span class=\"so-title\">" + e(b["sign_off_title"]) + "</span>" if b.get("sign_off_title") else ""}{e(b["sign_off"])}<span class="by">— JP</span></div>' if b.get("sign_off") else pending(b["sign_off_note"]))
     srcs = "".join(f'<div>{e(v["label"])}: <a href="{e(v["url"])}">{e(host(v["url"]))}</a></div>' for v in ed["sources"].values())
     web = f'<a href="{e(site_url)}">{e(host(site_url))}</a>' if site_url else ""
     return f'''<section class="page">
