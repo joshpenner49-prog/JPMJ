@@ -1047,3 +1047,4 @@ footer.site-footer {
   .rd-archive li { grid-template-columns: 40px minmax(0, 1fr); }
   .rd-archive li .link { grid-column: 2; }
 }
+.countdown-clock[hidden] { display: none; }

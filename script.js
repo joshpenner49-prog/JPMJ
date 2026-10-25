@@ -13,18 +13,44 @@ document.addEventListener("DOMContentLoaded", () => {
   const track = document.querySelector(".ticker-track");
   if (track) track.innerHTML += track.innerHTML;
 
-  /* ---------- live countdown to next race ---------- */
+  /* ---------- live countdown to the next session ---------- */
+  // With data-sessions, the clock moves through the weekend on its own;
+  // without it, it counts down to the single data-countdown time.
   const countdownEl = document.querySelector("[data-countdown]");
   if (countdownEl) {
-    const target = new Date(countdownEl.getAttribute("data-countdown")).getTime();
+    const labelEl = document.querySelector("[data-countdown-label]");
+    const event = countdownEl.getAttribute("data-event") || "";
+    const after = countdownEl.getAttribute("data-after") || "";
+    let sessions = [];
+    try {
+      sessions = JSON.parse(countdownEl.getAttribute("data-sessions") || "[]").map((x) => ({
+        name: x.name, start: new Date(x.start).getTime(), end: new Date(x.start).getTime() + (x.mins || 60) * 60000,
+      }));
+    } catch (e) { sessions = []; }
+    if (!sessions.length) {
+      sessions = [{ name: "", start: new Date(countdownEl.getAttribute("data-countdown")).getTime(), end: Infinity }];
+    }
     const dEl = countdownEl.querySelector("[data-d]");
     const hEl = countdownEl.querySelector("[data-h]");
     const mEl = countdownEl.querySelector("[data-m]");
     const sEl = countdownEl.querySelector("[data-s]");
+    let lastLabel = "";
+
+    function setLabel(html) {
+      if (labelEl && html !== lastLabel) { labelEl.innerHTML = html; lastLabel = html; }
+    }
+    function esc(t) { return String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
 
     function tick() {
       const now = Date.now();
-      let diff = Math.max(0, target - now);
+      const live = sessions.find((x) => x.start <= now && now < x.end);
+      const next = sessions.find((x) => x.start > now);
+      const where = event ? " · " + esc(event) : "";
+      if (live && live.name) setLabel("Live now: <strong>" + esc(live.name) + "</strong>" + where);
+      else if (next && next.name) setLabel("Next session: <strong>" + esc(next.name) + "</strong>" + where);
+      else if (!next && after) setLabel(esc(after));
+      countdownEl.hidden = !next;
+      const diff = next ? Math.max(0, next.start - now) : 0;
       const d = Math.floor(diff / 86400000);
       const h = Math.floor((diff % 86400000) / 3600000);
       const m = Math.floor((diff % 3600000) / 60000);

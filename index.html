@@ -64,8 +64,22 @@
 <main id="main" tabindex="-1">
   <div class="countdown-strip">
     <div class="wrap">
-      <div class="countdown-label">Next session: <strong>Practice 1</strong> · United States GP, Austin</div>
-      <div class="countdown-clock" data-countdown="2026-10-23T12:30:00-05:00">
+      <!-- The clock steps through data-sessions by itself: it counts down to
+           the next session, says "Live now" while one runs (duration in
+           minutes), and shows the "after" text once the last one ends.
+           Times are local to the circuit with their UTC offset. Update the
+           list (and the fallback label) each race week. -->
+      <div class="countdown-label" data-countdown-label>Next session: <strong>Grand Prix</strong> · United States GP, Austin</div>
+      <div class="countdown-clock" data-countdown="2026-10-25T15:00:00-05:00"
+           data-event="United States GP, Austin"
+           data-after="Race weekend complete · United States GP, Austin"
+           data-sessions='[
+             {"name": "Practice 1", "start": "2026-10-23T12:30:00-05:00", "mins": 60},
+             {"name": "Practice 2", "start": "2026-10-23T16:00:00-05:00", "mins": 60},
+             {"name": "Practice 3", "start": "2026-10-24T12:30:00-05:00", "mins": 60},
+             {"name": "Qualifying", "start": "2026-10-24T16:00:00-05:00", "mins": 60},
+             {"name": "Grand Prix", "start": "2026-10-25T15:00:00-05:00", "mins": 120}
+           ]'>
         <div class="countdown-unit"><span class="num" data-d>00</span><span class="unit-label">Days</span></div>
         <div class="countdown-unit"><span class="num" data-h>00</span><span class="unit-label">Hrs</span></div>
         <div class="countdown-unit"><span class="num" data-m>00</span><span class="unit-label">Min</span></div>
