@@ -256,7 +256,7 @@ def tyre_plan(s, laps):
     comp = s["compounds"]  # e.g. {"S": "C4", "M": "C3", "H": "C2"}
     legend = "".join(f'<span><i class="tp-{c}"></i>{COMPOUND_NAME[c]} ({e(comp[c])})</span>' for c in ("S", "M", "H"))
     deltas = "".join(f'<div><span class="tp-d-lab">{e(d["label"])}</span><span class="tp-d-val">{e(d["value"])}</span></div>' for d in tp.get("deltas") or [])
-    deltas = (f'<div class="tp-deltas"><span class="tp-d-head">Pace gap per lap</span>{deltas}</div>' if deltas
+    deltas = (f'<div class="tp-deltas"><span class="tp-d-head">{e(tp.get("deltas_head", "Pace gap per lap"))}</span>{deltas}</div>' if deltas
               else f'<div class="tp-deltas"><span class="tp-d-head">Pace gap per lap</span><span class="tp-d-lab">{e(tp.get("deltas_note", "Not published for this race."))}</span></div>')
     timed = [st for st in tp["strategies"] if st.get("stints")]
     if timed:

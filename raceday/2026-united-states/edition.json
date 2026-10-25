@@ -16,7 +16,7 @@
   "timezone_label": "CDT (UTC−5), local time in Austin",
   "filename": "JP-Race-Day-United-States-GP-2026.pdf",
   "publication_date": "24 October 2026",
-  "last_verified": "24 October 2026",
+  "last_verified": "25 October 2026",
   "cover": {
     "headline": "The title can be won in Texas",
     "standfirst": "Kimi Antonelli arrives at the Circuit of The Americas 102 points clear with six Grands Prix left. For the first time this season, a single Sunday could settle the championship.",
@@ -251,30 +251,65 @@
     },
     "tyre_plan": {
       "kind": "verified",
-      "summary": "Pirelli expects one stop, soft to medium: two stops were considered early in the weekend, but the latest running points to a single stop. Tyre wear is the main factor, and Texas heat could open the door to other plans.",
+      "summary": "Pirelli's data has the quickest one-stops ending on the hard; its own pick is medium to soft, as drivers aren't happy on the hard. Some reports give the window as laps 18–24. Two stops only pay if wear is worse than expected or a Safety Car changes the sums.",
       "strategies": [
         {
-          "label": "One stop",
-          "tag": "Pirelli's expected strategy",
-          "sequence": [
-            "S",
-            "M"
+          "label": "Soft → Hard",
+          "tag": "Quickest one-stop",
+          "stints": [
+            [
+              "S",
+              1,
+              23
+            ],
+            [
+              "H",
+              24,
+              56
+            ]
           ],
-          "note": "Low degradation on the softer compounds makes one stop the preferred plan."
+          "windows": [
+            [
+              20,
+              26
+            ]
+          ]
         },
         {
-          "label": "Alternatives",
-          "tag": "If heat raises wear",
-          "sequence": [
-            "M",
-            "H"
+          "label": "Medium → Hard",
+          "tag": "Quickest one-stop",
+          "stints": [
+            [
+              "M",
+              1,
+              24
+            ],
+            [
+              "H",
+              25,
+              56
+            ]
           ],
-          "note": "The hard (C2) suits longer stints if heat raises wear; Pirelli expects only a limited role for it."
+          "windows": [
+            [
+              21,
+              27
+            ]
+          ]
         }
       ],
-      "deltas": [],
-      "deltas_note": "Not published by Pirelli for this race.",
-      "source_line": "Source: Pirelli (Dario Marrafuschi), US GP previews and Friday practice debrief, 23–24 October 2026."
+      "deltas_head": "Undercut, stop on lap 20",
+      "deltas": [
+        {
+          "label": "onto hards",
+          "value": "about 1.5 s"
+        },
+        {
+          "label": "onto softs",
+          "value": "about 2.5 s"
+        }
+      ],
+      "source_line": "Pirelli race-day strategy (Dario Marrafuschi), via Coffee Corner Motorsport and Paddock News, 25 Oct 2026. Stints drawn to the middle of each window."
     },
     "tyre_plan_note": "the predicted race strategies (one stop or two, and in which compound order), each with its pit window on a lap chart, and the pace gap per lap between soft, medium and hard. These come from the teams' long-run data and Pirelli's published prediction after qualifying.",
     "one_vs_two": "The last two races here were one-stops, but they used a harder tyre at the hard end of the range (C1 in 2025). A softer hard (C2) shortens the safe stint length, which can bring a two-stop back into play if degradation in practice is high. Watch the long runs on Friday: if the medium lasts beyond half distance, expect a one-stop.",
@@ -558,8 +593,8 @@
       "url": "https://www.planetf1.com/news/fia-united-states-grand-prix-2026-active-aero"
     },
     "pirelli2026": {
-      "label": "Pirelli outlook: Autosport",
-      "url": "https://www.autosport.com/f1/news/what-we-learned-from-friday-practice-at-the-2026-united-states-gp/10867637/"
+      "label": "Pirelli strategy: Coffee Corner Motorsport; Paddock News",
+      "url": "https://coffeecornermotorsport.com/united-states-grand-prix-2026-tyre-strategy/"
     }
   },
   "race_laps": 56
