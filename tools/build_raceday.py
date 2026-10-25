@@ -270,7 +270,7 @@ def tyre_plan(s, laps):
                 for c, a, b in st["stints"])
             wtxt = ", ".join(f"{a}–{b}" for a, b in st.get("windows", []))
             rows.append(f'<div class="tp-row"><span class="tp-lab"><b>{e(st["label"])}</b>{e(st.get("tag", ""))}</span>'
-                        f'<span class="tp-track">{win}{stints}</span><span class="tp-pit">Stop{"s" if len(st.get("windows", [])) > 1 else ""}: laps {wtxt}</span></div>')
+                        f'<span class="tp-track">{win}{stints}</span><span class="tp-pit">{"Stops: " if len(st.get("windows", [])) > 1 else "Stop: laps "}{wtxt}</span></div>')
         ticks = "".join(f'<span style="left:{pct(t):.2f}%">{t}</span>' for t in [1, 10, 20, 30, 40, 50, laps])
         chart = f'<div class="tp-chart">{"".join(rows)}<div class="tp-row tp-axis"><span class="tp-lab">Lap</span><span class="tp-track tp-ticks">{ticks}</span><span class="tp-pit"></span></div></div>'
         legend += '<span><i class="tp-winkey"></i>Pit window</span>'
@@ -300,6 +300,7 @@ def page_strategy(ed):
     # the pre-weekend one-or-two-stop reading gives way to the real plan
     # likewise the historical pit window: the plan's windows replace it
     history_window = "" if s.get("tyre_plan") else f'<h4 style="margin-top:2.5mm">Pit window</h4><p>{e(s["pit_window"])}{kind(s["pit_window_kind"])}</p>'
+    hist_note = "" if s.get("tyre_plan") else f'<p class="muted" style="margin-top:1.5mm;font-size:7.4pt">{e(s["history_note"])}</p>'
     preview = "" if s.get("tyre_plan") else f'<p>{e(s["one_vs_two"])}{kind(s["one_vs_two_kind"])}</p>'
     watch = "".join(f"<li>{e(w)}</li>" for w in s["what_to_watch"])
     return f'''<section class="page">
@@ -311,7 +312,7 @@ def page_strategy(ed):
   <ul class="notes">{notes}</ul>
   {plan}
   <div class="cols2">
-    <div class="panel"><h4>One stop or two?</h4><table class="hist"><tbody>{hist}</tbody></table><p class="muted" style="margin-top:1.5mm;font-size:7.4pt">{e(s["history_note"])}</p><p>{e(s["tyres"])}{kind(s["tyres_kind"])}</p>{preview}</div>
+    <div class="panel"><h4>One stop or two?</h4><table class="hist"><tbody>{hist}</tbody></table>{hist_note}<p>{e(s["tyres"])}{kind(s["tyres_kind"])}</p>{preview}</div>
     <div class="panel"><h4>Undercut and overcut</h4><p>{e(s["undercut"])}</p><p>{e(s["overcut"])}</p>{history_window}<h4 style="margin-top:2.5mm">If the VSC or Safety Car comes out</h4><p>{e(s["neutralisation"])}{kind(s["neutralisation_kind"])}</p></div>
   </div>
   <div class="watch"><h4>What to Watch</h4><ol>{watch}</ol></div>

@@ -251,11 +251,33 @@
     },
     "tyre_plan": {
       "kind": "verified",
-      "summary": "Pirelli's data has the quickest one-stops ending on the hard; its own pick is medium to soft, as drivers aren't happy on the hard. Some reports give the window as laps 18–24. Two stops only pay if wear is worse than expected or a Safety Car changes the sums.",
+      "summary": "Pirelli's race-day plans: three one-stops and a two-stop. Its strategy chief's own pick is medium to soft, as drivers aren't happy on the hard.",
       "strategies": [
         {
+          "label": "Medium → Hard",
+          "tag": "One stop",
+          "stints": [
+            [
+              "M",
+              1,
+              24
+            ],
+            [
+              "H",
+              25,
+              56
+            ]
+          ],
+          "windows": [
+            [
+              21,
+              27
+            ]
+          ]
+        },
+        {
           "label": "Soft → Hard",
-          "tag": "Quickest one-stop",
+          "tag": "One stop",
           "stints": [
             [
               "S",
@@ -276,24 +298,55 @@
           ]
         },
         {
-          "label": "Medium → Hard",
-          "tag": "Quickest one-stop",
+          "label": "Medium → Soft",
+          "tag": "One stop",
           "stints": [
             [
               "M",
               1,
-              24
+              29
             ],
             [
-              "H",
-              25,
+              "S",
+              30,
               56
             ]
           ],
           "windows": [
             [
-              21,
-              27
+              26,
+              32
+            ]
+          ]
+        },
+        {
+          "label": "Soft → Medium → Soft",
+          "tag": "Two stops",
+          "stints": [
+            [
+              "S",
+              1,
+              19
+            ],
+            [
+              "M",
+              20,
+              38
+            ],
+            [
+              "S",
+              39,
+              56
+            ]
+          ],
+          "windows": [
+            [
+              16,
+              22
+            ],
+            [
+              35,
+              41
             ]
           ]
         }
@@ -309,7 +362,7 @@
           "value": "about 2.5 s"
         }
       ],
-      "source_line": "Pirelli race-day strategy (Dario Marrafuschi), via Coffee Corner Motorsport and Paddock News, 25 Oct 2026. Stints drawn to the middle of each window."
+      "source_line": "Windows: Pirelli Motorsport, 25 Oct 2026. Undercut and pick: Marrafuschi, via Coffee Corner. Stints drawn mid-window."
     },
     "tyre_plan_note": "the predicted race strategies (one stop or two, and in which compound order), each with its pit window on a lap chart, and the pace gap per lap between soft, medium and hard. These come from the teams' long-run data and Pirelli's published prediction after qualifying.",
     "one_vs_two": "The last two races here were one-stops, but they used a harder tyre at the hard end of the range (C1 in 2025). A softer hard (C2) shortens the safe stint length, which can bring a two-stop back into play if degradation in practice is high. Watch the long runs on Friday: if the medium lasts beyond half distance, expect a one-stop.",
@@ -593,8 +646,8 @@
       "url": "https://www.planetf1.com/news/fia-united-states-grand-prix-2026-active-aero"
     },
     "pirelli2026": {
-      "label": "Pirelli strategy: Coffee Corner Motorsport; Paddock News",
-      "url": "https://coffeecornermotorsport.com/united-states-grand-prix-2026-tyre-strategy/"
+      "label": "Pirelli Motorsport race-day strategy (official Instagram); Coffee Corner Motorsport",
+      "url": "https://www.instagram.com/pirelli_motorsport/"
     }
   },
   "race_laps": 56

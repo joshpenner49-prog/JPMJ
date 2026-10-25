@@ -206,3 +206,8 @@ table.grid td { white-space: nowrap; }
 .tp-note { font-size: 7.6pt; line-height: 1.35; color: #3A3733; }
 .tp-foot { flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 1mm 6mm; }
 .gnote { font-size: 6pt; }
+.tp-chart .tp-row { grid-template-columns: 44mm 1fr 34mm; margin: .6mm 0; }
+.tp-chart .tp-lab { white-space: nowrap; }
+.tp-chart .tp-lab b { display: inline; margin-right: 1.5mm; }
+.tp-chart .tp-lab { color: var(--grey); font-size: 6.8pt; }
+.tp-chart .tp-lab b { color: var(--charcoal); }
