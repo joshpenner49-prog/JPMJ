@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-race-week="singapore">
+<html lang="en" data-race-week="mexico">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,34 +15,37 @@
 <meta name="twitter:description" content="Formula 1 news coverage and insight, breaking news, motorsport racing and sim racing data.">
 <meta name="twitter:image" content="og-image.png">
 
+<link rel="icon" href="img/insignia.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Titillium+Web:wght@400;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- fonts load without blocking first paint; text shows in a size-matched fallback until they arrive -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"></noscript>
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="race-week.css">
+<noscript><style>[data-circuit],[data-circuit-select]{display:none}</style></noscript>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<div class="top-strip">
-  <div class="wrap">
-    <span><span class="dot"></span>SEASON 2026 — 16 OF 23 ROUNDS COMPLETE</span>
-    <span>NEXT: SINGAPORE GP · OCT 9–11</span>
-  </div>
-</div>
-
-<header class="site-header">
-  <div class="wrap nav-row">
-    <a href="index.html" class="logo"><span class="mark">JP</span> MOTORSPORT JOURNAL</a>
-    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-    <nav class="main-nav">
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <div class="masthead-meta">
+      <span>EST. 2026</span>
+      <span>SEASON 2026 · 18 OF 23 ROUNDS COMPLETE · NEXT: MEXICO CITY GP · OCT 30–NOV 1</span>
+    </div>
+    <a href="index.html" class="masthead-brand">
+      <span class="masthead-insignia"><span data-insignia data-size="64" data-theme="light" data-decorative><img src="img/insignia.svg" alt="" width="64" height="64"></span></span>
+      <span class="masthead-wordmark">JP Motorsport Journal</span>
+    </a>
+    <nav class="masthead-nav" aria-label="Primary">
       <ul>
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="archive.html">Race Archive</a></li>
+        <li><a href="archive.html">Archive</a></li>
         <li><a href="standings.html">Standings</a></li>
         <li><a href="drivers.html">Drivers</a></li>
         <li><a href="verdict.html">The Verdict</a></li>
         <li><a href="lightsout.html">Lights Out</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="raceday.html">JP Race Day</a></li>
       </ul>
     </nav>
   </div>
@@ -50,62 +53,34 @@
 
 <div class="ticker">
   <div class="ticker-track">
-    <span class="ticker-item"><span class="tag tag-breaking">Breaking</span> Russell's engine fails under a late Safety Car, and his title hopes go up in smoke</span>
-    <span class="ticker-item"><span class="tag tag-recap">Recap</span> Verstappen wins a rain-delayed Sepang thriller for his first victory of 2026</span>
-    <span class="ticker-item"><span class="tag tag-standings">Standings</span> Antonelli's lead grows to 84 points as Russell fails to score</span>
-    <span class="ticker-item"><span class="tag tag-preview">Preview</span> Singapore's first-ever sprint weekend under the Marina Bay lights — full breakdown inside</span>
+    <span class="ticker-item"><span class="tag tag-standings">Title</span> Antonelli can be champion in Mexico: ninth place or better and the title is his</span>
+    <span class="ticker-item"><span class="tag tag-recap">Recap</span> Antonelli wins from pole in Austin, his ninth win of 2026, ahead of Leclerc and Verstappen</span>
+    <span class="ticker-item"><span class="tag tag-standings">Verdict</span> JP's Verdict: Austin scores 8.5, "the most balanced event of the season"</span>
+    <span class="ticker-item"><span class="tag tag-standings">Standings</span> Nine points cover Russell, Hamilton, Verstappen and Leclerc in the fight for second</span>
+    <span class="ticker-item"><span class="tag tag-preview">Preview</span> Next up: the Mexico City Grand Prix, Oct 30–Nov 1, Round 19 of 23</span>
+    <span class="ticker-item"><span class="tag tag-breaking">News</span> Rwanda signs a 10-year deal for an African Grand Prix, first race in the early 2030s</span>
   </div>
 </div>
 
-<main>
-  <section class="hero-3d" id="hero3d">
-    <svg class="rw-circuit-line" viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M -20 340 C 140 340, 180 120, 340 100 C 460 85, 480 180, 560 190 C 610 196, 630 150, 610 110 C 595 80, 640 60, 680 90 C 730 128, 760 260, 900 270 C 1020 278, 1080 200, 1220 210"
-            fill="none" stroke="var(--rw-a)" stroke-width="2"/>
-      <path d="M -20 380 C 160 380, 200 160, 360 140 C 470 126, 500 210, 570 220 C 615 226, 640 185, 615 145 C 600 118, 650 96, 695 128 C 745 165, 775 290, 905 300 C 1025 308, 1090 235, 1220 245"
-            fill="none" stroke="var(--rw-b)" stroke-width="2" stroke-dasharray="3 9"/>
-    </svg>
-    <div class="wrap hero-3d-inner">
-      <div class="hero-3d-overlay">
-        <div class="rw-tag"><span class="rw-dots"><span></span><span></span></span>Singapore Race Week · Round 17</div>
-        <div class="hero-eyebrow">Live coverage · Season 2026</div>
-        <h1>The Stories<br>Behind the <span class="accent">Speed</span></h1>
-        <p class="lede">Breaking news, deep-dive race recaps, and the strategy calls that decide championships — from the paddock to your feed. Written by one person who watches every session.</p>
-        <div class="scroll-hint">Drag the badge to spin it →</div>
-      </div>
-      <div class="logo3d-stage" id="logo3d-stage">
-        <canvas id="logo-canvas"></canvas>
-      </div>
-    </div>
-    <div class="wrap hero-3d-inner" style="margin-top: -8px;">
-      <div></div>
-      <div class="logo3d-controls">
-        <span>◎ Drag to rotate</span>
-        <input type="range" id="logo3d-slider" min="0" max="360" value="0" step="1" aria-label="Rotate logo">
-      </div>
-    </div>
-  </section>
-  <noscript>
-    <style>#logo-canvas{display:none!important;} .logo3d-stage{display:flex;align-items:center;justify-content:center;color:#888;font-family:monospace;font-size:12px;}</style>
-  </noscript>
-
-  <section class="newsletter-band">
-    <div class="wrap newsletter-inner">
-      <div class="newsletter-copy">
-        <div class="newsletter-eyebrow">Free · Every race weekend</div>
-        <h2>Get race previews in your inbox</h2>
-        <p>Circuit breakdowns and title-fight analysis like the Zandvoort preview above, before every session goes green. No login, unsubscribe anytime.</p>
-      </div>
-      <div class="newsletter-embed">
-        <iframe src="https://joshpenner2.substack.com/embed" width="100%" height="150" style="border: 1px solid #333; background: white;" frameborder="0" scrolling="no" title="Subscribe to JP Motorsport Journal on Substack"></iframe>
-      </div>
-    </div>
-  </section>
-
+<main id="main" tabindex="-1">
   <div class="countdown-strip">
     <div class="wrap">
-      <div class="countdown-label">Next session: <strong>Singapore Grand Prix</strong> · Marina Bay</div>
-      <div class="countdown-clock" data-countdown="2026-10-09T00:00:00">
+      <!-- The clock steps through data-sessions by itself: it counts down to
+           the next session, says "Live now" while one runs (duration in
+           minutes), and shows the "after" text once the last one ends.
+           Times are local to the circuit with their UTC offset. Update the
+           list (and the fallback label) each race week. -->
+      <div class="countdown-label" data-countdown-label>Next session: <strong>Practice 1</strong> · Mexico City GP</div>
+      <div class="countdown-clock" data-countdown="2026-10-30T12:30:00-06:00"
+           data-event="Mexico City GP"
+           data-after="Race weekend complete · Mexico City GP"
+           data-sessions='[
+             {"name": "Practice 1", "start": "2026-10-30T12:30:00-06:00", "mins": 60},
+             {"name": "Practice 2", "start": "2026-10-30T16:00:00-06:00", "mins": 60},
+             {"name": "Practice 3", "start": "2026-10-31T11:30:00-06:00", "mins": 60},
+             {"name": "Qualifying", "start": "2026-10-31T15:00:00-06:00", "mins": 60},
+             {"name": "Grand Prix", "start": "2026-11-01T14:00:00-06:00", "mins": 120}
+           ]'>
         <div class="countdown-unit"><span class="num" data-d>00</span><span class="unit-label">Days</span></div>
         <div class="countdown-unit"><span class="num" data-h>00</span><span class="unit-label">Hrs</span></div>
         <div class="countdown-unit"><span class="num" data-m>00</span><span class="unit-label">Min</span></div>
@@ -114,204 +89,354 @@
     </div>
   </div>
 
-  <section class="block wrap">
-    <div class="section-head">
-      <h2>Season at a Glance</h2>
-      <span class="meta">Through Round 16 · Bahrain GP (Sepang)</span>
+  <!-- ===== LEAD FEATURE: the next race preview =====
+       Text-led until a lead photograph exists. To add one, put the
+       image in img/ and replace the circuit block in .lead-media with
+         <img src="img/your-photo.jpg" alt="..." width="1600" height="900">
+       then add class="lead lead--photo" to the section; the circuit
+       sculpture then moves into the text column at 340px. -->
+  <section class="lead wrap" aria-labelledby="lead-h">
+    <div class="lead-media">
+      <span class="lead-rule" aria-hidden="true"></span>
+      <div class="circuit-block">
+        <div data-circuit="mx-1962" style="width:600px" data-width="600" data-theme="light" data-circuit-group="weekend"></div>
+        <div class="circuit-caption">
+          <span data-circuit-field="gp" data-circuit-group="weekend">Mexico City Grand Prix</span>
+          <span class="circuit-caption-km"><span data-circuit-field="km" data-circuit-group="weekend">4.304</span> KM</span>
+        </div>
+        <span class="circuit-track" data-circuit-field="name" data-circuit-group="weekend">Autódromo Hermanos Rodríguez</span>
+        <div class="circuit-select" data-circuit-select="weekend" role="group" aria-label="Choose a Grand Prix circuit"></div>
+      </div>
     </div>
-    <div class="stat-bar">
-      <div class="cell"><div class="num" data-count-to="8">8</div><div class="label">Antonelli wins</div></div>
-      <div class="cell"><div class="num" data-count-to="16">16</div><div class="label">Rounds run</div></div>
-      <div class="cell"><div class="num" data-count-to="6" data-suffix="th">6th</div><div class="label">Different winners</div></div>
-      <div class="cell"><div class="num" data-count-to="7">7</div><div class="label">Rounds remaining</div></div>
+    <div class="lead-text">
+      <div class="rw-tag"><span class="rw-dots"><span></span><span></span></span>Mexico City GP Race Week · Round 19</div>
+      <span class="cat-label">Race preview · Round 19</span>
+      <h1 id="lead-h" class="lead-h">Ninth place in Mexico and Antonelli is world champion</h1>
+      <p class="lead-dek">Kimi Antonelli arrives in Mexico City 123 points clear with 125 left. Finish ninth or higher on Sunday and the title is his, whatever anyone else does. Even if he scores nothing, only a win for George Russell or Lewis Hamilton keeps the championship alive.</p>
+      <div class="lead-actions">
+        <a class="btn" href="#preview">Read the full preview <span aria-hidden="true">→</span></a>
+        <span class="meta-mono">MEXICO CITY · OCT 30–NOV 1</span>
+      </div>
     </div>
   </section>
 
-  <section class="block wrap">
+  <!-- ===== JP'S VERDICT: latest real verdict, JP's own words ===== -->
+  <section class="verdict-block" aria-labelledby="verdict-h">
+    <div class="wrap">
+      <div class="verdict-block-head">
+        <span class="verdict-block-insignia"><span data-insignia data-size="36" data-theme="light" data-decorative><img src="img/insignia.svg" alt="" width="36" height="36"></span></span>
+        <h2 id="verdict-h" class="cat-label">JP's Verdict</h2>
+        <span class="verdict-block-line" aria-hidden="true"></span>
+        <span class="meta-mono">ROUND 18 · UNITED STATES GP</span>
+      </div>
+      <div class="verdict-block-body">
+        <div class="verdict-score-wrap">
+          <div class="verdict-score-num"><span class="verdict-score-value">8.5</span><span class="verdict-score-out">/10</span></div>
+          <!-- 10 segments filled in proportion to the score: 8.5 = 8 full + one 50% -->
+          <div class="score-segments" role="img" aria-label="Score 8.5 out of 10">
+            <span style="--fill:100%"></span><span style="--fill:100%"></span><span style="--fill:100%"></span><span style="--fill:100%"></span><span style="--fill:100%"></span><span style="--fill:100%"></span><span style="--fill:100%"></span><span style="--fill:100%"></span><span style="--fill:50%"></span><span></span>
+          </div>
+        </div>
+        <div class="verdict-block-copy">
+          <p class="verdict-pull">“A US GP that was filled with strategy dilemmas and overtakes, this race was the most balanced event of the season.”</p>
+          <p class="verdict-block-dek">All in all, this race wasn't an overtaking thriller but more of a strategic masterclass.</p>
+          <p><a class="link" href="verdict.html">Read the full verdict</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== IN THE NEWS (was Breaking on Oct 13) ===== -->
+  <section class="breaking wrap" id="breaking" aria-labelledby="breaking-h">
     <div class="section-head">
-      <h2>Singapore Grand Prix — Race Preview</h2>
-      <span class="meta">Round 17 · Marina Bay · Oct 9–11</span>
+      <h2 id="breaking-h">In the news</h2>
+      <span class="meta">Filed Oct 13, 2026 · Kigali</span>
+    </div>
+    <article class="story story--breaking">
+      <span class="cat-label">News · African Grand Prix</span>
+      <h3>F1 is going back to Africa: Rwanda signs a 10-year deal for an African Grand Prix</h3>
+      <p class="breaking-dek">Formula 1 has agreed a 10-year deal with Rwanda to stage the African Grand Prix, the sport's first race on the continent since the 1993 South African Grand Prix at Kyalami. It was announced in Kigali on Tuesday, with President Paul Kagame and F1 chief executive Stefano Domenicali.</p>
+      <p>There is no date yet. The race is aimed at the early 2030s, 2030 at the earliest, because the circuit still has to be built: a new permanent road course at Bugesera, about 40 km south of Kigali, next to the country's new international airport, which is due to open in the second half of 2028.</p>
+      <button type="button" class="btn expand-toggle" data-target="breaking-more" data-more="+ The circuit" data-less="− Hide the circuit">+ The circuit</button>
+      <div class="expand-body" id="breaking-more">
+        <p>Carsten Tilke and former F1 driver Alex Wurz have designed a layout of around 6 km with 17 corners, run anti-clockwise between two hills that form a natural grandstand and alongside a lake. Wurz called it a roller coaster: the lap rises and falls 197 metres in total, almost twice Spa-Francorchamps' 102, and it includes a kilometre-long back straight into a hairpin. The design is finished and now moves into engineering.</p>
+        <div class="analysis-grid">
+          <div class="analysis-card">
+            <h4>33 years away</h4>
+            <p>F1's last race in Africa was the 1993 South African Grand Prix at Kyalami. Rwanda formally bid to bring it back in December 2024.</p>
+          </div>
+          <div class="analysis-card">
+            <h4>Built for the hills</h4>
+            <p>A natural road course rather than a street circuit, with 197 metres of elevation change a lap and a long back straight that sets up an overtaking spot into the hairpin.</p>
+          </div>
+          <div class="analysis-card">
+            <h4>Still to come</h4>
+            <p>The first race date, the final track length (reports range from 5.3 to about 6 km) and the construction milestones will be announced later, F1 says.</p>
+          </div>
+        </div>
+        <p class="breaking-note">No circuit drawing yet: the track is not built and no official layout data has been published, so we will add one when it is.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ===== LATEST COVERAGE ===== -->
+  <section class="coverage wrap" aria-labelledby="coverage-h">
+    <div class="coverage-head">
+      <h2 id="coverage-h" class="section-title">Latest coverage</h2>
+      <a class="link" href="archive.html">Browse the archive</a>
+    </div>
+    <div class="coverage-grid">
+      <article class="story story--big" id="recap">
+        <span class="cat-label">Recap · Round 18 · Austin</span>
+        <h3>Antonelli wins from pole in Austin, two points short of the title</h3>
+        <p>Kimi Antonelli turned pole into his ninth win of the season at the Circuit of The Americas, 13.078 seconds clear of Charles Leclerc, with Max Verstappen third. He made a single stop, from mediums to hards on lap 24, while Leclerc and Verstappen both stopped twice; Antonelli passed Leclerc for the lead at Turn 12 on lap 33 and was never troubled again.</p>
+        <p>The win takes him to 365 points, 123 clear of George Russell with 125 left. Two more points in Austin and he would have been champion; instead the title can be settled in Mexico City on Sunday.</p>
+        <span class="meta-mono">UNITED STATES GP · CIRCUIT OF THE AMERICAS · OCT 25, 2026</span>
+        <button type="button" class="btn expand-toggle" data-target="recap-more" data-more="+ Full recap" data-less="− Hide recap">+ Full recap</button>
+        <div class="expand-body" id="recap-more">
+          <p>Leclerc stopped on laps 15 and 39 and Verstappen on laps 13 and 31; the Ferrari came out ahead in their two-stop duel to finish second, 4.4 seconds up on the Red Bull. Lewis Hamilton, also on two stops, recovered to fourth by passing Lando Norris on lap 51. Isack Hadjar was sixth and Oscar Piastri seventh.</p>
+          <p>George Russell's race unravelled on the opening lap: defending from Piastri, he left the track at Turn 12 and rejoined ahead, and the stewards gave him a five-second penalty for gaining a lasting advantage. He served it at his only stop, on lap 22, and finished eighth. Liam Lawson and Pierre Gasly took the last points. Oliver Bearman retired with damage after contact with Gasly, and Valtteri Bottas and Franco Colapinto both stopped with engine failures.</p>
+          <div class="analysis-grid">
+            <div class="analysis-card">
+              <h4>One stop beat two</h4>
+              <p>Antonelli's lap-24 switch to hards carried him to the flag, while the two-stoppers behind him spent a second 24-second trip through the pit lane.</p>
+            </div>
+            <div class="analysis-card">
+              <h4>Championship shift</h4>
+              <p>The lead grows from 102 to 123. Russell's eighth keeps him second, but only a point ahead of Hamilton, with Verstappen and Leclerc within nine.</p>
+            </div>
+            <div class="analysis-card">
+              <h4>Looking ahead</h4>
+              <p>Mexico City is next, a week later. Ninth place or better on Sunday makes Antonelli champion, whatever anyone else does.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="story story--side" id="second">
+        <span class="cat-label">Standings · Fight for second</span>
+        <h3>Four drivers, nine points: the race to be runner-up goes to the wire</h3>
+        <p>Behind Antonelli, Austin squeezed the battle for second place tight. George Russell has 242 points, Lewis Hamilton 241, Max Verstappen 236 and Charles Leclerc 233, with five Grands Prix left.</p>
+        <p>Leclerc's second place and Hamilton's fourth took Ferrari 30 points in Austin, while Russell's penalty left him with four. In the Constructors' Championship, Red Bull's 23 points drew them level with McLaren on 355, and Red Bull now hold third on countback.</p>
+        <span class="meta-mono">AFTER ROUND 18</span>
+      </article>
+    <div class="coverage-row">
+      <a class="coverage-item" href="verdict.html#verdict-18">
+        <span class="cat-label">Verdict · 8.5</span>
+        <span class="coverage-item-h">United States GP: “The most balanced event of the season.”</span>
+        <span class="meta-mono">ROUND 18 · AUSTIN</span>
+      </a>
+      <a class="coverage-item" href="archive.html#round-17">
+        <span class="cat-label">Recap · Round 17</span>
+        <span class="coverage-item-h">Verstappen leads every lap from pole for his first Singapore Grand Prix win</span>
+        <span class="meta-mono">SINGAPORE GP · OCT 11, 2026</span>
+      </a>
+      <a class="coverage-item" href="raceday.html">
+        <span class="cat-label">JP Race Day</span>
+        <span class="coverage-item-h">The four-page United States GP programme is in the archive; Mexico’s edition follows after qualifying</span>
+        <span class="meta-mono">FREE PDF · A4</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== FULL RACE PREVIEW (the lead's article) ===== -->
+  <section class="preview-full wrap" id="preview" aria-labelledby="preview-h">
+    <div class="section-head">
+      <h2 id="preview-h">Mexico City Grand Prix — Race Preview</h2>
+      <span class="meta">Round 19 · Autódromo Hermanos Rodríguez · Oct 30–Nov 1</span>
     </div>
     <span class="rw-rule" aria-hidden="true"></span>
-
-    <div class="tire-compounds">
-      <button class="tire-btn" type="button" data-compound="soft" aria-expanded="false" aria-label="Soft compound — tap for details">
-        <svg width="56" height="56" viewBox="0 0 68 68" aria-hidden="true">
-          <circle cx="34" cy="34" r="30" fill="var(--ink)"/>
-          <circle cx="34" cy="34" r="26" fill="none" stroke="#000" stroke-width="4" stroke-dasharray="3 2.2" opacity="0.5"/>
-          <circle cx="34" cy="34" r="18" fill="var(--red)"/>
-          <circle cx="34" cy="34" r="9" fill="var(--chrome)"/>
-        </svg>
-        <span class="tire-label">Soft</span>
-      </button>
-      <button class="tire-btn" type="button" data-compound="medium" aria-expanded="false" aria-label="Medium compound — tap for details">
-        <svg width="56" height="56" viewBox="0 0 68 68" aria-hidden="true">
-          <circle cx="34" cy="34" r="30" fill="var(--ink)"/>
-          <circle cx="34" cy="34" r="26" fill="none" stroke="#000" stroke-width="4" stroke-dasharray="3 2.2" opacity="0.5"/>
-          <circle cx="34" cy="34" r="18" fill="var(--gold)"/>
-          <circle cx="34" cy="34" r="9" fill="var(--chrome)"/>
-        </svg>
-        <span class="tire-label">Medium</span>
-      </button>
-      <button class="tire-btn" type="button" data-compound="hard" aria-expanded="false" aria-label="Hard compound — tap for details">
-        <svg width="56" height="56" viewBox="0 0 68 68" aria-hidden="true">
-          <circle cx="34" cy="34" r="30" fill="var(--ink)"/>
-          <circle cx="34" cy="34" r="26" fill="none" stroke="#000" stroke-width="4" stroke-dasharray="3 2.2" opacity="0.5"/>
-          <circle cx="34" cy="34" r="18" fill="var(--paper-2)" stroke="var(--line)" stroke-width="1"/>
-          <circle cx="34" cy="34" r="9" fill="var(--chrome)"/>
-        </svg>
-        <span class="tire-label">Hard</span>
-      </button>
-      <button class="tire-btn" type="button" data-compound="inter" aria-expanded="false" aria-label="Intermediate compound — tap for details">
-        <svg width="56" height="56" viewBox="0 0 68 68" aria-hidden="true">
-          <circle cx="34" cy="34" r="30" fill="var(--ink)"/>
-          <circle cx="34" cy="34" r="26" fill="none" stroke="#000" stroke-width="4" stroke-dasharray="3 2.2" opacity="0.5"/>
-          <circle cx="34" cy="34" r="18" fill="var(--green)"/>
-          <circle cx="34" cy="34" r="9" fill="var(--chrome)"/>
-        </svg>
-        <span class="tire-label">Inter</span>
-      </button>
-      <button class="tire-btn" type="button" data-compound="wet" aria-expanded="false" aria-label="Wet compound — tap for details">
-        <svg width="56" height="56" viewBox="0 0 68 68" aria-hidden="true">
-          <circle cx="34" cy="34" r="30" fill="var(--ink)"/>
-          <circle cx="34" cy="34" r="26" fill="none" stroke="#000" stroke-width="4" stroke-dasharray="3 2.2" opacity="0.5"/>
-          <circle cx="34" cy="34" r="18" fill="var(--blue)"/>
-          <circle cx="34" cy="34" r="9" fill="var(--chrome)"/>
-        </svg>
-        <span class="tire-label">Wet</span>
-      </button>
-    </div>
-    <div class="tire-info" id="tire-info" hidden></div>
-
-    <article class="story">
-      <div class="story-meta">
-        <span class="tag tag-preview">Preview</span>
-        <span>MARINA BAY · FIRST-EVER SPRINT WEEKEND · UNDER THE LIGHTS</span>
-      </div>
-      <h3>F1's original night race adds a sprint as Antonelli closes in on the title</h3>
-      <p>Antonelli's second place at Sepang, combined with Russell's late engine failure, stretched his lead to 84 points with seven rounds to go. Hamilton is now just 22 points behind Russell after recovering from near the back to the podium, so the fight for second is suddenly wide open.</p>
-      <p>Singapore completes the triple-header just a week after Sepang, and this year it hosts a sprint weekend for the first time: sprint qualifying on Friday night, the sprint and Grand Prix qualifying on Saturday, then the 62-lap race on Sunday at 8pm local time. Back in 2008, this was the first night race in F1 history.</p>
-
-      <button class="expand-toggle" data-target="preview-more" data-more="+ Full preview" data-less="− Hide preview">+ Full preview</button>
+    <article class="story story--article">
+      <p>Kimi Antonelli arrives in Mexico City 123 points ahead of George Russell, with 125 still available. Finish ninth or higher on Sunday and he is world champion, whatever anyone else does. Even if he scores nothing, only a win for Russell or Lewis Hamilton keeps the title open.</p>
+      <p>The Autódromo Hermanos Rodríguez hosts a standard weekend: three practice sessions, qualifying on Saturday and the 71-lap race on Sunday at 2pm local time. Pirelli has moved a step softer than last year and brings the softest three compounds in its range: the C3 as the hard, the C4 as the medium and the C5 as the soft.</p>
+      <p class="cat-label tyre-label">Tyre compounds</p>
+      <div class="tire-compounds">
+          <button class="tire-btn" type="button" data-compound="soft" aria-expanded="false" aria-label="Soft compound — tap for details">
+            <svg width="56" height="56" viewBox="0 0 68 68" aria-hidden="true">
+              <circle cx="34" cy="34" r="30" fill="var(--ink)"/>
+              <circle cx="34" cy="34" r="26" fill="none" stroke="#000" stroke-width="4" stroke-dasharray="3 2.2" opacity="0.5"/>
+              <circle cx="34" cy="34" r="18" fill="#C8102E"/>
+              <circle cx="34" cy="34" r="9" fill="var(--chrome)"/>
+            </svg>
+            <span class="tire-label">Soft</span>
+          </button>
+          <button class="tire-btn" type="button" data-compound="medium" aria-expanded="false" aria-label="Medium compound — tap for details">
+            <svg width="56" height="56" viewBox="0 0 68 68" aria-hidden="true">
+              <circle cx="34" cy="34" r="30" fill="var(--ink)"/>
+              <circle cx="34" cy="34" r="26" fill="none" stroke="#000" stroke-width="4" stroke-dasharray="3 2.2" opacity="0.5"/>
+              <circle cx="34" cy="34" r="18" fill="var(--gold)"/>
+              <circle cx="34" cy="34" r="9" fill="var(--chrome)"/>
+            </svg>
+            <span class="tire-label">Medium</span>
+          </button>
+          <button class="tire-btn" type="button" data-compound="hard" aria-expanded="false" aria-label="Hard compound — tap for details">
+            <svg width="56" height="56" viewBox="0 0 68 68" aria-hidden="true">
+              <circle cx="34" cy="34" r="30" fill="var(--ink)"/>
+              <circle cx="34" cy="34" r="26" fill="none" stroke="#000" stroke-width="4" stroke-dasharray="3 2.2" opacity="0.5"/>
+              <circle cx="34" cy="34" r="18" fill="#F4F4F2" stroke="#D9D3C8" stroke-width="1"/>
+              <circle cx="34" cy="34" r="9" fill="var(--chrome)"/>
+            </svg>
+            <span class="tire-label">Hard</span>
+          </button>
+          <button class="tire-btn" type="button" data-compound="inter" aria-expanded="false" aria-label="Intermediate compound — tap for details">
+            <svg width="56" height="56" viewBox="0 0 68 68" aria-hidden="true">
+              <circle cx="34" cy="34" r="30" fill="var(--ink)"/>
+              <circle cx="34" cy="34" r="26" fill="none" stroke="#000" stroke-width="4" stroke-dasharray="3 2.2" opacity="0.5"/>
+              <circle cx="34" cy="34" r="18" fill="var(--green)"/>
+              <circle cx="34" cy="34" r="9" fill="var(--chrome)"/>
+            </svg>
+            <span class="tire-label">Inter</span>
+          </button>
+          <button class="tire-btn" type="button" data-compound="wet" aria-expanded="false" aria-label="Wet compound — tap for details">
+            <svg width="56" height="56" viewBox="0 0 68 68" aria-hidden="true">
+              <circle cx="34" cy="34" r="30" fill="var(--ink)"/>
+              <circle cx="34" cy="34" r="26" fill="none" stroke="#000" stroke-width="4" stroke-dasharray="3 2.2" opacity="0.5"/>
+              <circle cx="34" cy="34" r="18" fill="var(--blue)"/>
+              <circle cx="34" cy="34" r="9" fill="var(--chrome)"/>
+            </svg>
+            <span class="tire-label">Wet</span>
+          </button>
+        </div>
+        <div class="tire-info" id="tire-info" hidden></div>
+      <button type="button" class="btn expand-toggle" data-target="preview-more" data-more="+ Full preview" data-less="− Hide preview">+ Full preview</button>
       <div class="expand-body" id="preview-more">
-        <p>The Marina Bay Street Circuit runs 4.927 km, with walls close at almost every corner, so Safety Cars are common and track position is everything. With the sprint format, teams get just one practice session to set up their cars for one of the hottest, most humid weekends of the year.</p>
+        <p>The track runs 4.304 km over 17 turns and sits more than 2,200 metres above sea level, the highest on the calendar. The thin air cuts drag and downforce, so teams run their highest-downforce settings yet still see some of the year's top speeds on the long run from the grid to Turn 1, more than a kilometre, before the lap ends through the old baseball stadium. It is also Sergio Pérez's home race, in his first season with Cadillac.</p>
         <div class="analysis-grid">
           <div class="analysis-card">
-            <h4>Extra points on Saturday</h4>
-            <p>The sprint puts more points on the table than a normal weekend, which helps anyone chasing, but also gives Antonelli another chance to extend his lead.</p>
+            <h4>The title maths</h4>
+            <p>After Mexico, 100 points remain. Ninth place gives Antonelli a lead of at least 100 over Russell, and even a tie would go his way on wins. Tenth is enough unless Russell wins; no points is enough unless Russell or Hamilton wins.</p>
           </div>
           <div class="analysis-card">
-            <h4>Russell's last stand</h4>
-            <p>Still mathematically alive, but 84 points back. He needs a big weekend and a bad one for Antonelli, and he needs both soon.</p>
+            <h4>Fight for second</h4>
+            <p>Russell 242, Hamilton 241, Verstappen 236, Leclerc 233: nine points cover four drivers in the battle to be runner-up.</p>
           </div>
           <div class="analysis-card">
-            <h4>Can Verstappen go back-to-back?</h4>
-            <p>After a double podium in Baku and a win at Sepang, Red Bull arrive with real momentum. Pole matters even more around Marina Bay than most tracks.</p>
+            <h4>Form guide</h4>
+            <p>Verstappen has won here five times, more than anyone. Lando Norris won last year from pole, and Leclerc has been on the podium in each of the last three races here.</p>
           </div>
         </div>
       </div>
     </article>
   </section>
 
-  <section class="block wrap">
-    <div class="section-head">
-      <h2>Breaking Motorsport News</h2>
-      <span class="meta">Filed Oct 4, 2026</span>
-    </div>
-
-    <article class="story">
-      <div class="story-meta">
-        <span class="tag tag-breaking">Breaking</span>
-        <span>SEPANG · TITLE FIGHT</span>
+  <!-- ===== RACE INTELLIGENCE (dark): real standings + schedule ===== -->
+  <section class="intel" aria-labelledby="intel-h">
+    <div class="wrap">
+      <div class="intel-head">
+        <div>
+          <span class="intel-kicker">Race intelligence</span>
+          <h2 id="intel-h" class="section-title">The numbers behind the weekend</h2>
+        </div>
+        <span class="intel-tag">AFTER ROUND 18 · NOT LIVE</span>
       </div>
-      <h3>Russell's engine gives out with five laps to go, and his title hopes go with it</h3>
-      <p>George Russell was running third under a late Safety Car when his Mercedes power unit failed on the home straight with five laps remaining. A near-certain podium became zero points, and with Kimi Antonelli finishing second, the gap between the Mercedes team-mates jumped from 66 to 84 points in a single afternoon.</p>
-      <p>Russell admitted afterwards that his title chances are now very unlikely, and team boss Toto Wolff made no secret of his frustration with the failure.</p>
-
-      <button class="expand-toggle" data-target="breaking-more" data-more="+ Full analysis" data-less="− Hide analysis">+ Full analysis</button>
-      <div class="expand-body" id="breaking-more">
-        <div class="analysis-grid">
-          <div class="analysis-card">
-            <h4>A Sepang echo</h4>
-            <p>Ten years ago at this same circuit, Lewis Hamilton's Mercedes engine failed while he was leading the 2016 Malaysian Grand Prix, a blow widely seen as costing him that year's title to team-mate Nico Rosberg.</p>
-          </div>
-          <div class="analysis-card">
-            <h4>A new fight for second</h4>
-            <p>Hamilton's podium leaves him just 22 points behind Russell, turning second place in the championship into a genuine battle with seven rounds to go.</p>
-          </div>
-          <div class="analysis-card">
-            <h4>What it means for Antonelli</h4>
-            <p>An 84-point lead with seven rounds left is more than three race wins' worth of cushion. Russell needs Antonelli to stumble, and soon.</p>
+      <div class="stat-bar intel-stats">
+        <div class="cell"><div class="num" data-count-to="9">9</div><div class="label">Antonelli wins</div></div>
+        <div class="cell"><div class="num" data-count-to="18">18</div><div class="label">Rounds run</div></div>
+        <div class="cell"><div class="num" data-count-to="6">6</div><div class="label">Different winners</div></div>
+        <div class="cell"><div class="num" data-count-to="5">5</div><div class="label">Rounds remaining</div></div>
+      </div>
+      <div class="intel-grid">
+        <div class="intel-standings">
+          <h3 class="intel-sub">Drivers' championship</h3>
+          <div class="table-scroll">
+            <table class="intel-table">
+              <thead>
+                <tr><th scope="col">Pos</th><th scope="col">Driver</th><th scope="col">Team</th><th scope="col"><span class="visually-hidden">Points share</span></th><th scope="col" class="num">Pts</th><th scope="col" class="num">Gap</th></tr>
+              </thead>
+              <tbody>
+<!-- BUILD:home-standings -->
+                <tr class="is-leader" style="--team:#00A19C"><td>01</td><td class="intel-driver"><span class="st-stripe" aria-hidden="true"></span>Kimi Antonelli</td><td class="intel-team">Mercedes</td><td class="intel-bar"><span class="intel-bar-track"><span style="width:100.0%"></span></span></td><td class="num">365</td><td class="num intel-gap">—</td></tr>
+                <tr style="--team:#00A19C"><td>02</td><td class="intel-driver"><span class="st-stripe" aria-hidden="true"></span>George Russell</td><td class="intel-team">Mercedes</td><td class="intel-bar"><span class="intel-bar-track"><span style="width:66.3%"></span></span></td><td class="num">242</td><td class="num intel-gap">−123</td></tr>
+                <tr style="--team:#DC0000"><td>03</td><td class="intel-driver"><span class="st-stripe" aria-hidden="true"></span>Lewis Hamilton</td><td class="intel-team">Ferrari</td><td class="intel-bar"><span class="intel-bar-track"><span style="width:66.0%"></span></span></td><td class="num">241</td><td class="num intel-gap">−124</td></tr>
+                <tr style="--team:#3671C6"><td>04</td><td class="intel-driver"><span class="st-stripe" aria-hidden="true"></span>Max Verstappen</td><td class="intel-team">Red Bull</td><td class="intel-bar"><span class="intel-bar-track"><span style="width:64.7%"></span></span></td><td class="num">236</td><td class="num intel-gap">−129</td></tr>
+                <tr style="--team:#DC0000"><td>05</td><td class="intel-driver"><span class="st-stripe" aria-hidden="true"></span>Charles Leclerc</td><td class="intel-team">Ferrari</td><td class="intel-bar"><span class="intel-bar-track"><span style="width:63.8%"></span></span></td><td class="num">233</td><td class="num intel-gap">−132</td></tr>
+                <tr style="--team:#FF8000"><td>06</td><td class="intel-driver"><span class="st-stripe" aria-hidden="true"></span>Lando Norris</td><td class="intel-team">McLaren</td><td class="intel-bar"><span class="intel-bar-track"><span style="width:57.8%"></span></span></td><td class="num">211</td><td class="num intel-gap">−154</td></tr>
+                <tr style="--team:#FF8000"><td>07</td><td class="intel-driver"><span class="st-stripe" aria-hidden="true"></span>Oscar Piastri</td><td class="intel-team">McLaren</td><td class="intel-bar"><span class="intel-bar-track"><span style="width:39.5%"></span></span></td><td class="num">144</td><td class="num intel-gap">−221</td></tr>
+                <tr style="--team:#3671C6"><td>08</td><td class="intel-driver"><span class="st-stripe" aria-hidden="true"></span>Isack Hadjar</td><td class="intel-team">Red Bull</td><td class="intel-bar"><span class="intel-bar-track"><span style="width:28.8%"></span></span></td><td class="num">105</td><td class="num intel-gap">−260</td></tr>
+                <tr style="--team:#6C98FF"><td>09</td><td class="intel-driver"><span class="st-stripe" aria-hidden="true"></span>Liam Lawson</td><td class="intel-team">Racing Bulls</td><td class="intel-bar"><span class="intel-bar-track"><span style="width:21.1%"></span></span></td><td class="num">77</td><td class="num intel-gap">−288</td></tr>
+                <tr style="--team:#FF87BC"><td>10</td><td class="intel-driver"><span class="st-stripe" aria-hidden="true"></span>Pierre Gasly</td><td class="intel-team">Alpine</td><td class="intel-bar"><span class="intel-bar-track"><span style="width:11.5%"></span></span></td><td class="num">42</td><td class="num intel-gap">−323</td></tr>
+<!-- /BUILD:home-standings -->
+              </tbody>
+            </table>
           </div>
         </div>
+        <div class="intel-side">
+          <div class="circuit-block circuit-block--dark">
+            <div data-circuit="mx-1962" style="width:300px" data-width="300" data-theme="dark" data-circuit-group="weekend"></div>
+            <span class="circuit-track"><span data-circuit-field="name" data-circuit-group="weekend">Autódromo Hermanos Rodríguez</span> · <span data-circuit-field="km" data-circuit-group="weekend">4.304</span> KM</span>
+          </div>
+          <h3 class="intel-sub">Session schedule · Mexico City</h3>
+          <!-- Official session start times, Mexico City time (CST, UTC-6). Status is worked out
+               from the visitor's clock; durations are each session's scheduled length. -->
+          <ol class="sessions" data-sessions>
+            <li data-start="2026-10-30T12:30:00-06:00" data-mins="60"><span class="s-day">FRI</span><span class="s-name">Practice 1</span><span class="s-time">12:30</span><span class="s-status"></span></li>
+            <li data-start="2026-10-30T16:00:00-06:00" data-mins="60"><span class="s-day">FRI</span><span class="s-name">Practice 2</span><span class="s-time">16:00</span><span class="s-status"></span></li>
+            <li data-start="2026-10-31T11:30:00-06:00" data-mins="60"><span class="s-day">SAT</span><span class="s-name">Practice 3</span><span class="s-time">11:30</span><span class="s-status"></span></li>
+            <li data-start="2026-10-31T15:00:00-06:00" data-mins="60"><span class="s-day">SAT</span><span class="s-name">Qualifying</span><span class="s-time">15:00</span><span class="s-status"></span></li>
+            <li data-start="2026-11-01T14:00:00-06:00" data-mins="120"><span class="s-day">SUN</span><span class="s-name">Grand Prix</span><span class="s-time">14:00</span><span class="s-status"></span></li>
+          </ol>
+          <p class="sessions-note">Local time in Mexico City (CST, UTC−6).</p>
+          <div><a class="btn btn--light" href="standings.html">Full standings <span aria-hidden="true">→</span></a></div>
+        </div>
       </div>
-    </article>
+    </div>
   </section>
 
-  <section class="block wrap">
-    <div class="section-head">
-      <h2>Bahrain Grand Prix — Race Recap</h2>
-      <span class="meta">Round 16 · Sepang, Malaysia · Complete</span>
+  <!-- ===== FROM THE ARCHIVE ===== -->
+  <section class="archive-preview wrap" aria-labelledby="archive-h">
+    <div class="coverage-head">
+      <h2 id="archive-h" class="section-title">From the archive</h2>
+      <span class="meta-mono">2026 SEASON · 18 OF 23 ROUNDS</span>
     </div>
+    <ul class="archive-rows">
+      <li><span class="ar-num">18</span><span class="ar-name">United States GP <span class="ar-where">Austin</span></span><span class="ar-links"><a class="link" href="#recap">Recap</a><a class="link" href="verdict.html#verdict-18">Verdict</a><a class="link" href="raceday.html">Race Day</a></span></li>
+      <li><span class="ar-num">17</span><span class="ar-name">Singapore GP <span class="ar-where">Marina Bay</span></span><span class="ar-links"><a class="link" href="archive.html#round-17">Recap</a><a class="link" href="verdict.html#verdict-17">Verdict</a></span></li>
+      <li><span class="ar-num">16</span><span class="ar-name">Bahrain GP <span class="ar-where">Sepang, Malaysia</span></span><span class="ar-links"><a class="link" href="archive.html#round-16">Recap</a><a class="link" href="verdict.html#verdict-16">Verdict</a></span></li>
+      <li><span class="ar-num">15</span><span class="ar-name">Azerbaijan GP <span class="ar-where">Baku</span></span><span class="ar-links"><a class="link" href="archive.html#round-15">Recap</a><a class="link" href="verdict.html#verdict-15">Verdict</a></span></li>
+    </ul>
+  </section>
 
-    <article class="story">
-      <div class="story-meta">
-        <span class="tag tag-recap">Recap</span>
-        <span>SEPANG · VERSTAPPEN WINS</span>
+  <section class="newsletter-band">
+    <div class="wrap newsletter-inner">
+      <div class="newsletter-copy">
+        <div class="newsletter-eyebrow">Free · Every race weekend</div>
+        <h2>Get race previews in your inbox</h2>
+        <p>Circuit breakdowns and title-fight analysis like the Mexico City preview above, before every session goes green. No login, unsubscribe anytime.</p>
       </div>
-      <h3>Verstappen wins a rain-delayed Sepang thriller for his first victory of 2026</h3>
-      <p>Torrential rain pushed the start back by an hour and 40 minutes, and the first attempt to get going was abandoned when cars hit engine-software problems and had to reboot on track. When the race finally began, the field was split between slicks and intermediates, and the intermediate runners were far quicker early on. Pole-sitter Max Verstappen lost the lead to both Mercedes off the start, got back past them either side of an early Safety Car, then simply drove away.</p>
-
-      <button class="expand-toggle" data-target="recap-more" data-more="+ Full recap" data-less="− Hide recap">+ Full recap</button>
-      <div class="expand-body" id="recap-more">
-        <p>Kimi Antonelli finished second, 2.3 seconds behind, with Lewis Hamilton third. Both Ferraris had tumbled down the order on slicks in the opening laps. Hamilton was the only driver not to pit under the lap-9 Safety Car for Valtteri Bottas's spin, and he climbed back through the field. A late Safety Car for Alex Albon's stopped Williams bunched everyone up, and Hamilton passed Isack Hadjar for third with three laps left, with Charles Leclerc following him through for fourth. Hadjar, Oscar Piastri and Liam Lawson completed the top seven. Fernando Alonso took eighth, Aston Martin's best result of the season, holding off Lando Norris, who had slid into the gravel under the Safety Car. Arvid Lindblad took the last point. George Russell, Albon and Bottas retired, and the race ran 55 laps instead of the planned 56.</p>
-        <div class="analysis-grid">
-          <div class="analysis-card">
-            <h4>Strategy note</h4>
-            <p>The starting tyre decided most of the race. Slick starters lost huge chunks of time, and the lap-9 Safety Car arrived right at the crossover point for everyone else to switch.</p>
-          </div>
-          <div class="analysis-card">
-            <h4>Championship shift</h4>
-            <p>Antonelli's second place and Russell's retirement push the gap at the top to 84 points, with Hamilton now just 22 behind Russell in the fight for second.</p>
-          </div>
-          <div class="analysis-card">
-            <h4>Looking ahead</h4>
-            <p>Singapore completes the triple-header next weekend, and for the first time it's a sprint weekend under the Marina Bay lights.</p>
-          </div>
-        </div>
+      <div class="newsletter-embed">
+        <iframe src="https://joshpenner2.substack.com/embed" width="100%" height="150" style="border: 1px solid #333; background: white;" frameborder="0" scrolling="no" title="Subscribe to JP Motorsport Journal on Substack"></iframe>
       </div>
-    </article>
+    </div>
   </section>
 </main>
 
 <footer class="site-footer">
-  <div class="wrap">
-    <span><svg width="14" height="14" viewBox="0 0 16 16" style="vertical-align: -2px; margin-right: 5px;"><rect width="16" height="16" fill="none"/><g fill="var(--ink-dim)"><rect x="0" y="0" width="4" height="4"/><rect x="8" y="0" width="4" height="4"/><rect x="4" y="4" width="4" height="4"/><rect x="12" y="4" width="4" height="4"/><rect x="0" y="8" width="4" height="4"/><rect x="8" y="8" width="4" height="4"/><rect x="4" y="12" width="4" height="4"/><rect x="12" y="12" width="4" height="4"/></g></svg>© 2026 JP Motorsport Journal</span>
+  <div class="wrap footer-main">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-wordmark">JP Motorsport Journal</a>
+      <p class="footer-tagline">Breaking news, deep-dive race recaps, and the strategy calls that decide championships — from the paddock to your feed. Written by one person who watches every session.</p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="#" data-cookie-settings>Cookie choices</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="wrap footer-meta">
+    <span>EST. 2026 · © 2026 JP MOTORSPORT JOURNAL</span>
     <a href="mailto:joshpenner49@gmail.com">joshpenner49@gmail.com</a>
-    <span>Last updated Oct 4, 2026</span>
+    <span>LAST UPDATED OCT 27, 2026</span>
   </div>
   <div class="wrap footer-legal">
-    <span>Some links on this site may be affiliate links. If you buy through them, we may earn a commission at no extra cost to you.</span>
-    <span><a href="privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="#" data-cookie-settings>Cookie choices</a></span>
+    <p>Some links on this site may be affiliate links. If you buy through them, we may earn a commission at no extra cost to you.</p>
+    <p>Circuit outlines from <a href="https://github.com/bacinger/f1-circuits">f1-circuits</a> by Tomislav Bacinger (<a href="licenses/f1-circuits-LICENSE">MIT</a>). Results and driver statistics from <a href="https://github.com/f1db/f1db">f1db</a> (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</p>
   </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script>
-  // Computed before logo3d.js runs, so it can decide whether to play its
-  // arrival tween without waiting on race-week.js (which loads after it).
-  // Reads the same sessionStorage key initRaceWeekEntrance() checks below,
-  // just early enough for logo3d.js to see it first.
-  (function () {
-    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var alreadyShown = sessionStorage.getItem("rwEntranceShown") === "1";
-    window.RW_PLAY_LOGO_ARRIVAL = !(reduce || alreadyShown);
-  })();
-</script>
-<script src="logo3d.js"></script>
 <script src="script.js"></script>
-<script src="race-week.js"></script>
-<script>initRaceWeekEntrance();</script>
+<script src="js/precision-mark.js" defer></script>
 <script src="analytics.js" defer></script>
 </body>
 </html>

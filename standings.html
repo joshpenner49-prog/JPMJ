@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-race-week="singapore">
+<html lang="en" data-race-week="mexico">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,56 +15,152 @@
 <meta name="twitter:description" content="2026 F1 Drivers' and Constructors' Championship standings after the Bahrain Grand Prix in Malaysia.">
 <meta name="twitter:image" content="og-image.png">
 
+<link rel="icon" href="img/insignia.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Titillium+Web:wght@400;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- fonts load without blocking first paint; text shows in a size-matched fallback until they arrive -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"></noscript>
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="race-week.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<div class="top-strip">
-  <div class="wrap">
-    <span><span class="dot"></span>SEASON 2026 — 16 OF 23 ROUNDS COMPLETE</span>
-    <span>NEXT: SINGAPORE GP · OCT 9–11</span>
-  </div>
-</div>
-
-<header class="site-header">
-  <div class="wrap nav-row">
-    <a href="index.html" class="logo"><span class="mark">JP</span> MOTORSPORT JOURNAL</a>
-    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-    <nav class="main-nav">
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <div class="masthead-meta">
+      <span>EST. 2026</span>
+      <span>SEASON 2026 · 18 OF 23 ROUNDS COMPLETE · NEXT: MEXICO CITY GP · OCT 30–NOV 1</span>
+    </div>
+    <a href="index.html" class="masthead-brand">
+      <span class="masthead-insignia"><span data-insignia data-size="64" data-theme="light" data-decorative><img src="img/insignia.svg" alt="" width="64" height="64"></span></span>
+      <span class="masthead-wordmark">JP Motorsport Journal</span>
+    </a>
+    <nav class="masthead-nav" aria-label="Primary">
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="archive.html">Race Archive</a></li>
-        <li><a href="standings.html" class="active">Standings</a></li>
+        <li><a href="archive.html">Archive</a></li>
+        <li><a href="standings.html" class="active" aria-current="page">Standings</a></li>
         <li><a href="drivers.html">Drivers</a></li>
         <li><a href="verdict.html">The Verdict</a></li>
         <li><a href="lightsout.html">Lights Out</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="raceday.html">JP Race Day</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
-<main>
+<main id="main" class="theme-dark" tabindex="-1">
   <section class="hero wrap" style="grid-template-columns: 1fr; padding-bottom: 12px;">
     <div>
-      <div class="hero-eyebrow">2026 championship</div>
-      <div class="rw-tag"><span class="rw-dots"><span></span><span></span></span>Singapore Race Week</div>
+      <div class="hero-eyebrow">2026 championship · after Round 18</div>
+      <div class="rw-tag"><span class="rw-dots"><span></span><span></span></span>Mexico City GP Race Week</div>
       <h1>Standings</h1>
-      <p class="lede">Drivers' and Constructors' points after Round 16 — the Bahrain Grand Prix at Sepang. Updated after Verstappen's first win of the year and Russell's costly late retirement.</p>
+      <p class="lede">Drivers' and Constructors' points after Round 18, the United States Grand Prix in Austin. Antonelli's win stretches his lead to 123 with five Grands Prix to go, and just 9 points now cover Russell, Hamilton, Verstappen and Leclerc in the fight for second.</p>
     </div>
   </section>
 
-  <section class="block wrap" style="padding-top: 0;">
+  <section class="block wrap standings-page" style="padding-top: 0;">
+    <!-- Everything between BUILD markers is generated from data/standings.json
+         by tools/build_standings.py. Edit the JSON, then run the script. -->
+    <div class="champ-summary">
+<!-- BUILD:summary -->
+      <div class="champ-cell" style="--team:#00A19C"><span class="champ-label">Leader</span><span class="champ-big">Kimi Antonelli</span><span class="champ-small">365 pts · +123 over Russell</span></div>
+      <div class="champ-cell"><span class="champ-label">Fight for second</span><span class="champ-big">1 pts apart</span><span class="champ-small">Russell 242 · Hamilton 241</span></div>
+      <div class="champ-cell" style="--team:#00A19C"><span class="champ-label">Constructors</span><span class="champ-big">Mercedes</span><span class="champ-small">607 pts · +133 over Ferrari</span></div>
+      <div class="champ-cell"><span class="champ-label">Still to play for</span><span class="champ-big">125 pts</span><span class="champ-small">5 Grands Prix, no sprints left</span></div>
+<!-- /BUILD:summary -->
+    </div>
+
+    <div class="standings-tabs" role="tablist" aria-label="Championship">
+      <button class="filter-tab standings-tab active" data-panel="drivers-panel">Drivers</button>
+      <button class="filter-tab standings-tab" data-panel="constructors-panel">Constructors</button>
+    </div>
+
+    <div class="standings-panel active" id="drivers-panel">
+      <div class="table-scroll">
+      <table class="st-table">
+        <caption class="visually-hidden">Drivers' championship after Round 18</caption>
+        <thead>
+          <tr><th scope="col">Pos</th><th scope="col"><span class="visually-hidden">Change since last round</span></th><th scope="col">Driver</th><th scope="col" class="st-bar"><span class="visually-hidden">Points share of leader</span></th><th scope="col" class="st-pts">Pts</th><th scope="col" class="st-gap">Gap</th><th scope="col" class="st-last">USA</th></tr>
+        </thead>
+        <tbody>
+<!-- BUILD:drivers -->
+          <tr class="is-leader" style="--team:#00A19C"><td class="st-pos">01</td><td class="st-mv"><span class="mv mv--same" aria-label="no change">–</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">Kimi Antonelli<span class="st-team">Mercedes</span></span></td><td class="st-bar"><span class="st-track"><span style="width:100.0%"></span></span></td><td class="st-pts">365</td><td class="st-gap">—</td><td class="st-last">+25</td></tr>
+          <tr style="--team:#00A19C"><td class="st-pos">02</td><td class="st-mv"><span class="mv mv--same" aria-label="no change">–</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">George Russell<span class="st-team">Mercedes</span></span></td><td class="st-bar"><span class="st-track"><span style="width:66.3%"></span></span></td><td class="st-pts">242</td><td class="st-gap">−123</td><td class="st-last">+4</td></tr>
+          <tr style="--team:#DC0000"><td class="st-pos">03</td><td class="st-mv"><span class="mv mv--same" aria-label="no change">–</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">Lewis Hamilton<span class="st-team">Ferrari</span></span></td><td class="st-bar"><span class="st-track"><span style="width:66.0%"></span></span></td><td class="st-pts">241</td><td class="st-gap">−124</td><td class="st-last">+12</td></tr>
+          <tr style="--team:#3671C6"><td class="st-pos">04</td><td class="st-mv"><span class="mv mv--same" aria-label="no change">–</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">Max Verstappen<span class="st-team">Red Bull</span></span></td><td class="st-bar"><span class="st-track"><span style="width:64.7%"></span></span></td><td class="st-pts">236</td><td class="st-gap">−129</td><td class="st-last">+15</td></tr>
+          <tr style="--team:#DC0000"><td class="st-pos">05</td><td class="st-mv"><span class="mv mv--same" aria-label="no change">–</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">Charles Leclerc<span class="st-team">Ferrari</span></span></td><td class="st-bar"><span class="st-track"><span style="width:63.8%"></span></span></td><td class="st-pts">233</td><td class="st-gap">−132</td><td class="st-last">+18</td></tr>
+          <tr style="--team:#FF8000"><td class="st-pos">06</td><td class="st-mv"><span class="mv mv--same" aria-label="no change">–</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">Lando Norris<span class="st-team">McLaren</span></span></td><td class="st-bar"><span class="st-track"><span style="width:57.8%"></span></span></td><td class="st-pts">211</td><td class="st-gap">−154</td><td class="st-last">+10</td></tr>
+          <tr style="--team:#FF8000"><td class="st-pos">07</td><td class="st-mv"><span class="mv mv--same" aria-label="no change">–</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">Oscar Piastri<span class="st-team">McLaren</span></span></td><td class="st-bar"><span class="st-track"><span style="width:39.5%"></span></span></td><td class="st-pts">144</td><td class="st-gap">−221</td><td class="st-last">+6</td></tr>
+          <tr style="--team:#3671C6"><td class="st-pos">08</td><td class="st-mv"><span class="mv mv--same" aria-label="no change">–</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">Isack Hadjar<span class="st-team">Red Bull</span></span></td><td class="st-bar"><span class="st-track"><span style="width:28.8%"></span></span></td><td class="st-pts">105</td><td class="st-gap">−260</td><td class="st-last">+8</td></tr>
+          <tr style="--team:#6C98FF"><td class="st-pos">09</td><td class="st-mv"><span class="mv mv--same" aria-label="no change">–</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">Liam Lawson<span class="st-team">Racing Bulls</span></span></td><td class="st-bar"><span class="st-track"><span style="width:21.1%"></span></span></td><td class="st-pts">77</td><td class="st-gap">−288</td><td class="st-last">+2</td></tr>
+          <tr style="--team:#FF87BC"><td class="st-pos">10</td><td class="st-mv"><span class="mv mv--same" aria-label="no change">–</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">Pierre Gasly<span class="st-team">Alpine</span></span></td><td class="st-bar"><span class="st-track"><span style="width:11.5%"></span></span></td><td class="st-pts">42</td><td class="st-gap">−323</td><td class="st-last">+1</td></tr>
+          <tr style="--team:#6C98FF"><td class="st-pos">11</td><td class="st-mv"><span class="mv mv--same" aria-label="no change">–</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">Arvid Lindblad<span class="st-team">Racing Bulls</span></span></td><td class="st-bar"><span class="st-track"><span style="width:10.4%"></span></span></td><td class="st-pts">38</td><td class="st-gap">−327</td><td class="st-last">0</td></tr>
+          <tr style="--team:#FF87BC"><td class="st-pos">12</td><td class="st-mv"><span class="mv mv--same" aria-label="no change">–</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">Franco Colapinto<span class="st-team">Alpine</span></span></td><td class="st-bar"><span class="st-track"><span style="width:7.4%"></span></span></td><td class="st-pts">27</td><td class="st-gap">−338</td><td class="st-last">0</td></tr>
+          <tr style="--team:#B6BABD"><td class="st-pos">13</td><td class="st-mv"><span class="mv mv--same" aria-label="no change">–</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">Oliver Bearman<span class="st-team">Haas</span></span></td><td class="st-bar"><span class="st-track"><span style="width:6.3%"></span></span></td><td class="st-pts">23</td><td class="st-gap">−342</td><td class="st-last">0</td></tr>
+          <tr style="--team:#B64254"><td class="st-pos">14</td><td class="st-mv"><span class="mv mv--same" aria-label="no change">–</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">Nico Hülkenberg<span class="st-team">Audi</span></span></td><td class="st-bar"><span class="st-track"><span style="width:3.6%"></span></span></td><td class="st-pts">13</td><td class="st-gap">−352</td><td class="st-last">0</td></tr>
+          <tr style="--team:#B64254"><td class="st-pos">15</td><td class="st-mv"><span class="mv mv--same" aria-label="no change">–</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">Gabriel Bortoleto<span class="st-team">Audi</span></span></td><td class="st-bar"><span class="st-track"><span style="width:2.7%"></span></span></td><td class="st-pts">10</td><td class="st-gap">−355</td><td class="st-last">0</td></tr>
+          <tr style="--team:#B6BABD"><td class="st-pos">16</td><td class="st-mv"><span class="mv mv--same" aria-label="no change">–</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">Esteban Ocon<span class="st-team">Haas</span></span></td><td class="st-bar"><span class="st-track"><span style="width:1.9%"></span></span></td><td class="st-pts">7</td><td class="st-gap">−358</td><td class="st-last">0</td></tr>
+          <tr style="--team:#229971"><td class="st-pos">17</td><td class="st-mv"><span class="mv mv--same" aria-label="no change">–</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">Fernando Alonso<span class="st-team">Aston Martin</span></span></td><td class="st-bar"><span class="st-track"><span style="width:1.9%"></span></span></td><td class="st-pts">7</td><td class="st-gap">−358</td><td class="st-last">0</td></tr>
+          <tr style="--team:#00A3E0"><td class="st-pos">18</td><td class="st-mv"><span class="mv mv--same" aria-label="no change">–</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">Carlos Sainz<span class="st-team">Williams</span></span></td><td class="st-bar"><span class="st-track"><span style="width:1.9%"></span></span></td><td class="st-pts">7</td><td class="st-gap">−358</td><td class="st-last">0</td></tr>
+          <tr style="--team:#00A3E0"><td class="st-pos">19</td><td class="st-mv"><span class="mv mv--same" aria-label="no change">–</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">Alexander Albon<span class="st-team">Williams</span></span></td><td class="st-bar"><span class="st-track"><span style="width:1.4%"></span></span></td><td class="st-pts">5</td><td class="st-gap">−360</td><td class="st-last">0</td></tr>
+          <tr style="--team:#6C98FF"><td class="st-pos">20</td><td class="st-mv"><span class="mv mv--same" aria-label="no change">–</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">Yuki Tsunoda<span class="st-team">Racing Bulls</span></span></td><td class="st-bar"><span class="st-track"><span style="width:0.3%"></span></span></td><td class="st-pts">1</td><td class="st-gap">−364</td><td class="st-last">0</td></tr>
+          <tr style="--team:#229971"><td class="st-pos">21</td><td class="st-mv"><span class="mv mv--same" aria-label="no change">–</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">Lance Stroll<span class="st-team">Aston Martin</span></span></td><td class="st-bar"><span class="st-track"><span style="width:0.0%"></span></span></td><td class="st-pts">0</td><td class="st-gap">−365</td><td class="st-last">0</td></tr>
+          <tr style="--team:#C9A227"><td class="st-pos">22</td><td class="st-mv"><span class="mv mv--same" aria-label="no change">–</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">Valtteri Bottas<span class="st-team">Cadillac</span></span></td><td class="st-bar"><span class="st-track"><span style="width:0.0%"></span></span></td><td class="st-pts">0</td><td class="st-gap">−365</td><td class="st-last">0</td></tr>
+          <tr style="--team:#C9A227"><td class="st-pos">23</td><td class="st-mv"><span class="mv mv--same" aria-label="no change">–</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">Sergio Pérez<span class="st-team">Cadillac</span></span></td><td class="st-bar"><span class="st-track"><span style="width:0.0%"></span></span></td><td class="st-pts">0</td><td class="st-gap">−365</td><td class="st-last">0</td></tr>
+<!-- /BUILD:drivers -->
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <div class="standings-panel" id="constructors-panel">
+      <div class="table-scroll">
+      <table class="st-table">
+        <caption class="visually-hidden">Constructors' championship after Round 18</caption>
+        <thead>
+          <tr><th scope="col">Pos</th><th scope="col"><span class="visually-hidden">Change since last round</span></th><th scope="col">Team</th><th scope="col" class="st-bar"><span class="visually-hidden">Points share of leader</span></th><th scope="col" class="st-pts">Pts</th><th scope="col" class="st-gap">Gap</th><th scope="col" class="st-last">USA</th></tr>
+        </thead>
+        <tbody>
+<!-- BUILD:constructors -->
+          <tr class="is-leader" style="--team:#00A19C"><td class="st-pos">01</td><td class="st-mv"><span class="mv mv--same" aria-label="no change">–</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">Mercedes</span></td><td class="st-bar"><span class="st-track"><span style="width:100.0%"></span></span></td><td class="st-pts">607</td><td class="st-gap">—</td><td class="st-last">+29</td></tr>
+          <tr style="--team:#DC0000"><td class="st-pos">02</td><td class="st-mv"><span class="mv mv--same" aria-label="no change">–</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">Ferrari</span></td><td class="st-bar"><span class="st-track"><span style="width:78.1%"></span></span></td><td class="st-pts">474</td><td class="st-gap">−133</td><td class="st-last">+30</td></tr>
+          <tr style="--team:#3671C6"><td class="st-pos">03</td><td class="st-mv"><span class="mv mv--up" aria-label="up 1">▲1</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">Red Bull</span></td><td class="st-bar"><span class="st-track"><span style="width:58.5%"></span></span></td><td class="st-pts">355</td><td class="st-gap">−252</td><td class="st-last">+23</td></tr>
+          <tr style="--team:#FF8000"><td class="st-pos">04</td><td class="st-mv"><span class="mv mv--down" aria-label="down 1">▼1</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">McLaren</span></td><td class="st-bar"><span class="st-track"><span style="width:58.5%"></span></span></td><td class="st-pts">355</td><td class="st-gap">−252</td><td class="st-last">+16</td></tr>
+          <tr style="--team:#6C98FF"><td class="st-pos">05</td><td class="st-mv"><span class="mv mv--same" aria-label="no change">–</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">Racing Bulls</span></td><td class="st-bar"><span class="st-track"><span style="width:16.8%"></span></span></td><td class="st-pts">102</td><td class="st-gap">−505</td><td class="st-last">+2</td></tr>
+          <tr style="--team:#FF87BC"><td class="st-pos">06</td><td class="st-mv"><span class="mv mv--same" aria-label="no change">–</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">Alpine</span></td><td class="st-bar"><span class="st-track"><span style="width:11.4%"></span></span></td><td class="st-pts">69</td><td class="st-gap">−538</td><td class="st-last">+1</td></tr>
+          <tr style="--team:#B6BABD"><td class="st-pos">07</td><td class="st-mv"><span class="mv mv--same" aria-label="no change">–</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">Haas</span></td><td class="st-bar"><span class="st-track"><span style="width:4.9%"></span></span></td><td class="st-pts">30</td><td class="st-gap">−577</td><td class="st-last">0</td></tr>
+          <tr style="--team:#B64254"><td class="st-pos">08</td><td class="st-mv"><span class="mv mv--same" aria-label="no change">–</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">Audi</span></td><td class="st-bar"><span class="st-track"><span style="width:3.8%"></span></span></td><td class="st-pts">23</td><td class="st-gap">−584</td><td class="st-last">0</td></tr>
+          <tr style="--team:#00A3E0"><td class="st-pos">09</td><td class="st-mv"><span class="mv mv--same" aria-label="no change">–</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">Williams</span></td><td class="st-bar"><span class="st-track"><span style="width:2.0%"></span></span></td><td class="st-pts">12</td><td class="st-gap">−595</td><td class="st-last">0</td></tr>
+          <tr style="--team:#229971"><td class="st-pos">10</td><td class="st-mv"><span class="mv mv--same" aria-label="no change">–</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">Aston Martin</span></td><td class="st-bar"><span class="st-track"><span style="width:1.2%"></span></span></td><td class="st-pts">7</td><td class="st-gap">−600</td><td class="st-last">0</td></tr>
+          <tr style="--team:#C9A227"><td class="st-pos">11</td><td class="st-mv"><span class="mv mv--same" aria-label="no change">–</span></td><td class="st-name"><span class="st-stripe" aria-hidden="true"></span><span class="st-who">Cadillac</span></td><td class="st-bar"><span class="st-track"><span style="width:0.0%"></span></span></td><td class="st-pts">0</td><td class="st-gap">−607</td><td class="st-last">0</td></tr>
+<!-- /BUILD:constructors -->
+        </tbody>
+      </table>
+      </div>
+    </div>
+    <p class="st-key"><span>▲▼ places gained or lost at Austin</span><span>USA = points scored at the United States GP</span><span>Colour = team</span></p>
+
+    <div class="section-head st-section">
+      <h2>Title fight</h2>
+      <span class="meta">Cumulative points, Rounds 1–17</span>
+    </div>
+    <div class="chart-card">
+      <div class="chart-box"><canvas id="points-chart" role="img" aria-label="Line chart of cumulative points for the top six drivers (Antonelli, Russell, Hamilton, Verstappen, Leclerc and Norris) across Rounds 1 to 17. The tables above give every final value."></canvas></div>
+      <p class="chart-hint">Lines use team colours; a dashed line is the second driver of the same team. Click a name in the legend to hide or show that line.</p>
+    </div>
+
+    <div class="section-head st-section">
+      <h2>Tyre compounds</h2>
+      <span class="meta">United States GP · Pirelli C2 / C3 / C4</span>
+    </div>
     <div class="tire-compounds">
       <button class="tire-btn" type="button" data-compound="soft" aria-expanded="false" aria-label="Soft compound — tap for details">
         <svg width="56" height="56" viewBox="0 0 68 68" aria-hidden="true">
           <circle cx="34" cy="34" r="30" fill="var(--ink)"/>
           <circle cx="34" cy="34" r="26" fill="none" stroke="#000" stroke-width="4" stroke-dasharray="3 2.2" opacity="0.5"/>
-          <circle cx="34" cy="34" r="18" fill="var(--red)"/>
+          <circle cx="34" cy="34" r="18" fill="#C8102E"/>
           <circle cx="34" cy="34" r="9" fill="var(--chrome)"/>
         </svg>
         <span class="tire-label">Soft</span>
@@ -82,7 +178,7 @@
         <svg width="56" height="56" viewBox="0 0 68 68" aria-hidden="true">
           <circle cx="34" cy="34" r="30" fill="var(--ink)"/>
           <circle cx="34" cy="34" r="26" fill="none" stroke="#000" stroke-width="4" stroke-dasharray="3 2.2" opacity="0.5"/>
-          <circle cx="34" cy="34" r="18" fill="var(--paper-2)" stroke="var(--line)" stroke-width="1"/>
+          <circle cx="34" cy="34" r="18" fill="#F4F4F2" stroke="#D9D3C8" stroke-width="1"/>
           <circle cx="34" cy="34" r="9" fill="var(--chrome)"/>
         </svg>
         <span class="tire-label">Hard</span>
@@ -108,146 +204,83 @@
     </div>
     <div class="tire-info" id="tire-info" hidden></div>
 
-    <div class="chart-card">
-      <canvas id="points-chart" height="110"></canvas>
-      <p class="chart-hint">Click a driver's name in the legend to isolate their line · points progression, Rounds 1–16</p>
-    </div>
-
-    <div class="standings-tabs">
-      <button class="filter-tab standings-tab active" data-panel="drivers-panel">Drivers</button>
-      <button class="filter-tab standings-tab" data-panel="constructors-panel">Constructors</button>
-    </div>
-
-    <div class="standings-panel active" id="drivers-panel">
-      <table class="standings-table">
-        <thead>
-          <tr>
-            <th>Pos</th>
-            <th>Driver</th>
-            <th class="bar-cell">Margin</th>
-            <th style="text-align:right;">Points</th>
-            <th style="text-align:right;">Gap</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="p1"><td class="pos">1</td><td><span class="driver-name">Kimi Antonelli</span><br><span class="team-name">Mercedes</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:100%;"></div></div></td><td class="points">320</td><td class="gap">Leader</td></tr>
-          <tr class="p2"><td class="pos">2</td><td><span class="driver-name">George Russell</span><br><span class="team-name">Mercedes</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:74%;"></div></div></td><td class="points">236</td><td class="gap">−84</td></tr>
-          <tr class="p3"><td class="pos">3</td><td><span class="driver-name">Lewis Hamilton</span><br><span class="team-name">Ferrari</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:67%;"></div></div></td><td class="points">214</td><td class="gap">−106</td></tr>
-          <tr><td class="pos">4</td><td><span class="driver-name">Charles Leclerc</span><br><span class="team-name">Ferrari</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:60%;"></div></div></td><td class="points">191</td><td class="gap">−129</td></tr>
-          <tr><td class="pos">5</td><td><span class="driver-name">Lando Norris</span><br><span class="team-name">McLaren</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:59%;"></div></div></td><td class="points">188</td><td class="gap">−132</td></tr>
-          <tr><td class="pos">6</td><td><span class="driver-name">Max Verstappen</span><br><span class="team-name">Red Bull</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:59%;"></div></div></td><td class="points">188</td><td class="gap">−132</td></tr>
-          <tr><td class="pos">7</td><td><span class="driver-name">Oscar Piastri</span><br><span class="team-name">McLaren</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:40%;"></div></div></td><td class="points">128</td><td class="gap">−192</td></tr>
-          <tr><td class="pos">8</td><td><span class="driver-name">Isack Hadjar</span><br><span class="team-name">Red Bull</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:30%;"></div></div></td><td class="points">96</td><td class="gap">−224</td></tr>
-          <tr><td class="pos">9</td><td><span class="driver-name">Liam Lawson</span><br><span class="team-name">Racing Bulls</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:20%;"></div></div></td><td class="points">65</td><td class="gap">−255</td></tr>
-          <tr><td class="pos">10</td><td><span class="driver-name">Pierre Gasly</span><br><span class="team-name">Alpine</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:13%;"></div></div></td><td class="points">41</td><td class="gap">−279</td></tr>
-          <tr><td class="pos">11</td><td><span class="driver-name">Arvid Lindblad</span><br><span class="team-name">Racing Bulls</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:12%;"></div></div></td><td class="points">38</td><td class="gap">−282</td></tr>
-          <tr><td class="pos">12</td><td><span class="driver-name">Franco Colapinto</span><br><span class="team-name">Alpine</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:8%;"></div></div></td><td class="points">27</td><td class="gap">−293</td></tr>
-          <tr><td class="pos">13</td><td><span class="driver-name">Oliver Bearman</span><br><span class="team-name">Haas</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:6%;"></div></div></td><td class="points">20</td><td class="gap">−300</td></tr>
-          <tr><td class="pos">14</td><td><span class="driver-name">Gabriel Bortoleto</span><br><span class="team-name">Audi</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:3%;"></div></div></td><td class="points">10</td><td class="gap">−310</td></tr>
-          <tr><td class="pos">15</td><td><span class="driver-name">Nico Hülkenberg</span><br><span class="team-name">Audi</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:2%;"></div></div></td><td class="points">7</td><td class="gap">−313</td></tr>
-          <tr><td class="pos">16</td><td><span class="driver-name">Esteban Ocon</span><br><span class="team-name">Haas</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:2%;"></div></div></td><td class="points">7</td><td class="gap">−313</td></tr>
-          <tr><td class="pos">17</td><td><span class="driver-name">Fernando Alonso</span><br><span class="team-name">Aston Martin</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:2%;"></div></div></td><td class="points">7</td><td class="gap">−313</td></tr>
-          <tr><td class="pos">18</td><td><span class="driver-name">Carlos Sainz</span><br><span class="team-name">Williams</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:2%;"></div></div></td><td class="points">7</td><td class="gap">−313</td></tr>
-          <tr><td class="pos">19</td><td><span class="driver-name">Alexander Albon</span><br><span class="team-name">Williams</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:2%;"></div></div></td><td class="points">5</td><td class="gap">−315</td></tr>
-          <tr><td class="pos">20</td><td><span class="driver-name">Yuki Tsunoda</span><br><span class="team-name">Racing Bulls</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:0%;"></div></div></td><td class="points">1</td><td class="gap">−319</td></tr>
-          <tr><td class="pos">21</td><td><span class="driver-name">Lance Stroll</span><br><span class="team-name">Aston Martin</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:0%;"></div></div></td><td class="points">0</td><td class="gap">−320</td></tr>
-          <tr><td class="pos">22</td><td><span class="driver-name">Valtteri Bottas</span><br><span class="team-name">Cadillac</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:0%;"></div></div></td><td class="points">0</td><td class="gap">−320</td></tr>
-          <tr><td class="pos">23</td><td><span class="driver-name">Sergio Pérez</span><br><span class="team-name">Cadillac</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:0%;"></div></div></td><td class="points">0</td><td class="gap">−320</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="standings-panel" id="constructors-panel">
-      <table class="standings-table">
-        <thead>
-          <tr>
-            <th>Pos</th>
-            <th>Team</th>
-            <th class="bar-cell">Margin</th>
-            <th style="text-align:right;">Points</th>
-            <th style="text-align:right;">Gap</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="p1"><td class="pos">1</td><td><span class="driver-name">Mercedes</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:100%;"></div></div></td><td class="points">556</td><td class="gap">Leader</td></tr>
-          <tr class="p2"><td class="pos">2</td><td><span class="driver-name">Ferrari</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:73%;"></div></div></td><td class="points">405</td><td class="gap">−151</td></tr>
-          <tr class="p3"><td class="pos">3</td><td><span class="driver-name">McLaren</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:57%;"></div></div></td><td class="points">316</td><td class="gap">−240</td></tr>
-          <tr><td class="pos">4</td><td><span class="driver-name">Red Bull</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:54%;"></div></div></td><td class="points">298</td><td class="gap">−258</td></tr>
-          <tr><td class="pos">5</td><td><span class="driver-name">Racing Bulls</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:16%;"></div></div></td><td class="points">90</td><td class="gap">−466</td></tr>
-          <tr><td class="pos">6</td><td><span class="driver-name">Alpine</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:12%;"></div></div></td><td class="points">68</td><td class="gap">−488</td></tr>
-          <tr><td class="pos">7</td><td><span class="driver-name">Haas</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:5%;"></div></div></td><td class="points">27</td><td class="gap">−529</td></tr>
-          <tr><td class="pos">8</td><td><span class="driver-name">Audi</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:3%;"></div></div></td><td class="points">17</td><td class="gap">−539</td></tr>
-          <tr><td class="pos">9</td><td><span class="driver-name">Williams</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:2%;"></div></div></td><td class="points">12</td><td class="gap">−544</td></tr>
-          <tr><td class="pos">10</td><td><span class="driver-name">Aston Martin</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:1%;"></div></div></td><td class="points">7</td><td class="gap">−549</td></tr>
-          <tr><td class="pos">11</td><td><span class="driver-name">Cadillac</span></td><td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:0%;"></div></div></td><td class="points">0</td><td class="gap">−556</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <p style="font-family: var(--font-mono); font-size: 11.5px; color: var(--ink-dim); margin-top: 8px;">
-      Standings current through Round 16 (Bahrain GP at Sepang, Oct 4 2026), checked against the official championship standings. Norris and Verstappen are tied on 188, with Norris ahead on wins; Hülkenberg, Ocon, Alonso and Sainz are tied on 7, listed in official countback order. Will update after the Singapore GP on Oct 11.
+    <p class="standings-note">
+<!-- BUILD:note -->
+      Standings through Round 18 (United States GP at the Circuit of The Americas, Oct 25 2026), checked against f1db. Drivers on equal points are listed in official countback order. Will update after the Mexico City GP on Nov 1.
+<!-- /BUILD:note -->
     </p>
   </section>
 </main>
 
 <footer class="site-footer">
-  <div class="wrap">
-    <span><svg width="14" height="14" viewBox="0 0 16 16" style="vertical-align: -2px; margin-right: 5px;"><rect width="16" height="16" fill="none"/><g fill="var(--ink-dim)"><rect x="0" y="0" width="4" height="4"/><rect x="8" y="0" width="4" height="4"/><rect x="4" y="4" width="4" height="4"/><rect x="12" y="4" width="4" height="4"/><rect x="0" y="8" width="4" height="4"/><rect x="8" y="8" width="4" height="4"/><rect x="4" y="12" width="4" height="4"/><rect x="12" y="12" width="4" height="4"/></g></svg>© 2026 JP Motorsport Journal</span>
+  <div class="wrap footer-main">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-wordmark">JP Motorsport Journal</a>
+      <p class="footer-tagline">Breaking news, deep-dive race recaps, and the strategy calls that decide championships — from the paddock to your feed. Written by one person who watches every session.</p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="#" data-cookie-settings>Cookie choices</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="wrap footer-meta">
+    <span>EST. 2026 · © 2026 JP MOTORSPORT JOURNAL</span>
     <a href="mailto:joshpenner49@gmail.com">joshpenner49@gmail.com</a>
-    <span>Last updated Oct 4, 2026</span>
+    <span>LAST UPDATED OCT 27, 2026</span>
   </div>
   <div class="wrap footer-legal">
-    <span>Some links on this site may be affiliate links. If you buy through them, we may earn a commission at no extra cost to you.</span>
-    <span><a href="privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="#" data-cookie-settings>Cookie choices</a></span>
+    <p>Some links on this site may be affiliate links. If you buy through them, we may earn a commission at no extra cost to you.</p>
+    <p>Circuit outlines from <a href="https://github.com/bacinger/f1-circuits">f1-circuits</a> by Tomislav Bacinger (<a href="licenses/f1-circuits-LICENSE">MIT</a>). Results and driver statistics from <a href="https://github.com/f1db/f1db">f1db</a> (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</p>
   </div>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+<!-- BUILD:chart-data -->
+<script>window.STANDINGS_PROGRESSION = {"rounds": ["AUS", "CHN", "JPN", "MIA", "CAN", "MON", "ESP", "AUT", "GBR", "BEL", "HUN", "NED", "ITA", "MAD", "AZE", "SEP", "SIN", "USA"], "series": [{"label": "Antonelli", "team": "Mercedes", "color": "#00A19C", "dashed": false, "data": [18, 47, 72, 100, 131, 156, 156, 171, 179, 204, 219, 242, 267, 292, 302, 320, 340, 365]}, {"label": "Russell", "team": "Mercedes", "color": "#00A19C", "dashed": true, "data": [25, 51, 63, 80, 88, 88, 106, 131, 154, 154, 160, 183, 201, 211, 236, 236, 238, 242]}, {"label": "Hamilton", "team": "Ferrari", "color": "#DC0000", "dashed": false, "data": [12, 33, 41, 51, 72, 90, 115, 125, 147, 159, 169, 183, 191, 191, 199, 214, 229, 241]}, {"label": "Verstappen", "team": "Red Bull", "color": "#3671C6", "dashed": false, "data": [8, 8, 12, 26, 43, 43, 55, 73, 76, 91, 109, 112, 127, 145, 163, 188, 221, 236]}, {"label": "Leclerc", "team": "Ferrari", "color": "#DC0000", "dashed": true, "data": [15, 34, 49, 59, 75, 75, 75, 79, 108, 126, 138, 155, 155, 167, 179, 191, 215, 233]}, {"label": "Norris", "team": "McLaren", "color": "#FF8000", "dashed": false, "data": [10, 15, 25, 51, 58, 58, 73, 79, 97, 103, 128, 159, 171, 186, 186, 188, 201, 211]}]};</script>
+<!-- /BUILD:chart-data -->
 <script>
 (function () {
   const ctxEl = document.getElementById("points-chart");
-  if (!ctxEl || typeof Chart === "undefined") return;
-  const rounds = ["AUS","CHN","JPN","MIA","CAN","MON","ESP","AUT","GBR","BEL","HUN","NED","ITA","MAD","AZE","SEP"];
-  const data = {
-    labels: rounds,
-    datasets: [
-      { label: "Antonelli", data: [18,43,72,97,122,147,147,162,175,194,219,242,267,292,302,320], borderColor: "#c8102e", backgroundColor: "#c8102e", tension: 0.35 },
-      { label: "Hamilton",  data: [12,27,39,55,68,81,106,122,143,149,169,183,191,191,199,214], borderColor: "#10493a", backgroundColor: "#10493a", tension: 0.35 },
-      { label: "Russell",   data: [25,43,55,67,79,87,105,130,148,148,160,183,201,211,236,236], borderColor: "#ab7d1f", backgroundColor: "#ab7d1f", tension: 0.35 },
-      { label: "Leclerc",   data: [15,30,45,60,73,73,73,78,103,121,138,155,155,167,179,191], borderColor: "#7d848c", backgroundColor: "#7d848c", tension: 0.35 },
-      { label: "Norris",    data: [12,12,24,42,56,56,71,83,97,103,128,159,171,186,186,188], borderColor: "#3b5166", backgroundColor: "#3b5166", tension: 0.35 }
-    ]
-  };
+  const P = window.STANDINGS_PROGRESSION;
+  if (!ctxEl || !P || typeof Chart === "undefined") return;
+  // team colours (lifted to 3:1 on charcoal where needed); team-mates dashed
+  const datasets = P.series.map((s) => ({
+    label: s.label, data: s.data, borderColor: s.color, backgroundColor: s.color,
+    borderDash: s.dashed ? [6, 4] : [], tension: 0.35, borderWidth: 2,
+    pointRadius: 2, pointHoverRadius: 5, pointStyle: s.dashed ? "rectRot" : "circle"
+  }));
   new Chart(ctxEl.getContext("2d"), {
     type: "line",
-    data: data,
+    data: { labels: P.rounds, datasets: datasets },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       interaction: { mode: "index", intersect: false },
       plugins: {
         legend: {
           position: "top",
-          labels: { color: "#15161a", font: { family: "JetBrains Mono", size: 11 }, usePointStyle: true, boxWidth: 8 }
+          labels: { color: "#ECE8E1", font: { family: "IBM Plex Mono", size: 11 }, usePointStyle: true, boxWidth: 8 }
         },
         tooltip: {
-          backgroundColor: "#ffffff",
-          titleColor: "#15161a",
-          bodyColor: "#15161a",
-          borderColor: "rgba(21,22,26,0.15)",
-          borderWidth: 1,
-          bodyFont: { family: "JetBrains Mono", size: 12 },
-          titleFont: { family: "JetBrains Mono", size: 12 }
+          backgroundColor: "#222326", titleColor: "#ECE8E1", bodyColor: "#ECE8E1",
+          borderColor: "#34363B", borderWidth: 1,
+          bodyFont: { family: "IBM Plex Mono", size: 12 }, titleFont: { family: "IBM Plex Mono", size: 12 }
         }
       },
       scales: {
-        x: { ticks: { color: "#6c7178", font: { family: "JetBrains Mono", size: 11 } }, grid: { color: "rgba(21,22,26,0.06)" } },
-        y: { ticks: { color: "#6c7178", font: { family: "JetBrains Mono", size: 11 } }, grid: { color: "rgba(21,22,26,0.06)" }, title: { display: true, text: "Points", color: "#6c7178", font: { family: "JetBrains Mono", size: 11 } } }
+        x: { ticks: { color: "#A29E97", font: { family: "IBM Plex Mono", size: 11 } }, grid: { color: "rgba(236,232,225,0.06)" } },
+        y: { ticks: { color: "#A29E97", font: { family: "IBM Plex Mono", size: 11 } }, grid: { color: "rgba(236,232,225,0.06)" }, title: { display: true, text: "Points", color: "#A29E97", font: { family: "IBM Plex Mono", size: 11 } } }
       }
     }
   });
 })();
 </script>
 <script src="script.js"></script>
+<script src="js/precision-mark.js" defer></script>
 <script src="analytics.js" defer></script>
 </body>
 </html>

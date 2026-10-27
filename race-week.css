@@ -1,191 +1,367 @@
 /* ============================================================
    RACE WEEK THEME LAYER — temporary, swappable.
-   Everything in this file is scoped under [data-race-week="..."]
-   on <html>. To retire Monza week: remove the attribute (or the
-   <link> to this file) from each page — nothing else changes.
-   To adapt for a future race: add a new
-   [data-race-week="<slug>"] block below with that race's two
-   accent colors, and set data-race-week="<slug>" on <html>.
+   Everything here is scoped under [data-race-week="..."] on <html>.
+   To retire a race week: remove the attribute from each page (or the
+   <link> to this file); nothing else changes.
+
+   Under the premium design a race-week theme may only:
+     1. colour the small race-week tag (.rw-tag) and the thin accent
+        rule (.rw-rule) with the host nation's two colours, and
+     2. optionally swap the site accent by setting --red (on ivory) and
+        --red-dark (on charcoal) in its block. Only do this if the
+        replacement passes 4.5:1 as text on #F5F2EC (--red) and on
+        #191A1C (--red-dark); otherwise leave the site red alone.
+   No overlays, streaks, glows or entrance animations.
+
+   To add a race: copy a block below, set the two flag colours, and
+   set data-race-week="<slug>" on <html>.
    ============================================================ */
 
 [data-race-week="monza"] {
-  --rw-a: #008C45; /* Italian green — first accent */
-  --rw-b: #CD212A; /* Italian red — second accent */
-  --rw-a-dim: rgba(0, 140, 69, 0.14);
-  --rw-b-dim: rgba(205, 33, 42, 0.14);
+  --rw-a: #008C45; /* Italian green */
+  --rw-b: #CD212A; /* Italian red */
 }
 
 [data-race-week="madrid"] {
-  --rw-a: #F1BF00; /* Spanish gold — first accent, keeps it distinct from the site's own red */
-  --rw-b: #AA151B; /* Spanish red — second accent */
-  --rw-a-dim: rgba(241, 191, 0, 0.14);
-  --rw-b-dim: rgba(170, 21, 27, 0.14);
+  --rw-a: #F1BF00; /* Spanish gold */
+  --rw-b: #AA151B; /* Spanish red */
 }
 
 [data-race-week="baku"] {
-  --rw-a: #0092BC; /* Azerbaijan flag blue — first accent */
-  --rw-b: #00A651; /* Azerbaijan flag green — second accent, avoids the flag's own red clashing with the site's permanent red */
-  --rw-a-dim: rgba(0, 146, 188, 0.14);
-  --rw-b-dim: rgba(0, 166, 81, 0.14);
+  --rw-a: #0092BC; /* Azerbaijan flag blue */
+  --rw-b: #00A651; /* Azerbaijan flag green */
 }
 
 [data-race-week="sepang"] {
-  --rw-a: #010066; /* Malaysia flag navy — first accent (host venue; race is officially Bahrain-branded but red would clash with the site's own red) */
-  --rw-b: #FFCC00; /* Malaysia flag gold — second accent */
-  --rw-a-dim: rgba(1, 0, 102, 0.14);
-  --rw-b-dim: rgba(255, 204, 0, 0.16);
+  --rw-a: #010066; /* Malaysia flag navy */
+  --rw-b: #FFCC00; /* Malaysia flag gold */
 }
 
 [data-race-week="singapore"] {
-  --rw-a: #EF3340; /* Singapore flag red — first accent */
-  --rw-b: #FFFFFF; /* Singapore flag white — second accent */
-  --rw-a-dim: rgba(239, 51, 64, 0.14);
-  --rw-b-dim: rgba(255, 255, 255, 0.5);
+  --rw-a: #EF3340; /* Singapore flag red */
+  --rw-b: #FFFFFF; /* Singapore flag white */
+  /* Singapore red is 3.6:1 on ivory, too light for text, so the site
+     accent (--red) is deliberately left unchanged this week. */
 }
-/* white disappears on the light site background, so give white accents a hairline edge */
-[data-race-week="singapore"] .rw-tag .rw-dots span:last-child { box-shadow: inset 0 0 0 1px rgba(21, 22, 26, 0.35); }
-[data-race-week="singapore"] .rw-rule { box-shadow: inset 0 0 0 1px rgba(21, 22, 26, 0.18); }
-[data-race-week="singapore"] .main-nav a::after {
-  background: linear-gradient(90deg, var(--rw-a) 0 50%, var(--rw-b) 50% 100%);
-  box-shadow: inset 0 0 0 1px rgba(21, 22, 26, 0.18);
+[data-race-week="austin"] {
+  --rw-a: #B22234; /* US flag red ("Old Glory red") */
+  --rw-b: #3C3B6E; /* US flag blue ("Old Glory blue") */
+  /* Accent swap for the week: Old Glory red is 5.9:1 on ivory and 5.4:1
+     on ivory-2, so it passes as text. --red-dark stays the site's own
+     (Old Glory red is only 2.6:1 on charcoal). */
+  --red: #B22234;
 }
+/* navy disappears on charcoal: give it a hairline edge on dark panels */
+[data-race-week="austin"] .driver-hero .rw-tag .rw-dots span:last-child,
+[data-race-week="austin"] .theme-dark .rw-tag .rw-dots span:last-child { box-shadow: 0 0 0 1px rgba(236, 232, 225, 0.55); }
 
-/* ---------- small "race week" tag, reused at moderate/subtle intensity ---------- */
+/* white disappears on the ivory ground: give white accents a hairline edge */
+[data-race-week="singapore"] .rw-tag .rw-dots span:last-child,
+[data-race-week="singapore"] .rw-rule { box-shadow: inset 0 0 0 1px rgba(25, 26, 28, 0.3); }
+
+/* ---------- small race-week tag ---------- */
+.rw-tag { display: none; }
 [data-race-week] .rw-tag {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-family: var(--mono);
+  font-size: 11px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--ink-dim);
+  color: var(--grey);
   margin-bottom: 10px;
 }
-[data-race-week] .rw-tag .rw-dots {
-  display: inline-flex;
-  gap: 3px;
-}
-[data-race-week] .rw-tag .rw-dots span {
-  width: 5px; height: 5px; border-radius: 50%;
-}
+[data-race-week] .rw-tag .rw-dots { display: inline-flex; gap: 3px; }
+[data-race-week] .rw-tag .rw-dots span { width: 6px; height: 6px; border-radius: 50%; }
 [data-race-week] .rw-tag .rw-dots span:first-child { background: var(--rw-a); }
 [data-race-week] .rw-tag .rw-dots span:last-child { background: var(--rw-b); }
 
-/* dark-panel contexts (driver hero, homepage hero) need the light text variant */
+/* dark panels (driver hero, standings) use the light text variant */
 [data-race-week] .driver-hero .rw-tag,
-[data-race-week] .hero-3d-overlay .rw-tag {
-  color: var(--on-black-dim);
-}
+[data-race-week] .theme-dark .rw-tag { color: var(--c-muted); }
 
-/* thin two-color accent rule, used sparingly under page titles */
+/* ---------- thin two-colour accent rule under page titles ---------- */
+.rw-rule { display: none; }
 [data-race-week] .rw-rule {
   display: block;
   width: 44px;
   height: 3px;
   margin: 10px 0 18px;
   background: linear-gradient(90deg, var(--rw-a) 0 50%, var(--rw-b) 50% 100%);
-  border-radius: 2px;
 }
 
-/* ---------- header wordmark: same left-green/right-red logic as the 3D badge ---------- */
-[data-race-week] .logo .mark {
-  border-left: 3px solid var(--rw-a);
-  border-right: 3px solid var(--rw-b);
-}
-.rw-circuit-line {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.05;
-}
-[data-race-week] .hero-3d { position: relative; overflow: hidden; }
-[data-race-week] .hero-3d-inner { position: relative; z-index: 1; }
+/* ============================================================
+   CIRCUIT DECORATIONS — per race week, static, decorative only.
+   Each race can add its own block here, scoped to its slug. Rules:
+   no animation, no glow, never over text, and every page must still
+   read correctly without them (they vanish with the attribute).
+   ============================================================ */
 
-/* ---------- homepage: nav underline picks up the two accents on hover ---------- */
-[data-race-week] .main-nav a {
-  position: relative;
+/* ---------- Austin: stars and stripes ---------- */
+[data-race-week="austin"] {
+  --us-red: #B22234;
+  --us-blue: #3C3B6E;
+  --us-white: #FFFFFF;
+  /* five-point star, used as a clip shape */
+  --us-star: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
 }
-[data-race-week] .main-nav a::after {
+
+/* flag band across the very top: seven red/white stripes ... */
+[data-race-week="austin"] body::before {
   content: "";
-  position: absolute;
-  left: 0; right: 0; bottom: -4px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--rw-a), var(--rw-b));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.18s ease;
+  display: block;
+  height: 14px;
+  background: repeating-linear-gradient(180deg, var(--us-red) 0 2px, var(--us-white) 2px 4px);
 }
-[data-race-week] .main-nav a:hover::after,
-[data-race-week] .main-nav a.active::after {
-  transform: scaleX(1);
-}
-
-/* ---------- entrance animation overlay (homepage, first visit this session only) ---------- */
-.rw-entrance {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
+/* ... with a navy canton of small white stars at the left */
+[data-race-week="austin"] body::after {
+  content: "";
+  position: absolute; top: 0; left: 0;
+  width: 96px; height: 14px;
   pointer-events: none;
-  background: var(--black-panel);
-}
-.rw-entrance .rw-streak {
-  position: absolute;
-  top: 0; bottom: 0;
-  width: 34%;
-  opacity: 0.9;
-}
-.rw-entrance .rw-streak.a { left: -40%; background: linear-gradient(90deg, transparent, var(--rw-a), transparent); animation: rwStreak 0.62s ease-out forwards; }
-.rw-entrance .rw-streak.b { left: -40%; background: linear-gradient(90deg, transparent, var(--rw-b), transparent); animation: rwStreak 0.62s ease-out 0.09s forwards; }
-.rw-entrance .rw-streak.c {
-  left: -40%; width: 30%; opacity: 0.55;
-  background: repeating-linear-gradient(90deg, rgba(255,255,255,0.95) 0 11px, rgba(15,15,15,0.95) 11px 22px);
-  transform: skewX(-8deg);
-  animation: rwStreak 0.55s cubic-bezier(0.35, 0, 0.2, 1) 0.24s forwards;
-}
-.rw-entrance.rw-fade { animation: rwFadeOut 0.34s ease forwards 0.62s; }
-
-@keyframes rwStreak {
-  from { transform: translateX(0); }
-  to { transform: translateX(320%); }
-}
-@keyframes rwFadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; visibility: hidden; }
+  background:
+    radial-gradient(circle, #FFFFFF 0 0.9px, transparent 1.5px) 2px 1px / 8px 6px,
+    radial-gradient(circle, #FFFFFF 0 0.9px, transparent 1.5px) 6px 4px / 8px 6px,
+    var(--us-blue);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .rw-entrance, .rw-entrance .rw-streak { animation: none !important; display: none !important; }
+/* the same flag band closes the page above the footer */
+[data-race-week="austin"] footer.site-footer { position: relative; border-top: 0; padding-top: 46px; }
+[data-race-week="austin"] footer.site-footer::before,
+[data-race-week="austin"] footer.site-footer::after {
+  content: ""; position: absolute; top: 0; left: 0; height: 14px; pointer-events: none;
+}
+[data-race-week="austin"] footer.site-footer::before {
+  right: 0;
+  background: repeating-linear-gradient(180deg, var(--us-red) 0 2px, var(--us-white) 2px 4px);
+}
+[data-race-week="austin"] footer.site-footer::after {
+  width: 96px;
+  background:
+    radial-gradient(circle, #FFFFFF 0 0.9px, transparent 1.5px) 2px 1px / 8px 6px,
+    radial-gradient(circle, #FFFFFF 0 0.9px, transparent 1.5px) 6px 4px / 8px 6px,
+    var(--us-blue);
 }
 
-/* ---------- logo settle, choreographed with the entrance overlay above ----------
-   The actual 3D arrival tween (rotation/scale) now lives in logo3d.js,
-   driven by real Three.js transforms rather than a CSS fake — this file
-   only owns the pulse below, timed to fire when that tween completes. */
-.rw-pulse {
-  position: absolute;
-  top: 50%; left: 50%;
-  width: 40px; height: 40px;
-  margin: -20px 0 0 -20px;
+/* race-week tag: stars instead of dots */
+[data-race-week="austin"] .rw-tag .rw-dots { gap: 2px; }
+[data-race-week="austin"] .rw-tag .rw-dots span {
+  width: 10px; height: 10px; border-radius: 0;
+  clip-path: var(--us-star);
+}
+[data-race-week="austin"] .driver-hero .rw-tag .rw-dots span:last-child,
+[data-race-week="austin"] .theme-dark .rw-tag .rw-dots span:last-child { background: #8E8CC9; box-shadow: none; }
+
+/* accent rule under titles: a small flag */
+[data-race-week="austin"] .rw-rule {
+  width: 56px; height: 9px;
+  background:
+    linear-gradient(var(--us-blue), var(--us-blue)) 0 0 / 22px 5px no-repeat,
+    repeating-linear-gradient(180deg, var(--us-red) 0 1px, var(--us-white) 1px 2px);
+  box-shadow: inset 0 0 0 1px rgba(25, 26, 28, 0.12);
+}
+
+/* dark panels: a faint star field fading out from the top-right corner */
+[data-race-week="austin"] .intel,
+[data-race-week="austin"] main.theme-dark,
+[data-race-week="austin"] .driver-hero { position: relative; }
+[data-race-week="austin"] .intel::before,
+[data-race-week="austin"] main.theme-dark::before,
+[data-race-week="austin"] .driver-hero::before {
+  content: "";
+  position: absolute; top: 0; right: 0; width: min(46%, 560px); height: min(100%, 420px);
+  pointer-events: none;
+  background:
+    radial-gradient(circle, rgba(236, 232, 225, 0.22) 0 1px, transparent 1.6px) 0 0 / 26px 22px,
+    radial-gradient(circle, rgba(236, 232, 225, 0.22) 0 1px, transparent 1.6px) 13px 11px / 26px 22px;
+  -webkit-mask-image: radial-gradient(ellipse at 100% 0%, #000 0%, transparent 70%);
+          mask-image: radial-gradient(ellipse at 100% 0%, #000 0%, transparent 70%);
+}
+[data-race-week="austin"] .intel > .wrap,
+[data-race-week="austin"] main.theme-dark > *,
+[data-race-week="austin"] .driver-hero > * { position: relative; z-index: 1; }
+
+/* ---------- Austin, part 2: Americana across the page ---------- */
+/* dark technical surfaces go navy for the week (text contrast checked:
+   body 13:1, muted 6.9:1, light red 5.1:1 on #1C1F3F) */
+[data-race-week="austin"] {
+  --c-surface: #1C1F3F;
+  --c-raise: #262A52;
+  --c-rule: #383D6C;
+  --c-muted: #A9A8C9;
+}
+
+/* a small red star before every section title */
+[data-race-week="austin"] .section-title::before,
+[data-race-week="austin"] .section-head h2::before,
+[data-race-week="austin"] .verdict-section-h::before {
+  content: "";
+  display: inline-block;
+  width: 0.42em; height: 0.42em;
+  margin-right: 0.38em;
+  vertical-align: 0.14em;
+  background: var(--us-red);
+  clip-path: var(--us-star);
+}
+[data-race-week="austin"] .intel .section-title::before,
+[data-race-week="austin"] .theme-dark .section-head h2::before,
+[data-race-week="austin"] .newsletter-copy h2::before { background: #E8687A; }
+[data-race-week="austin"] .newsletter-copy h2::before {
+  content: ""; display: inline-block; width: 0.42em; height: 0.42em; margin-right: 0.38em;
+  vertical-align: 0.14em; clip-path: var(--us-star);
+}
+
+/* the lead feature's red rule becomes a small flag */
+[data-race-week="austin"] .lead-rule {
+  width: 72px; height: 12px;
+  background:
+    linear-gradient(var(--us-blue), var(--us-blue)) 0 0 / 28px 7px no-repeat,
+    repeating-linear-gradient(180deg, var(--us-red) 0 2px, var(--us-white) 2px 3.43px);
+  box-shadow: inset 0 0 0 1px rgba(25, 26, 28, 0.12);
+}
+
+/* active nav underline: red and blue */
+[data-race-week="austin"] .masthead-nav a.active::after,
+[data-race-week="austin"] .masthead-nav a[aria-current="page"]::after {
+  background: linear-gradient(90deg, var(--us-red) 0 50%, var(--us-blue) 50% 100%);
+}
+
+/* countdown: navy figures, a thin red/blue line under the band */
+[data-race-week="austin"] .countdown-unit .num { color: var(--us-blue); }
+[data-race-week="austin"] .countdown-strip {
+  border-bottom: 0;
+  box-shadow: inset 0 -2px 0 var(--us-red), inset 0 -4px 0 var(--us-white), inset 0 -6px 0 var(--us-blue);
+}
+
+/* ticker tags pick up the flag colours on navy */
+[data-race-week="austin"] .ticker .tag { color: #C9C7EA; }
+[data-race-week="austin"] .ticker .tag-breaking { color: #FF8A8A; }
+
+/* ============================================================
+   MEXICO CITY: tricolour and fiesta banderines (race day is 1 Nov,
+   Día de los Muertos). Same rules as above: static, never over text.
+   ============================================================ */
+[data-race-week="mexico"] {
+  --rw-a: #006847; /* Mexico flag green */
+  --rw-b: #CE1126; /* Mexico flag red */
+  --mx-green: #006847;
+  --mx-white: #FFFFFF;
+  --mx-red: #CE1126;
+  --mx-marigold: #F28C1A; /* cempasúchil */
+  --mx-pink: #E4007C;     /* papel picado pink */
+  --mx-purple: #6A2C91;
+  /* Accent swap for the week: flag red is 5.0:1 on ivory and 4.6:1 on
+     ivory-2, so it passes as text. On the green dark surfaces below the
+     light red is lifted to #EE7D8C (6.2:1 on surface, 5.4:1 raised). */
+  --red: #CE1126;
+  --red-dark: #EE7D8C;
+  /* dark technical surfaces go deep green for the week (text 13.4:1,
+     muted 8.6:1 on #0F241A) */
+  --c-surface: #0F241A;
+  --c-raise: #163021;
+  --c-rule: #2A4A37;
+  --c-muted: #A9C2B2;
+  /* banderines: pennant colours, one per 30px cell (see body::after) */
+  --mx-flags: linear-gradient(90deg,
+      var(--mx-pink) 0 30px, var(--mx-marigold) 30px 60px, var(--mx-green) 60px 90px,
+      var(--mx-purple) 90px 120px, var(--mx-red) 120px 150px, #00A3AD 150px 180px);
+}
+
+/* tricolour band across the very top ... */
+[data-race-week="mexico"] body::before {
+  content: "";
+  display: block;
+  height: 6px;
+  background: linear-gradient(90deg, var(--mx-green) 0 33.33%, var(--mx-white) 33.33% 66.66%, var(--mx-red) 66.66% 100%);
+  box-shadow: inset 0 -1px 0 rgba(25, 26, 28, 0.08);
+}
+/* ... with a row of banderines (pennants) hanging under it */
+[data-race-week="mexico"] body::after {
+  content: "";
+  position: absolute; top: 6px; left: 0; right: 0;
+  height: 15px;
+  pointer-events: none;
+  background: var(--mx-flags) 0 0 / 180px 100% repeat-x;
+  /* a string, and a pennant hanging every 30px */
+  -webkit-mask:
+    linear-gradient(#000 0 0) 0 0 / 100% 1px no-repeat,
+    conic-gradient(from -28deg at 50% 100%, #000 0 56deg, #0000 0) 0 1px / 30px 14px repeat-x;
+          mask:
+    linear-gradient(#000 0 0) 0 0 / 100% 1px no-repeat,
+    conic-gradient(from -28deg at 50% 100%, #000 0 56deg, #0000 0) 0 1px / 30px 14px repeat-x;
+}
+
+/* the same band closes the page above the footer */
+[data-race-week="mexico"] footer.site-footer { position: relative; border-top: 0; padding-top: 46px; }
+[data-race-week="mexico"] footer.site-footer::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px; pointer-events: none;
+  background: linear-gradient(90deg, var(--mx-green) 0 33.33%, var(--mx-white) 33.33% 66.66%, var(--mx-red) 66.66% 100%);
+  box-shadow: inset 0 0 0 1px rgba(25, 26, 28, 0.06);
+}
+
+/* race-week tag: green and red dots, the red one a marigold-orange ring */
+[data-race-week="mexico"] .rw-tag .rw-dots span:last-child { box-shadow: 0 0 0 1.5px var(--mx-marigold); }
+
+/* accent rule under titles: a small tricolour */
+[data-race-week="mexico"] .rw-rule {
+  width: 54px; height: 6px;
+  background: linear-gradient(90deg, var(--mx-green) 0 33.33%, var(--mx-white) 33.33% 66.66%, var(--mx-red) 66.66% 100%);
+  box-shadow: inset 0 0 0 1px rgba(25, 26, 28, 0.14);
+}
+[data-race-week="mexico"] .lead-rule {
+  width: 72px; height: 8px;
+  background: linear-gradient(90deg, var(--mx-green) 0 33.33%, var(--mx-white) 33.33% 66.66%, var(--mx-red) 66.66% 100%);
+  box-shadow: inset 0 0 0 1px rgba(25, 26, 28, 0.14);
+}
+
+/* a small marigold before every section title */
+[data-race-week="mexico"] .section-title::before,
+[data-race-week="mexico"] .section-head h2::before,
+[data-race-week="mexico"] .verdict-section-h::before,
+[data-race-week="mexico"] .newsletter-copy h2::before {
+  content: "";
+  display: inline-block;
+  width: 0.46em; height: 0.46em;
+  margin-right: 0.4em;
+  vertical-align: 0.12em;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, var(--rw-a-dim) 40%, transparent 72%);
-  opacity: 0;
-  transform: scale(0.4);
-  pointer-events: none;
-}
-.rw-pulse.rw-pulse-go {
-  animation: rwPulse 0.62s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
-}
-@keyframes rwPulse {
-  0% { opacity: 0.9; transform: scale(0.4); }
-  55% { opacity: 0.55; transform: scale(5.5); }
-  100% { opacity: 0; transform: scale(8); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .rw-pulse { display: none !important; }
+  background: radial-gradient(circle, #8A3B00 0 22%, var(--mx-marigold) 26% 62%, #F6B04A 66% 100%);
 }
 
-@media (max-width: 640px) {
-  .rw-circuit-line { opacity: 0.035; }
+/* active nav underline: green and red */
+[data-race-week="mexico"] .masthead-nav a.active::after,
+[data-race-week="mexico"] .masthead-nav a[aria-current="page"]::after {
+  background: linear-gradient(90deg, var(--mx-green) 0 50%, var(--mx-red) 50% 100%);
 }
+
+/* countdown: green figures, a thin tricolour line under the band */
+[data-race-week="mexico"] .countdown-unit .num { color: var(--mx-green); }
+[data-race-week="mexico"] .countdown-strip {
+  border-bottom: 0;
+  box-shadow: inset 0 -2px 0 var(--mx-red), inset 0 -4px 0 var(--mx-white), inset 0 -6px 0 var(--mx-green);
+}
+
+/* dark panels: faint marigold petals fading out from the top-right corner */
+[data-race-week="mexico"] .intel,
+[data-race-week="mexico"] main.theme-dark,
+[data-race-week="mexico"] .driver-hero { position: relative; }
+[data-race-week="mexico"] .intel::before,
+[data-race-week="mexico"] main.theme-dark::before,
+[data-race-week="mexico"] .driver-hero::before {
+  content: "";
+  position: absolute; top: 0; right: 0; width: min(46%, 560px); height: min(100%, 420px);
+  pointer-events: none;
+  background:
+    radial-gradient(circle, rgba(242, 140, 26, 0.26) 0 2px, transparent 2.6px) 0 0 / 30px 26px,
+    radial-gradient(circle, rgba(228, 0, 124, 0.18) 0 1.4px, transparent 2px) 15px 13px / 30px 26px;
+  -webkit-mask-image: radial-gradient(ellipse at 100% 0%, #000 0%, transparent 70%);
+          mask-image: radial-gradient(ellipse at 100% 0%, #000 0%, transparent 70%);
+}
+[data-race-week="mexico"] .intel > .wrap,
+[data-race-week="mexico"] main.theme-dark > *,
+[data-race-week="mexico"] .driver-hero > * { position: relative; z-index: 1; }
+
+/* ticker tags on the green surface */
+[data-race-week="mexico"] .ticker .tag { color: #9FD3B0; }
+[data-race-week="mexico"] .ticker .tag-breaking { color: #FF9AA6; }
