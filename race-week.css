@@ -237,3 +237,131 @@
 /* ticker tags pick up the flag colours on navy */
 [data-race-week="austin"] .ticker .tag { color: #C9C7EA; }
 [data-race-week="austin"] .ticker .tag-breaking { color: #FF8A8A; }
+
+/* ============================================================
+   MEXICO CITY: tricolour and fiesta banderines (race day is 1 Nov,
+   Día de los Muertos). Same rules as above: static, never over text.
+   ============================================================ */
+[data-race-week="mexico"] {
+  --rw-a: #006847; /* Mexico flag green */
+  --rw-b: #CE1126; /* Mexico flag red */
+  --mx-green: #006847;
+  --mx-white: #FFFFFF;
+  --mx-red: #CE1126;
+  --mx-marigold: #F28C1A; /* cempasúchil */
+  --mx-pink: #E4007C;     /* papel picado pink */
+  --mx-purple: #6A2C91;
+  /* Accent swap for the week: flag red is 5.0:1 on ivory and 4.6:1 on
+     ivory-2, so it passes as text. On the green dark surfaces below the
+     light red is lifted to #EE7D8C (6.2:1 on surface, 5.4:1 raised). */
+  --red: #CE1126;
+  --red-dark: #EE7D8C;
+  /* dark technical surfaces go deep green for the week (text 13.4:1,
+     muted 8.6:1 on #0F241A) */
+  --c-surface: #0F241A;
+  --c-raise: #163021;
+  --c-rule: #2A4A37;
+  --c-muted: #A9C2B2;
+  /* banderines: pennant colours, one per 30px cell (see body::after) */
+  --mx-flags: linear-gradient(90deg,
+      var(--mx-pink) 0 30px, var(--mx-marigold) 30px 60px, var(--mx-green) 60px 90px,
+      var(--mx-purple) 90px 120px, var(--mx-red) 120px 150px, #00A3AD 150px 180px);
+}
+
+/* tricolour band across the very top ... */
+[data-race-week="mexico"] body::before {
+  content: "";
+  display: block;
+  height: 6px;
+  background: linear-gradient(90deg, var(--mx-green) 0 33.33%, var(--mx-white) 33.33% 66.66%, var(--mx-red) 66.66% 100%);
+  box-shadow: inset 0 -1px 0 rgba(25, 26, 28, 0.08);
+}
+/* ... with a row of banderines (pennants) hanging under it */
+[data-race-week="mexico"] body::after {
+  content: "";
+  position: absolute; top: 6px; left: 0; right: 0;
+  height: 15px;
+  pointer-events: none;
+  background: var(--mx-flags) 0 0 / 180px 100% repeat-x;
+  /* a string, and a pennant hanging every 30px */
+  -webkit-mask:
+    linear-gradient(#000 0 0) 0 0 / 100% 1px no-repeat,
+    conic-gradient(from -28deg at 50% 100%, #000 0 56deg, #0000 0) 0 1px / 30px 14px repeat-x;
+          mask:
+    linear-gradient(#000 0 0) 0 0 / 100% 1px no-repeat,
+    conic-gradient(from -28deg at 50% 100%, #000 0 56deg, #0000 0) 0 1px / 30px 14px repeat-x;
+}
+
+/* the same band closes the page above the footer */
+[data-race-week="mexico"] footer.site-footer { position: relative; border-top: 0; padding-top: 46px; }
+[data-race-week="mexico"] footer.site-footer::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px; pointer-events: none;
+  background: linear-gradient(90deg, var(--mx-green) 0 33.33%, var(--mx-white) 33.33% 66.66%, var(--mx-red) 66.66% 100%);
+  box-shadow: inset 0 0 0 1px rgba(25, 26, 28, 0.06);
+}
+
+/* race-week tag: green and red dots, the red one a marigold-orange ring */
+[data-race-week="mexico"] .rw-tag .rw-dots span:last-child { box-shadow: 0 0 0 1.5px var(--mx-marigold); }
+
+/* accent rule under titles: a small tricolour */
+[data-race-week="mexico"] .rw-rule {
+  width: 54px; height: 6px;
+  background: linear-gradient(90deg, var(--mx-green) 0 33.33%, var(--mx-white) 33.33% 66.66%, var(--mx-red) 66.66% 100%);
+  box-shadow: inset 0 0 0 1px rgba(25, 26, 28, 0.14);
+}
+[data-race-week="mexico"] .lead-rule {
+  width: 72px; height: 8px;
+  background: linear-gradient(90deg, var(--mx-green) 0 33.33%, var(--mx-white) 33.33% 66.66%, var(--mx-red) 66.66% 100%);
+  box-shadow: inset 0 0 0 1px rgba(25, 26, 28, 0.14);
+}
+
+/* a small marigold before every section title */
+[data-race-week="mexico"] .section-title::before,
+[data-race-week="mexico"] .section-head h2::before,
+[data-race-week="mexico"] .verdict-section-h::before,
+[data-race-week="mexico"] .newsletter-copy h2::before {
+  content: "";
+  display: inline-block;
+  width: 0.46em; height: 0.46em;
+  margin-right: 0.4em;
+  vertical-align: 0.12em;
+  border-radius: 50%;
+  background: radial-gradient(circle, #8A3B00 0 22%, var(--mx-marigold) 26% 62%, #F6B04A 66% 100%);
+}
+
+/* active nav underline: green and red */
+[data-race-week="mexico"] .masthead-nav a.active::after,
+[data-race-week="mexico"] .masthead-nav a[aria-current="page"]::after {
+  background: linear-gradient(90deg, var(--mx-green) 0 50%, var(--mx-red) 50% 100%);
+}
+
+/* countdown: green figures, a thin tricolour line under the band */
+[data-race-week="mexico"] .countdown-unit .num { color: var(--mx-green); }
+[data-race-week="mexico"] .countdown-strip {
+  border-bottom: 0;
+  box-shadow: inset 0 -2px 0 var(--mx-red), inset 0 -4px 0 var(--mx-white), inset 0 -6px 0 var(--mx-green);
+}
+
+/* dark panels: faint marigold petals fading out from the top-right corner */
+[data-race-week="mexico"] .intel,
+[data-race-week="mexico"] main.theme-dark,
+[data-race-week="mexico"] .driver-hero { position: relative; }
+[data-race-week="mexico"] .intel::before,
+[data-race-week="mexico"] main.theme-dark::before,
+[data-race-week="mexico"] .driver-hero::before {
+  content: "";
+  position: absolute; top: 0; right: 0; width: min(46%, 560px); height: min(100%, 420px);
+  pointer-events: none;
+  background:
+    radial-gradient(circle, rgba(242, 140, 26, 0.26) 0 2px, transparent 2.6px) 0 0 / 30px 26px,
+    radial-gradient(circle, rgba(228, 0, 124, 0.18) 0 1.4px, transparent 2px) 15px 13px / 30px 26px;
+  -webkit-mask-image: radial-gradient(ellipse at 100% 0%, #000 0%, transparent 70%);
+          mask-image: radial-gradient(ellipse at 100% 0%, #000 0%, transparent 70%);
+}
+[data-race-week="mexico"] .intel > .wrap,
+[data-race-week="mexico"] main.theme-dark > *,
+[data-race-week="mexico"] .driver-hero > * { position: relative; z-index: 1; }
+
+/* ticker tags on the green surface */
+[data-race-week="mexico"] .ticker .tag { color: #9FD3B0; }
+[data-race-week="mexico"] .ticker .tag-breaking { color: #FF9AA6; }

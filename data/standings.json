@@ -1,85 +1,85 @@
 {
   "_about": "Championship standings, single source for standings.html and the homepage table. Edit this file after each round, then run: python3 tools/build_standings.py (it also checks the points against generate_drivers.py). 'prev' = position after the previous round; 'last' = points scored at the latest round (sprint + race). Ties are listed in official countback order.",
   "season": 2026,
-  "after_round": 17,
+  "after_round": 18,
   "rounds_total": 23,
-  "race": "Singapore Grand Prix",
-  "race_short": "SIN",
-  "venue": "Marina Bay",
-  "date": "Oct 11, 2026",
+  "race": "United States Grand Prix",
+  "race_short": "USA",
+  "venue": "Circuit of The Americas",
+  "date": "Oct 25, 2026",
   "sprints_remaining": 0,
   "points_per_gp_max": 25,
-  "note": "Standings through Round 17 (Singapore GP at Marina Bay, Oct 11 2026, sprint weekend), checked against the published championship tables. Ocon, Alonso and Sainz are tied on 7 and Stroll, Bottas and Pérez on 0; they are listed in the last published countback order. Will update after the United States GP on Oct 25.",
+  "note": "Standings through Round 18 (United States GP at the Circuit of The Americas, Oct 25 2026), checked against f1db. Drivers on equal points are listed in official countback order. Will update after the Mexico City GP on Nov 1.",
   "drivers": [
     {
       "name": "Kimi Antonelli",
       "team": "Mercedes",
-      "points": 340,
+      "points": 365,
       "prev": 1,
-      "last": 20
+      "last": 25
     },
     {
       "name": "George Russell",
       "team": "Mercedes",
-      "points": 238,
+      "points": 242,
       "prev": 2,
-      "last": 2
+      "last": 4
     },
     {
       "name": "Lewis Hamilton",
       "team": "Ferrari",
-      "points": 229,
+      "points": 241,
       "prev": 3,
-      "last": 15
+      "last": 12
     },
     {
       "name": "Max Verstappen",
       "team": "Red Bull",
-      "points": 221,
-      "prev": 6,
-      "last": 33
+      "points": 236,
+      "prev": 4,
+      "last": 15
     },
     {
       "name": "Charles Leclerc",
       "team": "Ferrari",
-      "points": 215,
-      "prev": 4,
-      "last": 24
+      "points": 233,
+      "prev": 5,
+      "last": 18
     },
     {
       "name": "Lando Norris",
       "team": "McLaren",
-      "points": 201,
-      "prev": 5,
-      "last": 13
+      "points": 211,
+      "prev": 6,
+      "last": 10
     },
     {
       "name": "Oscar Piastri",
       "team": "McLaren",
-      "points": 138,
+      "points": 144,
       "prev": 7,
-      "last": 10
+      "last": 6
     },
     {
       "name": "Isack Hadjar",
       "team": "Red Bull",
-      "points": 97,
+      "points": 105,
       "prev": 8,
-      "last": 1
+      "last": 8
     },
     {
       "name": "Liam Lawson",
       "team": "Racing Bulls",
-      "points": 75,
+      "points": 77,
       "prev": 9,
-      "last": 10
+      "last": 2
     },
     {
       "name": "Pierre Gasly",
       "team": "Alpine",
-      "points": 41,
+      "points": 42,
       "prev": 10,
-      "last": 0
+      "last": 1
     },
     {
       "name": "Arvid Lindblad",
@@ -100,20 +100,20 @@
       "team": "Haas",
       "points": 23,
       "prev": 13,
-      "last": 3
+      "last": 0
     },
     {
       "name": "Nico Hülkenberg",
       "team": "Audi",
       "points": 13,
-      "prev": 15,
-      "last": 6
+      "prev": 14,
+      "last": 0
     },
     {
       "name": "Gabriel Bortoleto",
       "team": "Audi",
       "points": 10,
-      "prev": 14,
+      "prev": 15,
       "last": 0
     },
     {
@@ -149,8 +149,7 @@
       "team": "Racing Bulls",
       "points": 1,
       "prev": 20,
-      "last": 0,
-      "note": "Seat-cover stint, Rounds 12–14"
+      "last": 0
     },
     {
       "name": "Lance Stroll",
@@ -177,51 +176,51 @@
   "constructors": [
     {
       "name": "Mercedes",
-      "points": 578,
+      "points": 607,
       "prev": 1,
-      "last": 22
+      "last": 29
     },
     {
       "name": "Ferrari",
-      "points": 444,
+      "points": 474,
       "prev": 2,
-      "last": 39
-    },
-    {
-      "name": "McLaren",
-      "points": 339,
-      "prev": 3,
-      "last": 23
+      "last": 30
     },
     {
       "name": "Red Bull",
-      "points": 332,
+      "points": 355,
       "prev": 4,
-      "last": 34
+      "last": 23
+    },
+    {
+      "name": "McLaren",
+      "points": 355,
+      "prev": 3,
+      "last": 16
     },
     {
       "name": "Racing Bulls",
-      "points": 100,
+      "points": 102,
       "prev": 5,
-      "last": 10
+      "last": 2
     },
     {
       "name": "Alpine",
-      "points": 68,
+      "points": 69,
       "prev": 6,
-      "last": 0
+      "last": 1
     },
     {
       "name": "Haas",
       "points": 30,
       "prev": 7,
-      "last": 3
+      "last": 0
     },
     {
       "name": "Audi",
       "points": 23,
       "prev": 8,
-      "last": 6
+      "last": 0
     },
     {
       "name": "Williams",
@@ -261,7 +260,8 @@
       "MAD",
       "AZE",
       "SEP",
-      "SIN"
+      "SIN",
+      "USA"
     ],
     "drivers_in_chart": 6
   }

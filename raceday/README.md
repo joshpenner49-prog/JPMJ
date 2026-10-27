@@ -26,7 +26,8 @@ Everything comes from one file per race: `raceday/<season>-<slug>/edition.json`.
 
 1. **Research** (race week, Monday to Thursday):
    - copy the last edition's folder;
-   - update `edition.json` (cover, storylines, circuit, strategy, briefing, sources);
+   - update `edition.json` (cover, storylines, circuit, strategy, briefing, sources), including `race_time`, `tz_abbr` (local time zone, e.g. `CST`) and `circuit.dek` (page 2's intro line);
+   - the circuit must be in `data/circuits.json` (add it with `tools/project_circuit.py` if not);
    - add the edition to the top of `data/raceday.json` with `status: "upcoming"`;
    - run `python3 tools/build_raceday_page.py` so the landing page announces it.
 2. **Proof:** run `python3 tools/build_raceday.py raceday/<folder>`.
@@ -51,6 +52,7 @@ Everything comes from one file per race: `raceday/<season>-<slug>/edition.json`.
 4. **Final:** run `python3 tools/build_raceday.py raceday/<folder> --final`.
    - It refuses to build while any required field is empty.
    - It writes the PDF and `cover.png` into the edition folder.
+   - It also saves `standings.json` there, a snapshot of the standings it printed. Later builds of that edition read the snapshot, so a published programme never changes when the site's standings move on.
 5. **Review:** read all four pages of the PDF. Check the grid against the official FIA classification.
 6. **Publish:**
    - in `data/raceday.json`, set `status: "published"` and `publication_date`;

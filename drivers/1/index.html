@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-race-week="austin">
+<html lang="en" data-race-week="mexico">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,7 +33,7 @@
   <div class="wrap masthead-inner">
     <div class="masthead-meta">
       <span>EST. 2026</span>
-      <span>SEASON 2026 · 17 OF 23 ROUNDS COMPLETE · NEXT: UNITED STATES GP · OCT 23–25</span>
+      <span>SEASON 2026 · 18 OF 23 ROUNDS COMPLETE · NEXT: MEXICO CITY GP · OCT 30–NOV 1</span>
     </div>
     <a href="../../index.html" class="masthead-brand">
       <span class="masthead-insignia"><span data-insignia data-size="64" data-theme="light" data-decorative><img src="../../img/insignia.svg" alt="" width="64" height="64"></span></span>
@@ -57,7 +57,7 @@
     <div class="driver-hero-speedlines" aria-hidden="true"></div>
     <div class="wrap driver-hero-inner">
       <div class="driver-hero-text">
-        <div class="rw-tag"><span class="rw-dots"><span></span><span></span></span>United States GP Race Week</div>
+        <div class="rw-tag"><span class="rw-dots"><span></span><span></span></span>Mexico City GP Race Week</div>
         <div class="driver-hero-eyebrow">Driver profile</div>
         <h1>Lando Norris</h1>
         <div class="driver-team-badge"><span class="chip"></span>McLaren</div>
@@ -86,9 +86,9 @@
     <div class="driver-stat-tile"><div class="tile-icon">🏆</div><div class="tile-value" data-season="2" data-career="13">2</div><div class="tile-label">Wins</div></div>
     <div class="driver-stat-tile"><div class="tile-icon">📊</div><div class="tile-value" data-season="5" data-career="49">5</div><div class="tile-label">Podiums</div></div>
     <div class="driver-stat-tile"><div class="tile-icon">◎</div><div class="tile-value" data-season="3" data-career="19">3</div><div class="tile-label">Poles</div></div>
-    <div class="driver-stat-tile"><div class="tile-icon">↑</div><div class="tile-value" data-season="13" data-career="134">13</div><div class="tile-label">Top 10s</div></div>
-    <div class="driver-stat-tile"><div class="tile-icon">⬤</div><div class="tile-value" data-season="201" data-career="1631">201</div><div class="tile-label">Points</div></div>
-    <div class="driver-stat-tile"><div class="tile-icon">▦</div><div class="tile-value" data-season="16" data-career="168">16</div><div class="tile-label">Starts</div></div>
+    <div class="driver-stat-tile"><div class="tile-icon">↑</div><div class="tile-value" data-season="14" data-career="135">14</div><div class="tile-label">Top 10s</div></div>
+    <div class="driver-stat-tile"><div class="tile-icon">⬤</div><div class="tile-value" data-season="211" data-career="1641">211</div><div class="tile-label">Points</div></div>
+    <div class="driver-stat-tile"><div class="tile-icon">▦</div><div class="tile-value" data-season="17" data-career="169">17</div><div class="tile-label">Starts</div></div>
   </section>
 
   <section class="wrap driver-chart-wrap">
@@ -133,7 +133,7 @@
   <div class="wrap footer-meta">
     <span>EST. 2026 · © 2026 JP MOTORSPORT JOURNAL</span>
     <a href="mailto:joshpenner49@gmail.com">joshpenner49@gmail.com</a>
-    <span>LAST UPDATED OCT 13, 2026</span>
+    <span>LAST UPDATED OCT 27, 2026</span>
   </div>
   <div class="wrap footer-legal">
     <p>Some links on this site may be affiliate links. If you buy through them, we may earn a commission at no extra cost to you.</p>
@@ -148,8 +148,8 @@
 <script>
 (function () {
   // round-by-round bar chart from per-round points (0 = did not score)
-  var roundPoints = [10, 5, 10, 26, 7, 0, 15, 6, 18, 6, 25, 31, 12, 15, 0, 2, 13, null, null, null, null, null, null];
-  var ROUNDS_COMPLETE = 17; // set by generate_drivers.py from data/driver-stats.json
+  var roundPoints = [10, 5, 10, 26, 7, 0, 15, 6, 18, 6, 25, 31, 12, 15, 0, 2, 13, 10, null, null, null, null, null];
+  var ROUNDS_COMPLETE = 18; // set by generate_drivers.py from data/driver-stats.json
   var chart = document.getElementById('driverChart');
   var labels = document.getElementById('driverChartLabels');
   var known = roundPoints.filter(function (v) { return v !== null; });

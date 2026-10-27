@@ -9,7 +9,7 @@
       "sfStraight": "start/finish straight extent along the path: fwd = units after the start line, bwd = units before it",
       "facts": "display facts; verified against the official layouts"
     },
-    "added": "sg-2008 added in redesign phase 2 with tools/project_circuit.py, which reproduces it-1922, nl-1948, gb-1948, be-1925 and jp-1962 exactly (us-2012 differs only by an equal-fit 180-degree turn). Facts per formula1.com (4.927 km, 62 laps, 19 turns since the 2023 layout change, first GP 2008)."
+    "added": "sg-2008 added in redesign phase 2 with tools/project_circuit.py, which reproduces it-1922, nl-1948, gb-1948, be-1925 and jp-1962 exactly (us-2012 differs only by an equal-fit 180-degree turn). Facts per formula1.com (4.927 km, 62 laps, 19 turns since the 2023 layout change, first GP 2008). mx-1962 added after Round 18 the same way (geographic orientation, which matches the official map: main straight along the top, stadium section on the left). Facts per f1db and formula1.com (4.304 km, 71 laps, 17 turns, first GP 1963)."
   },
   "circuits": {
     "it-1922": {
@@ -164,6 +164,28 @@
       "sfStraight": {
         "fwd": 63.9,
         "bwd": 74.4
+      }
+    },
+    "mx-1962": {
+      "gp": "Mexico City Grand Prix",
+      "code": "MEX",
+      "name": "Autódromo Hermanos Rodríguez",
+      "km": "4.304",
+      "turns": 17,
+      "laps": 71,
+      "firstGp": 1963,
+      "note": "Over 2,200 metres up: the thin air cuts drag and downforce.",
+      "d": "M79.5 18.2 L170.3 18.0 L199.7 17.8 L230.5 16.2 L245.5 16.0 L284.0 16.0 L351.3 16.5 L365.3 17.4 L367.8 18.0 L369.1 18.8 L370.0 20.4 L370.4 22.0 L370.2 38.6 L370.7 40.0 L371.7 41.2 L379.1 44.0 L381.3 44.8 L382.6 46.3 L382.8 47.9 L382.9 58.3 L382.0 67.7 L379.8 77.0 L377.1 85.5 L354.1 141.1 L325.8 203.2 L324.0 207.4 L324.0 209.8 L324.8 211.7 L326.1 213.0 L337.8 218.1 L339.0 219.0 L339.4 220.7 L338.9 222.3 L337.2 224.2 L319.1 242.3 L317.3 243.5 L315.6 244.0 L314.0 243.7 L310.0 241.9 L309.1 240.4 L308.7 237.3 L307.8 163.7 L307.3 161.5 L306.1 159.6 L304.5 158.1 L302.1 156.8 L290.4 151.7 L286.0 148.7 L283.4 146.7 L280.4 142.6 L277.0 136.4 L274.0 132.8 L270.8 130.5 L267.5 129.0 L263.1 127.7 L229.0 127.3 L225.1 126.7 L222.5 125.0 L221.3 123.9 L220.1 122.2 L213.9 109.4 L212.1 107.0 L209.6 104.8 L203.7 102.3 L177.2 92.5 L169.6 90.5 L158.9 89.4 L74.5 89.1 L72.7 88.7 L71.6 87.8 L70.6 86.2 L70.1 84.0 L65.8 62.9 L62.0 48.4 L61.1 46.8 L59.8 45.8 L57.9 45.3 L55.8 45.8 L53.8 48.3 L51.5 53.1 L50.0 54.6 L48.1 55.7 L45.7 55.9 L42.9 55.1 L39.7 54.1 L36.6 53.6 L22.3 54.0 L19.9 53.6 L18.7 52.8 L17.5 51.2 L17.1 49.6 L17.5 45.4 L18.7 39.8 L20.7 34.9 L23.9 29.1 L27.8 24.8 L33.1 21.1 L38.2 19.0 L43.2 18.1 L50.8 18.0 Z",
+      "length": 1080.7,
+      "sf": [
+        79.5,
+        11.2,
+        79.6,
+        25.2
+      ],
+      "sfStraight": {
+        "fwd": 285.8,
+        "bwd": 36.3
       }
     }
   }

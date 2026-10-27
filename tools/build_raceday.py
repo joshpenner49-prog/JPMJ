@@ -22,6 +22,7 @@ import json
 import math
 import os
 import re
+import shutil
 import subprocess
 import sys
 
@@ -199,7 +200,7 @@ def page_cover(ed, c, st, proof):
     <h1>{e(cv["headline"])}</h1>
   </div>
   <div class="cover-art"><span class="cover-rule"></span>{art}</div>
-  <div class="cover-meta"><span><b>{e(ed["race_date"])}</b></span><span>{e(ed["circuit_name"])} · {e(ed["location"])}</span><span>Race 15:00 CDT</span></div>
+  <div class="cover-meta"><span><b>{e(ed["race_date"])}</b></span><span>{e(ed["circuit_name"])} · {e(ed["location"])}</span><span>Race {e(ed["race_time"])} {e(ed["tz_abbr"])}</span></div>
   <div class="cover-body">
     <div><p class="stand">{e(cv["standfirst"])}</p><p class="intro">{e(ed["intro"])}</p></div>
     <ol class="story-list">{stories}</ol>
@@ -228,7 +229,7 @@ def page_circuit(ed, c):
   {run_head(ed, "The Circuit File")}
   <div class="kicker">02 · The Circuit File</div>
   <h2 class="page-title">{e(ed["circuit_name"])}</h2>
-  <p class="page-dek" style="margin-bottom:3.5mm">Twenty corners, anticlockwise, on a lap that climbs to Turn 1 and finishes with a stadium section and a long multi-apex right-hander. Here is where the race is won and lost.</p>
+  <p class="page-dek" style="margin-bottom:3.5mm">{e(ci["dek"])}</p>
   <div class="circ-grid">
     <div class="map">{track_svg(c, ed)}<div class="map-note"><span class="map-key">{sec_key}{aero}</span>Red: start/finish straight · Arrow: direction of travel · {e(ci["map_note"])} Outline: f1-circuits (MIT).</div></div>
     <div><table class="facts"><tbody>{facts}</tbody></table>{aids}</div>
@@ -323,7 +324,7 @@ def page_strategy(ed):
 def page_briefing(ed, st, site_url):
     b = ed["briefing"]
     sched = "".join(
-        f'<tr class="{"race" if "Grand Prix" in r["session"] else ""}"><td>{e(r["day"])}</td><td>{e(r["session"])}</td><td class="t">{e(r["time"])} CDT</td></tr>' for r in b["schedule"])
+        f'<tr class="{"race" if "Grand Prix" in r["session"] else ""}"><td>{e(r["day"])}</td><td>{e(r["session"])}</td><td class="t">{e(r["time"])} {e(ed["tz_abbr"])}</td></tr>' for r in b["schedule"])
     stand = "".join(
         f'<tr><td class="num">{i}</td><td><span class="stripe" style="background:{TEAM_COLORS.get(d["team"], "#888")}"></span>{e(d["name"])}</td><td class="num">{d["points"]}</td></tr>'
         for i, d in enumerate(st["drivers"][:10], 1))
@@ -351,7 +352,7 @@ def page_briefing(ed, st, site_url):
   <h2 class="page-title">Your race-day reference</h2>
   <div class="brief-grid">
     <div>
-      <div class="start-box"><span class="big">15:00 CDT</span><span class="small">Lights out · {e(ed["race_date"])}<br>{e(ed["timezone_label"])}</span></div>
+      <div class="start-box"><span class="big">{e(ed["race_time"])} {e(ed["tz_abbr"])}</span><span class="small">Lights out · {e(ed["race_date"])}<br>{e(ed["timezone_label"])}</span></div>
       <h3 class="sec">Weekend schedule{kind(b["schedule_kind"])}</h3>
       <table class="sched tight"><tbody>{sched}</tbody></table>
       <h3 class="sec" style="margin-top:3mm">Starting grid</h3>
@@ -401,7 +402,14 @@ def main():
         if missing:
             sys.exit("Not ready for a final edition. Still empty: " + ", ".join(missing))
     c = json.load(open(os.path.join(ROOT, "data", "circuits.json"), encoding="utf-8"))["circuits"][ed["circuit_id"]]
-    st = json.load(open(os.path.join(ROOT, "data", "standings.json"), encoding="utf-8"))
+    # an edition reads its own standings snapshot once it has one, so a
+    # published programme never changes when data/standings.json moves on;
+    # a final build writes that snapshot
+    snap = os.path.join(folder, "standings.json")
+    live = os.path.join(ROOT, "data", "standings.json")
+    st = json.load(open(snap if os.path.exists(snap) else live, encoding="utf-8"))
+    if final and not os.path.exists(snap):
+        shutil.copyfile(live, snap)
     # proofs go to a git-ignored proof/ folder so they can never be deployed
     out = folder if final else os.path.join(folder, "proof")
     os.makedirs(out, exist_ok=True)

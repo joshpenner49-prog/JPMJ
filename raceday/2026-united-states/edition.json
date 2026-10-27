@@ -187,7 +187,8 @@
     ],
     "time_gain_loss": "Most lap time is won or lost on corner exits that lead onto straights: Turn 11 onto the back straight and the final corner onto the start/finish straight. A poor exit costs time all the way to the next braking zone, and gives the car behind its best chance to attack.",
     "time_gain_loss_kind": "analysis",
-    "aero_note": "Zones at approximate positions, from the FIA's description."
+    "aero_note": "Zones at approximate positions, from the FIA's description.",
+    "dek": "Twenty corners, anticlockwise, on a lap that climbs to Turn 1 and finishes with a stadium section and a long multi-apex right-hander. Here is where the race is won and lost."
   },
   "strategy": {
     "pit_loss_rows": [
@@ -650,5 +651,7 @@
       "url": "https://www.instagram.com/pirelli_motorsport/"
     }
   },
-  "race_laps": 56
+  "race_laps": 56,
+  "race_time": "15:00",
+  "tz_abbr": "CDT"
 }

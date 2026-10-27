@@ -3,6 +3,20 @@
   "site_url": null,
   "editions": [
     {
+      "edition": 2,
+      "season": 2026,
+      "round": 19,
+      "grand_prix": "Mexico City Grand Prix",
+      "short_name": "Mexico City GP",
+      "circuit": "Autódromo Hermanos Rodríguez, Mexico City",
+      "race_date": "Sunday 1 November 2026",
+      "folder": "raceday/2026-mexico-city",
+      "filename": "JP-Race-Day-Mexico-City-GP-2026.pdf",
+      "status": "upcoming",
+      "publication_date": null,
+      "publishes": "after qualifying on Saturday 31 October"
+    },
+    {
       "edition": 1,
       "season": 2026,
       "round": 18,

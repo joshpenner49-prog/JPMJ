@@ -1,0 +1,385 @@
+{
+  "_about": "Content for one JP Race Day Programme edition. Layout lives in raceday/template.html; build with: python3 tools/build_raceday.py raceday/2026-united-states. Fields set to null are race-weekend information that must be filled in (and verified) before the build will produce a final, publishable PDF. Every figure carries a 'kind': verified (official/primary source), measured (computed from published timing data), estimate (sourced estimate with stated assumptions) or analysis (JP Motorsport Journal's editorial view).",
+  "status": "proof",
+  "edition": 2,
+  "season": 2026,
+  "round": 19,
+  "rounds_total": 23,
+  "grand_prix": "Mexico City Grand Prix",
+  "short_name": "Mexico City GP",
+  "slug": "mexico-city",
+  "circuit_id": "mx-1962",
+  "circuit_name": "Autódromo Hermanos Rodríguez",
+  "location": "Mexico City",
+  "race_date": "Sunday 1 November 2026",
+  "race_date_iso": "2026-11-01",
+  "timezone_label": "CST (UTC−6), local time in Mexico City",
+  "filename": "JP-Race-Day-Mexico-City-GP-2026.pdf",
+  "publication_date": null,
+  "last_verified": "27 October 2026",
+  "cover": {
+    "headline": "Ninth place and the title is his",
+    "standfirst": "Kimi Antonelli arrives in Mexico City 123 points clear with 125 left. A top-nine finish on Sunday makes him world champion, whatever anyone else does.",
+    "photo": null,
+    "photo_credit": null,
+    "photo_note": "Free-licensed photo pending (Wikimedia Commons is blocked in the build environment). Until then the cover uses the circuit outline."
+  },
+  "intro": "Antonelli won from pole in Austin, his ninth win of the season, and leaves Texas two points short of the title. Behind him, nine points cover Russell, Hamilton, Verstappen and Leclerc in the fight for second, and Red Bull have drawn level with McLaren for third in the Constructors'. Mexico City is a standard weekend at the highest track on the calendar: three practice sessions, qualifying on Saturday and the 71-lap race on Sunday.",
+  "storylines": [
+    {
+      "title": "Antonelli's title point",
+      "text": "After Mexico, 100 points remain. Ninth place or better makes Antonelli champion whatever anyone does; with no points, only a win for Russell or Hamilton keeps it alive.",
+      "kind": "analysis",
+      "basis": "Calculated from the standings after Round 18 (Antonelli 365, Russell 242, Hamilton 241): 25 points per Grand Prix, no sprints and no fastest-lap point, 100 points left after Mexico. A tie on points goes to wins (Antonelli 9, Russell at most 8, Hamilton at most 6)."
+    },
+    {
+      "title": "Four drivers, nine points",
+      "text": "Russell (242), Hamilton (241), Verstappen (236) and Leclerc (233) are separated by nine points in the fight to finish runner-up.",
+      "kind": "verified"
+    },
+    {
+      "title": "Pérez at home",
+      "text": "It is Sergio Pérez's home race, in his first season with Cadillac. Red Bull and McLaren arrive level on 355 points for third in the Constructors'.",
+      "kind": "verified"
+    }
+  ],
+  "circuit": {
+    "facts": [
+      {
+        "label": "Circuit length",
+        "value": "4.304 km",
+        "kind": "verified",
+        "source": "f1"
+      },
+      {
+        "label": "Race laps",
+        "value": "71",
+        "kind": "verified",
+        "source": "f1"
+      },
+      {
+        "label": "Race distance",
+        "value": "305.354 km",
+        "kind": "verified",
+        "source": "f1"
+      },
+      {
+        "label": "Corners",
+        "value": "17 (run clockwise)",
+        "kind": "verified",
+        "source": "f1"
+      },
+      {
+        "label": "First Grand Prix",
+        "value": "1963",
+        "kind": "verified",
+        "source": "f1"
+      },
+      {
+        "label": "Race lap record",
+        "value": "1:17.774, Valtteri Bottas (2021)",
+        "kind": "verified",
+        "source": "f1db"
+      },
+      {
+        "label": "Longest straight",
+        "value": "about 1.3 km, final corner to Turn 1",
+        "kind": "measured",
+        "source": "outline"
+      }
+    ],
+    "overtaking_aids": null,
+    "overtaking_aids_note": "Active aero Straight Mode works in FIA-designated activation zones, and Overtake Mode gives a car within one second of the car ahead at the detection point extra electrical energy. Mexico City's zones come in the FIA event notes on race weekend and go into the final edition.",
+    "lap_m": 4304,
+    "straight_mode_zones": null,
+    "overtake_detection": null,
+    "map_markers": [
+      {
+        "n": "1",
+        "at": 26.5,
+        "dx": 0,
+        "dy": 16
+      },
+      {
+        "n": "17",
+        "at": 93.5,
+        "dx": -14,
+        "dy": 10
+      }
+    ],
+    "map_sections": [
+      {
+        "label": "Main straight",
+        "at": 12,
+        "dx": 0,
+        "dy": 14
+      },
+      {
+        "label": "Turns 4–6",
+        "at": 48,
+        "dx": -14,
+        "dy": -6
+      },
+      {
+        "label": "Esses",
+        "at": 65,
+        "dx": 0,
+        "dy": 14
+      },
+      {
+        "label": "Stadium section",
+        "at": 87,
+        "dx": 14,
+        "dy": 14
+      }
+    ],
+    "map_note": "Numbered: corners confirmed from the official outline; full numbering pending a check against the FIA map.",
+    "key_sections": [
+      {
+        "name": "Turn 1",
+        "text": "The longest run to a first corner on the calendar ends in a right-left-right complex. Slipstreams make it three wide on the opening lap, and the escape roads catch anyone who brakes too late.",
+        "kind": "analysis"
+      },
+      {
+        "name": "Thin air",
+        "text": "At over 2,200 metres the air is roughly a fifth to a quarter thinner than at sea level. Cars run maximum-downforce settings yet carry less grip, and brakes and power units are harder to cool.",
+        "kind": "estimate"
+      },
+      {
+        "name": "The esses",
+        "text": "A quick left-right sequence from Turn 7 rewards a car that changes direction cleanly. Drivers who slide here overheat the soft compounds Pirelli has brought.",
+        "kind": "analysis"
+      },
+      {
+        "name": "Stadium section",
+        "text": "The lap finishes through the old baseball stadium, tight and slow, in front of the biggest crowd of the weekend, before the final corner onto the main straight.",
+        "kind": "verified",
+        "source": "circuit"
+      }
+    ],
+    "time_gain_loss": "With grip low and the straight so long, the exit of the final corner sets up the run to Turn 1: a car that is close there can use the slipstream all the way down.",
+    "time_gain_loss_kind": "analysis",
+    "aero_note": null,
+    "dek": "Seventeen corners, clockwise, more than 2,200 metres above sea level: a long run to Turn 1, a sequence of esses and a finish through the old baseball stadium."
+  },
+  "strategy": {
+    "pit_loss_rows": [
+      {
+        "condition": "Green flag",
+        "pit_lane": "about 23 s",
+        "net_loss": "about 22 s",
+        "saving": "—",
+        "net_kind": "estimate",
+        "net_source": "pitloss"
+      },
+      {
+        "condition": "Virtual Safety Car",
+        "pit_lane": "about 23 s",
+        "net_loss": "about 13–18 s",
+        "saving": "about 4–9 s",
+        "net_kind": "estimate",
+        "net_source": "vsc"
+      },
+      {
+        "condition": "Safety Car",
+        "pit_lane": "about 23 s",
+        "net_loss": "about 9–14 s",
+        "saving": "about 8–13 s",
+        "net_kind": "estimate",
+        "net_source": "vsc"
+      }
+    ],
+    "pit_loss_notes": [
+      "Time in the pit lane is measured: the median from pit entry to pit exit at Mexico City was 22.6–23.2 s in every race from 2019 to 2025 except 2023, when stops under a red flag skew it (f1db timing data). It does not change under a VSC or Safety Car because the pit-lane speed limit still applies.",
+      "Net race-time loss is what a stop costs compared with staying out. Formula 1's 2025 preview put it at about 21.9 s here.",
+      "The VSC and Safety Car figures apply published estimates of the saving (roughly 17–40% under a VSC and 35–60% behind the Safety Car) to that 21.9 s. They are illustrative ranges, not Mexico City measurements."
+    ],
+    "history": [
+      {
+        "year": 2023,
+        "pattern": "Red flag",
+        "detail": "Stops from lap 11; most of the top 10 then changed tyres under the red flag after Magnussen's lap-33 crash",
+        "kind": "measured"
+      },
+      {
+        "year": 2024,
+        "pattern": "One stop",
+        "detail": "Nine of the top 10; stops between laps 26 and 39",
+        "kind": "measured"
+      },
+      {
+        "year": 2025,
+        "pattern": "Mixed",
+        "detail": "Five one-stops and five two-stops in the top 10; stops between laps 22 and 48",
+        "kind": "measured"
+      }
+    ],
+    "history_note": "Mexico's low grip and long straight make the pit stop costly, which usually favours one stop; 2025 showed a second stop can still pay.",
+    "tyres": "Pirelli has nominated C3 (hard), C4 (medium) and C5 (soft), the softest three in its range and one step softer than last year.",
+    "tyres_kind": "verified",
+    "compounds": {
+      "S": "C4",
+      "M": "C3",
+      "H": "C2"
+    },
+    "tyre_plan": null,
+    "tyre_plan_note": "the predicted race strategies (one stop or two, and in which compound order), each with its pit window on a lap chart, plus the undercut and pace gaps where Pirelli publishes them after qualifying.",
+    "one_vs_two": "A softer range than last year shortens every stint, and the C5 soft rarely lasts long here. If the medium holds on in Friday's long runs, expect one stop; if graining limits it, two stops come back into play.",
+    "one_vs_two_kind": "analysis",
+    "undercut": "Undercut: pit first and use the new tyres' extra grip to gain the time you lose in the pit lane before your rival stops. It works best when new tyres are much faster than worn ones.",
+    "overcut": "Overcut: stay out longer and gain time on a clear track while your rival is held up on cold new tyres or in traffic. It works best when tyres warm up slowly or the pitting car rejoins in traffic.",
+    "pit_window": "Based on 2024–25, single stops have come between laps 22 and 39 of 71, with two-stoppers back in around laps 47–48.",
+    "pit_window_kind": "measured",
+    "neutralisation": "A VSC or Safety Car inside the pit window makes a stop cheaper for everyone, so the leaders often pit together and little changes. The real swing comes when it falls just before a team's planned stop, or when a rival has already stopped under green. A Safety Car early in the race can make a one-stop too long and force a second stop.",
+    "neutralisation_kind": "analysis",
+    "what_to_watch": [
+      "The start. The run to Turn 1 is long enough for slipstreams to reshuffle the top five before the first braking zone.",
+      "Antonelli's position. Ninth or better and the title is decided; watch where he runs when the stops shake out.",
+      "Graining on the soft compounds. Early stops for drivers sliding in the esses would point to two stops."
+    ]
+  },
+  "briefing": {
+    "grid": null,
+    "grid_note": "The official starting grid, including penalties and any driver substitutions, is added in the final edition after qualifying.",
+    "penalties": null,
+    "schedule": [
+      {
+        "day": "Fri 30 Oct",
+        "session": "Practice 1",
+        "time": "12:30"
+      },
+      {
+        "day": "Fri 30 Oct",
+        "session": "Practice 2",
+        "time": "16:00"
+      },
+      {
+        "day": "Sat 31 Oct",
+        "session": "Practice 3",
+        "time": "11:30"
+      },
+      {
+        "day": "Sat 31 Oct",
+        "session": "Qualifying",
+        "time": "15:00"
+      },
+      {
+        "day": "Sun 1 Nov",
+        "session": "Grand Prix (71 laps)",
+        "time": "14:00"
+      }
+    ],
+    "schedule_kind": "verified",
+    "battles": [
+      {
+        "title": "The title",
+        "text": "Antonelli 365, Russell 242: 123 clear, 125 left."
+      },
+      {
+        "title": "Runner-up",
+        "text": "Russell 242, Hamilton 241, Verstappen 236, Leclerc 233."
+      },
+      {
+        "title": "Constructors P3",
+        "text": "Red Bull 355, McLaren 355 (Red Bull ahead on countback)."
+      },
+      {
+        "title": "Constructors P5",
+        "text": "Racing Bulls 102 vs Alpine 69."
+      }
+    ],
+    "five_things": [
+      "The run to Turn 1, the longest to a first corner all year. Slipstreams can make it three wide on lap one.",
+      "The title maths. Ninth or better makes Antonelli champion; with no points, only a win for Russell or Hamilton keeps it going.",
+      "Thin air. Cooling is tight at altitude; watch for brake and power-unit problems in the second half.",
+      "Pérez's home crowd in the stadium section, in his first season with Cadillac.",
+      "Red Bull and McLaren, level on 355, fighting for third in the Constructors'."
+    ],
+    "glossary": [
+      [
+        "Undercut",
+        "Pitting before a rival to use new tyres' extra pace to get ahead when they stop."
+      ],
+      [
+        "Overcut",
+        "Staying out longer than a rival to gain time while they warm up new tyres or sit in traffic."
+      ],
+      [
+        "Pit window",
+        "The range of laps when a stop makes strategic sense."
+      ],
+      [
+        "Degradation",
+        "How quickly a tyre loses grip and lap time as it wears."
+      ],
+      [
+        "VSC",
+        "Virtual Safety Car: everyone must slow to a set pace; positions are frozen and no one may overtake."
+      ],
+      [
+        "Safety Car",
+        "A physical car leads the field at reduced speed, bunching everyone up behind it."
+      ],
+      [
+        "Straight Mode",
+        "2026 active aero: wings flatten to cut drag in designated zones. Replaces DRS."
+      ],
+      [
+        "Overtake Mode",
+        "Extra electrical energy for a car within one second of the car ahead at the detection point."
+      ],
+      [
+        "Parc fermé",
+        "From qualifying until the race, cars cannot be changed without a penalty."
+      ]
+    ],
+    "sign_off": null,
+    "sign_off_note": "JP writes the sign-off for each edition.",
+    "sign_off_title": null
+  },
+  "sources": {
+    "f1": {
+      "label": "Circuit facts: Formula1.com",
+      "url": "https://www.formula1.com/en/racing/2026/mexico"
+    },
+    "pirelli_compounds": {
+      "label": "Pirelli 2026 compounds for Mexico City: Scuderiafans",
+      "url": "https://scuderiafans.com/pirelli-confirms-2026-f1-tyre-compounds-for-austin-mexico-city-and-sao-paulo/"
+    },
+    "f1db": {
+      "label": "f1db, results and pit stops 2019–2025 (CC BY 4.0)",
+      "url": "https://github.com/f1db/f1db"
+    },
+    "outline": {
+      "label": "f1-circuits, track outline (MIT)",
+      "url": "https://github.com/bacinger/f1-circuits"
+    },
+    "circuit": {
+      "label": "Circuit guide: Formula1.com",
+      "url": "https://www.formula1.com/en/racing/2026/mexico"
+    },
+    "vsc": {
+      "label": "VSC and SC savings: FormulaDream; Race Sundays",
+      "url": "https://www.formuladream.app/blog/f1-pit-stop-cost-measured"
+    },
+    "schedule": {
+      "label": "Session times: RacingNews365",
+      "url": "https://racingnews365.com/2026-f1-mexican-grand-prix-mexico-city-time-schedule"
+    },
+    "standings": {
+      "label": "Standings after Round 18 (checked against f1db)",
+      "url": "https://github.com/f1db/f1db"
+    },
+    "regs": {
+      "label": "2026 aero rules: ESPN; Motor Sport",
+      "url": "https://www.motorsportmagazine.com/articles/single-seaters/f1/explained-the-new-mode-names-for-active-aero-and-energy-boost-for-f1-2026/"
+    },
+    "pitloss": {
+      "label": "Pit-stop loss 21.9 s: Formula1.com 2025 preview",
+      "url": "https://www.formula1.com/en/latest/article/need-to-know-the-most-important-facts-stats-and-trivia-ahead-of-the-2025-mexico-city-grand-prix.25jpn16FhpRZvIpC4ULU5w"
+    }
+  },
+  "race_laps": 71,
+  "race_time": "14:00",
+  "tz_abbr": "CST"
+}
