@@ -15,8 +15,8 @@
   "race_date_iso": "2026-11-01",
   "timezone_label": "CST (UTC−6), local time in Mexico City",
   "filename": "JP-Race-Day-Mexico-City-GP-2026.pdf",
-  "publication_date": null,
-  "last_verified": "27 October 2026",
+  "publication_date": "1 November 2026",
+  "last_verified": "1 November 2026",
   "cover": {
     "headline": "Ninth place and the title is his",
     "standfirst": "Kimi Antonelli arrives in Mexico City 123 points clear with 125 left. A top-nine finish on Sunday makes him world champion, whatever anyone else does.",
@@ -88,11 +88,31 @@
         "source": "outline"
       }
     ],
-    "overtaking_aids": null,
+    "overtaking_aids": "Three Straight Mode zones: the main straight into Turn 1, after Turn 3, and after Turn 11. Overtake Mode detection is mid-Turn 15, with activation mid-Turn 17 onto the main straight.",
     "overtaking_aids_note": "Active aero Straight Mode works in FIA-designated activation zones, and Overtake Mode gives a car within one second of the car ahead at the detection point extra electrical energy. Mexico City's zones come in the FIA event notes on race weekend and go into the final edition.",
     "lap_m": 4304,
-    "straight_mode_zones": null,
-    "overtake_detection": null,
+    "straight_mode_zones": [
+      {
+        "name": "Main straight",
+        "from_m": 4070,
+        "to_m": 1050
+      },
+      {
+        "name": "After Turn 3",
+        "from_m": 1380,
+        "to_m": 1910
+      },
+      {
+        "name": "After Turn 11",
+        "from_m": 3250,
+        "to_m": 3530
+      }
+    ],
+    "overtake_detection": [
+      {
+        "at_m": 3871
+      }
+    ],
     "map_markers": [
       {
         "n": "1",
@@ -159,7 +179,7 @@
     ],
     "time_gain_loss": "With grip low and the straight so long, the exit of the final corner sets up the run to Turn 1: a car that is close there can use the slipstream all the way down.",
     "time_gain_loss_kind": "analysis",
-    "aero_note": null,
+    "aero_note": "Zones at approximate positions, from the FIA's description; detection 3,871 m into the lap.",
     "dek": "Seventeen corners, clockwise, more than 2,200 metres above sea level: a long run to Turn 1, a sequence of esses and a finish through the old baseball stadium."
   },
   "strategy": {
@@ -222,7 +242,30 @@
       "M": "C3",
       "H": "C2"
     },
-    "tyre_plan": null,
+    "tyre_plan": {
+      "kind": "verified",
+      "summary": "Pirelli says the track's low severity could favour one stop. If graining sets in on the new asphalt (Turns 7 to 1), a medium and soft combination makes two stops more attractive. A stop costs about 22 seconds.",
+      "strategies": [
+        {
+          "label": "One stop",
+          "tag": "Pirelli's base case",
+          "sequence": [],
+          "note": "Favoured on a low-severity track; Pirelli has not published the compound order or lap windows."
+        },
+        {
+          "label": "Two stops",
+          "tag": "If graining bites",
+          "sequence": [
+            "M",
+            "S"
+          ],
+          "note": "Mediums and softs, if the new asphalt makes graining significant."
+        }
+      ],
+      "deltas": [],
+      "deltas_note": "Not published by Pirelli for this race.",
+      "source_line": "Pirelli qualifying release, 31 Oct 2026, as reported; pit-stop cost about 22 s."
+    },
     "tyre_plan_note": "the predicted race strategies (one stop or two, and in which compound order), each with its pit window on a lap chart, plus the undercut and pace gaps where Pirelli publishes them after qualifying.",
     "one_vs_two": "A softer range than last year shortens every stint, and the C5 soft rarely lasts long here. If the medium holds on in Friday's long runs, expect one stop; if graining limits it, two stops come back into play.",
     "one_vs_two_kind": "analysis",
@@ -239,9 +282,125 @@
     ]
   },
   "briefing": {
-    "grid": null,
+    "grid": [
+      {
+        "pos": 1,
+        "driver": "Lewis Hamilton",
+        "team": "Ferrari"
+      },
+      {
+        "pos": 2,
+        "driver": "George Russell",
+        "team": "Mercedes"
+      },
+      {
+        "pos": 3,
+        "driver": "Charles Leclerc",
+        "team": "Ferrari"
+      },
+      {
+        "pos": 4,
+        "driver": "Kimi Antonelli",
+        "team": "Mercedes"
+      },
+      {
+        "pos": 5,
+        "driver": "Max Verstappen",
+        "team": "Red Bull",
+        "note": "Qualified 4th, 1-place penalty"
+      },
+      {
+        "pos": 6,
+        "driver": "Lando Norris",
+        "team": "McLaren"
+      },
+      {
+        "pos": 7,
+        "driver": "Isack Hadjar",
+        "team": "Red Bull"
+      },
+      {
+        "pos": 8,
+        "driver": "Arvid Lindblad",
+        "team": "Racing Bulls"
+      },
+      {
+        "pos": 9,
+        "driver": "Pierre Gasly",
+        "team": "Alpine"
+      },
+      {
+        "pos": 10,
+        "driver": "Nico Hülkenberg",
+        "team": "Audi"
+      },
+      {
+        "pos": 11,
+        "driver": "Franco Colapinto",
+        "team": "Alpine"
+      },
+      {
+        "pos": 12,
+        "driver": "Oscar Piastri",
+        "team": "McLaren"
+      },
+      {
+        "pos": 13,
+        "driver": "Gabriel Bortoleto",
+        "team": "Audi"
+      },
+      {
+        "pos": 14,
+        "driver": "Oliver Bearman",
+        "team": "Haas"
+      },
+      {
+        "pos": 15,
+        "driver": "Carlos Sainz",
+        "team": "Williams"
+      },
+      {
+        "pos": 16,
+        "driver": "Alexander Albon",
+        "team": "Williams"
+      },
+      {
+        "pos": 17,
+        "driver": "Fernando Alonso",
+        "team": "Aston Martin",
+        "note": "Start in doubt (power unit)"
+      },
+      {
+        "pos": 18,
+        "driver": "Ryo Hirakawa",
+        "team": "Haas",
+        "note": "F1 debut, replacing Ocon"
+      },
+      {
+        "pos": 19,
+        "driver": "Lance Stroll",
+        "team": "Aston Martin"
+      },
+      {
+        "pos": 20,
+        "driver": "Sergio Pérez",
+        "team": "Cadillac"
+      },
+      {
+        "pos": 21,
+        "driver": "Liam Lawson",
+        "team": "Racing Bulls",
+        "note": "Qualifying disqualification"
+      },
+      {
+        "pos": 22,
+        "driver": "Valtteri Bottas",
+        "team": "Cadillac",
+        "note": "50-place penalty"
+      }
+    ],
     "grid_note": "The official starting grid, including penalties and any driver substitutions, is added in the final edition after qualifying.",
-    "penalties": null,
+    "penalties": "Grid after announced penalties (in red); the FIA confirms it before the race. Pole: Hamilton, 1:16.514. Lawson needs the stewards' permission to start.",
     "schedule": [
       {
         "day": "Fri 30 Oct",
@@ -377,6 +536,22 @@
     "pitloss": {
       "label": "Pit-stop loss 21.9 s: Formula1.com 2025 preview",
       "url": "https://www.formula1.com/en/latest/article/need-to-know-the-most-important-facts-stats-and-trivia-ahead-of-the-2025-mexico-city-grand-prix.25jpn16FhpRZvIpC4ULU5w"
+    },
+    "qualifying": {
+      "label": "Qualifying and grid: Motorsport.com; Yahoo Sports; Formula1.com (Lawson disqualified)",
+      "url": "https://www.formula1.com/en/latest/article/lawson-disqualified-from-mexico-city-gp-qualifying-for-technical-breach.1LIHCl2P75cYj0cGJgyZhx"
+    },
+    "penalties": {
+      "label": "Penalties: Grande Premio; PlanetF1 (Bottas, Alonso)",
+      "url": "https://grandepremio.com/en/f1/mexican-gp-2026-starting-grid-hamilton-on-pole-as-verstappen-and-lawson-take-penalties/"
+    },
+    "aero_zones": {
+      "label": "Aero zones: FIA circuit map via PlanetF1; Scuderiafans",
+      "url": "https://www.planetf1.com/news/fia-mexican-grand-prix-2026-active-aero"
+    },
+    "pirelli2026": {
+      "label": "Pirelli qualifying release",
+      "url": "https://press.pirelli.com/all-within-seven-tenths-on-softs-hamilton-makes-the-difference/"
     }
   },
   "race_laps": 71,
