@@ -244,27 +244,76 @@
     },
     "tyre_plan": {
       "kind": "verified",
-      "summary": "Pirelli says the track's low severity could favour one stop. If graining sets in on the new asphalt (Turns 7 to 1), a medium and soft combination makes two stops more attractive. A stop costs about 22 seconds.",
+      "summary": "Pirelli's preferred plan is one stop, medium to soft; its simulations show no real difference in race time with two stops. Graining on the new asphalt and traffic after a stop are the variables. A stop costs about 22 seconds.",
       "strategies": [
         {
-          "label": "One stop",
-          "tag": "Pirelli's base case",
-          "sequence": [],
-          "note": "Favoured on a low-severity track; Pirelli has not published the compound order or lap windows."
+          "label": "Medium → Soft",
+          "tag": "One stop · preferred",
+          "stints": [
+            [
+              "M",
+              1,
+              38
+            ],
+            [
+              "S",
+              39,
+              71
+            ]
+          ],
+          "windows": [
+            [
+              35,
+              41
+            ]
+          ]
+        },
+        {
+          "label": "Soft → Hard",
+          "tag": "One stop",
+          "stints": [
+            [
+              "S",
+              1,
+              27
+            ],
+            [
+              "H",
+              28,
+              71
+            ]
+          ],
+          "windows": [
+            [
+              24,
+              30
+            ]
+          ]
         },
         {
           "label": "Two stops",
-          "tag": "If graining bites",
+          "tag": "",
           "sequence": [
+            "S",
             "M",
             "S"
           ],
-          "note": "Mediums and softs, if the new asphalt makes graining significant."
+          "note": "First stop laps 19–25; second window not published."
+        },
+        {
+          "label": "Two stops",
+          "tag": "",
+          "sequence": [
+            "S",
+            "H",
+            "M"
+          ],
+          "note": "Windows not published."
         }
       ],
       "deltas": [],
       "deltas_note": "Not published by Pirelli for this race.",
-      "source_line": "Pirelli qualifying release, 31 Oct 2026, as reported; pit-stop cost about 22 s."
+      "source_line": "Pirelli race strategy (Marrafuschi), via Coffee Corner Motorsport, 1 Nov 2026. Stints drawn mid-window."
     },
     "tyre_plan_note": "the predicted race strategies (one stop or two, and in which compound order), each with its pit window on a lap chart, plus the undercut and pace gaps where Pirelli publishes them after qualifying.",
     "one_vs_two": "A softer range than last year shortens every stint, and the C5 soft rarely lasts long here. If the medium holds on in Friday's long runs, expect one stop; if graining limits it, two stops come back into play.",
@@ -546,8 +595,8 @@
       "url": "https://www.planetf1.com/news/fia-mexican-grand-prix-2026-active-aero"
     },
     "pirelli2026": {
-      "label": "Pirelli qualifying release",
-      "url": "https://press.pirelli.com/all-within-seven-tenths-on-softs-hamilton-makes-the-difference/"
+      "label": "Pirelli strategy: Coffee Corner Motorsport",
+      "url": "https://coffeecornermotorsport.com/mexico-city-grand-prix-2026-tyre-strategy/"
     },
     "circuit": {
       "label": "Circuit guide: Formula1.com",

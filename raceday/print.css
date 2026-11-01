@@ -212,3 +212,6 @@ table.grid td { white-space: nowrap; }
 .tp-chart .tp-lab { color: var(--grey); font-size: 6.8pt; }
 .tp-chart .tp-lab b { color: var(--charcoal); }
 .gnote--inline { display: inline; padding-left: 1.2mm; white-space: nowrap; }
+.tp-seqs .tp-lab { white-space: nowrap; color: var(--grey); font-size: 6.8pt; }
+.tp-seqs .tp-lab b { display: inline; margin-right: 1.5mm; color: var(--charcoal); }
+.tp-chart + .tp-seqs .tp-seq { grid-template-columns: 44mm auto 1fr; }

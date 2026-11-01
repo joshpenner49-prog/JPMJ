@@ -275,6 +275,14 @@ def tyre_plan(s, laps):
         ticks = "".join(f'<span style="left:{pct(t):.2f}%">{t}</span>' for t in [1, 10, 20, 30, 40, 50, laps])
         chart = f'<div class="tp-chart">{"".join(rows)}<div class="tp-row tp-axis"><span class="tp-lab">Lap</span><span class="tp-track tp-ticks">{ticks}</span><span class="tp-pit"></span></div></div>'
         legend += '<span><i class="tp-winkey"></i>Pit window</span>'
+        # strategies without published stint lengths are listed under the chart
+        untimed = [st for st in tp["strategies"] if not st.get("stints")]
+        if untimed:
+            arrow = '<span class="tp-arrow">→</span>'
+            chart += '<div class="tp-seqs">' + "".join(
+                f'<div class="tp-seq"><span class="tp-lab"><b>{e(st["label"])}</b>{e(st.get("tag", ""))}</span>'
+                f'<span class="tp-chips">{arrow.join(f"<span class=\"tp-chip tp-{c}\">{COMPOUND_NAME[c]}</span>" for c in st["sequence"])}</span>'
+                f'<span class="tp-note">{e(st.get("note", ""))}</span></div>' for st in untimed) + '</div>'
     else:
         # no published stint lengths: show each strategy as its compound order
         arrow = '<span class="tp-arrow">→</span>'
