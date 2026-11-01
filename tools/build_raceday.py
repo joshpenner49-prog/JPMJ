@@ -333,7 +333,7 @@ def page_briefing(ed, st, site_url):
         for i, t in enumerate(st["constructors"][:5], 1))
     if b.get("grid"):
         cell = lambda g: (f'<td class="num">{g["pos"]}</td><td><span class="stripe" style="background:{TEAM_COLORS.get(g.get("team"), "#888")}"></span>{e(g["driver"])}'
-                          + (f'<span class="gnote">{e(g["note"])}</span>' if g.get("note") else "") + '</td>')
+                          + (f'<span class="gnote{" gnote--inline" if len(g["note"]) <= 18 else ""}">{e(g["note"])}</span>' if g.get("note") else "") + '</td>')
         g = b["grid"]
         rows = "".join(f'<tr>{cell(g[i])}{cell(g[i + 1]) if i + 1 < len(g) else "<td></td><td></td>"}</tr>' for i in range(0, len(g), 2))
         grid = f'<table class="tight grid"><tbody>{rows}</tbody></table>'

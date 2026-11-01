@@ -1,6 +1,6 @@
 {
   "_about": "Content for one JP Race Day Programme edition. Layout lives in raceday/template.html; build with: python3 tools/build_raceday.py raceday/2026-united-states. Fields set to null are race-weekend information that must be filled in (and verified) before the build will produce a final, publishable PDF. Every figure carries a 'kind': verified (official/primary source), measured (computed from published timing data), estimate (sourced estimate with stated assumptions) or analysis (JP Motorsport Journal's editorial view).",
-  "status": "proof",
+  "status": "final",
   "edition": 2,
   "season": 2026,
   "round": 19,
@@ -238,9 +238,9 @@
     "tyres": "Pirelli has nominated C3 (hard), C4 (medium) and C5 (soft), the softest three in its range and one step softer than last year.",
     "tyres_kind": "verified",
     "compounds": {
-      "S": "C4",
-      "M": "C3",
-      "H": "C2"
+      "S": "C5",
+      "M": "C4",
+      "H": "C3"
     },
     "tyre_plan": {
       "kind": "verified",
@@ -307,7 +307,7 @@
         "pos": 5,
         "driver": "Max Verstappen",
         "team": "Red Bull",
-        "note": "Qualified 4th, 1-place penalty"
+        "note": "Q4, −1 place"
       },
       {
         "pos": 6,
@@ -368,13 +368,13 @@
         "pos": 17,
         "driver": "Fernando Alonso",
         "team": "Aston Martin",
-        "note": "Start in doubt (power unit)"
+        "note": "in doubt"
       },
       {
         "pos": 18,
         "driver": "Ryo Hirakawa",
         "team": "Haas",
-        "note": "F1 debut, replacing Ocon"
+        "note": "debut"
       },
       {
         "pos": 19,
@@ -390,17 +390,17 @@
         "pos": 21,
         "driver": "Liam Lawson",
         "team": "Racing Bulls",
-        "note": "Qualifying disqualification"
+        "note": "DSQ quali"
       },
       {
         "pos": 22,
         "driver": "Valtteri Bottas",
         "team": "Cadillac",
-        "note": "50-place penalty"
+        "note": "−50 places"
       }
     ],
     "grid_note": "The official starting grid, including penalties and any driver substitutions, is added in the final edition after qualifying.",
-    "penalties": "Grid after announced penalties (in red); the FIA confirms it before the race. Pole: Hamilton, 1:16.514. Lawson needs the stewards' permission to start.",
+    "penalties": "After announced penalties (in red); the FIA confirms the grid before the race. Pole: Hamilton, 1:16.514. Hirakawa replaces Ocon at Haas.",
     "schedule": [
       {
         "day": "Fri 30 Oct",
@@ -440,7 +440,7 @@
       },
       {
         "title": "Constructors P3",
-        "text": "Red Bull 355, McLaren 355 (Red Bull ahead on countback)."
+        "text": "Red Bull 355, McLaren 355 (countback)."
       },
       {
         "title": "Constructors P5",
@@ -492,9 +492,9 @@
         "From qualifying until the race, cars cannot be changed without a penalty."
       ]
     ],
-    "sign_off": null,
+    "sign_off": "I believe Mexico will be a challenge for these 2026 cars, with the high altitude and temperatures testing the new engines. Overtaking might be at a premium, as the tight, twisty nature of the back end of the lap will promote dirty air. Strategy should be the most intriguing part of the Grand Prix. I have Lewis Hamilton taking his second victory of the season.",
     "sign_off_note": "JP writes the sign-off for each edition.",
-    "sign_off_title": null
+    "sign_off_title": "JP's prediction"
   },
   "sources": {
     "f1": {
@@ -502,7 +502,7 @@
       "url": "https://www.formula1.com/en/racing/2026/mexico"
     },
     "pirelli_compounds": {
-      "label": "Pirelli 2026 compounds for Mexico City: Scuderiafans",
+      "label": "Pirelli compounds: Scuderiafans",
       "url": "https://scuderiafans.com/pirelli-confirms-2026-f1-tyre-compounds-for-austin-mexico-city-and-sao-paulo/"
     },
     "f1db": {
@@ -512,10 +512,6 @@
     "outline": {
       "label": "f1-circuits, track outline (MIT)",
       "url": "https://github.com/bacinger/f1-circuits"
-    },
-    "circuit": {
-      "label": "Circuit guide: Formula1.com",
-      "url": "https://www.formula1.com/en/racing/2026/mexico"
     },
     "vsc": {
       "label": "VSC and SC savings: FormulaDream; Race Sundays",
@@ -534,24 +530,28 @@
       "url": "https://www.motorsportmagazine.com/articles/single-seaters/f1/explained-the-new-mode-names-for-active-aero-and-energy-boost-for-f1-2026/"
     },
     "pitloss": {
-      "label": "Pit-stop loss 21.9 s: Formula1.com 2025 preview",
+      "label": "Pit loss 21.9 s: Formula1.com",
       "url": "https://www.formula1.com/en/latest/article/need-to-know-the-most-important-facts-stats-and-trivia-ahead-of-the-2025-mexico-city-grand-prix.25jpn16FhpRZvIpC4ULU5w"
     },
     "qualifying": {
-      "label": "Qualifying and grid: Motorsport.com; Yahoo Sports; Formula1.com (Lawson disqualified)",
+      "label": "Grid: Motorsport.com; Formula1.com",
       "url": "https://www.formula1.com/en/latest/article/lawson-disqualified-from-mexico-city-gp-qualifying-for-technical-breach.1LIHCl2P75cYj0cGJgyZhx"
     },
     "penalties": {
-      "label": "Penalties: Grande Premio; PlanetF1 (Bottas, Alonso)",
+      "label": "Penalties: Grande Premio; PlanetF1",
       "url": "https://grandepremio.com/en/f1/mexican-gp-2026-starting-grid-hamilton-on-pole-as-verstappen-and-lawson-take-penalties/"
     },
     "aero_zones": {
-      "label": "Aero zones: FIA circuit map via PlanetF1; Scuderiafans",
+      "label": "Aero zones: FIA map via PlanetF1",
       "url": "https://www.planetf1.com/news/fia-mexican-grand-prix-2026-active-aero"
     },
     "pirelli2026": {
       "label": "Pirelli qualifying release",
       "url": "https://press.pirelli.com/all-within-seven-tenths-on-softs-hamilton-makes-the-difference/"
+    },
+    "circuit": {
+      "label": "Circuit guide: Formula1.com",
+      "url": "https://www.formula1.com/en/racing/2026/mexico"
     }
   },
   "race_laps": 71,
