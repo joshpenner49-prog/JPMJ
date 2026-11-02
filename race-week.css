@@ -365,3 +365,113 @@
 /* ticker tags on the green surface */
 [data-race-week="mexico"] .ticker .tag { color: #9FD3B0; }
 [data-race-week="mexico"] .ticker .tag-breaking { color: #FF9AA6; }
+
+/* ============================================================
+   SÃO PAULO: auriverde band and the flag's yellow diamond.
+   Static and decorative only, as above.
+   ============================================================ */
+[data-race-week="brazil"] {
+  --rw-a: #009739; /* Brazil flag green */
+  --rw-b: #FEDD00; /* Brazil flag yellow */
+  --br-green: #009739;
+  --br-yellow: #FEDD00;
+  --br-blue: #012169;
+  /* one tile of the flag: green field, yellow diamond, blue globe */
+  --br-tile: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='14'%3E%3Crect width='28' height='14' fill='%23009739'/%3E%3Cpath d='M14 1.5 L25 7 L14 12.5 L3 7 Z' fill='%23FEDD00'/%3E%3Ccircle cx='14' cy='7' r='3' fill='%23012169'/%3E%3C/svg%3E");
+  /* Accent swap for the week: flag green is only 3.4:1 on ivory, so the
+     accent uses a deepened green, 5.6:1 on ivory and 5.1:1 on ivory-2.
+     On the blue dark surfaces below, the light accent is #7FD39B
+     (9.4:1 on surface, 8.1:1 raised). */
+  --red: #00702B;
+  --red-dark: #7FD39B;
+  /* dark technical surfaces go deep blue for the week (text 13.8:1,
+     muted 8.4:1 on #0A1C3D) */
+  --c-surface: #0A1C3D;
+  --c-raise: #12284F;
+  --c-rule: #24406E;
+  --c-muted: #A9B8D6;
+}
+
+/* the flag band across the very top, and above the footer */
+[data-race-week="brazil"] body::before {
+  content: "";
+  display: block;
+  height: 14px;
+  background: var(--br-tile) 0 0 / 28px 14px repeat-x;
+}
+[data-race-week="brazil"] footer.site-footer { position: relative; border-top: 0; padding-top: 46px; }
+[data-race-week="brazil"] footer.site-footer::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 14px; pointer-events: none;
+  background: var(--br-tile) 0 0 / 28px 14px repeat-x;
+}
+
+/* race-week tag: green and yellow dots, the yellow one a diamond */
+[data-race-week="brazil"] .rw-tag .rw-dots span:last-child {
+  border-radius: 0; width: 9px; height: 9px;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  background: radial-gradient(circle, var(--br-blue) 0 28%, var(--br-yellow) 32%);
+}
+
+/* accent rule under titles, and the lead's rule: a small flag */
+[data-race-week="brazil"] .rw-rule {
+  width: 42px; height: 21px; margin: 8px 0 14px;
+  background: var(--br-tile) center / 100% 100% no-repeat;
+  box-shadow: inset 0 0 0 1px rgba(25, 26, 28, 0.12);
+}
+[data-race-week="brazil"] .lead-rule {
+  width: 56px; height: 28px;
+  background: var(--br-tile) center / 100% 100% no-repeat;
+  box-shadow: inset 0 0 0 1px rgba(25, 26, 28, 0.12);
+}
+
+/* a small yellow diamond with the blue globe before every section title */
+[data-race-week="brazil"] .section-title::before,
+[data-race-week="brazil"] .section-head h2::before,
+[data-race-week="brazil"] .verdict-section-h::before,
+[data-race-week="brazil"] .newsletter-copy h2::before {
+  content: "";
+  display: inline-block;
+  width: 0.62em; height: 0.44em;
+  margin-right: 0.38em;
+  vertical-align: 0.12em;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  background: radial-gradient(circle, var(--br-blue) 0 30%, var(--br-yellow) 34%);
+}
+
+/* active nav underline: green and yellow */
+[data-race-week="brazil"] .masthead-nav a.active::after,
+[data-race-week="brazil"] .masthead-nav a[aria-current="page"]::after {
+  background: linear-gradient(90deg, var(--br-green) 0 50%, var(--br-yellow) 50% 100%);
+}
+
+/* countdown: green figures, a thin green-yellow-blue line under the band */
+[data-race-week="brazil"] .countdown-unit .num { color: var(--red); }
+[data-race-week="brazil"] .countdown-strip {
+  border-bottom: 0;
+  box-shadow: inset 0 -2px 0 var(--br-blue), inset 0 -4px 0 var(--br-yellow), inset 0 -6px 0 var(--br-green);
+}
+
+/* dark panels: faint yellow stars fading from the top-right, like the
+   night sky on the flag's globe */
+[data-race-week="brazil"] .intel,
+[data-race-week="brazil"] main.theme-dark,
+[data-race-week="brazil"] .driver-hero { position: relative; }
+[data-race-week="brazil"] .intel::before,
+[data-race-week="brazil"] main.theme-dark::before,
+[data-race-week="brazil"] .driver-hero::before {
+  content: "";
+  position: absolute; top: 0; right: 0; width: min(46%, 560px); height: min(100%, 420px);
+  pointer-events: none;
+  background:
+    radial-gradient(circle, rgba(254, 221, 0, 0.30) 0 1.2px, transparent 1.8px) 0 0 / 34px 28px,
+    radial-gradient(circle, rgba(236, 232, 225, 0.22) 0 0.9px, transparent 1.5px) 17px 14px / 34px 28px;
+  -webkit-mask-image: radial-gradient(ellipse at 100% 0%, #000 0%, transparent 70%);
+          mask-image: radial-gradient(ellipse at 100% 0%, #000 0%, transparent 70%);
+}
+[data-race-week="brazil"] .intel > .wrap,
+[data-race-week="brazil"] main.theme-dark > *,
+[data-race-week="brazil"] .driver-hero > * { position: relative; z-index: 1; }
+
+/* ticker tags on the blue surface */
+[data-race-week="brazil"] .ticker .tag { color: #FEDD00; }
+[data-race-week="brazil"] .ticker .tag-breaking { color: #7FD39B; }

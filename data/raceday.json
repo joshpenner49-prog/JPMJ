@@ -3,6 +3,20 @@
   "site_url": null,
   "editions": [
     {
+      "edition": 3,
+      "season": 2026,
+      "round": 20,
+      "grand_prix": "São Paulo Grand Prix",
+      "short_name": "São Paulo GP",
+      "circuit": "Autódromo José Carlos Pace, Interlagos",
+      "race_date": "Sunday 8 November 2026",
+      "folder": "raceday/2026-sao-paulo",
+      "filename": "JP-Race-Day-Sao-Paulo-GP-2026.pdf",
+      "status": "upcoming",
+      "publication_date": null,
+      "publishes": "after qualifying on Saturday 7 November"
+    },
+    {
       "edition": 2,
       "season": 2026,
       "round": 19,

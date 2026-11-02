@@ -55,6 +55,7 @@ DRIVERS = [
     (27, "Nico Hülkenberg", "HUL", "Audi"),
     (5, "Gabriel Bortoleto", "BOR", "Audi"),
     (31, "Esteban Ocon", "OCO", "Haas"),
+    (50, "Ryō Hirakawa", "HIR", "Haas"),
     (14, "Fernando Alonso", "ALO", "Aston Martin"),
     (55, "Carlos Sainz", "SAI", "Williams"),
     (23, "Alexander Albon", "ALB", "Williams"),
