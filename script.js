@@ -13,18 +13,44 @@ document.addEventListener("DOMContentLoaded", () => {
   const track = document.querySelector(".ticker-track");
   if (track) track.innerHTML += track.innerHTML;
 
-  /* ---------- live countdown to next race ---------- */
+  /* ---------- live countdown to the next session ---------- */
+  // With data-sessions, the clock moves through the weekend on its own;
+  // without it, it counts down to the single data-countdown time.
   const countdownEl = document.querySelector("[data-countdown]");
   if (countdownEl) {
-    const target = new Date(countdownEl.getAttribute("data-countdown")).getTime();
+    const labelEl = document.querySelector("[data-countdown-label]");
+    const event = countdownEl.getAttribute("data-event") || "";
+    const after = countdownEl.getAttribute("data-after") || "";
+    let sessions = [];
+    try {
+      sessions = JSON.parse(countdownEl.getAttribute("data-sessions") || "[]").map((x) => ({
+        name: x.name, start: new Date(x.start).getTime(), end: new Date(x.start).getTime() + (x.mins || 60) * 60000,
+      }));
+    } catch (e) { sessions = []; }
+    if (!sessions.length) {
+      sessions = [{ name: "", start: new Date(countdownEl.getAttribute("data-countdown")).getTime(), end: Infinity }];
+    }
     const dEl = countdownEl.querySelector("[data-d]");
     const hEl = countdownEl.querySelector("[data-h]");
     const mEl = countdownEl.querySelector("[data-m]");
     const sEl = countdownEl.querySelector("[data-s]");
+    let lastLabel = "";
+
+    function setLabel(html) {
+      if (labelEl && html !== lastLabel) { labelEl.innerHTML = html; lastLabel = html; }
+    }
+    function esc(t) { return String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
 
     function tick() {
       const now = Date.now();
-      let diff = Math.max(0, target - now);
+      const live = sessions.find((x) => x.start <= now && now < x.end);
+      const next = sessions.find((x) => x.start > now);
+      const where = event ? " · " + esc(event) : "";
+      if (live && live.name) setLabel("Live now: <strong>" + esc(live.name) + "</strong>" + where);
+      else if (next && next.name) setLabel("Next session: <strong>" + esc(next.name) + "</strong>" + where);
+      else if (!next && after) setLabel(esc(after));
+      countdownEl.hidden = !next;
+      const diff = next ? Math.max(0, next.start - now) : 0;
       const d = Math.floor(diff / 86400000);
       const h = Math.floor((diff % 86400000) / 3600000);
       const m = Math.floor((diff % 3600000) / 60000);
@@ -55,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
      C6 = softest — three consecutive numbers get nominated as that
      weekend's hard/medium/soft). Intermediate and wet are fixed compounds
      and are never renominated, so their blurbs don't need updating. */
-  const CURRENT_GP_COMPOUNDS = { soft: "TBC", medium: "TBC", hard: "TBC" }; // Singapore: Pirelli nomination not yet confirmed
+  const CURRENT_GP_COMPOUNDS = { soft: "C4", medium: "C3", hard: "C2" }; // United States GP (Austin): Pirelli nomination C2/C3/C4
 
   const TIRE_INFO = {
     soft: `Soft (${CURRENT_GP_COMPOUNDS.soft}): highest grip, fastest lap times, wears fastest. Used in qualifying and short, aggressive stints.`,
@@ -87,11 +113,65 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ---------- archive: expand rows ---------- */
   document.querySelectorAll(".race-row").forEach((row) => {
+    const head = row.querySelector(".race-row-head");
+    const expandable = !row.classList.contains("upcoming") && row.querySelector(".race-detail");
+    function sync() { if (head && expandable) head.setAttribute("aria-expanded", row.classList.contains("open") ? "true" : "false"); }
     row.addEventListener("click", (e) => {
       if (row.classList.contains("upcoming")) return;
+      if (e.target.closest("a, button, input")) return; // links inside the recap keep working
       row.classList.toggle("open");
+      sync();
     });
+    // keyboard: the row head acts as a disclosure button
+    if (head && expandable) {
+      head.setAttribute("role", "button");
+      head.tabIndex = 0;
+      sync();
+      head.addEventListener("keydown", (e) => {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        e.preventDefault();
+        row.classList.toggle("open");
+        sync();
+      });
+      new MutationObserver(sync).observe(row, { attributes: true, attributeFilter: ["class"] });
+    }
   });
+
+  /* ---------- deep links: open the archive/verdict row named in the URL hash ---------- */
+  function openRowFromHash() {
+    const id = decodeURIComponent(location.hash.slice(1));
+    if (!id) return;
+    const row = document.getElementById(id);
+    if (row && row.classList.contains("race-row") && !row.classList.contains("upcoming")) row.classList.add("open");
+  }
+  openRowFromHash();
+  window.addEventListener("hashchange", openRowFromHash);
+
+  /* ---------- homepage: session schedule status ----------
+     Each <li> carries its official start (with timezone) and scheduled
+     length; the status follows the visitor's clock. */
+  const sessionList = document.querySelector("[data-sessions]");
+  if (sessionList) {
+    const items = sessionList.querySelectorAll("li[data-start]");
+    function updateSessions() {
+      const now = Date.now();
+      let nextFlagged = false;
+      items.forEach((li) => {
+        const start = Date.parse(li.dataset.start);
+        const end = start + (parseInt(li.dataset.mins, 10) || 60) * 60000;
+        const statusEl = li.querySelector(".s-status");
+        let label = "UPCOMING";
+        let state = "upcoming";
+        if (now >= end) { label = "COMPLETE"; state = "done"; }
+        else if (now >= start) { label = "UNDERWAY"; state = "live"; nextFlagged = true; }
+        else if (!nextFlagged) { label = "NEXT"; state = "next"; nextFlagged = true; }
+        li.dataset.state = state;
+        if (statusEl) statusEl.textContent = label;
+      });
+    }
+    updateSessions();
+    setInterval(updateSessions, 60000);
+  }
 
   /* ---------- archive: filter tabs ---------- */
   const filterTabs = document.querySelectorAll(".filter-tab");

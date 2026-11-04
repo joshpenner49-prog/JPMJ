@@ -1,0 +1,163 @@
+#!/usr/bin/env python3
+"""
+Compute every current driver's 2026 season and career stats from the open
+f1db dataset (github.com/f1db/f1db, CC BY 4.0) into data/driver-stats.json.
+generate_drivers.py builds the driver pages from that file.
+
+Definitions (checked against the official end-of-2024 totals for Hamilton,
+Verstappen, Alonso, Leclerc and Norris, which this reproduces):
+  starts   Grand Prix starts: race entries, excluding did-not-start,
+           did-not-qualify and did-not-pre-qualify
+  wins     race finishes in P1          podiums  race finishes in P1-P3
+  top10    race finishes in P1-P10      poles    started the race from P1
+  points   championship points as awarded (Grands Prix and sprints)
+
+Usage, after each race:
+  git clone --depth 1 --filter=blob:none --sparse https://github.com/f1db/f1db.git
+  (cd f1db && git sparse-checkout set src/data/seasons src/data/drivers \
+      src/data/constructors src/data/grands-prix src/data/countries)
+  python3 tools/f1db_stats.py path/to/f1db 2026
+  python3 generate_drivers.py
+"""
+import glob
+import json
+import os
+import sys
+
+import yaml
+
+LOADER = getattr(yaml, "CSafeLoader", yaml.SafeLoader)
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+NOT_STARTED = {"DNS", "DNQ", "DNPQ", "DNP", "EX"}
+
+
+def load(path):
+    if not os.path.exists(path):
+        return []
+    with open(path, encoding="utf-8") as f:
+        return yaml.load(f, Loader=LOADER) or []
+
+
+def is_num(p):
+    return isinstance(p, int) or (isinstance(p, str) and p.isdigit())
+
+
+def main(f1db, season):
+    data = os.path.join(f1db, "src", "data")
+    seasons = os.path.join(data, "seasons")
+    standings = load(os.path.join(seasons, str(season), "driver-standings.yml"))
+    ids = [s["driverId"] for s in standings]
+    gp_names = {}
+
+    def gp_name(gid):
+        if gid not in gp_names:
+            gp_names[gid] = load(os.path.join(data, "grands-prix", f"{gid}.yml")).get("fullName", gid)
+        return gp_names[gid]
+
+    def blank():
+        return {"starts": 0, "wins": 0, "podiums": 0, "poles": 0, "top10": 0, "points": 0.0}
+
+    career = {d: blank() for d in ids}
+    this = {d: blank() for d in ids}
+    rounds = {d: {} for d in ids}
+    debut, first_win, teams = {}, {}, {d: [] for d in ids}
+    team_names = {}
+    total_rounds = len(glob.glob(os.path.join(seasons, str(season), "races", "*")))
+    completed = 0
+
+    for y in sorted(int(x) for x in os.listdir(seasons) if x.isdigit() and int(x) <= season):
+        race_dirs = sorted(glob.glob(os.path.join(seasons, str(y), "races", "*")),
+                           key=lambda p: int(os.path.basename(p).split("-")[0]))
+        for rd in race_dirs:
+            rr = load(os.path.join(rd, "race-results.yml"))
+            if not rr:
+                continue
+            rnd = int(os.path.basename(rd).split("-")[0])
+            if y == season:
+                completed = max(completed, rnd)
+            race = load(os.path.join(rd, "race.yml"))
+            grid = load(os.path.join(rd, "starting-grid-positions.yml"))
+            pole = next((g["driverId"] for g in grid if g.get("position") in (1, "1")), None)
+            for x in rr:
+                d = x["driverId"]
+                if d not in career:
+                    continue
+                pos = x.get("position")
+                pts = x.get("points") or 0
+                targets = [career[d]] + ([this[d]] if y == season else [])
+                for t in targets:
+                    t["points"] += pts
+                if y == season:
+                    rounds[d][rnd] = rounds[d].get(rnd, 0) + pts
+                if pos in NOT_STARTED:
+                    continue
+                cid = x["constructorId"]
+                if cid not in team_names:
+                    team_names[cid] = load(os.path.join(data, "constructors", f"{cid}.yml")).get("name", cid)
+                if team_names[cid] not in teams[d]:
+                    teams[d].append(team_names[cid])  # each team once, in order of first race
+                debut.setdefault(d, {"year": y, "gp": gp_name(race["grandPrixId"])})
+                for t in targets:
+                    t["starts"] += 1
+                    if pole == d:
+                        t["poles"] += 1
+                    if is_num(pos):
+                        n = int(pos)
+                        t["wins"] += n == 1
+                        t["podiums"] += n <= 3
+                        t["top10"] += n <= 10
+                if is_num(pos) and int(pos) == 1:
+                    first_win.setdefault(d, {"year": y, "gp": gp_name(race["grandPrixId"])})
+            for x in load(os.path.join(rd, "sprint-race-results.yml")):
+                d = x["driverId"]
+                if d in career:
+                    pts = x.get("points") or 0
+                    career[d]["points"] += pts
+                    if y == season:
+                        this[d]["points"] += pts
+                        rounds[d][rnd] = rounds[d].get(rnd, 0) + pts
+
+    out = {
+        "_about": (f"Generated by tools/f1db_stats.py from f1db (github.com/f1db/f1db, CC BY 4.0). "
+                   f"{season} season through Round {completed} of {total_rounds}. Do not edit by hand."),
+        "season": season,
+        "rounds_completed": completed,
+        "rounds_total": total_rounds,
+        "drivers": {},
+    }
+    for s in standings:
+        d = s["driverId"]
+        prof = load(os.path.join(data, "drivers", f"{d}.yml"))
+        nat = load(os.path.join(data, "countries", f"{prof.get('nationalityCountryId')}.yml"))
+        birth_c = load(os.path.join(data, "countries", f"{prof.get('countryOfBirthCountryId')}.yml"))
+        fix = lambda t: {k: (int(v) if isinstance(v, float) and v.is_integer() else v) for k, v in t.items()}
+        if abs(this[d]["points"] - s["points"]) > 1e-9:
+            sys.exit(f"{d}: computed {this[d]['points']} season points, f1db standings say {s['points']}")
+        out["drivers"][d] = {
+            "name": prof.get("name"),
+            "code": prof.get("abbreviation"),
+            "position": s["position"],
+            "season": fix(this[d]),
+            "career": fix(career[d]),
+            # points per round (sprint + race); null = did not take part / not yet raced
+            "rounds": [rounds[d].get(r) for r in range(1, total_rounds + 1)],
+            "rounds_entered": sorted(rounds[d]),
+            "profile": {
+                "born": str(prof.get("dateOfBirth") or ""),
+                "birthplace": ", ".join(x for x in [prof.get("placeOfBirth"), birth_c.get("name")] if x),
+                "nationality": nat.get("demonym") or nat.get("name"),
+                "debut": debut.get(d),
+                "first_win": first_win.get(d),
+                "teams": teams[d],
+            },
+        }
+    path = os.path.join(ROOT, "data", "driver-stats.json")
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(out, f, ensure_ascii=False, indent=1)
+    print(f"Wrote {path}: {len(out['drivers'])} drivers, {season} through Round {completed}")
+
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        sys.exit(__doc__)
+    main(sys.argv[1], int(sys.argv[2]) if len(sys.argv) > 2 else 2026)
