@@ -215,3 +215,11 @@ table.grid td { white-space: nowrap; }
 .tp-seqs .tp-lab { white-space: nowrap; color: var(--grey); font-size: 6.8pt; }
 .tp-seqs .tp-lab b { display: inline; margin-right: 1.5mm; color: var(--charcoal); }
 .tp-chart + .tp-seqs .tp-seq { grid-template-columns: 44mm auto 1fr; }
+/* race-day weather panel (page 3) */
+.wx-big { display: flex; gap: 5mm; margin: 1mm 0 1.6mm; }
+.wx-big div { display: flex; flex-direction: column; }
+.wx-v { font-family: var(--serif); font-size: 16pt; line-height: 1; }
+.wx-l { font-family: var(--mono); font-size: 6.2pt; letter-spacing: .08em; text-transform: uppercase; color: var(--grey); margin-top: .8mm; }
+.wx-t td { font-size: 7.4pt; padding-top: .9mm; padding-bottom: .9mm; }
+.wx-t td:first-child { white-space: nowrap; width: 1%; padding-right: 2.5mm; }
+.cols2 { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }

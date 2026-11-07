@@ -1,6 +1,6 @@
 {
   "_about": "Content for one JP Race Day Programme edition. Layout lives in raceday/template.html; build with: python3 tools/build_raceday.py raceday/2026-united-states. Fields set to null are race-weekend information that must be filled in (and verified) before the build will produce a final, publishable PDF. Every figure carries a 'kind': verified (official/primary source), measured (computed from published timing data), estimate (sourced estimate with stated assumptions) or analysis (JP Motorsport Journal's editorial view).",
-  "status": "proof",
+  "status": "final",
   "edition": 3,
   "season": 2026,
   "round": 20,
@@ -15,11 +15,11 @@
   "race_date_iso": "2026-11-08",
   "timezone_label": "BRT (UTC−3), local time in São Paulo",
   "filename": "JP-Race-Day-Sao-Paulo-GP-2026.pdf",
-  "publication_date": null,
-  "last_verified": "2 November 2026",
+  "publication_date": "7 November 2026",
+  "last_verified": "7 November 2026",
   "cover": {
-    "headline": "Who finishes second?",
-    "standfirst": "The title is Kimi Antonelli's. Behind him, 16 points cover Verstappen, Hamilton, Russell and Leclerc with four races left, and Mercedes can wrap up the Constructors' at Interlagos.",
+    "headline": "Storm warning at Interlagos",
+    "standfirst": "Lando Norris starts on pole after a wet qualifying, Verstappen, Hamilton and Pérez start from the back, and rain is forecast for Sunday afternoon.",
     "photo": null,
     "photo_credit": null,
     "photo_note": "Free-licensed photo pending (Wikimedia Commons is blocked in the build environment). Until then the cover uses the circuit outline."
@@ -88,11 +88,26 @@
         "source": "pitloss"
       }
     ],
-    "overtaking_aids": null,
+    "overtaking_aids": "Two Straight Mode zones: the start/finish straight into Turn 1 and the Reta Oposta from Turn 3 to Turn 4. Overtake Mode detection is at the exit of Junção, with activation on the climb after Turn 13.",
     "overtaking_aids_note": "Active aero Straight Mode works in FIA-designated activation zones, and Overtake Mode gives a car within one second of the car ahead at the detection point extra electrical energy. Interlagos's zones come in the FIA event notes on race weekend and go into the final edition.",
     "lap_m": 4309,
-    "straight_mode_zones": null,
-    "overtake_detection": null,
+    "straight_mode_zones": [
+      {
+        "name": "Start/finish straight",
+        "from_m": 3860,
+        "to_m": 190
+      },
+      {
+        "name": "Reta Oposta",
+        "from_m": 720,
+        "to_m": 1270
+      }
+    ],
+    "overtake_detection": [
+      {
+        "at_m": 3250
+      }
+    ],
     "map_markers": [
       {
         "n": "1",
@@ -158,7 +173,7 @@
     ],
     "time_gain_loss": "The lap hinges on Junção: get out of it well and the long climb carries the car into the Senna S with a chance to pass.",
     "time_gain_loss_kind": "analysis",
-    "aero_note": null,
+    "aero_note": "Zones at approximate positions, from the FIA's description; detection about 3,250 m into the lap.",
     "dek": "Fifteen corners, anticlockwise, up and down a natural bowl: the Senna S, the Reta Oposta, a twisting infield and the long climb past the pits."
   },
   "strategy": {
@@ -221,7 +236,41 @@
       "M": "C4",
       "H": "C3"
     },
-    "tyre_plan": null,
+    "tyre_plan": {
+      "kind": "verified",
+      "summary": "Pirelli's projection after qualifying: two stops is the quickest plan, with two soft stints and one on the medium. A soft-hard-soft race is slower, and one stop is about ten seconds slower than the best two-stop. Pirelli puts a stop at 22.5 seconds. Rain would rewrite all of it.",
+      "strategies": [
+        {
+          "label": "Two stops",
+          "tag": "Pirelli's quickest",
+          "sequence": [
+            "S",
+            "M",
+            "S"
+          ],
+          "note": "Two stints on the soft and one on the medium."
+        },
+        {
+          "label": "Two stops",
+          "tag": "Slower",
+          "sequence": [
+            "S",
+            "H",
+            "S"
+          ],
+          "note": "Using the hard adds overall race time."
+        },
+        {
+          "label": "One stop",
+          "tag": "About 10 s slower",
+          "sequence": [],
+          "note": "Significantly less competitive in the dry; compound order not published."
+        }
+      ],
+      "deltas": [],
+      "deltas_note": "Not published by Pirelli for this race.",
+      "source_line": "Pirelli qualifying release, 7 Nov 2026, as reported; pit-stop cost 22.5 s (Pirelli preview)."
+    },
     "tyre_plan_note": "the predicted race strategies (one stop or two, and in which compound order), each with its pit window on a lap chart, plus the undercut and pace gaps where Pirelli publishes them after qualifying.",
     "one_vs_two": "Last year's softer-than-usual race was mostly two stops, and this year's tyres are a step softer again. With an 86% Safety Car chance, teams will keep their options open and react to neutralisations rather than commit early.",
     "one_vs_two_kind": "analysis",
@@ -238,9 +287,125 @@
     ]
   },
   "briefing": {
-    "grid": null,
+    "grid": [
+      {
+        "pos": 1,
+        "driver": "Lando Norris",
+        "team": "McLaren"
+      },
+      {
+        "pos": 2,
+        "driver": "Kimi Antonelli",
+        "team": "Mercedes"
+      },
+      {
+        "pos": 3,
+        "driver": "Liam Lawson",
+        "team": "Racing Bulls"
+      },
+      {
+        "pos": 4,
+        "driver": "Nico Hülkenberg",
+        "team": "Audi"
+      },
+      {
+        "pos": 5,
+        "driver": "Isack Hadjar",
+        "team": "Red Bull"
+      },
+      {
+        "pos": 6,
+        "driver": "Oliver Bearman",
+        "team": "Haas"
+      },
+      {
+        "pos": 7,
+        "driver": "George Russell",
+        "team": "Mercedes",
+        "note": "Q2, −5 places"
+      },
+      {
+        "pos": 8,
+        "driver": "Fernando Alonso",
+        "team": "Aston Martin"
+      },
+      {
+        "pos": 9,
+        "driver": "Alexander Albon",
+        "team": "Williams"
+      },
+      {
+        "pos": 10,
+        "driver": "Oscar Piastri",
+        "team": "McLaren"
+      },
+      {
+        "pos": 11,
+        "driver": "Rafael Câmara",
+        "team": "Haas"
+      },
+      {
+        "pos": 12,
+        "driver": "Arvid Lindblad",
+        "team": "Racing Bulls"
+      },
+      {
+        "pos": 13,
+        "driver": "Carlos Sainz",
+        "team": "Williams"
+      },
+      {
+        "pos": 14,
+        "driver": "Charles Leclerc",
+        "team": "Ferrari",
+        "note": "Q4, −10 places"
+      },
+      {
+        "pos": 15,
+        "driver": "Franco Colapinto",
+        "team": "Alpine"
+      },
+      {
+        "pos": 16,
+        "driver": "Pierre Gasly",
+        "team": "Alpine"
+      },
+      {
+        "pos": 17,
+        "driver": "Lance Stroll",
+        "team": "Aston Martin"
+      },
+      {
+        "pos": 18,
+        "driver": "Valtteri Bottas",
+        "team": "Cadillac"
+      },
+      {
+        "pos": 19,
+        "driver": "Gabriel Bortoleto",
+        "team": "Audi"
+      },
+      {
+        "pos": 20,
+        "driver": "Lewis Hamilton",
+        "team": "Ferrari",
+        "note": "back of grid"
+      },
+      {
+        "pos": 21,
+        "driver": "Max Verstappen",
+        "team": "Red Bull",
+        "note": "back of grid"
+      },
+      {
+        "pos": 22,
+        "driver": "Sergio Pérez",
+        "team": "Cadillac",
+        "note": "back of grid"
+      }
+    ],
     "grid_note": "The official starting grid, including penalties and any driver substitutions, is added in the final edition after qualifying.",
-    "penalties": null,
+    "penalties": "After announced power-unit penalties (in red); the FIA confirms the grid, including the order of the last three, before the race. Pole: Norris, 1:27.470 (wet).",
     "schedule": [
       {
         "day": "Fri 6 Nov",
@@ -332,9 +497,9 @@
         "From qualifying until the race, cars cannot be changed without a penalty."
       ]
     ],
-    "sign_off": null,
+    "sign_off": "Interlagos never sticks to the script, and this year the chaos started before the lights: rain in the forecast, Leclerc down in 14th and Hamilton, Verstappen and Pérez at the back. As a Ferrari fan it hurts, but it sets up a great race. I have Lando Norris converting pole into the win, with Max Verstappen charging from the back onto the podium.",
     "sign_off_note": "JP writes the sign-off for each edition.",
-    "sign_off_title": null
+    "sign_off_title": "JP's prediction"
   },
   "sources": {
     "f1db": {
@@ -372,9 +537,62 @@
     "standings": {
       "label": "Standings after Round 19 (checked against f1db)",
       "url": "https://github.com/f1db/f1db"
+    },
+    "qualifying": {
+      "label": "Grid: The Race; Yahoo Sports; Formula1.com",
+      "url": "https://www.formula1.com/en/latest/article/norris-beats-russell-to-pole-position-in-dramatic-rain-affected-sao-paolo-qualifying.2V60rhlQjdS5my1uFrOKUH"
+    },
+    "penalties": {
+      "label": "Penalties: Sky Sports; Motorsport Week",
+      "url": "https://www.skysports.com/f1/news/13609202/sao-paulo-gp-grid-penalties-lewis-hamilton-max-verstappen-charles-leclerc-to-drop-down-interlagos-grid"
+    },
+    "aero_zones": {
+      "label": "Aero zones: PlanetF1; Scuderiafans",
+      "url": "https://www.planetf1.com/news/fia-brazilian-grand-prix-2026-interlagos"
+    },
+    "pirelli2026": {
+      "label": "Pirelli qualifying release",
+      "url": "https://press.pirelli.com/from-full-wets-to-inters-in-qualifying-norris-takes-pole-in-so-paulo"
+    },
+    "weather": {
+      "label": "Weather: Formula1.com; GPFans (AccuWeather)",
+      "url": "https://www.formula1.com/en/latest/article/what-is-the-weather-forecast-for-the-2026-sao-paulo-grand-prix.6DTTG84ES6tbC6eISpqnR8"
     }
   },
   "race_laps": 71,
   "race_time": "14:00",
-  "tz_abbr": "BRT"
+  "tz_abbr": "BRT",
+  "weather": {
+    "kind": "estimate",
+    "headline": [
+      {
+        "value": "13–19°C",
+        "label": "Sunday range"
+      },
+      {
+        "value": "40–50%",
+        "label": "Rain chance"
+      },
+      {
+        "value": "16°C",
+        "label": "At lights out"
+      }
+    ],
+    "summary": "Cool and unsettled. Rain is forecast through the morning and possibly into the afternoon, so the race could start wet or on a drying track.",
+    "forecasts": [
+      {
+        "source": "Formula 1",
+        "forecast": "13–19°C, 40% chance of heavy rain and thunderstorms"
+      },
+      {
+        "source": "AccuWeather",
+        "forecast": "16°C and a 47% chance of rain at 14:00; showers through the morning"
+      },
+      {
+        "source": "Other models",
+        "forecast": "Rain risk from 40% to over 70% (Autohebdo); as low as 10% (F1 Oversteer)"
+      }
+    ],
+    "note": "Forecasts as published on 7 November. Interlagos weather can change within minutes."
+  }
 }
