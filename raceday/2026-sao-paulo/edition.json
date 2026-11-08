@@ -16,7 +16,7 @@
   "timezone_label": "BRT (UTC−3), local time in São Paulo",
   "filename": "JP-Race-Day-Sao-Paulo-GP-2026.pdf",
   "publication_date": "7 November 2026",
-  "last_verified": "7 November 2026",
+  "last_verified": "8 November 2026",
   "cover": {
     "headline": "Storm warning at Interlagos",
     "standfirst": "Lando Norris starts on pole after a wet qualifying, Verstappen, Hamilton and Pérez start from the back, and rain is forecast for Sunday afternoon.",
@@ -405,7 +405,7 @@
       }
     ],
     "grid_note": "The official starting grid, including penalties and any driver substitutions, is added in the final edition after qualifying.",
-    "penalties": "After announced power-unit penalties (in red); the FIA confirms the grid, including the order of the last three, before the race. Pole: Norris, 1:27.470 (wet).",
+    "penalties": "Formula 1's official grid, with power-unit penalties in red. Pole: Norris, 1:27.470 (wet).",
     "schedule": [
       {
         "day": "Fri 6 Nov",
@@ -539,7 +539,7 @@
       "url": "https://github.com/f1db/f1db"
     },
     "qualifying": {
-      "label": "Grid: The Race; Yahoo Sports; Formula1.com",
+      "label": "Grid: Formula 1 official grid; Formula1.com",
       "url": "https://www.formula1.com/en/latest/article/norris-beats-russell-to-pole-position-in-dramatic-rain-affected-sao-paolo-qualifying.2V60rhlQjdS5my1uFrOKUH"
     },
     "penalties": {
