@@ -555,8 +555,8 @@
       "url": "https://press.pirelli.com/from-full-wets-to-inters-in-qualifying-norris-takes-pole-in-so-paulo"
     },
     "weather": {
-      "label": "Weather: Formula1.com; GPFans (AccuWeather)",
-      "url": "https://www.formula1.com/en/latest/article/what-is-the-weather-forecast-for-the-2026-sao-paulo-grand-prix.6DTTG84ES6tbC6eISpqnR8"
+      "label": "Weather: INMET alert and Google Weather (Sat 22:00, via JP); Formula1.com; GPFans (AccuWeather)",
+      "url": "https://portal.inmet.gov.br/"
     }
   },
   "race_laps": 71,
@@ -566,33 +566,65 @@
     "kind": "estimate",
     "headline": [
       {
-        "value": "13–19°C",
-        "label": "Sunday range"
+        "value": "13–17°C",
+        "label": "Sunday (Google)"
       },
       {
-        "value": "40–50%",
-        "label": "Rain chance"
+        "value": "20%",
+        "label": "Rain at 14:00"
       },
       {
-        "value": "16°C",
-        "label": "At lights out"
+        "value": "Orange",
+        "label": "INMET storm alert"
       }
     ],
-    "summary": "Cool and unsettled. Rain is forecast through the morning and possibly into the afternoon, so the race could start wet or on a drying track.",
+    "timeline": [
+      {
+        "time": "02:00",
+        "chance": "40%"
+      },
+      {
+        "time": "05:00",
+        "chance": "35%"
+      },
+      {
+        "time": "08:00",
+        "chance": "20%"
+      },
+      {
+        "time": "11:00",
+        "chance": "30%"
+      },
+      {
+        "time": "14:00",
+        "chance": "20%",
+        "race": true
+      },
+      {
+        "time": "17:00",
+        "chance": "10%"
+      }
+    ],
+    "timeline_caption": "Chance of rain, Sunday, local time (Google Weather, Sat 22:00)",
+    "summary": "Rain is most likely overnight and through the morning; the chance falls to about 20% by lights out and 10% by the finish. Brazil's weather service has an orange storm alert out for the south-east.",
     "forecasts": [
+      {
+        "source": "INMET (official)",
+        "forecast": "Orange storm alert from Sat 09:00: 30–60 mm/h of rain, 60–100 km/h winds, hail"
+      },
+      {
+        "source": "Google Weather",
+        "forecast": "Sun 13–17°C; rain 20% at 14:00, 10% at 17:00"
+      },
       {
         "source": "Formula 1",
         "forecast": "13–19°C, 40% chance of heavy rain and thunderstorms"
       },
       {
         "source": "AccuWeather",
-        "forecast": "16°C and a 47% chance of rain at 14:00; showers through the morning"
-      },
-      {
-        "source": "Other models",
-        "forecast": "Rain risk from 40% to over 70% (Autohebdo); as low as 10% (F1 Oversteer)"
+        "forecast": "16°C and a 47% chance of rain at 14:00"
       }
     ],
-    "note": "Forecasts as published on 7 November. Interlagos weather can change within minutes."
+    "note": "Forecasts for São Paulo as published by Saturday evening; Interlagos weather can change within minutes."
   }
 }

@@ -315,15 +315,26 @@ def page_strategy(ed):
     if wx:
         big = "".join(f'<div><span class="wx-v">{e(b["value"])}</span><span class="wx-l">{e(b["label"])}</span></div>' for b in wx["headline"])
         fc = "".join(f'<tr><td><b>{e(f["source"])}</b></td><td>{e(f["forecast"])}</td></tr>' for f in wx["forecasts"])
-        left_panel = (f'<div class="panel wx"><h4>Race-day weather{kind(wx.get("kind", "estimate"))}</h4>'
-                      f'<div class="wx-big">{big}</div><p>{e(wx["summary"])}</p>'
-                      f'<table class="hist wx-t"><tbody>{fc}</tbody></table>'
-                      f'<p class="muted" style="margin-top:1.2mm;font-size:7pt">{e(wx["note"])}</p>'
-                      f'<p>{e(s["tyres"])}{kind(s["tyres_kind"])}</p></div>')
+        tl = ""
+        if wx.get("timeline"):
+            tl = ('<div class="wx-tl">' + "".join(
+                f'<div class="{"race" if t.get("race") else ""}"><span class="wx-tl-p">{e(t["chance"])}</span>'
+                f'<span class="wx-tl-bar"><i style="height:{int(t["chance"].rstrip("%"))}%"></i></span><span class="wx-tl-t">{e(t["time"])}</span></div>'
+                for t in wx["timeline"]) + '</div>'
+                f'<div class="wx-tl-cap">{e(wx.get("timeline_caption", ""))}</div>')
+        # race-day weather takes the full width in place of the two
+        # explainer panels (undercut and overcut are in the glossary)
+        middle = (f'<div class="panel wx"><h4>Race-day weather{kind(wx.get("kind", "estimate"))}</h4><div class="wx-grid">'
+                  f'<div><div class="wx-big">{big}</div>{tl}<p>{e(wx["summary"])}</p></div>'
+                  f'<div><table class="hist wx-t"><tbody>{fc}</tbody></table>'
+                  f'<p class="muted" style="margin-top:1.2mm;font-size:7pt">{e(wx["note"])}</p></div></div></div>')
     hist_note = "" if s.get("tyre_plan") else f'<p class="muted" style="margin-top:1.5mm;font-size:7.4pt">{e(s["history_note"])}</p>'
     preview = "" if s.get("tyre_plan") else f'<p>{e(s["one_vs_two"])}{kind(s["one_vs_two_kind"])}</p>'
     if not wx:
-        left_panel = f'<div class="panel"><h4>One stop or two?</h4><table class="hist"><tbody>{hist}</tbody></table>{hist_note}<p>{e(s["tyres"])}{kind(s["tyres_kind"])}</p>{preview}</div>'
+        middle = f'''<div class="cols2">
+    <div class="panel"><h4>One stop or two?</h4><table class="hist"><tbody>{hist}</tbody></table>{hist_note}<p>{e(s["tyres"])}{kind(s["tyres_kind"])}</p>{preview}</div>
+    <div class="panel"><h4>Undercut and overcut</h4><p>{e(s["undercut"])}</p><p>{e(s["overcut"])}</p>{history_window}<h4 style="margin-top:2.5mm">If the VSC or Safety Car comes out</h4><p>{e(s["neutralisation"])}{kind(s["neutralisation_kind"])}</p></div>
+  </div>'''
     watch = "".join(f"<li>{e(w)}</li>" for w in s["what_to_watch"])
     return f'''<section class="page">
   {run_head(ed, "The Strategy Desk")}
@@ -333,10 +344,7 @@ def page_strategy(ed):
   <table class="loss-table"><thead><tr><th>Conditions</th><th>Time in pit lane</th><th>Net race-time loss</th><th>Saving vs green</th></tr></thead><tbody>{rows}</tbody></table>
   <ul class="notes">{notes}</ul>
   {plan}
-  <div class="cols2">
-    {left_panel}
-    <div class="panel"><h4>Undercut and overcut</h4><p>{e(s["undercut"])}</p><p>{e(s["overcut"])}</p>{history_window}<h4 style="margin-top:2.5mm">If the VSC or Safety Car comes out</h4><p>{e(s["neutralisation"])}{kind(s["neutralisation_kind"])}</p></div>
-  </div>
+  {middle}
   <div class="watch"><h4>What to Watch</h4><ol>{watch}</ol></div>
   {run_foot(ed, 3, "Pit times: f1db · Net loss: Pirelli · Verified " + e(ed["last_verified"]))}
 </section>'''
