@@ -1,0 +1,367 @@
+{
+  "_about": "Content for one JP Race Day Programme edition. Layout lives in raceday/template.html; build with: python3 tools/build_raceday.py raceday/2026-united-states. Fields set to null are race-weekend information that must be filled in (and verified) before the build will produce a final, publishable PDF. Every figure carries a 'kind': verified (official/primary source), measured (computed from published timing data), estimate (sourced estimate with stated assumptions) or analysis (JP Motorsport Journal's editorial view).",
+  "status": "proof",
+  "edition": 4,
+  "season": 2026,
+  "round": 21,
+  "rounds_total": 23,
+  "grand_prix": "Las Vegas Grand Prix",
+  "short_name": "Las Vegas GP",
+  "slug": "las-vegas",
+  "circuit_id": "us-2023",
+  "circuit_name": "Las Vegas Strip Circuit",
+  "location": "Las Vegas, Nevada",
+  "race_date": "Saturday 21 November 2026",
+  "race_date_iso": "2026-11-21",
+  "timezone_label": "PST (UTC−8), local time in Las Vegas",
+  "filename": "JP-Race-Day-Las-Vegas-GP-2026.pdf",
+  "publication_date": null,
+  "last_verified": "9 November 2026",
+  "cover": {
+    "headline": "All in on the Strip",
+    "standfirst": "The titles are won, so Las Vegas plays for second: Verstappen leads Russell, Hamilton, Leclerc and Norris, with 33 points between them and three races left.",
+    "photo": null,
+    "photo_credit": null,
+    "photo_note": "Free-licensed photo pending (Wikimedia Commons is blocked in the build environment). Until then the cover uses the circuit outline."
+  },
+  "intro": "Mercedes completed the double in Brazil, where Norris won and Verstappen charged from 21st to second. Las Vegas is the third-last round: a Saturday-night race down the Strip, with practice on Thursday, qualifying on Friday and the 50-lap race at 8pm local time, in desert temperatures that can fall close to 10°C.",
+  "storylines": [
+    {
+      "title": "Five drivers, 33 points",
+      "text": "Verstappen (279), Russell (262), Hamilton (261), Leclerc (249) and Norris (246) are fighting to finish runner-up, with 75 points left.",
+      "kind": "verified"
+    },
+    {
+      "title": "Verstappen's Vegas",
+      "text": "He has won two of the three Las Vegas races, in 2023 and 2025; Russell won in 2024 from pole.",
+      "kind": "verified"
+    },
+    {
+      "title": "Cold tyres, long straights",
+      "text": "The Strip is taken flat for more than 1.9 km, and cold night air makes warming the softest Pirelli tyres the key to the weekend.",
+      "kind": "analysis"
+    }
+  ],
+  "circuit": {
+    "facts": [
+      {
+        "label": "Circuit length",
+        "value": "6.201 km",
+        "kind": "verified",
+        "source": "f1"
+      },
+      {
+        "label": "Race laps",
+        "value": "50",
+        "kind": "verified",
+        "source": "f1"
+      },
+      {
+        "label": "Race distance",
+        "value": "309.958 km",
+        "kind": "verified",
+        "source": "f1"
+      },
+      {
+        "label": "Corners",
+        "value": "17 (run anticlockwise)",
+        "kind": "verified",
+        "source": "f1"
+      },
+      {
+        "label": "First Grand Prix",
+        "value": "2023",
+        "kind": "verified",
+        "source": "f1db"
+      },
+      {
+        "label": "Race lap record",
+        "value": "1:33.365, Max Verstappen (2025)",
+        "kind": "verified",
+        "source": "f1db"
+      },
+      {
+        "label": "Flat-out section",
+        "value": "over 1.9 km, Turn 12 to Turn 14",
+        "kind": "verified",
+        "source": "f1"
+      }
+    ],
+    "overtaking_aids": null,
+    "overtaking_aids_note": "Active aero Straight Mode works in FIA-designated activation zones, and Overtake Mode gives a car within one second of the car ahead at the detection point extra electrical energy. The Las Vegas zones come in the FIA event notes on race weekend and go into the final edition.",
+    "lap_m": 6201,
+    "straight_mode_zones": null,
+    "overtake_detection": null,
+    "map_markers": [
+      {
+        "n": "1",
+        "at": 1.6,
+        "dx": 14,
+        "dy": 10
+      },
+      {
+        "n": "14",
+        "at": 80.9,
+        "dx": -14,
+        "dy": -6
+      }
+    ],
+    "map_sections": [
+      {
+        "label": "The Strip",
+        "at": 64,
+        "dx": 0,
+        "dy": 14
+      },
+      {
+        "label": "Sphere loop",
+        "at": 30,
+        "dx": 0,
+        "dy": -16
+      },
+      {
+        "label": "Back straight",
+        "at": 12,
+        "dx": 0,
+        "dy": -14
+      }
+    ],
+    "map_note": "Numbered: corners confirmed from the official outline. Turned 90 degrees to fit: the Strip runs along the top.",
+    "key_sections": [
+      {
+        "name": "Turn 1",
+        "text": "A slow left after the pit straight, the first braking zone and the busiest corner on the opening lap.",
+        "kind": "analysis"
+      },
+      {
+        "name": "Sphere loop",
+        "text": "The lap swings round the Sphere through a sequence of tight corners: the place to keep the tyres in their window on cold nights.",
+        "kind": "analysis"
+      },
+      {
+        "name": "The Strip",
+        "text": "From Turn 12 the cars run flat out down Las Vegas Boulevard for more than 1.9 km, the longest flat-out stretch of the lap and the main overtaking chance.",
+        "kind": "verified",
+        "source": "f1"
+      },
+      {
+        "name": "Turn 14 chicane",
+        "text": "The heavy stop at the end of the Strip: the payoff for a good tow, and the corner where most passes are completed.",
+        "kind": "analysis"
+      }
+    ],
+    "time_gain_loss": "Low downforce for the Strip means little grip everywhere else: the driver who keeps the tyres warm through the Sphere loop has the best run down the Boulevard.",
+    "time_gain_loss_kind": "analysis",
+    "aero_note": null,
+    "dek": "Seventeen corners, anticlockwise, through the casino district at night: past the Sphere, then flat out down Las Vegas Boulevard to the Turn 14 chicane."
+  },
+  "strategy": {
+    "pit_loss_rows": [
+      {
+        "condition": "Green flag",
+        "pit_lane": "about 22 s",
+        "net_loss": "about 20 s",
+        "saving": "—",
+        "net_kind": "estimate",
+        "net_source": "pitloss"
+      },
+      {
+        "condition": "Virtual Safety Car",
+        "pit_lane": "about 22 s",
+        "net_loss": "about 12–17 s",
+        "saving": "about 3–8 s",
+        "net_kind": "estimate",
+        "net_source": "vsc"
+      },
+      {
+        "condition": "Safety Car",
+        "pit_lane": "about 22 s",
+        "net_loss": "about 8–13 s",
+        "saving": "about 7–12 s",
+        "net_kind": "estimate",
+        "net_source": "vsc"
+      }
+    ],
+    "pit_loss_notes": [
+      "Time in the pit lane is measured: the median from pit entry to pit exit in Las Vegas was 21.3–22.2 s in 2023, 2024 and 2025 (f1db timing data). It does not change under a VSC or Safety Car because the pit-lane speed limit still applies.",
+      "Net race-time loss is what a stop costs compared with staying out. Formula 1's 2025 preview put it at about 20 s here, including a 2.5 s stop.",
+      "The VSC and Safety Car figures apply published estimates of the saving (roughly 17–40% under a VSC and 35–60% behind the Safety Car) to that 20 s. They are illustrative ranges, not Las Vegas measurements."
+    ],
+    "history": [
+      {
+        "year": 2023,
+        "pattern": "Two stops",
+        "detail": "Lap-1 incidents brought early stops; most of the top 10 stopped twice, with a wave on lap 26",
+        "kind": "measured"
+      },
+      {
+        "year": 2024,
+        "pattern": "Two stops",
+        "detail": "Nine of the top 10; first stops laps 9–17, second laps 25–33",
+        "kind": "measured"
+      },
+      {
+        "year": 2025,
+        "pattern": "One stop",
+        "detail": "The whole top 10; stops mostly between laps 17 and 30",
+        "kind": "measured"
+      }
+    ],
+    "history_note": "Cold track temperatures decide it: graining in 2024 forced two stops, while 2025 was a one-stop race.",
+    "tyres": "Pirelli has brought its softest three compounds to every Las Vegas race so far (C3, C4 and C5 in 2024 and 2025).",
+    "tyres_kind": "verified",
+    "compounds": {
+      "S": "C5",
+      "M": "C4",
+      "H": "C3"
+    },
+    "tyre_plan": null,
+    "tyre_plan_note": "the predicted race strategies (one stop or two, and in which compound order), each with its pit window on a lap chart, plus the undercut and pace gaps where Pirelli publishes them after qualifying.",
+    "one_vs_two": "If graining stays under control, last year's one stop is the target. A cold evening or a lap-one Safety Car brings two stops back, as in 2023 and 2024.",
+    "one_vs_two_kind": "analysis",
+    "undercut": "Undercut: pit first and use the new tyres' extra grip to gain the time you lose in the pit lane before your rival stops. It works best when new tyres are much faster than worn ones.",
+    "overcut": "Overcut: stay out longer and gain time on a clear track while your rival is held up on cold new tyres or in traffic. It works best when tyres warm up slowly or the pitting car rejoins in traffic.",
+    "pit_window": "In 2025 the top 10's single stops came between laps 17 and 30 of 50.",
+    "pit_window_kind": "measured",
+    "neutralisation": "A VSC or Safety Car inside the pit window makes a stop cheaper for everyone, so the leaders often pit together and little changes. The real swing comes when it falls just before a team's planned stop, or when a rival has already stopped under green. A Safety Car early in the race can make a one-stop too long and force a second stop.",
+    "neutralisation_kind": "analysis",
+    "what_to_watch": [
+      "The run to Turn 1 and the first lap: two of the three Las Vegas races so far had first-lap incidents.",
+      "The tow down the Strip. Watch who closes up through the Sphere loop to set up a pass into Turn 14.",
+      "Graining. Early stops for drivers sliding on cold tyres would point to two stops."
+    ]
+  },
+  "briefing": {
+    "grid": null,
+    "grid_note": "The official starting grid, including penalties and any driver substitutions, is added in the final edition after qualifying.",
+    "penalties": null,
+    "schedule": [
+      {
+        "day": "Thu 19 Nov",
+        "session": "Practice 1",
+        "time": "16:30"
+      },
+      {
+        "day": "Thu 19 Nov",
+        "session": "Practice 2",
+        "time": "20:00"
+      },
+      {
+        "day": "Fri 20 Nov",
+        "session": "Practice 3",
+        "time": "16:30"
+      },
+      {
+        "day": "Fri 20 Nov",
+        "session": "Qualifying",
+        "time": "20:00"
+      },
+      {
+        "day": "Sat 21 Nov",
+        "session": "Grand Prix (50 laps)",
+        "time": "20:00"
+      }
+    ],
+    "schedule_kind": "verified",
+    "battles": [
+      {
+        "title": "Runner-up",
+        "text": "Verstappen 279, Russell 262, Hamilton 261, Leclerc 249, Norris 246."
+      },
+      {
+        "title": "Constructors P3",
+        "text": "Red Bull 415 vs McLaren 398."
+      },
+      {
+        "title": "Constructors P5",
+        "text": "Racing Bulls 114 vs Alpine 69."
+      }
+    ],
+    "five_things": [
+      "The run to Turn 1 under the lights, and a first lap that has rarely been clean here.",
+      "The fight for second: five drivers within 33 points, with Verstappen 17 clear.",
+      "Tyre warm-up on a cold night, especially after the pit stops and any Safety Car.",
+      "The tow down the Strip and the Turn 14 chicane, where most of the passes happen.",
+      "Antonelli's second race as champion, at a track where he finished third last year."
+    ],
+    "glossary": [
+      [
+        "Undercut",
+        "Pitting before a rival to use new tyres' extra pace to get ahead when they stop."
+      ],
+      [
+        "Overcut",
+        "Staying out longer than a rival to gain time while they warm up new tyres or sit in traffic."
+      ],
+      [
+        "Pit window",
+        "The range of laps when a stop makes strategic sense."
+      ],
+      [
+        "Degradation",
+        "How quickly a tyre loses grip and lap time as it wears."
+      ],
+      [
+        "VSC",
+        "Virtual Safety Car: everyone must slow to a set pace; positions are frozen and no one may overtake."
+      ],
+      [
+        "Safety Car",
+        "A physical car leads the field at reduced speed, bunching everyone up behind it."
+      ],
+      [
+        "Straight Mode",
+        "2026 active aero: wings flatten to cut drag in designated zones. Replaces DRS."
+      ],
+      [
+        "Overtake Mode",
+        "Extra electrical energy for a car within one second of the car ahead at the detection point."
+      ],
+      [
+        "Parc fermé",
+        "From qualifying until the race, cars cannot be changed without a penalty."
+      ]
+    ],
+    "sign_off": null,
+    "sign_off_note": "JP writes the sign-off for each edition.",
+    "sign_off_title": null
+  },
+  "sources": {
+    "f1db": {
+      "label": "f1db, results and pit stops 2019–2025 (CC BY 4.0)",
+      "url": "https://github.com/f1db/f1db"
+    },
+    "outline": {
+      "label": "f1-circuits, track outline (MIT)",
+      "url": "https://github.com/bacinger/f1-circuits"
+    },
+    "vsc": {
+      "label": "VSC and SC savings: FormulaDream; Race Sundays",
+      "url": "https://www.formuladream.app/blog/f1-pit-stop-cost-measured"
+    },
+    "regs": {
+      "label": "2026 aero rules: ESPN; Motor Sport",
+      "url": "https://www.motorsportmagazine.com/articles/single-seaters/f1/explained-the-new-mode-names-for-active-aero-and-energy-boost-for-f1-2026/"
+    },
+    "f1": {
+      "label": "Circuit facts: Formula1.com",
+      "url": "https://www.formula1.com/en/racing/2026/las-vegas"
+    },
+    "pitloss": {
+      "label": "Pit loss 20 s: Formula1.com 2025 preview",
+      "url": "https://www.formula1.com/en/latest/article/need-to-know-the-most-important-facts-stats-and-trivia-ahead-of-the-2025-las.2I0688JAOAFKCPbDIZGPZo"
+    },
+    "schedule": {
+      "label": "Session times: Formula1.com; f1db",
+      "url": "https://www.formula1.com/en/latest/article/formula-1-heineken-las-vegas-grand-prix-2026.1qmWzcBwKK5hkTbYbhVC22"
+    },
+    "standings": {
+      "label": "Standings after Round 20 (checked against f1db)",
+      "url": "https://github.com/f1db/f1db"
+    }
+  },
+  "race_laps": 50,
+  "race_time": "20:00",
+  "tz_abbr": "PST",
+  "cover_theme": "vegas"
+}

@@ -190,7 +190,8 @@ def page_cover(ed, c, st, proof):
     snap = "".join(
         f'<div><span class="p">P{i}</span><span class="n"><span class="stripe" style="background:{TEAM_COLORS.get(d["team"], "#888")}"></span>{e(d["name"].split()[-1])}</span><span class="pts">{d["points"]}</span></div>'
         for i, d in enumerate(st["drivers"][:5], 1))
-    return f'''<section class="page cover">{'<span class="proof-flag">PROOF · NOT FOR PUBLICATION</span>' if proof else ''}
+    theme = f' cover--{ed["cover_theme"]}' if ed.get("cover_theme") else ""
+    return f'''<section class="page cover{theme}">{'<span class="proof-flag">PROOF · NOT FOR PUBLICATION</span>' if proof else ''}
   <div class="cover-top">
     <div class="cover-mast">{e(SITE_NAME)}<small>Est. 2026 · JP Race Day Programme</small></div>
     <div class="cover-ed">Edition<b>{ed["edition"]:02d}</b>Round {ed["round"]} of {ed["rounds_total"]}</div>
@@ -406,6 +407,9 @@ def page_briefing(ed, st, site_url):
 def build_html(ed, c, st, proof, site_url):
     title = f'JP Race Day Programme · {ed["grand_prix"]} {ed["season"]} · Edition {ed["edition"]:02d}'
     css = open(os.path.join(ROOT, "raceday", "print.css"), encoding="utf-8").read()
+    # site images (e.g. a cover theme's skyline) by absolute path, so the
+    # page renders the same from the edition folder or its proof/ folder
+    css = css.replace('url("../../img/', 'url("file://' + os.path.join(ROOT, "img") + '/')
     return f'''<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><title>{e(title)}</title>
 <meta name="author" content="{e(SITE_NAME)}"><meta name="description" content="Four-page race-day programme for the {e(ed["grand_prix"])}, {ed["season"]}.">

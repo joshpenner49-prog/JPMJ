@@ -238,3 +238,21 @@ table.grid td { white-space: nowrap; }
 .wx-t { table-layout: fixed; }
 .wx-t td:first-child { width: 25mm; white-space: nowrap; }
 .wx-t td:last-child { white-space: normal; }
+/* cover themes: an edition can dress its cover for the race (cover_theme) */
+.cover--vegas {
+  background:
+    radial-gradient(circle, rgba(255,255,255,.55) 0 .5px, transparent .9px) 0 0 / 9mm 8mm,
+    radial-gradient(ellipse 120% 55% at 50% 0%, #2A1458 0%, transparent 65%),
+    #0E0A24;
+}
+.cover--vegas::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4mm;
+  background: radial-gradient(circle, #FFF6C8 0 .5mm, #FFC93C .7mm, transparent 1.1mm) 0 50% / 4mm 4mm repeat-x, #3A0E2E;
+  border-bottom: .5mm solid #FF4FAE; }
+.cover--vegas .cover-art::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 30mm; opacity: .6;
+  background: url("../../img/vegas-skyline.svg") center bottom / auto 30mm repeat-x; pointer-events: none; z-index: 0; }
+.cover--vegas .cover-art svg { position: relative; z-index: 1; }
+.cover--vegas .cover-title .rd { color: #FFC93C; }
+.cover--vegas .cover-title h1 { color: #FFF4FA; text-shadow: 0 0 2mm rgba(255,79,174,.75), 0 0 5mm rgba(255,79,174,.4); }
+.cover--vegas .cover-rule { background: #FF4FAE !important; box-shadow: 0 0 2mm #FF4FAE; }
+.cover--vegas .story-list li::before, .cover--vegas .k-analysis { color: #FF6BBD; }
+.cover--vegas .cover-mast, .cover--vegas .run-foot, .cover--vegas .snap { position: relative; z-index: 1; }

@@ -3,6 +3,20 @@
   "site_url": null,
   "editions": [
     {
+      "edition": 4,
+      "season": 2026,
+      "round": 21,
+      "grand_prix": "Las Vegas Grand Prix",
+      "short_name": "Las Vegas GP",
+      "circuit": "Las Vegas Strip Circuit",
+      "race_date": "Saturday 21 November 2026",
+      "folder": "raceday/2026-las-vegas",
+      "filename": "JP-Race-Day-Las-Vegas-GP-2026.pdf",
+      "status": "upcoming",
+      "publication_date": null,
+      "publishes": "after qualifying on Friday 20 November"
+    },
+    {
       "edition": 3,
       "season": 2026,
       "round": 20,
