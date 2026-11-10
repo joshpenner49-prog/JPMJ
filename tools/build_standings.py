@@ -196,6 +196,48 @@ def home_rows():
     return "\n".join(out)
 
 
+def odds_board():
+    """The fight for second, sportsbook style (shown in the Las Vegas race
+    week). Plain arithmetic, not betting odds: for each driver who can
+    still finish second, the points they must outscore the current P2 by
+    over the remaining Grands Prix. Ties are left out of the maths
+    (countback decides those), so "more than" is the honest wording."""
+    d = DATA["drivers"]
+    left = DATA["rounds_total"] - DATA["after_round"]
+    per = DATA["points_per_gp_max"]
+    available = left * per
+    p2 = d[1]
+    rivals = [x for x in d[2:] if p2["points"] - x["points"] < available]
+    # can P2 be settled at the next race? only if its lead over every rival
+    # can exceed what is left after it
+    best_case = min((p2["points"] + per) - x["points"] for x in rivals) if rivals else 0
+    settle = ("Second place can be settled at the next race." if rivals and best_case > available - per
+              else "Second place cannot be settled at the next race.")
+    rows = [
+        f'          <li class="odds-row odds-row--lead" style="--team:{TEAM[p2["team"]]}">'
+        f'<span class="odds-who"><span class="st-stripe" aria-hidden="true"></span>{esc(p2["name"])}<span class="odds-team">{esc(p2["team"])}</span></span>'
+        f'<span class="odds-pts">{p2["points"]}</span><span class="odds-line">Holds P2</span>'
+        f'<span class="odds-per">max {p2["points"] + available}</span></li>'
+    ]
+    for x in rivals:
+        gap = p2["points"] - x["points"]
+        rows.append(
+            f'          <li class="odds-row" style="--team:{TEAM[x["team"]]}">'
+            f'<span class="odds-who"><span class="st-stripe" aria-hidden="true"></span>{esc(x["name"])}<span class="odds-team">{esc(x["team"])}</span></span>'
+            f'<span class="odds-pts">{x["points"]}</span>'
+            f'<span class="odds-line" title="must outscore {esc(p2["name"])} by more than {gap} points">+{gap}</span>'
+            f'<span class="odds-per">{gap / left:.1f} a race</span></li>'
+        )
+    out = len([x for x in d[2:] if p2["points"] - x["points"] >= available])
+    return "\n".join([
+        f'        <p class="odds-sub">{len(rivals) + 1} drivers can still finish runner-up. The line is the margin to beat: each must outscore {esc(p2["name"])} by more than it over {left} Grands Prix and {available} points. {settle}</p>',
+        '        <ol class="odds-list">',
+        *rows,
+        '        </ol>',
+        f'        <p class="odds-note">Not betting odds: championship arithmetic from the official standings after Round {DATA["after_round"]}. Drivers on equal points are split by countback. {out} other drivers can no longer finish second.</p>',
+    ])
+
+
 def replace_block(text, name, content, path):
     pat = re.compile(r"<!-- BUILD:%s -->.*?<!-- /BUILD:%s -->" % (name, name), re.S)
     if not pat.search(text):
@@ -216,6 +258,8 @@ def main():
     ip = os.path.join(ROOT, "index.html")
     t = open(ip, encoding="utf-8").read()
     t = replace_block(t, "home-standings", home_rows(), ip)
+    if "<!-- BUILD:odds-board -->" in t:
+        t = replace_block(t, "odds-board", odds_board(), ip)
     open(ip, "w", encoding="utf-8").write(t)
     print(f"Standings built: after Round {DATA['after_round']} ({DATA['race']}), "
           f"{len(DATA['drivers'])} drivers, {len(DATA['constructors'])} constructors")

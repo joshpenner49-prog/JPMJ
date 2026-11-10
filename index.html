@@ -253,6 +253,29 @@
     </div>
   </section>
 
+  <!-- ===== ODDS BOARD: the fight for second, sportsbook style.
+       Shown only in the Las Vegas race week (race-week.css); the numbers
+       are written by tools/build_standings.py. ===== -->
+  <section class="odds-board wrap" aria-labelledby="odds-h">
+    <div class="odds-frame">
+      <div class="odds-head">
+        <span class="odds-kicker">The fight for second</span>
+        <h2 id="odds-h">The Strip Line</h2>
+      </div>
+<!-- BUILD:odds-board -->
+        <p class="odds-sub">5 drivers can still finish runner-up. The line is the margin to beat: each must outscore Max Verstappen by more than it over 3 Grands Prix and 75 points. Second place cannot be settled at the next race.</p>
+        <ol class="odds-list">
+          <li class="odds-row odds-row--lead" style="--team:#3671C6"><span class="odds-who"><span class="st-stripe" aria-hidden="true"></span>Max Verstappen<span class="odds-team">Red Bull</span></span><span class="odds-pts">279</span><span class="odds-line">Holds P2</span><span class="odds-per">max 354</span></li>
+          <li class="odds-row" style="--team:#00A19C"><span class="odds-who"><span class="st-stripe" aria-hidden="true"></span>George Russell<span class="odds-team">Mercedes</span></span><span class="odds-pts">262</span><span class="odds-line" title="must outscore Max Verstappen by more than 17 points">+17</span><span class="odds-per">5.7 a race</span></li>
+          <li class="odds-row" style="--team:#DC0000"><span class="odds-who"><span class="st-stripe" aria-hidden="true"></span>Lewis Hamilton<span class="odds-team">Ferrari</span></span><span class="odds-pts">261</span><span class="odds-line" title="must outscore Max Verstappen by more than 18 points">+18</span><span class="odds-per">6.0 a race</span></li>
+          <li class="odds-row" style="--team:#DC0000"><span class="odds-who"><span class="st-stripe" aria-hidden="true"></span>Charles Leclerc<span class="odds-team">Ferrari</span></span><span class="odds-pts">249</span><span class="odds-line" title="must outscore Max Verstappen by more than 30 points">+30</span><span class="odds-per">10.0 a race</span></li>
+          <li class="odds-row" style="--team:#FF8000"><span class="odds-who"><span class="st-stripe" aria-hidden="true"></span>Lando Norris<span class="odds-team">McLaren</span></span><span class="odds-pts">246</span><span class="odds-line" title="must outscore Max Verstappen by more than 33 points">+33</span><span class="odds-per">11.0 a race</span></li>
+        </ol>
+        <p class="odds-note">Not betting odds: championship arithmetic from the official standings after Round 20. Drivers on equal points are split by countback. 19 other drivers can no longer finish second.</p>
+<!-- /BUILD:odds-board -->
+    </div>
+  </section>
+
   <!-- ===== FULL RACE PREVIEW (the lead's article) ===== -->
   <section class="preview-full wrap" id="preview" aria-labelledby="preview-h">
     <div class="section-head">

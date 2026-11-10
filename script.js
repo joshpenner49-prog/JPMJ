@@ -286,10 +286,23 @@ document.addEventListener("DOMContentLoaded", () => {
       return "Box, box... eventually";
     }
 
+    // Las Vegas race week: under 200 ms hits the jackpot (styled in race-week.css)
+    const JACKPOT_MS = 200;
+    let jackpotEl = null;
+    if (document.documentElement.dataset.raceWeek === "vegas") {
+      jackpotEl = document.createElement("div");
+      jackpotEl.className = "pit-jackpot";
+      jackpotEl.setAttribute("role", "status");
+      jackpotEl.innerHTML = '<span class="jp-reels" aria-hidden="true"><span>7</span><span>7</span><span>7</span></span>' +
+        '<span class="jp-word">JACKPOT</span><span class="jp-sub">Under 200 ms: that is F1-driver territory</span>';
+      resultEl.insertAdjacentElement("afterend", jackpotEl);
+    }
+
     function startSequence() {
       state = "arming";
       resetBulbs();
       resultEl.style.display = "none";
+      if (jackpotEl) jackpotEl.classList.remove("is-on");
       pitBtn.disabled = true;
       statusEl.textContent = "Get ready…";
 
@@ -326,6 +339,7 @@ document.addEventListener("DOMContentLoaded", () => {
         timeEl.textContent = reaction + " ms";
         gradeEl.textContent = grade(reaction);
         resultEl.style.display = "block";
+        if (jackpotEl && reaction < JACKPOT_MS) jackpotEl.classList.add("is-on");
         const best = parseInt(localStorage.getItem(BEST_KEY) || "999999", 10);
         if (reaction < best) localStorage.setItem(BEST_KEY, String(reaction));
         showBest();

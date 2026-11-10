@@ -727,3 +727,94 @@
 [data-race-week="vegas"] .verdict-score-value { color: var(--vg-gold); text-shadow: 0 0 18px rgba(255, 201, 60, 0.5); }
 [data-race-week="vegas"] .btn { border-color: var(--vg-gold); }
 [data-race-week="vegas"] .btn--red { box-shadow: 0 0 14px rgba(255, 79, 174, 0.55); }
+
+/* ---------- Vegas: neon-tube circuit maps ----------
+   The circuit sculpture is a stack of SVG layers (js/precision-mark.js):
+   a blurred shadow, seven extrusion layers, then the top face. In Vegas
+   week the shadow becomes a pink glow, the extrusion a dark tube and the
+   top face a cyan neon line; the start/finish straight stays lit pink. */
+[data-race-week="vegas"] .pm-stack svg:first-child path { stroke: #FF4FAE; stroke-opacity: 0.5; }
+[data-race-week="vegas"] .pm-stack svg:not(:first-child):not(:last-child) path { stroke: #241046; }
+[data-race-week="vegas"] .pm-stack svg:last-child path:first-of-type { stroke: #3DE8F5; }
+[data-race-week="vegas"] .pm-stack svg:last-child path:nth-of-type(2) { stroke: #E6FDFF; stroke-opacity: 0.8; }
+[data-race-week="vegas"] .pm-stack svg:last-child path:nth-of-type(3) { stroke: #0B5E6A; }
+[data-race-week="vegas"] .pm-stack svg:last-child {
+  filter: drop-shadow(0 0 3px rgba(61, 232, 245, 0.9)) drop-shadow(0 0 10px rgba(61, 232, 245, 0.45));
+}
+[data-race-week="vegas"] .pm-stack .pm-sf-straight { stroke: #FF4FAE; filter: drop-shadow(0 0 4px #FF4FAE); }
+
+/* ---------- Vegas: the odds board (fight for second) ---------- */
+.odds-board { display: none; }
+[data-race-week="vegas"] .odds-board { display: block; padding-top: 56px; }
+[data-race-week="vegas"] .odds-frame {
+  border: 2px solid var(--vg-gold);
+  border-radius: 10px;
+  padding: 26px 28px 20px;
+  background:
+    radial-gradient(circle, #FFF6C8 0 1.6px, #FFC93C 2.2px, transparent 3.4px) 0 0 / 14px 14px repeat-x,
+    radial-gradient(circle, #FFF6C8 0 1.6px, #FFC93C 2.2px, transparent 3.4px) 0 100% / 14px 14px repeat-x,
+    linear-gradient(#170B33, #0B0620);
+  box-shadow: 0 0 26px rgba(255, 201, 60, 0.25), inset 0 0 40px rgba(255, 79, 174, 0.12);
+}
+[data-race-week="vegas"] .odds-head { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 6px; }
+[data-race-week="vegas"] .odds-kicker {
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--vg-gold);
+}
+[data-race-week="vegas"] .odds-head h2 {
+  margin: 0; font-family: var(--serif); font-weight: 400; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.05;
+  color: #FFF4FA; text-shadow: 0 0 8px rgba(255, 79, 174, 0.9), 0 0 22px rgba(255, 79, 174, 0.5);
+}
+[data-race-week="vegas"] .odds-sub { margin: 4px 0 18px; color: var(--grey); font-size: 15px; max-width: 70ch; }
+[data-race-week="vegas"] .odds-list { list-style: none; margin: 0; padding: 0; }
+[data-race-week="vegas"] .odds-row {
+  display: grid; grid-template-columns: minmax(0, 1fr) 70px 120px 110px; gap: 12px; align-items: center;
+  padding: 12px 0; border-top: 1px solid rgba(255, 201, 60, 0.25);
+}
+[data-race-week="vegas"] .odds-who { font-family: var(--sans); font-weight: 600; font-size: 17px; color: var(--charcoal); }
+[data-race-week="vegas"] .odds-who .st-stripe { display: inline-block; width: 4px; height: 18px; margin-right: 10px; vertical-align: -3px; background: var(--team); }
+[data-race-week="vegas"] .odds-team { display: block; margin-left: 14px; font-family: var(--mono); font-weight: 400; font-size: 12px; color: var(--grey); }
+[data-race-week="vegas"] .odds-pts { font-family: var(--mono); font-size: 20px; color: var(--charcoal); text-align: right; }
+[data-race-week="vegas"] .odds-line {
+  justify-self: center; min-width: 88px; text-align: center;
+  font-family: var(--mono); font-weight: 600; font-size: 18px; color: #1A1033;
+  background: var(--vg-gold); border-radius: 6px; padding: 6px 10px;
+  box-shadow: 0 0 12px rgba(255, 201, 60, 0.55);
+}
+[data-race-week="vegas"] .odds-row--lead .odds-line { background: var(--vg-pink); font-size: 14px; box-shadow: 0 0 12px rgba(255, 79, 174, 0.6); }
+[data-race-week="vegas"] .odds-per { font-family: var(--mono); font-size: 13px; color: var(--grey); text-align: right; }
+[data-race-week="vegas"] .odds-note { margin: 14px 0 6px; font-family: var(--mono); font-size: 12px; color: var(--grey); }
+@media (max-width: 640px) {
+  [data-race-week="vegas"] .odds-frame { padding: 22px 16px 16px; }
+  [data-race-week="vegas"] .odds-row { grid-template-columns: minmax(0, 1fr) 54px 76px; }
+  [data-race-week="vegas"] .odds-per { grid-column: 1 / -1; text-align: left; margin-left: 14px; }
+  [data-race-week="vegas"] .odds-line { min-width: 0; width: 100%; font-size: 15px; }
+}
+
+/* ---------- Vegas: jackpot on the Lights Out game ---------- */
+.pit-jackpot { display: none; }
+[data-race-week="vegas"] .pit-jackpot.is-on {
+  display: block; margin-top: 14px; text-align: center;
+}
+[data-race-week="vegas"] .pit-jackpot .jp-reels { display: inline-flex; gap: 8px; }
+[data-race-week="vegas"] .pit-jackpot .jp-reels span {
+  display: inline-block; width: 48px; padding: 6px 0;
+  font-family: var(--serif); font-size: 34px; line-height: 1; color: #D7193F;
+  background: linear-gradient(#B9B2C8 0%, #FFFFFF 22%, #FFFFFF 78%, #B9B2C8 100%);
+  border: 2px solid var(--vg-gold); border-radius: 6px;
+  box-shadow: 0 0 12px rgba(255, 201, 60, 0.55);
+}
+[data-race-week="vegas"] .pit-jackpot .jp-word {
+  display: block; margin-top: 10px;
+  font-family: var(--sans); font-weight: 800; font-size: clamp(30px, 6vw, 46px); letter-spacing: 0.18em;
+  color: var(--vg-gold); text-shadow: 0 0 10px rgba(255, 201, 60, 0.9), 0 0 26px rgba(255, 79, 174, 0.6);
+}
+[data-race-week="vegas"] .pit-jackpot .jp-sub { display: block; margin-top: 4px; font-family: var(--mono); font-size: 13px; color: var(--grey); }
+@media (prefers-reduced-motion: no-preference) {
+  [data-race-week="vegas"] .pit-jackpot.is-on .jp-word { animation: vg-jackpot 0.5s steps(2) 6; }
+  [data-race-week="vegas"] .pit-jackpot.is-on .jp-reels span { animation: vg-reel 0.6s ease-out both; }
+  [data-race-week="vegas"] .pit-jackpot.is-on .jp-reels span:nth-child(2) { animation-delay: 0.15s; }
+  [data-race-week="vegas"] .pit-jackpot.is-on .jp-reels span:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes vg-jackpot { 50% { color: var(--vg-pink); } }
+  @keyframes vg-reel { from { transform: translateY(-30px); opacity: 0; } to { transform: none; opacity: 1; } }
+}
+[data-race-week="vegas"] .odds-line { white-space: nowrap; }
