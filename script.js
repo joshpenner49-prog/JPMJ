@@ -247,6 +247,55 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  /* ---------- Las Vegas race week: the Sphere's screens ---------- */
+  const sphere = document.querySelector("[data-vg-sphere]");
+  if (sphere && document.documentElement.dataset.raceWeek === "vegas") {
+    const screens = [...sphere.querySelectorAll(".vg-screen")];
+    const countEl = sphere.querySelector("[data-vg-count]");
+    const countLabelEl = sphere.querySelector("[data-vg-count-label]");
+    const oddsName = sphere.querySelector("[data-vg-odds-name]");
+    const oddsPts = sphere.querySelector("[data-vg-odds-pts]");
+    // the Strip Line leader, read from the odds board on this page
+    const lead = document.querySelector(".odds-row--lead");
+    if (lead && oddsName) {
+      const who = lead.querySelector(".odds-who");
+      const name = who ? who.childNodes[1] : null;
+      oddsName.textContent = name ? name.textContent.trim().split(" ").pop().toUpperCase() : "—";
+      const pts = lead.querySelector(".odds-pts");
+      if (pts && oddsPts) oddsPts.textContent = pts.textContent + " pts · holds P2";
+    }
+    // the countdown, mirrored from the countdown strip
+    function syncCount() {
+      const clock = document.querySelector(".countdown-clock");
+      if (!clock || !countEl) return;
+      const g = (sel) => (clock.querySelector(sel) || {}).textContent || "00";
+      const label = document.querySelector("[data-countdown-label] strong");
+      const session = label ? label.textContent : "Las Vegas GP";
+      if (clock.hidden) {
+        countEl.textContent = "RACE NIGHT";
+        if (countLabelEl) countLabelEl.textContent = "Las Vegas GP";
+        return;
+      }
+      countEl.textContent = `${parseInt(g("[data-d]"), 10)}d ${g("[data-h]")}h`;
+      if (countLabelEl) countLabelEl.textContent = `${g("[data-m]")} min · ${session}`;
+    }
+    syncCount();
+    setInterval(syncCount, 1000);
+    let i = 0;
+    function show(n) {
+      screens[i].classList.remove("is-on");
+      i = (n + screens.length) % screens.length;
+      screens[i].classList.add("is-on");
+    }
+    sphere.addEventListener("click", () => show(i + 1));
+    // auto-cycle only for visitors who allow motion; pause while hovered
+    const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let paused = false;
+    sphere.addEventListener("mouseenter", () => { paused = true; });
+    sphere.addEventListener("mouseleave", () => { paused = false; });
+    if (!still) setInterval(() => { if (!paused) show(i + 1); }, 4500);
+  }
+
   /* ---------- pit stop reaction game ---------- */
   const pitBtn = document.getElementById("pit-btn");
   if (pitBtn) {
