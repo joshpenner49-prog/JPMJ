@@ -866,30 +866,12 @@
   text-shadow: 0 0 12px rgba(255, 255, 255, 0.85), 0 2px 10px rgba(0, 0, 0, 0.45);
 }
 /* screen colours */
-.vg-screen--eye { background: radial-gradient(circle at 50% 50%, #FFFFFF 0%, #F1ECF7 46%, #C9BDD9 64%, #7B6A97 80%); }
-.vg-iris {
-  width: 54%; aspect-ratio: 1; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  background:
-    repeating-conic-gradient(from 0deg, rgba(255, 255, 255, 0.12) 0 4deg, transparent 4deg 10deg),
-    radial-gradient(circle, #2BD4E6 0%, #1386B3 45%, #0B3E66 72%, #05152B 100%);
-  box-shadow: 0 0 0 4px #05152B;
-}
-.vg-pupil { width: 42%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #4A4A5A 0 8%, #000 12%); }
 .vg-screen--count { background: radial-gradient(circle, #FF4FAE 0%, #B1176E 55%, #3A0730 100%); }
 .vg-screen--bill { background: radial-gradient(circle, #FFC93C 0%, #E06A12 55%, #4A1405 100%); }
 .vg-screen--bill .vg-big { font-size: clamp(28px, 4vw, 40px); }
 .vg-screen--odds { background: radial-gradient(circle, #3DE8F5 0%, #1478A8 55%, #061C3A 100%); }
-.vg-screen--logo { background: radial-gradient(circle, #3A2470 0%, #1A0F3A 60%, #07051A 100%); }
-.vg-screen--logo img { width: 42%; height: auto; filter: drop-shadow(0 0 12px rgba(255, 79, 174, 0.8)); }
 .vg-sphere-cap { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--grey); }
 @media (prefers-reduced-motion: no-preference) {
-  .vg-screen--eye.is-on .vg-iris { animation: vg-look 5s ease-in-out infinite; }
-  @keyframes vg-look {
-    0%, 18% { transform: translate(0, 0); }
-    28%, 44% { transform: translate(-22%, -6%); }
-    54%, 70% { transform: translate(20%, 8%); }
-    80%, 100% { transform: translate(0, 0); }
-  }
 }
 @media (max-width: 760px) {
   [data-race-week="vegas"] .vegas-stage { grid-template-columns: 1fr; gap: 20px; }
@@ -910,3 +892,11 @@
   @keyframes vg-live { 50% { opacity: 0.55; } }
 }
 .vg-screen--flag .vg-big { font-size: clamp(22px, 3.2vw, 32px); }
+/* the Sphere's opening screen: a JP casino chip */
+.vg-screen--chip { background: radial-gradient(circle, #3A1C78 0%, #1A0B3D 55%, #07051A 100%); padding: 9%; }
+.vg-chip { width: 100%; height: auto; filter: drop-shadow(0 0 10px rgba(255, 79, 174, 0.75)) drop-shadow(0 0 26px rgba(255, 201, 60, 0.35)); }
+.vg-chip .vgc-jp { text-shadow: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .vg-screen--chip.is-on .vg-chip { animation: vg-chip 6s ease-in-out infinite; }
+  @keyframes vg-chip { 0%, 100% { transform: rotate(-6deg) scale(1); } 50% { transform: rotate(6deg) scale(1.03); } }
+}
