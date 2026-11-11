@@ -900,3 +900,13 @@
   .vg-screen--chip.is-on .vg-chip { animation: vg-chip 6s ease-in-out infinite; }
   @keyframes vg-chip { 0%, 100% { transform: rotate(-6deg) scale(1); } 50% { transform: rotate(6deg) scale(1.03); } }
 }
+/* the 3D Sphere (js/vegas-sphere-3d.js) sits over the CSS one; the CSS
+   Sphere stays in place underneath as the button and the fallback */
+.vg-sphere-wrap { position: relative; }
+.vg3d { position: absolute; z-index: 2; touch-action: pan-y; cursor: grab; }
+.vg3d:active { cursor: grabbing; }
+.vg3d canvas { display: block; }
+.vg-3d-on .vg-sphere { background: transparent; box-shadow: none; }
+.vg-3d-on .vg-sphere > * { visibility: hidden; }
+.vg-3d-on .vg-sphere::after { display: none; }
+.vg-3d-on .vg-sphere-cap::after { content: " · drag to spin"; }

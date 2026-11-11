@@ -307,6 +307,8 @@ document.addEventListener("DOMContentLoaded", () => {
       return sessions.find((x) => x.start <= now && now < x.end) || null;
     }
     function available(el) {
+      // the countdown only while there is a session still to come
+      if (el.classList.contains("vg-screen--count")) return !race || Date.now() < race.start;
       const when = el.getAttribute("data-vg-when");
       if (!when) return true;
       if (when === "live") return !!liveNow();
@@ -347,9 +349,19 @@ document.addEventListener("DOMContentLoaded", () => {
     // auto-cycle only for visitors who allow motion; pause while hovered
     const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let paused = false;
-    sphere.addEventListener("mouseenter", () => { paused = true; });
-    sphere.addEventListener("mouseleave", () => { paused = false; });
+    // hover anywhere on the Sphere, including the 3D canvas laid over it
+    const hoverEl = sphere.closest(".vg-sphere-wrap") || sphere;
+    hoverEl.addEventListener("mouseenter", () => { paused = true; });
+    hoverEl.addEventListener("mouseleave", () => { paused = false; });
     if (!still) setInterval(() => { if (!paused) next(); }, 4500);
+    // the 3D Sphere (js/vegas-sphere-3d.js) paints over this one where it can:
+    // WebGL available and motion allowed; otherwise this CSS Sphere stays
+    const gl = (() => { try { const c = document.createElement("canvas"); return !!(c.getContext("webgl2") || c.getContext("webgl")); } catch (e) { return false; } })();
+    if (!still && gl) {
+      import("./js/vegas-sphere-3d.js")
+        .then((m) => m.mountSphere3D(sphere))
+        .catch(() => {});
+    }
   }
 
   /* ---------- pit stop reaction game ---------- */
