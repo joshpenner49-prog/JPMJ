@@ -281,19 +281,75 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     syncCount();
     setInterval(syncCount, 1000);
-    let i = 0;
+    // race-weekend screens: live sessions from the countdown's schedule,
+    // pole and winner from data attributes filled in over the weekend
+    const clockEl = document.querySelector(".countdown-clock");
+    let sessions = [];
+    try {
+      sessions = JSON.parse((clockEl && clockEl.getAttribute("data-sessions")) || "[]").map((x) => ({
+        name: x.name, start: new Date(x.start).getTime(), end: new Date(x.start).getTime() + (x.mins || 60) * 60000,
+      }));
+    } catch (e) { sessions = []; }
+    const race = sessions[sessions.length - 1];
+    const liveName = sphere.querySelector("[data-vg-live-name]");
+    const fill = (key) => {
+      const name = (sphere.dataset[key] || "").trim();
+      const nameEl = sphere.querySelector(`[data-vg-${key === "vgPole" ? "pole" : "winner"}-name]`);
+      const subEl = sphere.querySelector(`[data-vg-${key === "vgPole" ? "pole" : "winner"}-sub]`);
+      if (name && nameEl) nameEl.textContent = name.split(" ").pop().toUpperCase();
+      if (subEl) subEl.textContent = (sphere.dataset[key + "Detail"] || name).trim();
+      return !!name;
+    };
+    const hasPole = fill("vgPole");
+    const hasWinner = fill("vgWinner");
+    function liveNow() {
+      const now = Date.now();
+      return sessions.find((x) => x.start <= now && now < x.end) || null;
+    }
+    function available(el) {
+      const when = el.getAttribute("data-vg-when");
+      if (!when) return true;
+      if (when === "live") return !!liveNow();
+      if (when === "pole") return hasPole && !hasWinner;
+      if (when === "winner") return hasWinner;
+      if (when === "flag") return !hasWinner && !!race && Date.now() >= race.end;
+      return true;
+    }
+    // the screen to lead with: live, then winner, then chequered flag, then pole
+    function leader() {
+      for (const w of ["live", "winner", "flag", "pole"]) {
+        const el = screens.find((x) => x.getAttribute("data-vg-when") === w);
+        if (el && available(el)) return screens.indexOf(el);
+      }
+      return screens.findIndex((x) => !x.getAttribute("data-vg-when"));
+    }
+    let i = screens.findIndex((x) => x.classList.contains("is-on"));
     function show(n) {
       screens[i].classList.remove("is-on");
-      i = (n + screens.length) % screens.length;
+      i = n;
       screens[i].classList.add("is-on");
     }
-    sphere.addEventListener("click", () => show(i + 1));
+    function next() {
+      for (let k = 1; k <= screens.length; k++) {
+        const n = (i + k) % screens.length;
+        if (available(screens[n])) { show(n); return; }
+      }
+    }
+    function refreshLive() {
+      const live = liveNow();
+      if (liveName) liveName.textContent = live ? live.name : "—";
+      if (!available(screens[i])) next();
+    }
+    show(leader());
+    refreshLive();
+    setInterval(refreshLive, 15000);
+    sphere.addEventListener("click", next);
     // auto-cycle only for visitors who allow motion; pause while hovered
     const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let paused = false;
     sphere.addEventListener("mouseenter", () => { paused = true; });
     sphere.addEventListener("mouseleave", () => { paused = false; });
-    if (!still) setInterval(() => { if (!paused) show(i + 1); }, 4500);
+    if (!still) setInterval(() => { if (!paused) next(); }, 4500);
   }
 
   /* ---------- pit stop reaction game ---------- */
