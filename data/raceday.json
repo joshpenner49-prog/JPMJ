@@ -1,6 +1,6 @@
 {
   "_about": "JP Race Day Programme editions, newest first. raceday.html is built from this by tools/build_raceday_page.py. status: 'upcoming' (shown, no download yet) or 'published' (PDF is live). site_url: the website's address, printed on page 4 of each programme when set.",
-  "site_url": null,
+  "site_url": "https://jpmotorsportjournal.com",
   "editions": [
     {
       "edition": 4,
