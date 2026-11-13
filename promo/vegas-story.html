@@ -1,0 +1,66 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@500;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden}
+body{position:relative;font-family:Manrope,sans-serif;color:#F7F1E3;
+background:radial-gradient(circle,rgba(255,255,255,.6) 0 1.2px,transparent 2px) 0 0/97px 83px,
+radial-gradient(circle,rgba(255,201,60,.5) 0 1px,transparent 1.8px) 41px 37px/131px 109px,
+radial-gradient(ellipse 120% 55% at 50% 0%,#3A1A78 0%,transparent 62%),
+radial-gradient(ellipse 80% 40% at 50% 100%,rgba(255,79,174,.28) 0%,transparent 70%),#0E0A24}
+.bulbs{position:absolute;left:0;right:0;height:30px;
+background:radial-gradient(circle,#FFF6C8 0 4px,#FFC93C 5.5px,rgba(255,201,60,.35) 8px,transparent 10px) 0 50%/30px 30px repeat-x,linear-gradient(#3A0E2E,#1A0820)}
+.top{top:0;border-bottom:3px solid #FF4FAE;box-shadow:0 0 24px rgba(255,79,174,.7)}
+.bot{bottom:0;border-top:3px solid #FF4FAE;box-shadow:0 0 24px rgba(255,79,174,.7)}
+.wrap{position:absolute;inset:30px 0;display:flex;flex-direction:column;align-items:center;padding:170px 70px 0}
+.kick{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:22px;letter-spacing:.32em;color:#FFC93C;text-transform:uppercase}
+.word{font-family:'DM Serif Display',serif;font-size:74px;line-height:1;margin-top:14px;color:#FFF4FA;
+text-shadow:0 0 10px rgba(255,79,174,.95),0 0 30px rgba(255,79,174,.6),0 0 60px rgba(255,79,174,.35);white-space:nowrap}
+.week{font-weight:800;font-size:150px;line-height:.92;letter-spacing:-.01em;margin-top:24px;
+background:linear-gradient(#FFF6C8 0%,#FFC93C 55%,#E0901A 100%);-webkit-background-clip:text;color:transparent;
+filter:drop-shadow(0 0 18px rgba(255,201,60,.55))}
+.duo{display:flex;align-items:center;gap:20px;margin-top:26px}
+.sign svg{width:560px;height:auto;filter:drop-shadow(0 0 22px rgba(255,201,60,.5))}
+.sphere{width:300px;height:300px;border-radius:50%;position:relative;overflow:hidden;flex:none;
+background:radial-gradient(circle,#3A1C78 0%,#1A0B3D 55%,#07051A 100%);padding:28px;
+box-shadow:0 0 40px rgba(61,232,245,.4),0 0 100px rgba(255,79,174,.35)}
+.sphere svg{width:100%;height:auto;filter:drop-shadow(0 0 12px rgba(255,79,174,.8))}
+.sphere::before{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,transparent 0 1.5px,rgba(6,3,18,.4) 2.3px) 0 0/6px 6px;z-index:2}
+.sphere::after{content:"";position:absolute;inset:0;border-radius:50%;z-index:3;
+background:radial-gradient(circle at 34% 28%,rgba(255,255,255,.28),transparent 32%),radial-gradient(circle,transparent 60%,rgba(0,0,0,.35) 80%,rgba(0,0,0,.75) 100%)}
+.duo.stack{flex-direction:column;gap:22px}
+ul{list-style:none;margin-top:36px;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:22px 30px}
+li{display:flex;gap:16px;align-items:flex-start;border:2px solid rgba(255,201,60,.55);border-radius:14px;padding:16px 18px;
+background:rgba(23,11,51,.75);box-shadow:0 0 18px rgba(255,201,60,.18)}
+.suit{font-size:34px;line-height:1;color:#FFC93C;text-shadow:0 0 10px rgba(255,201,60,.8)}
+.s1,.s2{color:#FF4FAE;text-shadow:0 0 10px rgba(255,79,174,.9)}
+li b{display:block;font-size:27px;font-weight:800;color:#FFF4FA}
+li em{display:block;font-style:normal;font-size:19px;line-height:1.3;color:#C9C0E2;margin-top:4px}
+.race{margin-top:40px;text-align:center}
+.race .when{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:26px;letter-spacing:.14em;color:#3DE8F5;text-shadow:0 0 12px rgba(61,232,245,.7)}
+.race .cta{display:inline-block;margin-top:22px;font-weight:800;font-size:30px;letter-spacing:.06em;color:#0E0A24;background:#FF4FAE;
+padding:14px 34px;border-radius:999px;box-shadow:0 0 26px rgba(255,79,174,.75)}
+.sky{position:absolute;left:0;right:0;bottom:30px;height:230px;background:url("../img/vegas-skyline.svg") center bottom/auto 230px repeat-x;opacity:.9}
+.race .handle{margin-top:14px;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:22px;letter-spacing:.12em;color:#FFC93C;text-shadow:0 0 10px rgba(255,201,60,.6)}
+</style></head><body>
+<div class="bulbs top"></div>
+<div class="sky"></div>
+<div class="wrap">
+  <div class="kick">JP is trackside in Las Vegas</div>
+  <div class="word">The Las Vegas Grand Prix</div>
+  <div class="week">VEGAS WEEK</div>
+  <div class="duo stack"><div class="sign"><svg viewBox="0 0 600 310" role="presentation" focusable="false">
+        <path d="M300 62 L590 178 L300 294 L10 178 Z" fill="#F7F1E3" stroke="#FFC93C" stroke-width="10" stroke-linejoin="round"/>
+        <path d="M300 62 L590 178 L300 294 L10 178 Z" fill="none" stroke="#FFF3B0" stroke-width="5" stroke-linecap="round" stroke-dasharray="0 15" class="vs-bulbs"/>
+        <path d="M300 80 L555 178 L300 276 L45 178 Z" fill="none" stroke="#D7193F" stroke-width="2"/>
+        <circle cx="198" cy="128" r="15" fill="#FFFFFF"/><text x="198" y="135" text-anchor="middle" font-family="DM Serif Display, Georgia, serif" font-size="20" fill="#D7193F">W</text><circle cx="232" cy="128" r="15" fill="#FFFFFF"/><text x="232" y="135" text-anchor="middle" font-family="DM Serif Display, Georgia, serif" font-size="20" fill="#D7193F">E</text><circle cx="266" cy="128" r="15" fill="#FFFFFF"/><text x="266" y="135" text-anchor="middle" font-family="DM Serif Display, Georgia, serif" font-size="20" fill="#D7193F">L</text><circle cx="300" cy="128" r="15" fill="#FFFFFF"/><text x="300" y="135" text-anchor="middle" font-family="DM Serif Display, Georgia, serif" font-size="20" fill="#D7193F">C</text><circle cx="334" cy="128" r="15" fill="#FFFFFF"/><text x="334" y="135" text-anchor="middle" font-family="DM Serif Display, Georgia, serif" font-size="20" fill="#D7193F">O</text><circle cx="368" cy="128" r="15" fill="#FFFFFF"/><text x="368" y="135" text-anchor="middle" font-family="DM Serif Display, Georgia, serif" font-size="20" fill="#D7193F">M</text><circle cx="402" cy="128" r="15" fill="#FFFFFF"/><text x="402" y="135" text-anchor="middle" font-family="DM Serif Display, Georgia, serif" font-size="20" fill="#D7193F">E</text>
+        <text x="300" y="166" text-anchor="middle" font-family="Manrope, system-ui, sans-serif" font-weight="800" font-size="15" letter-spacing="4" fill="#1D4FA8">TO THE FABULOUS</text>
+        <text x="300" y="222" text-anchor="middle" font-family="DM Serif Display, Georgia, serif" font-size="58" fill="#D7193F">Las Vegas</text>
+        <text x="300" y="252" text-anchor="middle" font-family="Manrope, system-ui, sans-serif" font-weight="800" font-size="16" letter-spacing="5" fill="#191A1C">GRAND PRIX</text>
+        <path d="M300 4 L309 30 L336 22 L318 42 L340 58 L312 58 L300 82 L288 58 L260 58 L282 42 L264 22 L291 30 Z" fill="#D7193F" stroke="#FFC93C" stroke-width="2"/>
+        <circle cx="300" cy="44" r="7" fill="#FFC93C"/>
+      </svg></div><div class="sphere"><svg class="vg-chip" viewBox="0 0 200 200" focusable="false"><defs><radialGradient id="vgc-core" cx="50%" cy="42%" r="60%"><stop offset="0" stop-color="#3A1C78"/><stop offset="1" stop-color="#12082C"/></radialGradient><path id="vgc-top" d="M 47 100 A 53 53 0 0 1 153 100"/><path id="vgc-bot" d="M 41 100 A 59 59 0 0 0 159 100"/></defs><circle cx="100" cy="100" r="97" fill="#FF4FAE"/><rect x="91" y="4" width="18" height="16" rx="3" fill="#FFFFFF" transform="rotate(0 100 100)"/><text x="100" y="17.5" text-anchor="middle" font-size="13" fill="#12082C" transform="rotate(0 100 100)">♠</text><rect x="91" y="4" width="18" height="16" rx="3" fill="#FFFFFF" transform="rotate(45 100 100)"/><rect x="91" y="4" width="18" height="16" rx="3" fill="#FFFFFF" transform="rotate(90 100 100)"/><text x="100" y="17.5" text-anchor="middle" font-size="13" fill="#D7193F" transform="rotate(90 100 100)">♥</text><rect x="91" y="4" width="18" height="16" rx="3" fill="#FFFFFF" transform="rotate(135 100 100)"/><rect x="91" y="4" width="18" height="16" rx="3" fill="#FFFFFF" transform="rotate(180 100 100)"/><text x="100" y="17.5" text-anchor="middle" font-size="13" fill="#D7193F" transform="rotate(180 100 100)">♦</text><rect x="91" y="4" width="18" height="16" rx="3" fill="#FFFFFF" transform="rotate(225 100 100)"/><rect x="91" y="4" width="18" height="16" rx="3" fill="#FFFFFF" transform="rotate(270 100 100)"/><text x="100" y="17.5" text-anchor="middle" font-size="13" fill="#12082C" transform="rotate(270 100 100)">♣</text><rect x="91" y="4" width="18" height="16" rx="3" fill="#FFFFFF" transform="rotate(315 100 100)"/><circle cx="100" cy="100" r="80" fill="#12082C" stroke="#FFC93C" stroke-width="2.5"/><circle cx="171.0" cy="100.0" r="2.6" fill="#FFE27A"/><circle cx="169.2" cy="115.8" r="2.6" fill="#FFE27A"/><circle cx="164.0" cy="130.8" r="2.6" fill="#FFE27A"/><circle cx="155.5" cy="144.3" r="2.6" fill="#FFE27A"/><circle cx="144.3" cy="155.5" r="2.6" fill="#FFE27A"/><circle cx="130.8" cy="164.0" r="2.6" fill="#FFE27A"/><circle cx="115.8" cy="169.2" r="2.6" fill="#FFE27A"/><circle cx="100.0" cy="171.0" r="2.6" fill="#FFE27A"/><circle cx="84.2" cy="169.2" r="2.6" fill="#FFE27A"/><circle cx="69.2" cy="164.0" r="2.6" fill="#FFE27A"/><circle cx="55.7" cy="155.5" r="2.6" fill="#FFE27A"/><circle cx="44.5" cy="144.3" r="2.6" fill="#FFE27A"/><circle cx="36.0" cy="130.8" r="2.6" fill="#FFE27A"/><circle cx="30.8" cy="115.8" r="2.6" fill="#FFE27A"/><circle cx="29.0" cy="100.0" r="2.6" fill="#FFE27A"/><circle cx="30.8" cy="84.2" r="2.6" fill="#FFE27A"/><circle cx="36.0" cy="69.2" r="2.6" fill="#FFE27A"/><circle cx="44.5" cy="55.7" r="2.6" fill="#FFE27A"/><circle cx="55.7" cy="44.5" r="2.6" fill="#FFE27A"/><circle cx="69.2" cy="36.0" r="2.6" fill="#FFE27A"/><circle cx="84.2" cy="30.8" r="2.6" fill="#FFE27A"/><circle cx="100.0" cy="29.0" r="2.6" fill="#FFE27A"/><circle cx="115.8" cy="30.8" r="2.6" fill="#FFE27A"/><circle cx="130.8" cy="36.0" r="2.6" fill="#FFE27A"/><circle cx="144.3" cy="44.5" r="2.6" fill="#FFE27A"/><circle cx="155.5" cy="55.7" r="2.6" fill="#FFE27A"/><circle cx="164.0" cy="69.2" r="2.6" fill="#FFE27A"/><circle cx="169.2" cy="84.2" r="2.6" fill="#FFE27A"/><circle cx="100" cy="100" r="62" fill="url(#vgc-core)" stroke="#FFC93C" stroke-width="1.5"/><text font-family="Manrope, system-ui, sans-serif" font-weight="800" font-size="10" letter-spacing="3" fill="#FFC93C"><textPath href="#vgc-top" startOffset="50%" text-anchor="middle">LAS VEGAS</textPath></text><text font-family="Manrope, system-ui, sans-serif" font-weight="800" font-size="8.5" letter-spacing="2.4" fill="#FF6BBD"><textPath href="#vgc-bot" startOffset="50%" text-anchor="middle">GRAND PRIX · 2026</textPath></text><path d="M100 56 l2.6 6 6.4.6-4.9 4.2 1.5 6.3-5.6-3.4-5.6 3.4 1.5-6.3-4.9-4.2 6.4-.6z" fill="#D7193F" stroke="#FFC93C" stroke-width=".8"/><text x="100" y="125" text-anchor="middle" font-family="DM Serif Display, Georgia, serif" font-size="56" fill="#FFF4FA" class="vgc-jp">JP</text></svg></div></div>
+  <ul><li><span class="suit s0">♠</span><span><b>The Strip Line</b><em>Who finishes second? The maths, sportsbook style</em></span></li><li><span class="suit s1">♥</span><span><b>The Sphere</b><em>Live countdown, pole and winner on our own LED orb</em></span></li><li><span class="suit s2">♦</span><span><b>JP Race Day</b><em>The free four-page Las Vegas programme</em></span></li><li><span class="suit s3">♣</span><span><b>Lights Out</b><em>Beat 200 ms and hit the jackpot</em></span></li></ul>
+  <div class="race"><div class="when">LIGHTS OUT · SAT 21 NOV · 8PM ON THE STRIP</div><div class="cta">jpmotorsportjournal.com</div><div class="handle">@jpeditsf1 · link in bio</div></div>
+</div>
+<div class="bulbs bot"></div>
+</body></html>

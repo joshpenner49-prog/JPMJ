@@ -1,0 +1,630 @@
+{
+  "_about": "Content for one JP Race Day Programme edition. Layout lives in raceday/template.html; build with: python3 tools/build_raceday.py raceday/2026-united-states. Fields set to null are race-weekend information that must be filled in (and verified) before the build will produce a final, publishable PDF. Every figure carries a 'kind': verified (official/primary source), measured (computed from published timing data), estimate (sourced estimate with stated assumptions) or analysis (JP Motorsport Journal's editorial view).",
+  "status": "final",
+  "edition": 3,
+  "season": 2026,
+  "round": 20,
+  "rounds_total": 23,
+  "grand_prix": "São Paulo Grand Prix",
+  "short_name": "São Paulo GP",
+  "slug": "sao-paulo",
+  "circuit_id": "br-1940",
+  "circuit_name": "Autódromo José Carlos Pace",
+  "location": "Interlagos, São Paulo",
+  "race_date": "Sunday 8 November 2026",
+  "race_date_iso": "2026-11-08",
+  "timezone_label": "BRT (UTC−3), local time in São Paulo",
+  "filename": "JP-Race-Day-Sao-Paulo-GP-2026.pdf",
+  "publication_date": "7 November 2026",
+  "last_verified": "8 November 2026",
+  "cover": {
+    "headline": "Storm warning at Interlagos",
+    "standfirst": "Lando Norris starts on pole after a wet qualifying, Verstappen, Hamilton and Pérez start from the back, and rain is forecast for Sunday afternoon.",
+    "photo": null,
+    "photo_credit": null,
+    "photo_note": "Free-licensed photo pending (Wikimedia Commons is blocked in the build environment). Until then the cover uses the circuit outline."
+  },
+  "intro": "Antonelli clinched the championship in Mexico City with third place, the youngest champion in Formula 1 history. Verstappen's win there lifted him to second, two points ahead of Hamilton. Interlagos is a standard weekend this year: three practice sessions, qualifying on Saturday and the 71-lap race on Sunday, on a track where the weather and the Safety Car often have the final say.",
+  "storylines": [
+    {
+      "title": "Four drivers, 16 points",
+      "text": "Verstappen (261), Hamilton (259), Russell (250) and Leclerc (245) are fighting to finish runner-up to Antonelli, with 100 points left.",
+      "kind": "verified"
+    },
+    {
+      "title": "Mercedes' title point",
+      "text": "Mercedes lead Ferrari by 126 in the Constructors'. Outscore Ferrari by four points or more on Sunday and the teams' title is theirs too.",
+      "kind": "analysis",
+      "basis": "Constructors' standings after Round 19: Mercedes 630, Ferrari 504. After São Paulo, three races remain, worth at most 43 points each to a team (25 + 18), so 129 in total. A lead of 130 or more after Sunday is decisive."
+    },
+    {
+      "title": "Expect the unexpected",
+      "text": "Formula 1 puts the chance of a Safety Car here at 86%, based on the last seven races, and Interlagos weather can turn in minutes.",
+      "kind": "verified"
+    }
+  ],
+  "circuit": {
+    "facts": [
+      {
+        "label": "Circuit length",
+        "value": "4.309 km",
+        "kind": "verified",
+        "source": "f1"
+      },
+      {
+        "label": "Race laps",
+        "value": "71",
+        "kind": "verified",
+        "source": "f1"
+      },
+      {
+        "label": "Race distance",
+        "value": "305.879 km",
+        "kind": "verified",
+        "source": "f1"
+      },
+      {
+        "label": "Corners",
+        "value": "15 (run anticlockwise)",
+        "kind": "verified",
+        "source": "f1"
+      },
+      {
+        "label": "First Grand Prix",
+        "value": "1973",
+        "kind": "verified",
+        "source": "f1db"
+      },
+      {
+        "label": "Race lap record",
+        "value": "1:10.540, Valtteri Bottas (2018)",
+        "kind": "verified",
+        "source": "f1db"
+      },
+      {
+        "label": "Safety Car chance",
+        "value": "86% (last seven races)",
+        "kind": "verified",
+        "source": "pitloss"
+      }
+    ],
+    "overtaking_aids": "Two Straight Mode zones: the start/finish straight into Turn 1 and the Reta Oposta from Turn 3 to Turn 4. Overtake Mode detection is at the exit of Junção, with activation on the climb after Turn 13.",
+    "overtaking_aids_note": "Active aero Straight Mode works in FIA-designated activation zones, and Overtake Mode gives a car within one second of the car ahead at the detection point extra electrical energy. Interlagos's zones come in the FIA event notes on race weekend and go into the final edition.",
+    "lap_m": 4309,
+    "straight_mode_zones": [
+      {
+        "name": "Start/finish straight",
+        "from_m": 3860,
+        "to_m": 190
+      },
+      {
+        "name": "Reta Oposta",
+        "from_m": 720,
+        "to_m": 1270
+      }
+    ],
+    "overtake_detection": [
+      {
+        "at_m": 3250
+      }
+    ],
+    "map_markers": [
+      {
+        "n": "1",
+        "at": 6.0,
+        "dx": 14,
+        "dy": -10
+      },
+      {
+        "n": "4",
+        "at": 31.4,
+        "dx": -14,
+        "dy": -6
+      }
+    ],
+    "map_sections": [
+      {
+        "label": "Reta Oposta",
+        "at": 20,
+        "dx": 0,
+        "dy": -14
+      },
+      {
+        "label": "Infield",
+        "at": 55,
+        "dx": 0,
+        "dy": -16
+      },
+      {
+        "label": "Climb to the line",
+        "at": 88,
+        "dx": 0,
+        "dy": 14
+      },
+      {
+        "label": "Junção",
+        "at": 77.7,
+        "dx": 14,
+        "dy": -6
+      }
+    ],
+    "map_note": "Numbered: corners confirmed from the official outline; full numbering pending a check against the FIA map.",
+    "key_sections": [
+      {
+        "name": "The Senna S",
+        "text": "Turn 1 drops sharply downhill and left, straight into the right of Turn 2. It is the main overtaking spot at the start of a lap and the scene of many first-lap collisions.",
+        "kind": "analysis"
+      },
+      {
+        "name": "Reta Oposta",
+        "text": "After Curva do Sol, the back straight runs down to Turn 4, Descida do Lago: the second big braking zone and the next chance to pass.",
+        "kind": "analysis"
+      },
+      {
+        "name": "The infield",
+        "text": "A slow, twisting run of corners through the middle of the lap. It is hard to pass here, so drivers aim for a clean exit before the climb.",
+        "kind": "analysis"
+      },
+      {
+        "name": "Junção and the climb",
+        "text": "Junção, the last slow corner, opens a long, flat-out uphill run past the pits to Turn 1. A good exit is worth a tow all the way to the Senna S.",
+        "kind": "analysis"
+      }
+    ],
+    "time_gain_loss": "The lap hinges on Junção: get out of it well and the long climb carries the car into the Senna S with a chance to pass.",
+    "time_gain_loss_kind": "analysis",
+    "aero_note": "Zones at approximate positions, from the FIA's description; detection about 3,250 m into the lap.",
+    "dek": "Fifteen corners, anticlockwise, up and down a natural bowl: the Senna S, the Reta Oposta, a twisting infield and the long climb past the pits."
+  },
+  "strategy": {
+    "pit_loss_rows": [
+      {
+        "condition": "Green flag",
+        "pit_lane": "about 24 s",
+        "net_loss": "about 21 s",
+        "saving": "—",
+        "net_kind": "estimate",
+        "net_source": "pitloss"
+      },
+      {
+        "condition": "Virtual Safety Car",
+        "pit_lane": "about 24 s",
+        "net_loss": "about 13–17 s",
+        "saving": "about 4–8 s",
+        "net_kind": "estimate",
+        "net_source": "vsc"
+      },
+      {
+        "condition": "Safety Car",
+        "pit_lane": "about 24 s",
+        "net_loss": "about 8–14 s",
+        "saving": "about 7–12 s",
+        "net_kind": "estimate",
+        "net_source": "vsc"
+      }
+    ],
+    "pit_loss_notes": [
+      "Time in the pit lane is measured: the median from pit entry to pit exit at Interlagos was 23.2–24.0 s in 2019, 2022, 2023 and 2025 (f1db timing data); the wet, red-flagged 2024 race skews it. It does not change under a VSC or Safety Car because the pit-lane speed limit still applies.",
+      "Net race-time loss is what a stop costs compared with staying out. Formula 1's 2025 preview put it at about 20.8 s here.",
+      "The VSC and Safety Car figures apply published estimates of the saving (roughly 17–40% under a VSC and 35–60% behind the Safety Car) to that 20.8 s. They are illustrative ranges, not Interlagos measurements."
+    ],
+    "history": [
+      {
+        "year": 2023,
+        "pattern": "Red flag",
+        "detail": "Lap-1 red flag, then most of the top 10 stopped twice more, around laps 14–31 and 46–59",
+        "kind": "measured"
+      },
+      {
+        "year": 2024,
+        "pattern": "Wet",
+        "detail": "Rain and a red flag; most of the top 10 stopped around laps 24–32",
+        "kind": "measured"
+      },
+      {
+        "year": 2025,
+        "pattern": "Two stops",
+        "detail": "Seven of the top 10; stops between laps 7 and 54",
+        "kind": "measured"
+      }
+    ],
+    "history_note": "Interlagos rarely runs to plan: weather, Safety Cars and red flags have shaped each of the last three races.",
+    "tyres": "Pirelli has nominated C3 (hard), C4 (medium) and C5 (soft), the softest three in its range and one step softer than last year.",
+    "tyres_kind": "verified",
+    "compounds": {
+      "S": "C5",
+      "M": "C4",
+      "H": "C3"
+    },
+    "tyre_plan": {
+      "kind": "verified",
+      "summary": "Pirelli's projection after qualifying: two stops is the quickest plan, with two soft stints and one on the medium. A soft-hard-soft race is slower, and one stop is about ten seconds slower than the best two-stop. Pirelli puts a stop at 22.5 seconds. Rain would rewrite all of it.",
+      "strategies": [
+        {
+          "label": "Two stops",
+          "tag": "Pirelli's quickest",
+          "sequence": [
+            "S",
+            "M",
+            "S"
+          ],
+          "note": "Two stints on the soft and one on the medium."
+        },
+        {
+          "label": "Two stops",
+          "tag": "Slower",
+          "sequence": [
+            "S",
+            "H",
+            "S"
+          ],
+          "note": "Using the hard adds overall race time."
+        },
+        {
+          "label": "One stop",
+          "tag": "About 10 s slower",
+          "sequence": [],
+          "note": "Significantly less competitive in the dry; compound order not published."
+        }
+      ],
+      "deltas": [],
+      "deltas_note": "Not published by Pirelli for this race.",
+      "source_line": "Pirelli qualifying release, 7 Nov 2026, as reported; pit-stop cost 22.5 s (Pirelli preview)."
+    },
+    "tyre_plan_note": "the predicted race strategies (one stop or two, and in which compound order), each with its pit window on a lap chart, plus the undercut and pace gaps where Pirelli publishes them after qualifying.",
+    "one_vs_two": "Last year's softer-than-usual race was mostly two stops, and this year's tyres are a step softer again. With an 86% Safety Car chance, teams will keep their options open and react to neutralisations rather than commit early.",
+    "one_vs_two_kind": "analysis",
+    "undercut": "Undercut: pit first and use the new tyres' extra grip to gain the time you lose in the pit lane before your rival stops. It works best when new tyres are much faster than worn ones.",
+    "overcut": "Overcut: stay out longer and gain time on a clear track while your rival is held up on cold new tyres or in traffic. It works best when tyres warm up slowly or the pitting car rejoins in traffic.",
+    "pit_window": "In 2025, the top 10's stops came between laps 7 and 54 of 71, with the first wave around laps 17–21.",
+    "pit_window_kind": "measured",
+    "neutralisation": "A VSC or Safety Car inside the pit window makes a stop cheaper for everyone, so the leaders often pit together and little changes. The real swing comes when it falls just before a team's planned stop, or when a rival has already stopped under green. A Safety Car early in the race can make a one-stop too long and force a second stop.",
+    "neutralisation_kind": "analysis",
+    "what_to_watch": [
+      "The start into the Senna S. The downhill Turn 1 is the best place to gain, and to lose, positions on lap one.",
+      "Safety Car timing. With an 86% chance of one, a neutralisation can turn a two-stop race on its head.",
+      "Mercedes against Ferrari. Four more points than Ferrari on Sunday and the Constructors' title is settled."
+    ]
+  },
+  "briefing": {
+    "grid": [
+      {
+        "pos": 1,
+        "driver": "Lando Norris",
+        "team": "McLaren"
+      },
+      {
+        "pos": 2,
+        "driver": "Kimi Antonelli",
+        "team": "Mercedes"
+      },
+      {
+        "pos": 3,
+        "driver": "Liam Lawson",
+        "team": "Racing Bulls"
+      },
+      {
+        "pos": 4,
+        "driver": "Nico Hülkenberg",
+        "team": "Audi"
+      },
+      {
+        "pos": 5,
+        "driver": "Isack Hadjar",
+        "team": "Red Bull"
+      },
+      {
+        "pos": 6,
+        "driver": "Oliver Bearman",
+        "team": "Haas"
+      },
+      {
+        "pos": 7,
+        "driver": "George Russell",
+        "team": "Mercedes",
+        "note": "Q2, −5 places"
+      },
+      {
+        "pos": 8,
+        "driver": "Fernando Alonso",
+        "team": "Aston Martin"
+      },
+      {
+        "pos": 9,
+        "driver": "Alexander Albon",
+        "team": "Williams"
+      },
+      {
+        "pos": 10,
+        "driver": "Oscar Piastri",
+        "team": "McLaren"
+      },
+      {
+        "pos": 11,
+        "driver": "Rafael Câmara",
+        "team": "Haas"
+      },
+      {
+        "pos": 12,
+        "driver": "Arvid Lindblad",
+        "team": "Racing Bulls"
+      },
+      {
+        "pos": 13,
+        "driver": "Carlos Sainz",
+        "team": "Williams"
+      },
+      {
+        "pos": 14,
+        "driver": "Charles Leclerc",
+        "team": "Ferrari",
+        "note": "Q4, −10 places"
+      },
+      {
+        "pos": 15,
+        "driver": "Franco Colapinto",
+        "team": "Alpine"
+      },
+      {
+        "pos": 16,
+        "driver": "Pierre Gasly",
+        "team": "Alpine"
+      },
+      {
+        "pos": 17,
+        "driver": "Lance Stroll",
+        "team": "Aston Martin"
+      },
+      {
+        "pos": 18,
+        "driver": "Valtteri Bottas",
+        "team": "Cadillac"
+      },
+      {
+        "pos": 19,
+        "driver": "Gabriel Bortoleto",
+        "team": "Audi"
+      },
+      {
+        "pos": 20,
+        "driver": "Lewis Hamilton",
+        "team": "Ferrari",
+        "note": "back of grid"
+      },
+      {
+        "pos": 21,
+        "driver": "Max Verstappen",
+        "team": "Red Bull",
+        "note": "back of grid"
+      },
+      {
+        "pos": 22,
+        "driver": "Sergio Pérez",
+        "team": "Cadillac",
+        "note": "back of grid"
+      }
+    ],
+    "grid_note": "The official starting grid, including penalties and any driver substitutions, is added in the final edition after qualifying.",
+    "penalties": "Formula 1's official grid, with power-unit penalties in red. Pole: Norris, 1:27.470 (wet).",
+    "schedule": [
+      {
+        "day": "Fri 6 Nov",
+        "session": "Practice 1",
+        "time": "12:30"
+      },
+      {
+        "day": "Fri 6 Nov",
+        "session": "Practice 2",
+        "time": "16:00"
+      },
+      {
+        "day": "Sat 7 Nov",
+        "session": "Practice 3",
+        "time": "11:30"
+      },
+      {
+        "day": "Sat 7 Nov",
+        "session": "Qualifying",
+        "time": "15:00"
+      },
+      {
+        "day": "Sun 8 Nov",
+        "session": "Grand Prix (71 laps)",
+        "time": "14:00"
+      }
+    ],
+    "schedule_kind": "verified",
+    "battles": [
+      {
+        "title": "Runner-up",
+        "text": "Verstappen 261, Hamilton 259, Russell 250, Leclerc 245."
+      },
+      {
+        "title": "Constructors",
+        "text": "Mercedes 630, Ferrari 504: 126 clear, 172 left."
+      },
+      {
+        "title": "Constructors P3",
+        "text": "Red Bull 382 vs McLaren 365."
+      },
+      {
+        "title": "Constructors P5",
+        "text": "Racing Bulls 108 vs Alpine 69."
+      }
+    ],
+    "five_things": [
+      "The start into the Senna S, downhill and left: the best chance of the lap to gain places, and the riskiest.",
+      "The fight for second. Two points split Verstappen and Hamilton, with Russell and Leclerc within 16.",
+      "Mercedes' Constructors' title. Outscore Ferrari by four points or more and it is settled with three races to spare.",
+      "Safety Cars and weather. Formula 1 puts the Safety Car chance at 86%; watch the skies above the grandstands.",
+      "Antonelli's first race as champion, at the track where he took second place last year."
+    ],
+    "glossary": [
+      [
+        "Undercut",
+        "Pitting before a rival to use new tyres' extra pace to get ahead when they stop."
+      ],
+      [
+        "Overcut",
+        "Staying out longer than a rival to gain time while they warm up new tyres or sit in traffic."
+      ],
+      [
+        "Pit window",
+        "The range of laps when a stop makes strategic sense."
+      ],
+      [
+        "Degradation",
+        "How quickly a tyre loses grip and lap time as it wears."
+      ],
+      [
+        "VSC",
+        "Virtual Safety Car: everyone must slow to a set pace; positions are frozen and no one may overtake."
+      ],
+      [
+        "Safety Car",
+        "A physical car leads the field at reduced speed, bunching everyone up behind it."
+      ],
+      [
+        "Straight Mode",
+        "2026 active aero: wings flatten to cut drag in designated zones. Replaces DRS."
+      ],
+      [
+        "Overtake Mode",
+        "Extra electrical energy for a car within one second of the car ahead at the detection point."
+      ],
+      [
+        "Parc fermé",
+        "From qualifying until the race, cars cannot be changed without a penalty."
+      ]
+    ],
+    "sign_off": "Interlagos never sticks to the script, and this year the chaos started before the lights: rain in the forecast, Leclerc down in 14th and Hamilton, Verstappen and Pérez at the back. As a Ferrari fan it hurts, but it sets up a great race. I have Lando Norris converting pole into the win, with Max Verstappen charging from the back onto the podium.",
+    "sign_off_note": "JP writes the sign-off for each edition.",
+    "sign_off_title": "JP's prediction"
+  },
+  "sources": {
+    "f1db": {
+      "label": "f1db, results and pit stops 2019–2025 (CC BY 4.0)",
+      "url": "https://github.com/f1db/f1db"
+    },
+    "outline": {
+      "label": "f1-circuits, track outline (MIT)",
+      "url": "https://github.com/bacinger/f1-circuits"
+    },
+    "vsc": {
+      "label": "VSC and SC savings: FormulaDream; Race Sundays",
+      "url": "https://www.formuladream.app/blog/f1-pit-stop-cost-measured"
+    },
+    "regs": {
+      "label": "2026 aero rules: ESPN; Motor Sport",
+      "url": "https://www.motorsportmagazine.com/articles/single-seaters/f1/explained-the-new-mode-names-for-active-aero-and-energy-boost-for-f1-2026/"
+    },
+    "f1": {
+      "label": "Circuit facts: Formula1.com",
+      "url": "https://www.formula1.com/en/racing/2026/brazil"
+    },
+    "pirelli_compounds": {
+      "label": "Pirelli compounds: Coffee Corner Motorsport",
+      "url": "https://coffeecornermotorsport.com/brazil-grand-prix-2026-preview/"
+    },
+    "pitloss": {
+      "label": "Pit loss 20.8 s and Safety Car chance: Formula1.com 2025 preview",
+      "url": "https://www.formula1.com/en/latest/article/need-to-know-the-most-important-facts-stats-and-trivia-ahead-of-the-2025-sao.4q3WPe5DWYcZPJ3ThYZole"
+    },
+    "schedule": {
+      "label": "Session times: F1 Fansite; f1db",
+      "url": "https://www.f1-fansite.com/f1-calendar/sao-paulo-grand-prix/"
+    },
+    "standings": {
+      "label": "Standings after Round 19 (checked against f1db)",
+      "url": "https://github.com/f1db/f1db"
+    },
+    "qualifying": {
+      "label": "Grid: Formula 1 official grid; Formula1.com",
+      "url": "https://www.formula1.com/en/latest/article/norris-beats-russell-to-pole-position-in-dramatic-rain-affected-sao-paolo-qualifying.2V60rhlQjdS5my1uFrOKUH"
+    },
+    "penalties": {
+      "label": "Penalties: Sky Sports; Motorsport Week",
+      "url": "https://www.skysports.com/f1/news/13609202/sao-paulo-gp-grid-penalties-lewis-hamilton-max-verstappen-charles-leclerc-to-drop-down-interlagos-grid"
+    },
+    "aero_zones": {
+      "label": "Aero zones: PlanetF1; Scuderiafans",
+      "url": "https://www.planetf1.com/news/fia-brazilian-grand-prix-2026-interlagos"
+    },
+    "pirelli2026": {
+      "label": "Pirelli qualifying release",
+      "url": "https://press.pirelli.com/from-full-wets-to-inters-in-qualifying-norris-takes-pole-in-so-paulo"
+    },
+    "weather": {
+      "label": "Weather: INMET alert and Google Weather (Sat 22:00, via JP); Formula1.com; GPFans (AccuWeather)",
+      "url": "https://portal.inmet.gov.br/"
+    }
+  },
+  "race_laps": 71,
+  "race_time": "14:00",
+  "tz_abbr": "BRT",
+  "weather": {
+    "kind": "estimate",
+    "headline": [
+      {
+        "value": "13–17°C",
+        "label": "Sunday (Google)"
+      },
+      {
+        "value": "20%",
+        "label": "Rain at 14:00"
+      },
+      {
+        "value": "Orange",
+        "label": "INMET storm alert"
+      }
+    ],
+    "timeline": [
+      {
+        "time": "02:00",
+        "chance": "40%"
+      },
+      {
+        "time": "05:00",
+        "chance": "35%"
+      },
+      {
+        "time": "08:00",
+        "chance": "20%"
+      },
+      {
+        "time": "11:00",
+        "chance": "30%"
+      },
+      {
+        "time": "14:00",
+        "chance": "20%",
+        "race": true
+      },
+      {
+        "time": "17:00",
+        "chance": "10%"
+      }
+    ],
+    "timeline_caption": "Chance of rain, Sunday, local time (Google Weather, Sat 22:00)",
+    "summary": "Rain is most likely overnight and through the morning; the chance falls to about 20% by lights out and 10% by the finish. Brazil's weather service has an orange storm alert out for the south-east.",
+    "forecasts": [
+      {
+        "source": "INMET (official)",
+        "forecast": "Orange storm alert from Sat 09:00: 30–60 mm/h of rain, 60–100 km/h winds, hail"
+      },
+      {
+        "source": "Google Weather",
+        "forecast": "Sun 13–17°C; rain 20% at 14:00, 10% at 17:00"
+      },
+      {
+        "source": "Formula 1",
+        "forecast": "13–19°C, 40% chance of heavy rain and thunderstorms"
+      },
+      {
+        "source": "AccuWeather",
+        "forecast": "16°C and a 47% chance of rain at 14:00"
+      }
+    ],
+    "note": "Forecasts for São Paulo as published by Saturday evening; Interlagos weather can change within minutes."
+  }
+}

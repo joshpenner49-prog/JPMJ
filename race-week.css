@@ -1,191 +1,912 @@
 /* ============================================================
    RACE WEEK THEME LAYER — temporary, swappable.
-   Everything in this file is scoped under [data-race-week="..."]
-   on <html>. To retire Monza week: remove the attribute (or the
-   <link> to this file) from each page — nothing else changes.
-   To adapt for a future race: add a new
-   [data-race-week="<slug>"] block below with that race's two
-   accent colors, and set data-race-week="<slug>" on <html>.
+   Everything here is scoped under [data-race-week="..."] on <html>.
+   To retire a race week: remove the attribute from each page (or the
+   <link> to this file); nothing else changes.
+
+   Under the premium design a race-week theme may only:
+     1. colour the small race-week tag (.rw-tag) and the thin accent
+        rule (.rw-rule) with the host nation's two colours, and
+     2. optionally swap the site accent by setting --red (on ivory) and
+        --red-dark (on charcoal) in its block. Only do this if the
+        replacement passes 4.5:1 as text on #F5F2EC (--red) and on
+        #191A1C (--red-dark); otherwise leave the site red alone.
+   No overlays, streaks, glows or entrance animations.
+
+   To add a race: copy a block below, set the two flag colours, and
+   set data-race-week="<slug>" on <html>.
    ============================================================ */
 
 [data-race-week="monza"] {
-  --rw-a: #008C45; /* Italian green — first accent */
-  --rw-b: #CD212A; /* Italian red — second accent */
-  --rw-a-dim: rgba(0, 140, 69, 0.14);
-  --rw-b-dim: rgba(205, 33, 42, 0.14);
+  --rw-a: #008C45; /* Italian green */
+  --rw-b: #CD212A; /* Italian red */
 }
 
 [data-race-week="madrid"] {
-  --rw-a: #F1BF00; /* Spanish gold — first accent, keeps it distinct from the site's own red */
-  --rw-b: #AA151B; /* Spanish red — second accent */
-  --rw-a-dim: rgba(241, 191, 0, 0.14);
-  --rw-b-dim: rgba(170, 21, 27, 0.14);
+  --rw-a: #F1BF00; /* Spanish gold */
+  --rw-b: #AA151B; /* Spanish red */
 }
 
 [data-race-week="baku"] {
-  --rw-a: #0092BC; /* Azerbaijan flag blue — first accent */
-  --rw-b: #00A651; /* Azerbaijan flag green — second accent, avoids the flag's own red clashing with the site's permanent red */
-  --rw-a-dim: rgba(0, 146, 188, 0.14);
-  --rw-b-dim: rgba(0, 166, 81, 0.14);
+  --rw-a: #0092BC; /* Azerbaijan flag blue */
+  --rw-b: #00A651; /* Azerbaijan flag green */
 }
 
 [data-race-week="sepang"] {
-  --rw-a: #010066; /* Malaysia flag navy — first accent (host venue; race is officially Bahrain-branded but red would clash with the site's own red) */
-  --rw-b: #FFCC00; /* Malaysia flag gold — second accent */
-  --rw-a-dim: rgba(1, 0, 102, 0.14);
-  --rw-b-dim: rgba(255, 204, 0, 0.16);
+  --rw-a: #010066; /* Malaysia flag navy */
+  --rw-b: #FFCC00; /* Malaysia flag gold */
 }
 
 [data-race-week="singapore"] {
-  --rw-a: #EF3340; /* Singapore flag red — first accent */
-  --rw-b: #FFFFFF; /* Singapore flag white — second accent */
-  --rw-a-dim: rgba(239, 51, 64, 0.14);
-  --rw-b-dim: rgba(255, 255, 255, 0.5);
+  --rw-a: #EF3340; /* Singapore flag red */
+  --rw-b: #FFFFFF; /* Singapore flag white */
+  /* Singapore red is 3.6:1 on ivory, too light for text, so the site
+     accent (--red) is deliberately left unchanged this week. */
 }
-/* white disappears on the light site background, so give white accents a hairline edge */
-[data-race-week="singapore"] .rw-tag .rw-dots span:last-child { box-shadow: inset 0 0 0 1px rgba(21, 22, 26, 0.35); }
-[data-race-week="singapore"] .rw-rule { box-shadow: inset 0 0 0 1px rgba(21, 22, 26, 0.18); }
-[data-race-week="singapore"] .main-nav a::after {
-  background: linear-gradient(90deg, var(--rw-a) 0 50%, var(--rw-b) 50% 100%);
-  box-shadow: inset 0 0 0 1px rgba(21, 22, 26, 0.18);
+[data-race-week="austin"] {
+  --rw-a: #B22234; /* US flag red ("Old Glory red") */
+  --rw-b: #3C3B6E; /* US flag blue ("Old Glory blue") */
+  /* Accent swap for the week: Old Glory red is 5.9:1 on ivory and 5.4:1
+     on ivory-2, so it passes as text. --red-dark stays the site's own
+     (Old Glory red is only 2.6:1 on charcoal). */
+  --red: #B22234;
 }
+/* navy disappears on charcoal: give it a hairline edge on dark panels */
+[data-race-week="austin"] .driver-hero .rw-tag .rw-dots span:last-child,
+[data-race-week="austin"] .theme-dark .rw-tag .rw-dots span:last-child { box-shadow: 0 0 0 1px rgba(236, 232, 225, 0.55); }
 
-/* ---------- small "race week" tag, reused at moderate/subtle intensity ---------- */
+/* white disappears on the ivory ground: give white accents a hairline edge */
+[data-race-week="singapore"] .rw-tag .rw-dots span:last-child,
+[data-race-week="singapore"] .rw-rule { box-shadow: inset 0 0 0 1px rgba(25, 26, 28, 0.3); }
+
+/* ---------- small race-week tag ---------- */
+.rw-tag { display: none; }
 [data-race-week] .rw-tag {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-family: var(--mono);
+  font-size: 11px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--ink-dim);
+  color: var(--grey);
   margin-bottom: 10px;
 }
-[data-race-week] .rw-tag .rw-dots {
-  display: inline-flex;
-  gap: 3px;
-}
-[data-race-week] .rw-tag .rw-dots span {
-  width: 5px; height: 5px; border-radius: 50%;
-}
+[data-race-week] .rw-tag .rw-dots { display: inline-flex; gap: 3px; }
+[data-race-week] .rw-tag .rw-dots span { width: 6px; height: 6px; border-radius: 50%; }
 [data-race-week] .rw-tag .rw-dots span:first-child { background: var(--rw-a); }
 [data-race-week] .rw-tag .rw-dots span:last-child { background: var(--rw-b); }
 
-/* dark-panel contexts (driver hero, homepage hero) need the light text variant */
+/* dark panels (driver hero, standings) use the light text variant */
 [data-race-week] .driver-hero .rw-tag,
-[data-race-week] .hero-3d-overlay .rw-tag {
-  color: var(--on-black-dim);
-}
+[data-race-week] .theme-dark .rw-tag { color: var(--c-muted); }
 
-/* thin two-color accent rule, used sparingly under page titles */
+/* ---------- thin two-colour accent rule under page titles ---------- */
+.rw-rule { display: none; }
 [data-race-week] .rw-rule {
   display: block;
   width: 44px;
   height: 3px;
   margin: 10px 0 18px;
   background: linear-gradient(90deg, var(--rw-a) 0 50%, var(--rw-b) 50% 100%);
-  border-radius: 2px;
 }
 
-/* ---------- header wordmark: same left-green/right-red logic as the 3D badge ---------- */
-[data-race-week] .logo .mark {
-  border-left: 3px solid var(--rw-a);
-  border-right: 3px solid var(--rw-b);
-}
-.rw-circuit-line {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.05;
-}
-[data-race-week] .hero-3d { position: relative; overflow: hidden; }
-[data-race-week] .hero-3d-inner { position: relative; z-index: 1; }
+/* ============================================================
+   CIRCUIT DECORATIONS — per race week, static, decorative only.
+   Each race can add its own block here, scoped to its slug. Rules:
+   no animation, no glow, never over text, and every page must still
+   read correctly without them (they vanish with the attribute).
+   ============================================================ */
 
-/* ---------- homepage: nav underline picks up the two accents on hover ---------- */
-[data-race-week] .main-nav a {
-  position: relative;
+/* ---------- Austin: stars and stripes ---------- */
+[data-race-week="austin"] {
+  --us-red: #B22234;
+  --us-blue: #3C3B6E;
+  --us-white: #FFFFFF;
+  /* five-point star, used as a clip shape */
+  --us-star: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
 }
-[data-race-week] .main-nav a::after {
+
+/* flag band across the very top: seven red/white stripes ... */
+[data-race-week="austin"] body::before {
   content: "";
-  position: absolute;
-  left: 0; right: 0; bottom: -4px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--rw-a), var(--rw-b));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.18s ease;
+  display: block;
+  height: 14px;
+  background: repeating-linear-gradient(180deg, var(--us-red) 0 2px, var(--us-white) 2px 4px);
 }
-[data-race-week] .main-nav a:hover::after,
-[data-race-week] .main-nav a.active::after {
-  transform: scaleX(1);
-}
-
-/* ---------- entrance animation overlay (homepage, first visit this session only) ---------- */
-.rw-entrance {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
+/* ... with a navy canton of small white stars at the left */
+[data-race-week="austin"] body::after {
+  content: "";
+  position: absolute; top: 0; left: 0;
+  width: 96px; height: 14px;
   pointer-events: none;
-  background: var(--black-panel);
-}
-.rw-entrance .rw-streak {
-  position: absolute;
-  top: 0; bottom: 0;
-  width: 34%;
-  opacity: 0.9;
-}
-.rw-entrance .rw-streak.a { left: -40%; background: linear-gradient(90deg, transparent, var(--rw-a), transparent); animation: rwStreak 0.62s ease-out forwards; }
-.rw-entrance .rw-streak.b { left: -40%; background: linear-gradient(90deg, transparent, var(--rw-b), transparent); animation: rwStreak 0.62s ease-out 0.09s forwards; }
-.rw-entrance .rw-streak.c {
-  left: -40%; width: 30%; opacity: 0.55;
-  background: repeating-linear-gradient(90deg, rgba(255,255,255,0.95) 0 11px, rgba(15,15,15,0.95) 11px 22px);
-  transform: skewX(-8deg);
-  animation: rwStreak 0.55s cubic-bezier(0.35, 0, 0.2, 1) 0.24s forwards;
-}
-.rw-entrance.rw-fade { animation: rwFadeOut 0.34s ease forwards 0.62s; }
-
-@keyframes rwStreak {
-  from { transform: translateX(0); }
-  to { transform: translateX(320%); }
-}
-@keyframes rwFadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; visibility: hidden; }
+  background:
+    radial-gradient(circle, #FFFFFF 0 0.9px, transparent 1.5px) 2px 1px / 8px 6px,
+    radial-gradient(circle, #FFFFFF 0 0.9px, transparent 1.5px) 6px 4px / 8px 6px,
+    var(--us-blue);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .rw-entrance, .rw-entrance .rw-streak { animation: none !important; display: none !important; }
+/* the same flag band closes the page above the footer */
+[data-race-week="austin"] footer.site-footer { position: relative; border-top: 0; padding-top: 46px; }
+[data-race-week="austin"] footer.site-footer::before,
+[data-race-week="austin"] footer.site-footer::after {
+  content: ""; position: absolute; top: 0; left: 0; height: 14px; pointer-events: none;
+}
+[data-race-week="austin"] footer.site-footer::before {
+  right: 0;
+  background: repeating-linear-gradient(180deg, var(--us-red) 0 2px, var(--us-white) 2px 4px);
+}
+[data-race-week="austin"] footer.site-footer::after {
+  width: 96px;
+  background:
+    radial-gradient(circle, #FFFFFF 0 0.9px, transparent 1.5px) 2px 1px / 8px 6px,
+    radial-gradient(circle, #FFFFFF 0 0.9px, transparent 1.5px) 6px 4px / 8px 6px,
+    var(--us-blue);
 }
 
-/* ---------- logo settle, choreographed with the entrance overlay above ----------
-   The actual 3D arrival tween (rotation/scale) now lives in logo3d.js,
-   driven by real Three.js transforms rather than a CSS fake — this file
-   only owns the pulse below, timed to fire when that tween completes. */
-.rw-pulse {
-  position: absolute;
-  top: 50%; left: 50%;
-  width: 40px; height: 40px;
-  margin: -20px 0 0 -20px;
+/* race-week tag: stars instead of dots */
+[data-race-week="austin"] .rw-tag .rw-dots { gap: 2px; }
+[data-race-week="austin"] .rw-tag .rw-dots span {
+  width: 10px; height: 10px; border-radius: 0;
+  clip-path: var(--us-star);
+}
+[data-race-week="austin"] .driver-hero .rw-tag .rw-dots span:last-child,
+[data-race-week="austin"] .theme-dark .rw-tag .rw-dots span:last-child { background: #8E8CC9; box-shadow: none; }
+
+/* accent rule under titles: a small flag */
+[data-race-week="austin"] .rw-rule {
+  width: 56px; height: 9px;
+  background:
+    linear-gradient(var(--us-blue), var(--us-blue)) 0 0 / 22px 5px no-repeat,
+    repeating-linear-gradient(180deg, var(--us-red) 0 1px, var(--us-white) 1px 2px);
+  box-shadow: inset 0 0 0 1px rgba(25, 26, 28, 0.12);
+}
+
+/* dark panels: a faint star field fading out from the top-right corner */
+[data-race-week="austin"] .intel,
+[data-race-week="austin"] main.theme-dark,
+[data-race-week="austin"] .driver-hero { position: relative; }
+[data-race-week="austin"] .intel::before,
+[data-race-week="austin"] main.theme-dark::before,
+[data-race-week="austin"] .driver-hero::before {
+  content: "";
+  position: absolute; top: 0; right: 0; width: min(46%, 560px); height: min(100%, 420px);
+  pointer-events: none;
+  background:
+    radial-gradient(circle, rgba(236, 232, 225, 0.22) 0 1px, transparent 1.6px) 0 0 / 26px 22px,
+    radial-gradient(circle, rgba(236, 232, 225, 0.22) 0 1px, transparent 1.6px) 13px 11px / 26px 22px;
+  -webkit-mask-image: radial-gradient(ellipse at 100% 0%, #000 0%, transparent 70%);
+          mask-image: radial-gradient(ellipse at 100% 0%, #000 0%, transparent 70%);
+}
+[data-race-week="austin"] .intel > .wrap,
+[data-race-week="austin"] main.theme-dark > *,
+[data-race-week="austin"] .driver-hero > * { position: relative; z-index: 1; }
+
+/* ---------- Austin, part 2: Americana across the page ---------- */
+/* dark technical surfaces go navy for the week (text contrast checked:
+   body 13:1, muted 6.9:1, light red 5.1:1 on #1C1F3F) */
+[data-race-week="austin"] {
+  --c-surface: #1C1F3F;
+  --c-raise: #262A52;
+  --c-rule: #383D6C;
+  --c-muted: #A9A8C9;
+}
+
+/* a small red star before every section title */
+[data-race-week="austin"] .section-title::before,
+[data-race-week="austin"] .section-head h2::before,
+[data-race-week="austin"] .verdict-section-h::before {
+  content: "";
+  display: inline-block;
+  width: 0.42em; height: 0.42em;
+  margin-right: 0.38em;
+  vertical-align: 0.14em;
+  background: var(--us-red);
+  clip-path: var(--us-star);
+}
+[data-race-week="austin"] .intel .section-title::before,
+[data-race-week="austin"] .theme-dark .section-head h2::before,
+[data-race-week="austin"] .newsletter-copy h2::before { background: #E8687A; }
+[data-race-week="austin"] .newsletter-copy h2::before {
+  content: ""; display: inline-block; width: 0.42em; height: 0.42em; margin-right: 0.38em;
+  vertical-align: 0.14em; clip-path: var(--us-star);
+}
+
+/* the lead feature's red rule becomes a small flag */
+[data-race-week="austin"] .lead-rule {
+  width: 72px; height: 12px;
+  background:
+    linear-gradient(var(--us-blue), var(--us-blue)) 0 0 / 28px 7px no-repeat,
+    repeating-linear-gradient(180deg, var(--us-red) 0 2px, var(--us-white) 2px 3.43px);
+  box-shadow: inset 0 0 0 1px rgba(25, 26, 28, 0.12);
+}
+
+/* active nav underline: red and blue */
+[data-race-week="austin"] .masthead-nav a.active::after,
+[data-race-week="austin"] .masthead-nav a[aria-current="page"]::after {
+  background: linear-gradient(90deg, var(--us-red) 0 50%, var(--us-blue) 50% 100%);
+}
+
+/* countdown: navy figures, a thin red/blue line under the band */
+[data-race-week="austin"] .countdown-unit .num { color: var(--us-blue); }
+[data-race-week="austin"] .countdown-strip {
+  border-bottom: 0;
+  box-shadow: inset 0 -2px 0 var(--us-red), inset 0 -4px 0 var(--us-white), inset 0 -6px 0 var(--us-blue);
+}
+
+/* ticker tags pick up the flag colours on navy */
+[data-race-week="austin"] .ticker .tag { color: #C9C7EA; }
+[data-race-week="austin"] .ticker .tag-breaking { color: #FF8A8A; }
+
+/* ============================================================
+   MEXICO CITY: tricolour and fiesta banderines (race day is 1 Nov,
+   Día de los Muertos). Same rules as above: static, never over text.
+   ============================================================ */
+[data-race-week="mexico"] {
+  --rw-a: #006847; /* Mexico flag green */
+  --rw-b: #CE1126; /* Mexico flag red */
+  --mx-green: #006847;
+  --mx-white: #FFFFFF;
+  --mx-red: #CE1126;
+  --mx-marigold: #F28C1A; /* cempasúchil */
+  --mx-pink: #E4007C;     /* papel picado pink */
+  --mx-purple: #6A2C91;
+  /* Accent swap for the week: flag red is 5.0:1 on ivory and 4.6:1 on
+     ivory-2, so it passes as text. On the green dark surfaces below the
+     light red is lifted to #EE7D8C (6.2:1 on surface, 5.4:1 raised). */
+  --red: #CE1126;
+  --red-dark: #EE7D8C;
+  /* dark technical surfaces go deep green for the week (text 13.4:1,
+     muted 8.6:1 on #0F241A) */
+  --c-surface: #0F241A;
+  --c-raise: #163021;
+  --c-rule: #2A4A37;
+  --c-muted: #A9C2B2;
+  /* banderines: pennant colours, one per 30px cell (see body::after) */
+  --mx-flags: linear-gradient(90deg,
+      var(--mx-pink) 0 30px, var(--mx-marigold) 30px 60px, var(--mx-green) 60px 90px,
+      var(--mx-purple) 90px 120px, var(--mx-red) 120px 150px, #00A3AD 150px 180px);
+}
+
+/* tricolour band across the very top ... */
+[data-race-week="mexico"] body::before {
+  content: "";
+  display: block;
+  height: 6px;
+  background: linear-gradient(90deg, var(--mx-green) 0 33.33%, var(--mx-white) 33.33% 66.66%, var(--mx-red) 66.66% 100%);
+  box-shadow: inset 0 -1px 0 rgba(25, 26, 28, 0.08);
+}
+/* ... with a row of banderines (pennants) hanging under it */
+[data-race-week="mexico"] body::after {
+  content: "";
+  position: absolute; top: 6px; left: 0; right: 0;
+  height: 15px;
+  pointer-events: none;
+  background: var(--mx-flags) 0 0 / 180px 100% repeat-x;
+  /* a string, and a pennant hanging every 30px */
+  -webkit-mask:
+    linear-gradient(#000 0 0) 0 0 / 100% 1px no-repeat,
+    conic-gradient(from -28deg at 50% 100%, #000 0 56deg, #0000 0) 0 1px / 30px 14px repeat-x;
+          mask:
+    linear-gradient(#000 0 0) 0 0 / 100% 1px no-repeat,
+    conic-gradient(from -28deg at 50% 100%, #000 0 56deg, #0000 0) 0 1px / 30px 14px repeat-x;
+}
+
+/* the same band closes the page above the footer */
+[data-race-week="mexico"] footer.site-footer { position: relative; border-top: 0; padding-top: 46px; }
+[data-race-week="mexico"] footer.site-footer::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px; pointer-events: none;
+  background: linear-gradient(90deg, var(--mx-green) 0 33.33%, var(--mx-white) 33.33% 66.66%, var(--mx-red) 66.66% 100%);
+  box-shadow: inset 0 0 0 1px rgba(25, 26, 28, 0.06);
+}
+
+/* race-week tag: green and red dots, the red one a marigold-orange ring */
+[data-race-week="mexico"] .rw-tag .rw-dots span:last-child { box-shadow: 0 0 0 1.5px var(--mx-marigold); }
+
+/* accent rule under titles: a small tricolour */
+[data-race-week="mexico"] .rw-rule {
+  width: 54px; height: 6px;
+  background: linear-gradient(90deg, var(--mx-green) 0 33.33%, var(--mx-white) 33.33% 66.66%, var(--mx-red) 66.66% 100%);
+  box-shadow: inset 0 0 0 1px rgba(25, 26, 28, 0.14);
+}
+[data-race-week="mexico"] .lead-rule {
+  width: 72px; height: 8px;
+  background: linear-gradient(90deg, var(--mx-green) 0 33.33%, var(--mx-white) 33.33% 66.66%, var(--mx-red) 66.66% 100%);
+  box-shadow: inset 0 0 0 1px rgba(25, 26, 28, 0.14);
+}
+
+/* a small marigold before every section title */
+[data-race-week="mexico"] .section-title::before,
+[data-race-week="mexico"] .section-head h2::before,
+[data-race-week="mexico"] .verdict-section-h::before,
+[data-race-week="mexico"] .newsletter-copy h2::before {
+  content: "";
+  display: inline-block;
+  width: 0.46em; height: 0.46em;
+  margin-right: 0.4em;
+  vertical-align: 0.12em;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, var(--rw-a-dim) 40%, transparent 72%);
-  opacity: 0;
-  transform: scale(0.4);
-  pointer-events: none;
-}
-.rw-pulse.rw-pulse-go {
-  animation: rwPulse 0.62s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
-}
-@keyframes rwPulse {
-  0% { opacity: 0.9; transform: scale(0.4); }
-  55% { opacity: 0.55; transform: scale(5.5); }
-  100% { opacity: 0; transform: scale(8); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .rw-pulse { display: none !important; }
+  background: radial-gradient(circle, #8A3B00 0 22%, var(--mx-marigold) 26% 62%, #F6B04A 66% 100%);
 }
 
-@media (max-width: 640px) {
-  .rw-circuit-line { opacity: 0.035; }
+/* active nav underline: green and red */
+[data-race-week="mexico"] .masthead-nav a.active::after,
+[data-race-week="mexico"] .masthead-nav a[aria-current="page"]::after {
+  background: linear-gradient(90deg, var(--mx-green) 0 50%, var(--mx-red) 50% 100%);
 }
+
+/* countdown: green figures, a thin tricolour line under the band */
+[data-race-week="mexico"] .countdown-unit .num { color: var(--mx-green); }
+[data-race-week="mexico"] .countdown-strip {
+  border-bottom: 0;
+  box-shadow: inset 0 -2px 0 var(--mx-red), inset 0 -4px 0 var(--mx-white), inset 0 -6px 0 var(--mx-green);
+}
+
+/* dark panels: faint marigold petals fading out from the top-right corner */
+[data-race-week="mexico"] .intel,
+[data-race-week="mexico"] main.theme-dark,
+[data-race-week="mexico"] .driver-hero { position: relative; }
+[data-race-week="mexico"] .intel::before,
+[data-race-week="mexico"] main.theme-dark::before,
+[data-race-week="mexico"] .driver-hero::before {
+  content: "";
+  position: absolute; top: 0; right: 0; width: min(46%, 560px); height: min(100%, 420px);
+  pointer-events: none;
+  background:
+    radial-gradient(circle, rgba(242, 140, 26, 0.26) 0 2px, transparent 2.6px) 0 0 / 30px 26px,
+    radial-gradient(circle, rgba(228, 0, 124, 0.18) 0 1.4px, transparent 2px) 15px 13px / 30px 26px;
+  -webkit-mask-image: radial-gradient(ellipse at 100% 0%, #000 0%, transparent 70%);
+          mask-image: radial-gradient(ellipse at 100% 0%, #000 0%, transparent 70%);
+}
+[data-race-week="mexico"] .intel > .wrap,
+[data-race-week="mexico"] main.theme-dark > *,
+[data-race-week="mexico"] .driver-hero > * { position: relative; z-index: 1; }
+
+/* ticker tags on the green surface */
+[data-race-week="mexico"] .ticker .tag { color: #9FD3B0; }
+[data-race-week="mexico"] .ticker .tag-breaking { color: #FF9AA6; }
+
+/* ============================================================
+   SÃO PAULO: auriverde band and the flag's yellow diamond.
+   Static and decorative only, as above.
+   ============================================================ */
+[data-race-week="brazil"] {
+  --rw-a: #009739; /* Brazil flag green */
+  --rw-b: #FEDD00; /* Brazil flag yellow */
+  --br-green: #009739;
+  --br-yellow: #FEDD00;
+  --br-blue: #012169;
+  /* one tile of the flag: green field, yellow diamond, blue globe */
+  --br-tile: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='14'%3E%3Crect width='28' height='14' fill='%23009739'/%3E%3Cpath d='M14 1.5 L25 7 L14 12.5 L3 7 Z' fill='%23FEDD00'/%3E%3Ccircle cx='14' cy='7' r='3' fill='%23012169'/%3E%3C/svg%3E");
+  /* Accent swap for the week: flag green is only 3.4:1 on ivory, so the
+     accent uses a deepened green, 5.6:1 on ivory and 5.1:1 on ivory-2.
+     On the blue dark surfaces below, the light accent is #7FD39B
+     (9.4:1 on surface, 8.1:1 raised). */
+  --red: #00702B;
+  --red-dark: #7FD39B;
+  /* dark technical surfaces go deep blue for the week (text 13.8:1,
+     muted 8.4:1 on #0A1C3D) */
+  --c-surface: #0A1C3D;
+  --c-raise: #12284F;
+  --c-rule: #24406E;
+  --c-muted: #A9B8D6;
+}
+
+/* the flag band across the very top, and above the footer */
+[data-race-week="brazil"] body::before {
+  content: "";
+  display: block;
+  height: 14px;
+  background: var(--br-tile) 0 0 / 28px 14px repeat-x;
+}
+[data-race-week="brazil"] footer.site-footer { position: relative; border-top: 0; padding-top: 46px; }
+[data-race-week="brazil"] footer.site-footer::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 14px; pointer-events: none;
+  background: var(--br-tile) 0 0 / 28px 14px repeat-x;
+}
+
+/* race-week tag: green and yellow dots, the yellow one a diamond */
+[data-race-week="brazil"] .rw-tag .rw-dots span:last-child {
+  border-radius: 0; width: 9px; height: 9px;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  background: radial-gradient(circle, var(--br-blue) 0 28%, var(--br-yellow) 32%);
+}
+
+/* accent rule under titles, and the lead's rule: a small flag */
+[data-race-week="brazil"] .rw-rule {
+  width: 42px; height: 21px; margin: 8px 0 14px;
+  background: var(--br-tile) center / 100% 100% no-repeat;
+  box-shadow: inset 0 0 0 1px rgba(25, 26, 28, 0.12);
+}
+[data-race-week="brazil"] .lead-rule {
+  width: 56px; height: 28px;
+  background: var(--br-tile) center / 100% 100% no-repeat;
+  box-shadow: inset 0 0 0 1px rgba(25, 26, 28, 0.12);
+}
+
+/* a small yellow diamond with the blue globe before every section title */
+[data-race-week="brazil"] .section-title::before,
+[data-race-week="brazil"] .section-head h2::before,
+[data-race-week="brazil"] .verdict-section-h::before,
+[data-race-week="brazil"] .newsletter-copy h2::before {
+  content: "";
+  display: inline-block;
+  width: 0.62em; height: 0.44em;
+  margin-right: 0.38em;
+  vertical-align: 0.12em;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  background: radial-gradient(circle, var(--br-blue) 0 30%, var(--br-yellow) 34%);
+}
+
+/* active nav underline: green and yellow */
+[data-race-week="brazil"] .masthead-nav a.active::after,
+[data-race-week="brazil"] .masthead-nav a[aria-current="page"]::after {
+  background: linear-gradient(90deg, var(--br-green) 0 50%, var(--br-yellow) 50% 100%);
+}
+
+/* countdown: green figures, a thin green-yellow-blue line under the band */
+[data-race-week="brazil"] .countdown-unit .num { color: var(--red); }
+[data-race-week="brazil"] .countdown-strip {
+  border-bottom: 0;
+  box-shadow: inset 0 -2px 0 var(--br-blue), inset 0 -4px 0 var(--br-yellow), inset 0 -6px 0 var(--br-green);
+}
+
+/* dark panels: faint yellow stars fading from the top-right, like the
+   night sky on the flag's globe */
+[data-race-week="brazil"] .intel,
+[data-race-week="brazil"] main.theme-dark,
+[data-race-week="brazil"] .driver-hero { position: relative; }
+[data-race-week="brazil"] .intel::before,
+[data-race-week="brazil"] main.theme-dark::before,
+[data-race-week="brazil"] .driver-hero::before {
+  content: "";
+  position: absolute; top: 0; right: 0; width: min(46%, 560px); height: min(100%, 420px);
+  pointer-events: none;
+  background:
+    radial-gradient(circle, rgba(254, 221, 0, 0.30) 0 1.2px, transparent 1.8px) 0 0 / 34px 28px,
+    radial-gradient(circle, rgba(236, 232, 225, 0.22) 0 0.9px, transparent 1.5px) 17px 14px / 34px 28px;
+  -webkit-mask-image: radial-gradient(ellipse at 100% 0%, #000 0%, transparent 70%);
+          mask-image: radial-gradient(ellipse at 100% 0%, #000 0%, transparent 70%);
+}
+[data-race-week="brazil"] .intel > .wrap,
+[data-race-week="brazil"] main.theme-dark > *,
+[data-race-week="brazil"] .driver-hero > * { position: relative; z-index: 1; }
+
+/* ticker tags on the blue surface */
+[data-race-week="brazil"] .ticker .tag { color: #FEDD00; }
+[data-race-week="brazil"] .ticker .tag-breaking { color: #7FD39B; }
+
+/* ============================================================
+   LAS VEGAS: a full takeover, at JP's request for this race week.
+   Unlike the other race weeks, this one flips the whole site to
+   night: the ivory tokens become a midnight ground, ink becomes
+   warm white, and neon, marquee bulbs and the skyline are layered
+   on top. Contrast checked: body text 17:1, muted 9.8:1, neon pink
+   6.4:1 and gold 12.6:1 on the ground. Motion (the bulb chase and
+   the neon flicker) runs only for visitors who allow it.
+   ============================================================ */
+[data-race-week="vegas"] {
+  --rw-a: #FF4FAE; /* neon pink */
+  --rw-b: #FFC93C; /* marquee gold */
+  --vg-night: #0E0A24;
+  --vg-night-2: #18123A;
+  --vg-pink: #FF4FAE;
+  --vg-gold: #FFC93C;
+  --vg-cyan: #3DE8F5;
+  /* the light theme becomes night */
+  --ivory: #0E0A24;
+  --ivory-2: #18123A;
+  --charcoal: #F7F1E3;
+  --grey: #BDB4D8;
+  --rule: #2F2758;
+  --photo: #18123A;
+  --red: #FF4FAE;
+  --red-dark: #FF6BBD;
+  /* dark panels go deeper still */
+  --c-surface: #07051A;
+  --c-raise: #120C2E;
+  --c-rule: #2A2052;
+  --c-text: #F7F1E3;
+  --c-muted: #BDB4D8;
+  --gold: #FFC93C;
+  --red-dim: rgba(255, 79, 174, 0.14);
+  color-scheme: dark;
+}
+[data-race-week="vegas"] body {
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.55) 0 0.8px, transparent 1.4px) 0 0 / 97px 83px,
+    radial-gradient(circle, rgba(255, 201, 60, 0.45) 0 0.7px, transparent 1.3px) 41px 37px / 131px 109px,
+    radial-gradient(ellipse 120% 60% at 50% 0%, #2A1458 0%, transparent 60%),
+    var(--vg-night);
+  color: var(--charcoal);
+}
+/* text that the light theme hard-codes */
+[data-race-week="vegas"] .story p,
+[data-race-week="vegas"] .analysis-card p,
+[data-race-week="vegas"] .race-detail,
+[data-race-week="vegas"] .timeline-item p,
+[data-race-week="vegas"] .lead-dek { color: #E9E2F5; }
+[data-race-week="vegas"] .driver-info p { color: #E9E2F5 !important; }
+[data-race-week="vegas"] .btn--red,
+[data-race-week="vegas"] .theme-dark .btn--red { color: var(--vg-night); }
+[data-race-week="vegas"] .btn:hover { color: var(--vg-night); background: var(--vg-gold); border-color: var(--vg-gold); }
+[data-race-week="vegas"] .rd-k--verified { color: #7FE3A0; }
+[data-race-week="vegas"] .rd-k--measured { color: #8FB8FF; }
+[data-race-week="vegas"] .rd-k--estimate { color: #FFC93C; }
+
+/* ---------- marquee bulbs across the top ---------- */
+[data-race-week="vegas"] body::before {
+  content: "";
+  display: block;
+  height: 18px;
+  background:
+    radial-gradient(circle, #FFF6C8 0 2.2px, #FFC93C 3px, rgba(255, 201, 60, 0.35) 4.6px, transparent 6px) 0 50% / 18px 18px repeat-x,
+    linear-gradient(#3A0E2E, #1A0820);
+  border-bottom: 2px solid var(--vg-pink);
+  box-shadow: 0 0 14px rgba(255, 79, 174, 0.6);
+}
+@media (prefers-reduced-motion: no-preference) {
+  [data-race-week="vegas"] body::before { animation: vg-chase 1.2s steps(2) infinite; }
+  @keyframes vg-chase { to { background-position: 18px 50%, 0 0; } }
+}
+
+/* ---------- neon type ---------- */
+[data-race-week="vegas"] .masthead-wordmark {
+  color: #FFF4FA;
+  text-shadow: 0 0 6px rgba(255, 79, 174, 0.9), 0 0 18px rgba(255, 79, 174, 0.6), 0 0 36px rgba(255, 79, 174, 0.35);
+}
+[data-race-week="vegas"] h1,
+[data-race-week="vegas"] .lead-h {
+  text-shadow: 0 0 10px rgba(255, 201, 60, 0.35), 0 0 28px rgba(255, 79, 174, 0.25);
+}
+[data-race-week="vegas"] .section-head h2,
+[data-race-week="vegas"] .section-title,
+[data-race-week="vegas"] .verdict-section-h {
+  text-shadow: 0 0 8px rgba(61, 232, 245, 0.35);
+}
+[data-race-week="vegas"] .cat-label,
+[data-race-week="vegas"] .hero-eyebrow { text-shadow: 0 0 8px rgba(255, 79, 174, 0.55); }
+@media (prefers-reduced-motion: no-preference) {
+  [data-race-week="vegas"] .masthead-wordmark { animation: vg-flicker 7s linear infinite; }
+  @keyframes vg-flicker {
+    0%, 91%, 94%, 100% { opacity: 1; }
+    92% { opacity: 0.55; }
+    93% { opacity: 0.9; }
+  }
+}
+
+/* ---------- masthead and nav ---------- */
+[data-race-week="vegas"] .masthead { background: transparent; border-bottom-color: var(--rule); }
+[data-race-week="vegas"] .masthead-nav a.active::after,
+[data-race-week="vegas"] .masthead-nav a[aria-current="page"]::after {
+  background: var(--vg-pink);
+  box-shadow: 0 0 8px var(--vg-pink), 0 0 16px rgba(255, 79, 174, 0.6);
+}
+[data-race-week="vegas"] .masthead-nav a:hover { color: var(--vg-gold); }
+
+/* ---------- ticker: a neon marquee ---------- */
+[data-race-week="vegas"] .ticker {
+  background: #12051F;
+  border-top: 1px solid var(--vg-gold);
+  border-bottom: 1px solid var(--vg-gold);
+  box-shadow: inset 0 0 18px rgba(255, 201, 60, 0.18);
+}
+[data-race-week="vegas"] .ticker .tag { color: var(--vg-gold); }
+[data-race-week="vegas"] .ticker .tag-breaking { color: var(--vg-pink); }
+
+/* ---------- countdown: slot-machine reels ---------- */
+[data-race-week="vegas"] .countdown-strip {
+  background: linear-gradient(#1C0F3E, #120A2C);
+  border-top: 0;
+  border-bottom: 2px solid var(--vg-gold);
+  box-shadow: 0 0 22px rgba(255, 201, 60, 0.18);
+}
+[data-race-week="vegas"] .countdown-unit { border-left: 0; padding: 0 5px; }
+[data-race-week="vegas"] .countdown-unit .num {
+  color: #1A1033;
+  background: linear-gradient(#B9B2C8 0%, #FFFFFF 22%, #FFFFFF 78%, #B9B2C8 100%);
+  border: 2px solid var(--vg-gold);
+  border-radius: 6px;
+  padding: 4px 8px;
+  box-shadow: 0 0 10px rgba(255, 201, 60, 0.45), inset 0 0 6px rgba(0, 0, 0, 0.35);
+}
+[data-race-week="vegas"] .countdown-unit .unit-label { color: var(--vg-gold); }
+[data-race-week="vegas"] .countdown-label strong { color: var(--vg-pink); }
+
+/* ---------- the Welcome sign (homepage) ---------- */
+.vegas-sign { display: none; }
+[data-race-week="vegas"] .vegas-sign {
+  display: block;
+  padding-top: 32px;
+  text-align: center;
+}
+[data-race-week="vegas"] .vegas-sign svg {
+  width: min(460px, 100%);
+  height: auto;
+  filter: drop-shadow(0 0 18px rgba(255, 201, 60, 0.45)) drop-shadow(0 0 40px rgba(255, 79, 174, 0.25));
+}
+@media (prefers-reduced-motion: no-preference) {
+  [data-race-week="vegas"] .vs-bulbs { animation: vg-bulbs 0.9s steps(2) infinite; }
+  @keyframes vg-bulbs { to { stroke-dashoffset: 15; } }
+}
+
+/* ---------- race-week tag, rules and the lead ---------- */
+[data-race-week="vegas"] .rw-tag { color: var(--vg-gold); }
+[data-race-week="vegas"] .rw-tag .rw-dots span:first-child { box-shadow: 0 0 6px var(--vg-pink); }
+[data-race-week="vegas"] .rw-tag .rw-dots span:last-child { box-shadow: 0 0 6px var(--vg-gold); }
+[data-race-week="vegas"] .rw-rule,
+[data-race-week="vegas"] .lead-rule {
+  height: 10px;
+  width: 96px;
+  background: radial-gradient(circle, #FFF6C8 0 2px, #FFC93C 2.6px, transparent 4px) 0 50% / 12px 10px repeat-x, #3A0E2E;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(255, 201, 60, 0.6);
+}
+
+/* ---------- card suits before section titles ---------- */
+[data-race-week="vegas"] .section-head h2::before,
+[data-race-week="vegas"] .section-title::before,
+[data-race-week="vegas"] .verdict-section-h::before,
+[data-race-week="vegas"] .newsletter-copy h2::before {
+  content: "♠";
+  display: inline-block;
+  margin-right: 0.35em;
+  font-size: 0.7em;
+  vertical-align: 0.1em;
+  color: var(--vg-gold);
+  text-shadow: 0 0 8px rgba(255, 201, 60, 0.7);
+}
+[data-race-week="vegas"] section:nth-of-type(4n+1) .section-head h2::before,
+[data-race-week="vegas"] .coverage .section-title::before { content: "♥"; color: var(--vg-pink); text-shadow: 0 0 8px rgba(255, 79, 174, 0.8); }
+[data-race-week="vegas"] section:nth-of-type(4n+2) .section-head h2::before,
+[data-race-week="vegas"] .intel .section-title::before { content: "♦"; color: var(--vg-pink); text-shadow: 0 0 8px rgba(255, 79, 174, 0.8); }
+[data-race-week="vegas"] section:nth-of-type(4n+3) .section-head h2::before { content: "♣"; }
+
+/* ---------- cards: gold foil edges ---------- */
+[data-race-week="vegas"] .analysis-card,
+[data-race-week="vegas"] .coverage-item,
+[data-race-week="vegas"] .driver-grid-card {
+  border-color: rgba(255, 201, 60, 0.45);
+}
+[data-race-week="vegas"] .coverage-item:hover,
+[data-race-week="vegas"] .driver-grid-card:hover { box-shadow: 0 0 0 1px var(--vg-gold), 0 0 22px rgba(255, 201, 60, 0.25); }
+[data-race-week="vegas"] .section-head { border-top-color: var(--vg-gold); }
+
+/* ---------- dark panels: neon city glow ---------- */
+[data-race-week="vegas"] .intel,
+[data-race-week="vegas"] main.theme-dark,
+[data-race-week="vegas"] .driver-hero { position: relative; }
+[data-race-week="vegas"] .intel::before,
+[data-race-week="vegas"] main.theme-dark::before,
+[data-race-week="vegas"] .driver-hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 50% at 90% 0%, rgba(255, 79, 174, 0.22), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 0% 100%, rgba(61, 232, 245, 0.14), transparent 70%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.4) 0 0.8px, transparent 1.4px) 0 0 / 71px 59px;
+}
+[data-race-week="vegas"] .intel > .wrap,
+[data-race-week="vegas"] main.theme-dark > *,
+[data-race-week="vegas"] .driver-hero > * { position: relative; z-index: 1; }
+[data-race-week="vegas"] .intel { border-top: 2px solid var(--vg-pink); box-shadow: 0 -6px 24px rgba(255, 79, 174, 0.25); }
+
+/* ---------- the skyline: under every page hero and above the footer ---------- */
+[data-race-week="vegas"] .hero,
+[data-race-week="vegas"] .lead { position: relative; }
+[data-race-week="vegas"] .hero::after {
+  content: "";
+  position: absolute; left: 0; right: 0; bottom: 0; height: 90px;
+  pointer-events: none;
+  background: url("img/vegas-skyline.svg") center bottom / auto 90px repeat-x;
+  opacity: 0.5;
+  z-index: 0;
+}
+[data-race-week="vegas"] .hero > * { position: relative; z-index: 1; }
+[data-race-week="vegas"] footer.site-footer {
+  position: relative;
+  border-top: 0;
+  padding-top: 150px;
+  background: linear-gradient(transparent 0, #07051A 140px);
+}
+[data-race-week="vegas"] footer.site-footer::before {
+  content: "";
+  position: absolute; left: 0; right: 0; top: 0; height: 140px;
+  pointer-events: none;
+  background: url("img/vegas-skyline.svg") center bottom / auto 140px repeat-x;
+}
+[data-race-week="vegas"] footer.site-footer::after {
+  content: "";
+  position: absolute; left: 0; right: 0; top: 138px; height: 2px;
+  background: var(--vg-pink);
+  box-shadow: 0 0 12px var(--vg-pink);
+}
+
+/* ---------- tables, verdict scores, buttons ---------- */
+[data-race-week="vegas"] .verdict-score-value { color: var(--vg-gold); text-shadow: 0 0 18px rgba(255, 201, 60, 0.5); }
+[data-race-week="vegas"] .btn { border-color: var(--vg-gold); }
+[data-race-week="vegas"] .btn--red { box-shadow: 0 0 14px rgba(255, 79, 174, 0.55); }
+
+/* ---------- Vegas: neon-tube circuit maps ----------
+   The circuit sculpture is a stack of SVG layers (js/precision-mark.js):
+   a blurred shadow, seven extrusion layers, then the top face. In Vegas
+   week the shadow becomes a pink glow, the extrusion a dark tube and the
+   top face a cyan neon line; the start/finish straight stays lit pink. */
+[data-race-week="vegas"] .pm-stack svg:first-child path { stroke: #FF4FAE; stroke-opacity: 0.5; }
+[data-race-week="vegas"] .pm-stack svg:not(:first-child):not(:last-child) path { stroke: #241046; }
+[data-race-week="vegas"] .pm-stack svg:last-child path:first-of-type { stroke: #3DE8F5; }
+[data-race-week="vegas"] .pm-stack svg:last-child path:nth-of-type(2) { stroke: #E6FDFF; stroke-opacity: 0.8; }
+[data-race-week="vegas"] .pm-stack svg:last-child path:nth-of-type(3) { stroke: #0B5E6A; }
+[data-race-week="vegas"] .pm-stack svg:last-child {
+  filter: drop-shadow(0 0 3px rgba(61, 232, 245, 0.9)) drop-shadow(0 0 10px rgba(61, 232, 245, 0.45));
+}
+[data-race-week="vegas"] .pm-stack .pm-sf-straight { stroke: #FF4FAE; filter: drop-shadow(0 0 4px #FF4FAE); }
+
+/* ---------- Vegas: the odds board (fight for second) ---------- */
+.odds-board { display: none; }
+[data-race-week="vegas"] .odds-board { display: block; padding-top: 56px; }
+[data-race-week="vegas"] .odds-frame {
+  border: 2px solid var(--vg-gold);
+  border-radius: 10px;
+  padding: 26px 28px 20px;
+  background:
+    radial-gradient(circle, #FFF6C8 0 1.6px, #FFC93C 2.2px, transparent 3.4px) 0 0 / 14px 14px repeat-x,
+    radial-gradient(circle, #FFF6C8 0 1.6px, #FFC93C 2.2px, transparent 3.4px) 0 100% / 14px 14px repeat-x,
+    linear-gradient(#170B33, #0B0620);
+  box-shadow: 0 0 26px rgba(255, 201, 60, 0.25), inset 0 0 40px rgba(255, 79, 174, 0.12);
+}
+[data-race-week="vegas"] .odds-head { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 6px; }
+[data-race-week="vegas"] .odds-kicker {
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--vg-gold);
+}
+[data-race-week="vegas"] .odds-head h2 {
+  margin: 0; font-family: var(--serif); font-weight: 400; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.05;
+  color: #FFF4FA; text-shadow: 0 0 8px rgba(255, 79, 174, 0.9), 0 0 22px rgba(255, 79, 174, 0.5);
+}
+[data-race-week="vegas"] .odds-sub { margin: 4px 0 18px; color: var(--grey); font-size: 15px; max-width: 70ch; }
+[data-race-week="vegas"] .odds-list { list-style: none; margin: 0; padding: 0; }
+[data-race-week="vegas"] .odds-row {
+  display: grid; grid-template-columns: minmax(0, 1fr) 70px 120px 110px; gap: 12px; align-items: center;
+  padding: 12px 0; border-top: 1px solid rgba(255, 201, 60, 0.25);
+}
+[data-race-week="vegas"] .odds-who { font-family: var(--sans); font-weight: 600; font-size: 17px; color: var(--charcoal); }
+[data-race-week="vegas"] .odds-who .st-stripe { display: inline-block; width: 4px; height: 18px; margin-right: 10px; vertical-align: -3px; background: var(--team); }
+[data-race-week="vegas"] .odds-team { display: block; margin-left: 14px; font-family: var(--mono); font-weight: 400; font-size: 12px; color: var(--grey); }
+[data-race-week="vegas"] .odds-pts { font-family: var(--mono); font-size: 20px; color: var(--charcoal); text-align: right; }
+[data-race-week="vegas"] .odds-line {
+  justify-self: center; min-width: 88px; text-align: center;
+  font-family: var(--mono); font-weight: 600; font-size: 18px; color: #1A1033;
+  background: var(--vg-gold); border-radius: 6px; padding: 6px 10px;
+  box-shadow: 0 0 12px rgba(255, 201, 60, 0.55);
+}
+[data-race-week="vegas"] .odds-row--lead .odds-line { background: var(--vg-pink); font-size: 14px; box-shadow: 0 0 12px rgba(255, 79, 174, 0.6); }
+[data-race-week="vegas"] .odds-per { font-family: var(--mono); font-size: 13px; color: var(--grey); text-align: right; }
+[data-race-week="vegas"] .odds-note { margin: 14px 0 6px; font-family: var(--mono); font-size: 12px; color: var(--grey); }
+@media (max-width: 640px) {
+  [data-race-week="vegas"] .odds-frame { padding: 22px 16px 16px; }
+  [data-race-week="vegas"] .odds-row { grid-template-columns: minmax(0, 1fr) 54px 76px; }
+  [data-race-week="vegas"] .odds-per { grid-column: 1 / -1; text-align: left; margin-left: 14px; }
+  [data-race-week="vegas"] .odds-line { min-width: 0; width: 100%; font-size: 15px; }
+}
+
+/* ---------- Vegas: jackpot on the Lights Out game ---------- */
+.pit-jackpot { display: none; }
+[data-race-week="vegas"] .pit-jackpot.is-on {
+  display: block; margin-top: 14px; text-align: center;
+}
+[data-race-week="vegas"] .pit-jackpot .jp-reels { display: inline-flex; gap: 8px; }
+[data-race-week="vegas"] .pit-jackpot .jp-reels span {
+  display: inline-block; width: 48px; padding: 6px 0;
+  font-family: var(--serif); font-size: 34px; line-height: 1; color: #D7193F;
+  background: linear-gradient(#B9B2C8 0%, #FFFFFF 22%, #FFFFFF 78%, #B9B2C8 100%);
+  border: 2px solid var(--vg-gold); border-radius: 6px;
+  box-shadow: 0 0 12px rgba(255, 201, 60, 0.55);
+}
+[data-race-week="vegas"] .pit-jackpot .jp-word {
+  display: block; margin-top: 10px;
+  font-family: var(--sans); font-weight: 800; font-size: clamp(30px, 6vw, 46px); letter-spacing: 0.18em;
+  color: var(--vg-gold); text-shadow: 0 0 10px rgba(255, 201, 60, 0.9), 0 0 26px rgba(255, 79, 174, 0.6);
+}
+[data-race-week="vegas"] .pit-jackpot .jp-sub { display: block; margin-top: 4px; font-family: var(--mono); font-size: 13px; color: var(--grey); }
+@media (prefers-reduced-motion: no-preference) {
+  [data-race-week="vegas"] .pit-jackpot.is-on .jp-word { animation: vg-jackpot 0.5s steps(2) 6; }
+  [data-race-week="vegas"] .pit-jackpot.is-on .jp-reels span { animation: vg-reel 0.6s ease-out both; }
+  [data-race-week="vegas"] .pit-jackpot.is-on .jp-reels span:nth-child(2) { animation-delay: 0.15s; }
+  [data-race-week="vegas"] .pit-jackpot.is-on .jp-reels span:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes vg-jackpot { 50% { color: var(--vg-pink); } }
+  @keyframes vg-reel { from { transform: translateY(-30px); opacity: 0; } to { transform: none; opacity: 1; } }
+}
+[data-race-week="vegas"] .odds-line { white-space: nowrap; }
+
+/* ---------- Vegas: the Sphere ----------
+   Our own LED orb beside the Welcome sign. Screens cross-fade (script.js
+   cycles them; it stops for reduced motion and pauses on hover). Layers:
+   screens, then an LED dot grid, then spherical shading on top. */
+.vegas-stage { display: none; }
+[data-race-week="vegas"] .vegas-stage {
+  display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 32px;
+  padding-top: 32px;
+}
+[data-race-week="vegas"] .vegas-stage .vegas-sign { display: block; padding-top: 0; text-align: center; }
+.vg-sphere-wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.vg-sphere {
+  position: relative; display: block;
+  width: min(340px, 78vw); aspect-ratio: 1; padding: 0; border: 0; border-radius: 50%;
+  overflow: hidden; cursor: pointer;
+  background: radial-gradient(circle at 50% 50%, #1B0F3A 0%, #0A0618 70%);
+  box-shadow:
+    0 0 30px rgba(61, 232, 245, 0.35),
+    0 0 80px rgba(255, 79, 174, 0.30),
+    0 30px 60px rgba(0, 0, 0, 0.55);
+  font: inherit; color: inherit;
+}
+.vg-sphere:focus-visible { outline: 3px solid var(--vg-gold); outline-offset: 6px; }
+/* spherical shading and the LED grid, over the screens */
+.vg-sphere::after {
+  content: ""; position: absolute; inset: 0; border-radius: 50%; pointer-events: none; z-index: 3;
+  background:
+    radial-gradient(circle at 34% 28%, rgba(255, 255, 255, 0.28), transparent 32%),
+    radial-gradient(circle at 50% 50%, transparent 60%, rgba(0, 0, 0, 0.35) 80%, rgba(0, 0, 0, 0.75) 100%);
+}
+.vg-led {
+  position: absolute; inset: 0; border-radius: 50%; pointer-events: none; z-index: 2;
+  background: radial-gradient(circle, transparent 0 1.2px, rgba(6, 3, 18, 0.42) 1.8px) 0 0 / 4px 4px;
+}
+.vg-screen {
+  position: absolute; inset: 0; z-index: 1;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  text-align: center; padding: 14%;
+  opacity: 0; transition: opacity 0.6s ease;
+}
+.vg-screen.is-on { opacity: 1; }
+.vg-small { font-family: var(--mono); font-weight: 600; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #FFFFFF; text-shadow: 0 0 6px rgba(0, 0, 0, 0.6); }
+.vg-big {
+  font-family: var(--sans); font-weight: 800; font-size: clamp(30px, 4.6vw, 46px); line-height: 1.02; color: #FFFFFF; white-space: nowrap;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.85), 0 2px 10px rgba(0, 0, 0, 0.45);
+}
+/* screen colours */
+.vg-screen--count { background: radial-gradient(circle, #FF4FAE 0%, #B1176E 55%, #3A0730 100%); }
+.vg-screen--bill { background: radial-gradient(circle, #FFC93C 0%, #E06A12 55%, #4A1405 100%); }
+.vg-screen--bill .vg-big { font-size: clamp(28px, 4vw, 40px); }
+.vg-screen--odds { background: radial-gradient(circle, #3DE8F5 0%, #1478A8 55%, #061C3A 100%); }
+.vg-sphere-cap { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--grey); }
+@media (prefers-reduced-motion: no-preference) {
+}
+@media (max-width: 760px) {
+  [data-race-week="vegas"] .vegas-stage { grid-template-columns: 1fr; gap: 20px; }
+}
+/* Sphere race-weekend screens */
+.vg-screen--live { background: radial-gradient(circle, #FF3B3B 0%, #B3121E 55%, #3A0408 100%); }
+.vg-screen--pole { background: radial-gradient(circle, #B07CFF 0%, #5B22B8 55%, #1A0640 100%); }
+.vg-screen--winner {
+  background:
+    radial-gradient(circle, rgba(255, 201, 60, 0.55) 0%, rgba(120, 70, 0, 0.75) 70%),
+    repeating-conic-gradient(#FFFFFF 0 25%, #111111 0 50%) 0 0 / 40px 40px;
+}
+.vg-screen--flag { background: repeating-conic-gradient(#F4F4F4 0 25%, #151515 0 50%) 0 0 / 46px 46px; }
+.vg-screen--flag .vg-big, .vg-screen--flag .vg-small { background: rgba(10, 6, 24, 0.78); padding: 2px 10px; border-radius: 4px; }
+.vg-screen--winner .vg-big { color: #FFF4C2; text-shadow: 0 0 14px rgba(255, 201, 60, 0.95), 0 2px 10px rgba(0, 0, 0, 0.6); }
+@media (prefers-reduced-motion: no-preference) {
+  .vg-screen--live.is-on .vg-big { animation: vg-live 1.2s ease-in-out infinite; }
+  @keyframes vg-live { 50% { opacity: 0.55; } }
+}
+.vg-screen--flag .vg-big { font-size: clamp(22px, 3.2vw, 32px); }
+/* the Sphere's opening screen: a JP casino chip */
+.vg-screen--chip { background: radial-gradient(circle, #3A1C78 0%, #1A0B3D 55%, #07051A 100%); padding: 9%; }
+.vg-chip { width: 100%; height: auto; filter: drop-shadow(0 0 10px rgba(255, 79, 174, 0.75)) drop-shadow(0 0 26px rgba(255, 201, 60, 0.35)); }
+.vg-chip .vgc-jp { text-shadow: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .vg-screen--chip.is-on .vg-chip { animation: vg-chip 6s ease-in-out infinite; }
+  @keyframes vg-chip { 0%, 100% { transform: rotate(-6deg) scale(1); } 50% { transform: rotate(6deg) scale(1.03); } }
+}
+/* the 3D Sphere (js/vegas-sphere-3d.js) sits over the CSS one; the CSS
+   Sphere stays in place underneath as the button and the fallback */
+.vg-sphere-wrap { position: relative; }
+.vg3d { position: absolute; z-index: 2; touch-action: pan-y; cursor: grab; }
+.vg3d:active { cursor: grabbing; }
+.vg3d canvas { display: block; }
+.vg-3d-on .vg-sphere { background: transparent; box-shadow: none; }
+.vg-3d-on .vg-sphere > * { visibility: hidden; }
+.vg-3d-on .vg-sphere::after { display: none; }
+.vg-3d-on .vg-sphere-cap::after { content: " · drag to spin"; }
