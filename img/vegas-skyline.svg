@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 140" preserveAspectRatio="xMidYMax slice">
+  <!-- A stylised Las Vegas skyline, drawn for the JP Motorsport Journal
+       race-week theme: decorative silhouettes, not any building's
+       likeness or mark. -->
+  <defs>
+    <pattern id="w" width="8" height="10" patternUnits="userSpaceOnUse">
+      <rect x="2" y="2" width="3" height="4" fill="#FFC93C" opacity=".55"/>
+    </pattern>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1A1240"/>
+      <stop offset="1" stop-color="#07051A"/>
+    </linearGradient>
+  </defs>
+  <g fill="url(#g)">
+    <!-- far left towers -->
+    <rect x="0" y="84" width="46" height="56"/>
+    <rect x="50" y="66" width="34" height="74"/>
+    <rect x="88" y="92" width="40" height="48"/>
+    <!-- tall tower with an observation pod and a needle -->
+    <rect x="148" y="40" width="10" height="100"/>
+    <path d="M136 46 h34 l-4 -10 h-26 z"/>
+    <rect x="151" y="6" width="4" height="30"/>
+    <!-- resort towers -->
+    <path d="M178 140 V58 l26 -10 l26 10 V140 z"/>
+    <rect x="236" y="76" width="44" height="64"/>
+    <!-- pyramid -->
+    <path d="M290 140 L352 74 L414 140 z"/>
+    <!-- castle-like turrets -->
+    <path d="M420 140 V96 h8 v-10 h8 v10 h12 v-14 h8 v14 h12 v-10 h8 v10 h8 V140 z"/>
+    <!-- lattice tower -->
+    <path d="M520 140 L540 64 L546 30 L552 64 L572 140 h-12 L546 96 L532 140 z"/>
+    <!-- curved hotel tower -->
+    <path d="M590 140 V52 q34 -8 50 8 V140 z"/>
+    <rect x="648" y="80" width="38" height="60"/>
+    <!-- the sphere -->
+    <circle cx="730" cy="104" r="36"/>
+    <!-- tall twin towers -->
+    <rect x="780" y="36" width="30" height="104"/>
+    <rect x="814" y="50" width="26" height="90"/>
+    <path d="M850 140 V70 l24 -14 l24 14 V140 z"/>
+    <rect x="904" y="88" width="40" height="52"/>
+    <rect x="950" y="60" width="32" height="80"/>
+    <path d="M990 140 V78 q20 -16 40 0 V140 z"/>
+    <rect x="1038" y="46" width="28" height="94"/>
+    <rect x="1072" y="86" width="44" height="54"/>
+    <rect x="1122" y="70" width="30" height="70"/>
+    <rect x="1158" y="96" width="42" height="44"/>
+  </g>
+  <!-- lit windows -->
+  <g fill="url(#w)">
+    <rect x="52" y="70" width="30" height="66"/>
+    <rect x="182" y="62" width="44" height="74"/>
+    <rect x="238" y="80" width="40" height="56"/>
+    <rect x="594" y="60" width="42" height="76"/>
+    <rect x="782" y="40" width="26" height="96"/>
+    <rect x="816" y="54" width="22" height="82"/>
+    <rect x="952" y="64" width="28" height="72"/>
+    <rect x="1040" y="50" width="24" height="86"/>
+    <rect x="1124" y="74" width="26" height="62"/>
+  </g>
+  <!-- the sphere's glow, the pyramid beam and the needle tip -->
+  <circle cx="730" cy="104" r="36" fill="none" stroke="#FF4FAE" stroke-width="2" opacity=".75"/>
+  <circle cx="730" cy="104" r="26" fill="#FF4FAE" opacity=".12"/>
+  <path d="M352 74 L352 0" stroke="#3DE8F5" stroke-width="2" opacity=".45"/>
+  <circle cx="153" cy="6" r="2.5" fill="#FF4FAE"/>
+  <circle cx="546" cy="30" r="2" fill="#FFC93C"/>
+</svg>
