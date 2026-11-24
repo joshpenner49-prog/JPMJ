@@ -347,7 +347,7 @@ def page_strategy(ed):
   {plan}
   {middle}
   <div class="watch"><h4>What to Watch</h4><ol>{watch}</ol></div>
-  {run_foot(ed, 3, "Pit times: f1db · Net loss: Pirelli · Verified " + e(ed["last_verified"]))}
+  {run_foot(ed, 3, e(s.get("foot", "Pit times: f1db · Net loss: Pirelli")) + " · Verified " + e(ed["last_verified"]))}
 </section>'''
 
 

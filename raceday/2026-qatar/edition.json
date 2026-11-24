@@ -1,0 +1,356 @@
+{
+  "_about": "Content for one JP Race Day Programme edition. Layout lives in raceday/template.html; build with: python3 tools/build_raceday.py raceday/2026-united-states. Fields set to null are race-weekend information that must be filled in (and verified) before the build will produce a final, publishable PDF. Every figure carries a 'kind': verified (official/primary source), measured (computed from published timing data), estimate (sourced estimate with stated assumptions) or analysis (JP Motorsport Journal's editorial view).",
+  "status": "proof",
+  "edition": 4,
+  "season": 2026,
+  "round": 22,
+  "rounds_total": 23,
+  "grand_prix": "Qatar Grand Prix",
+  "short_name": "Qatar GP",
+  "slug": "qatar",
+  "circuit_id": "qa-2004",
+  "circuit_name": "Lusail International Circuit",
+  "location": "Lusail, Qatar",
+  "race_date": "Sunday 29 November 2026",
+  "race_date_iso": "2026-11-29",
+  "timezone_label": "AST (UTC+3), local time in Qatar",
+  "filename": "JP-Race-Day-Qatar-GP-2026.pdf",
+  "publication_date": null,
+  "last_verified": "24 November 2026",
+  "cover": {
+    "headline": "Second place under the lights",
+    "standfirst": "Verstappen arrives at Lusail 37 points clear in the fight to be runner-up. Leave Qatar more than 25 ahead of Hamilton, Russell and Norris, and second is his.",
+    "photo": null,
+    "photo_credit": null,
+    "photo_note": "Free-licensed photo pending (Wikimedia Commons is blocked in the build environment). Until then the cover uses the circuit outline."
+  },
+  "intro": "Verstappen won a thriller in Las Vegas, where the first four finished within 2.6 seconds. Qatar is the penultimate round: a night race at Lusail, with practice on Friday, qualifying on Saturday and the 57-lap race on Sunday at 7pm local time. Pirelli brings its hardest tyres and limits every set to 27 laps, so everyone must stop at least twice.",
+  "storylines": [
+    {
+      "title": "Verstappen's match point",
+      "text": "Verstappen 304, Hamilton 267, Russell and Norris 264. Leave Qatar more than 25 points clear of all three and second place is decided.",
+      "kind": "analysis",
+      "basis": "Standings after Round 21, with 25 points per Grand Prix and no sprints: 50 points left before Qatar, 25 after it. A lead of more than 25 after Qatar cannot be overturned; an exact tie would go to countback."
+    },
+    {
+      "title": "At least two stops",
+      "text": "Pirelli has limited every set of tyres to 27 laps. In a 57-lap race, nobody can finish with fewer than two stops.",
+      "kind": "verified"
+    },
+    {
+      "title": "Verstappen's Lusail",
+      "text": "He has won the last three Qatar Grands Prix, in 2023, 2024 and 2025.",
+      "kind": "verified"
+    }
+  ],
+  "circuit": {
+    "facts": [
+      {
+        "label": "Circuit length",
+        "value": "5.419 km",
+        "kind": "verified",
+        "source": "f1"
+      },
+      {
+        "label": "Race laps",
+        "value": "57",
+        "kind": "verified",
+        "source": "f1"
+      },
+      {
+        "label": "Race distance",
+        "value": "308.611 km",
+        "kind": "verified",
+        "source": "f1"
+      },
+      {
+        "label": "Corners",
+        "value": "16 (run clockwise)",
+        "kind": "verified",
+        "source": "f1"
+      },
+      {
+        "label": "First Grand Prix",
+        "value": "2021",
+        "kind": "verified",
+        "source": "f1db"
+      },
+      {
+        "label": "Fastest race lap",
+        "value": "1:22.384, Lando Norris (2024)",
+        "kind": "verified",
+        "source": "f1db"
+      },
+      {
+        "label": "Tyre limit",
+        "value": "27 laps per set",
+        "kind": "verified",
+        "source": "pirelli_compounds"
+      }
+    ],
+    "overtaking_aids": null,
+    "overtaking_aids_note": "Active aero Straight Mode works in FIA-designated activation zones, and Overtake Mode gives a car within one second of the car ahead at the detection point extra electrical energy. The Lusail zones come in the FIA event notes on race weekend and go into the final edition.",
+    "lap_m": 5419,
+    "straight_mode_zones": null,
+    "overtake_detection": null,
+    "map_markers": [
+      {
+        "n": "1",
+        "at": 3.0,
+        "dx": 0,
+        "dy": 14
+      }
+    ],
+    "map_sections": [
+      {
+        "label": "Main straight",
+        "at": 95,
+        "dx": 0,
+        "dy": 14
+      },
+      {
+        "label": "High-speed sweepers",
+        "at": 55,
+        "dx": 0,
+        "dy": -16
+      }
+    ],
+    "map_note": "Numbered: Turn 1 confirmed from the official outline; full numbering pending a check against the FIA map.",
+    "key_sections": [
+      {
+        "name": "Turn 1",
+        "text": "The end of the main straight and the clearest overtaking spot of the lap, after the longest run at full speed.",
+        "kind": "analysis"
+      },
+      {
+        "name": "The sweepers",
+        "text": "Long, fast corners in sequence load the tyres for seconds at a time. This is where the 27-lap limit comes from.",
+        "kind": "analysis"
+      },
+      {
+        "name": "Kerbs",
+        "text": "Lusail's kerbs have caused tyre damage before; the 2023 race ran with an 18-lap limit after sidewall cuts.",
+        "kind": "verified",
+        "source": "pirelli_compounds"
+      },
+      {
+        "name": "Final corner",
+        "text": "A fast right onto the main straight: a clean exit sets up the tow into Turn 1.",
+        "kind": "analysis"
+      }
+    ],
+    "time_gain_loss": "With tyre life capped and the corners this fast, the race is about managing stints: whoever looks after the tyres in the sweepers has the pace when it matters.",
+    "time_gain_loss_kind": "analysis",
+    "aero_note": null,
+    "dek": "Sixteen corners, clockwise, most of them fast and flowing, under floodlights: a MotoGP circuit with a main straight of more than a kilometre."
+  },
+  "strategy": {
+    "pit_loss_rows": [
+      {
+        "condition": "Green flag",
+        "pit_lane": "about 29 s",
+        "net_loss": "see note",
+        "saving": "—",
+        "net_kind": "estimate",
+        "net_source": "f1db"
+      },
+      {
+        "condition": "Virtual Safety Car",
+        "pit_lane": "about 29 s",
+        "net_loss": "less than green",
+        "saving": "roughly 17–40%",
+        "net_kind": "estimate",
+        "net_source": "vsc"
+      },
+      {
+        "condition": "Safety Car",
+        "pit_lane": "about 29 s",
+        "net_loss": "less again",
+        "saving": "roughly 35–60%",
+        "net_kind": "estimate",
+        "net_source": "vsc"
+      }
+    ],
+    "pit_loss_notes": [
+      "Time in the pit lane is measured: the median from pit entry to pit exit at Lusail was 28.7–28.9 s in 2023, 2024 and 2025 (f1db timing data), one of the longest on the calendar. It does not change under a VSC or Safety Car because the pit-lane speed limit still applies.",
+      "We could not find a published net race-time loss for Lusail, so we do not quote one: it is less than the pit-lane time, because the cars that stay out also cover that distance.",
+      "Under a VSC or Safety Car, published estimates put the saving at roughly 17–40% and 35–60% of the green-flag loss. Safety Car laps count towards the 27-lap limit."
+    ],
+    "history": [
+      {
+        "year": 2023,
+        "pattern": "Three stops",
+        "detail": "18-lap limit after tyre damage; most of the top 10 stopped three times",
+        "kind": "measured"
+      },
+      {
+        "year": 2024,
+        "pattern": "Mixed",
+        "detail": "No limit; most of the top 10 stopped around laps 34–37",
+        "kind": "measured"
+      },
+      {
+        "year": 2025,
+        "pattern": "Two stops",
+        "detail": "25-lap limit; every driver in the top 10 stopped exactly twice",
+        "kind": "measured"
+      }
+    ],
+    "history_note": "With a 27-lap limit, the question is not how many stops but when: both stints of 27 laps or fewer must cover 57 laps.",
+    "tyres": "Pirelli has nominated C1 (hard), C2 (medium) and C3 (soft), its three hardest compounds, and limited every set to 27 laps (25 last year).",
+    "tyres_kind": "verified",
+    "compounds": {
+      "S": "C3",
+      "M": "C2",
+      "H": "C1"
+    },
+    "tyre_plan": null,
+    "tyre_plan_note": "the predicted race strategies and pit windows from Pirelli after qualifying, within the 27-lap limit.",
+    "one_vs_two": "One stop is impossible: at 27 laps per set, two stops is the minimum. The choice is where to put them, and whether a Safety Car makes a third one cheap.",
+    "one_vs_two_kind": "analysis",
+    "undercut": "Undercut: pit first and use the new tyres' extra grip to gain the time you lose in the pit lane before your rival stops. It works best when new tyres are much faster than worn ones.",
+    "overcut": "Overcut: stay out longer and gain time on a clear track while your rival is held up on cold new tyres or in traffic. It works best when tyres warm up slowly or the pitting car rejoins in traffic.",
+    "pit_window": "Last year, with a 25-lap limit, most of the top 10 stopped under a lap-7 Safety Car and again around lap 32; this year's limit gives a little more freedom.",
+    "pit_window_kind": "measured",
+    "neutralisation": "A VSC or Safety Car inside the pit window makes a stop cheaper for everyone, so the leaders often pit together and little changes. The real swing comes when it falls just before a team's planned stop, or when a rival has already stopped under green. A Safety Car early in the race can make a one-stop too long and force a second stop.",
+    "neutralisation_kind": "analysis",
+    "what_to_watch": [
+      "The first stop. With 27 laps per set, an early stop commits a driver to a long middle stint.",
+      "Safety Cars. Neutralised laps count towards the tyre limit, so a cheap stop under the Safety Car is doubly tempting.",
+      "Verstappen and second place. More than 25 points clear after Sunday and it is settled."
+    ],
+    "foot": "Pit times: f1db · Tyre limit: Pirelli"
+  },
+  "briefing": {
+    "grid": null,
+    "grid_note": "The official starting grid, including penalties and any driver substitutions, is added in the final edition after qualifying.",
+    "penalties": null,
+    "schedule": [
+      {
+        "day": "Fri 27 Nov",
+        "session": "Practice 1",
+        "time": "16:30"
+      },
+      {
+        "day": "Fri 27 Nov",
+        "session": "Practice 2",
+        "time": "20:00"
+      },
+      {
+        "day": "Sat 28 Nov",
+        "session": "Practice 3",
+        "time": "17:30"
+      },
+      {
+        "day": "Sat 28 Nov",
+        "session": "Qualifying",
+        "time": "21:00"
+      },
+      {
+        "day": "Sun 29 Nov",
+        "session": "Grand Prix (57 laps)",
+        "time": "19:00"
+      }
+    ],
+    "schedule_kind": "verified",
+    "battles": [
+      {
+        "title": "Runner-up",
+        "text": "Verstappen 304, Hamilton 267, Russell 264, Norris 264."
+      },
+      {
+        "title": "Constructors P3",
+        "text": "Red Bull 440 vs McLaren 431."
+      },
+      {
+        "title": "Constructors P6",
+        "text": "Alpine 87, ahead of Haas."
+      }
+    ],
+    "five_things": [
+      "The fight for second: Verstappen can settle it with more than 25 points in hand after Sunday.",
+      "The 27-lap limit: two stops for everyone, and the timing of the first decides the race.",
+      "Red Bull and McLaren, nine points apart for third in the Constructors'.",
+      "Pérez starts with a five-place grid penalty for his Las Vegas collision.",
+      "Antonelli, chasing a tenth win of his title-winning season."
+    ],
+    "glossary": [
+      [
+        "Undercut",
+        "Pitting before a rival to use new tyres' extra pace to get ahead when they stop."
+      ],
+      [
+        "Overcut",
+        "Staying out longer than a rival to gain time while they warm up new tyres or sit in traffic."
+      ],
+      [
+        "Pit window",
+        "The range of laps when a stop makes strategic sense."
+      ],
+      [
+        "Degradation",
+        "How quickly a tyre loses grip and lap time as it wears."
+      ],
+      [
+        "VSC",
+        "Virtual Safety Car: everyone must slow to a set pace; positions are frozen and no one may overtake."
+      ],
+      [
+        "Safety Car",
+        "A physical car leads the field at reduced speed, bunching everyone up behind it."
+      ],
+      [
+        "Straight Mode",
+        "2026 active aero: wings flatten to cut drag in designated zones. Replaces DRS."
+      ],
+      [
+        "Overtake Mode",
+        "Extra electrical energy for a car within one second of the car ahead at the detection point."
+      ],
+      [
+        "Parc fermé",
+        "From qualifying until the race, cars cannot be changed without a penalty."
+      ]
+    ],
+    "sign_off": null,
+    "sign_off_note": "JP writes the sign-off for each edition.",
+    "sign_off_title": null
+  },
+  "sources": {
+    "f1db": {
+      "label": "f1db, results and pit stops 2019–2025 (CC BY 4.0)",
+      "url": "https://github.com/f1db/f1db"
+    },
+    "outline": {
+      "label": "f1-circuits, track outline (MIT)",
+      "url": "https://github.com/bacinger/f1-circuits"
+    },
+    "vsc": {
+      "label": "VSC and SC savings: FormulaDream; Race Sundays",
+      "url": "https://www.formuladream.app/blog/f1-pit-stop-cost-measured"
+    },
+    "regs": {
+      "label": "2026 aero rules: ESPN; Motor Sport",
+      "url": "https://www.motorsportmagazine.com/articles/single-seaters/f1/explained-the-new-mode-names-for-active-aero-and-energy-boost-for-f1-2026/"
+    },
+    "f1": {
+      "label": "Circuit facts: Formula1.com",
+      "url": "https://www.formula1.com/en/racing/2026/qatar"
+    },
+    "pirelli_compounds": {
+      "label": "Pirelli compounds and 27-lap limit: RACER; Speedcafe",
+      "url": "https://racer.com/2026/11/23/pirelli-confirms-tire-limits-in-qatar-again-guaranteeing-two-stop-race"
+    },
+    "schedule": {
+      "label": "Session times: F1 Oversteer; f1db",
+      "url": "https://www.f1oversteer.com/races/qatar-grand-prix-2026-how-to-watch-f1-race-start-time-and-lusail-weather-forecast/"
+    },
+    "standings": {
+      "label": "Standings after Round 21 (checked against f1db)",
+      "url": "https://github.com/f1db/f1db"
+    }
+  },
+  "race_laps": 57,
+  "race_time": "19:00",
+  "tz_abbr": "AST"
+}

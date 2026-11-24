@@ -910,3 +910,93 @@
 .vg-3d-on .vg-sphere > * { visibility: hidden; }
 .vg-3d-on .vg-sphere::after { display: none; }
 .vg-3d-on .vg-sphere-cap::after { content: " · drag to spin"; }
+
+/* ============================================================
+   QATAR: maroon and white, with the flag's nine-point serrated edge.
+   Back to the light site after Vegas; static, never over text.
+   ============================================================ */
+[data-race-week="qatar"] {
+  --rw-a: #8A1538; /* Qatar maroon */
+  --rw-b: #FFFFFF;
+  --qa-maroon: #8A1538;
+  /* Accent swap: maroon is 8.4:1 on ivory. On the deep-maroon dark
+     surfaces below, the light accent is #F08AA2 (8.0:1). */
+  --red: #8A1538;
+  --red-dark: #F08AA2;
+  --c-surface: #22080F;
+  --c-raise: #2E0C16;
+  --c-rule: #4A1A26;
+  --c-muted: #C9AEB5;
+}
+/* the flag across the top: a white hoist, one serrated edge, then maroon */
+[data-race-week="qatar"] {
+  --qa-flag: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 280 100' preserveAspectRatio='none'%3E%3Crect width='280' height='100' fill='%238A1538'/%3E%3Cpath d='M0%200%20H36%20L36,0.00%20L44,5.56%20L36,11.11%20L44,16.67%20L36,22.22%20L44,27.78%20L36,33.33%20L44,38.89%20L36,44.44%20L44,50.00%20L36,55.56%20L44,61.11%20L36,66.67%20L44,72.22%20L36,77.78%20L44,83.33%20L36,88.89%20L44,94.44%20L36,100%20L36%20100%20H0%20Z' fill='%23FFFFFF'/%3E%3C/svg%3E");
+  --qa-edge: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 14'%3E%3Cpath d='M0 0 H4 L12 3.5 L4 7 L12 10.5 L4 14 H0 Z' fill='%23FFFFFF'/%3E%3C/svg%3E");
+}
+[data-race-week="qatar"] body::before {
+  content: "";
+  display: block;
+  height: 14px;
+  background:
+    var(--qa-edge) 18% 0 / 12px 14px no-repeat,
+    linear-gradient(#FFFFFF, #FFFFFF) 0 0 / 18% 100% no-repeat,
+    var(--qa-maroon);
+  box-shadow: inset 0 -1px 0 rgba(25, 26, 28, 0.08);
+}
+[data-race-week="qatar"] footer.site-footer { position: relative; border-top: 0; padding-top: 46px; }
+[data-race-week="qatar"] footer.site-footer::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 14px; pointer-events: none;
+  background:
+    var(--qa-edge) 18% 0 / 12px 14px no-repeat,
+    linear-gradient(#FFFFFF, #FFFFFF) 0 0 / 18% 100% no-repeat,
+    var(--qa-maroon);
+}
+/* white dots show against ivory with a hairline */
+[data-race-week="qatar"] .rw-tag .rw-dots span:last-child { box-shadow: inset 0 0 0 1px rgba(25, 26, 28, 0.35); }
+[data-race-week="qatar"] .driver-hero .rw-tag .rw-dots span:last-child,
+[data-race-week="qatar"] .theme-dark .rw-tag .rw-dots span:last-child { box-shadow: none; }
+/* accent rules: a small Qatar-style flag */
+[data-race-week="qatar"] .rw-rule,
+[data-race-week="qatar"] .lead-rule {
+  width: 56px; height: 20px;
+  background: var(--qa-flag) center / 100% 100% no-repeat;
+  box-shadow: inset 0 0 0 1px rgba(25, 26, 28, 0.14);
+}
+[data-race-week="qatar"] .lead-rule { width: 70px; height: 25px; }
+/* a small maroon diamond (a single serration tooth) before section titles */
+[data-race-week="qatar"] .section-title::before,
+[data-race-week="qatar"] .section-head h2::before,
+[data-race-week="qatar"] .verdict-section-h::before,
+[data-race-week="qatar"] .newsletter-copy h2::before {
+  content: "";
+  display: inline-block;
+  width: 0.36em; height: 0.5em;
+  margin-right: 0.4em;
+  vertical-align: 0.08em;
+  background: var(--qa-maroon);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+[data-race-week="qatar"] .intel .section-title::before,
+[data-race-week="qatar"] .theme-dark .section-head h2::before { background: #F08AA2; }
+[data-race-week="qatar"] .masthead-nav a.active::after,
+[data-race-week="qatar"] .masthead-nav a[aria-current="page"]::after { background: var(--qa-maroon); }
+/* countdown: maroon figures over a thin maroon-and-white line */
+[data-race-week="qatar"] .countdown-unit .num { color: var(--qa-maroon); }
+[data-race-week="qatar"] .countdown-strip { border-bottom: 0; box-shadow: inset 0 -3px 0 var(--qa-maroon), inset 0 -5px 0 #FFFFFF; }
+/* night race: floodlight glow over the dark panels */
+[data-race-week="qatar"] .intel,
+[data-race-week="qatar"] main.theme-dark,
+[data-race-week="qatar"] .driver-hero { position: relative; }
+[data-race-week="qatar"] .intel::before,
+[data-race-week="qatar"] main.theme-dark::before,
+[data-race-week="qatar"] .driver-hero::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 34% 60% at 12% -10%, rgba(255, 244, 220, 0.16), transparent 70%),
+    radial-gradient(ellipse 34% 60% at 50% -14%, rgba(255, 244, 220, 0.12), transparent 70%),
+    radial-gradient(ellipse 34% 60% at 88% -10%, rgba(255, 244, 220, 0.16), transparent 70%);
+}
+[data-race-week="qatar"] .intel > .wrap,
+[data-race-week="qatar"] main.theme-dark > *,
+[data-race-week="qatar"] .driver-hero > * { position: relative; z-index: 1; }
+[data-race-week="qatar"] .ticker .tag { color: #F08AA2; }
